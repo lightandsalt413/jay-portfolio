@@ -108,7 +108,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hero-letter {
   font-family: var(--serif);
-  font-size: 28vw;
+  font-size: max(28vw, 22vh);
   font-weight: 400;
   line-height: .82;
   color: rgba(255,255,255,.18);
@@ -349,7 +349,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .navbar { padding: 1.25rem 1.5rem; }
   .nav-line { width: 60px; }
   .hero-letter {
-    font-size: 38vw;
     color: rgba(255,255,255,.22);
   }
   .hero-name {
@@ -378,7 +377,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-line { width: 30px; }
   .nav-menu-text { font-size: .75rem; letter-spacing: .1em; }
   .hero-letter {
-    font-size: 42vw;
     color: rgba(255,255,255,.25);
   }
   .hero-name { top: 50%; }
