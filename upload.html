@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Upload Hero Photo</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0c0a08; color: #fff; font-family: 'Inter', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+  .upload-zone {
+    width: 600px; padding: 60px 40px; border: 2px dashed rgba(255,255,255,.3);
+    border-radius: 16px; text-align: center; cursor: pointer;
+    transition: all .3s;
+  }
+  .upload-zone:hover, .upload-zone.drag-over { border-color: #c8572d; background: rgba(200,87,45,.1); }
+  h1 { font-size: 1.5rem; margin-bottom: 12px; }
+  p { color: rgba(255,255,255,.6); margin-bottom: 20px; }
+  input[type="file"] { display: none; }
+  .btn { background: #c8572d; color: #fff; border: none; padding: 14px 32px; border-radius: 8px; font-size: 1rem; cursor: pointer; letter-spacing: .05em; }
+  .btn:hover { background: #a84520; }
+  .status { margin-top: 20px; color: #4ade80; font-weight: 600; display: none; }
+  .preview { margin-top: 20px; max-width: 100%; border-radius: 8px; display: none; }
+</style>
+</head>
+<body>
+  <div class="upload-zone" id="dropZone">
+    <h1>📸 Upload Your Hero Photo</h1>
+    <p>Drag & drop your portrait photo here, or click to browse.<br>It will be saved as <strong>hero-portrait.png</strong></p>
+    <button class="btn" onclick="document.getElementById('fileInput').click()">Choose Photo</button>
+    <input type="file" id="fileInput" accept="image/*">
+    <img class="preview" id="preview">
+    <div class="status" id="status"></div>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('dropZone');
+    const fileInput = document.getElementById('fileInput');
+    const preview = document.getElementById('preview');
+    const status = document.getElementById('status');
+
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('drag-over'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag-over'));
+    dropZone.addEventListener('drop', (e) => {
+      e.preventDefault(); dropZone.classList.remove('drag-over');
+      if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+    });
+    fileInput.addEventListener('change', (e) => { if (e.target.files.length) handleFile(e.target.files[0]); });
+
+    function handleFile(file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        preview.src = e.target.result;
+        preview.style.display = 'block';
+
+        // Convert to PNG and trigger download with the correct filename
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          const ctx = canvas.getContext('2d');
+          ctx.drawImage(img, 0, 0);
+          canvas.toBlob((blob) => {
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'hero-portrait.png';
+            a.click();
+            URL.revokeObjectURL(url);
+            status.textContent = '✅ hero-portrait.png downloaded! Now move it to: portfolio/assets/images/ and replace the existing file. Then refresh the portfolio page.';
+            status.style.display = 'block';
+          }, 'image/png');
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>
