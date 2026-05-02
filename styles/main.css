@@ -351,7 +351,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .hero-letter { color: rgba(255,255,255,.22); }
   .hero-name {
     gap: 0;
-    top: 45%;
+    top: 52%;
   }
   .hero-portrait {
     padding-top: 60px;
@@ -375,7 +375,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-line { width: 30px; }
   .nav-menu-text { font-size: .75rem; letter-spacing: .1em; }
   .hero-letter { color: rgba(255,255,255,.25); }
-  .hero-name { top: 42%; }
+  .hero-name { top: 50%; }
   .hero-portrait { padding-top: 100px; }
   .hero-tagline { bottom: 2rem; gap: 1rem; }
   .hero-tagline span { font-size: .75rem; letter-spacing: .2em; }
