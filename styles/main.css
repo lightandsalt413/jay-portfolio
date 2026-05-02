@@ -358,10 +358,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-center { gap: 8px; }
   .nav-line { width: 30px; }
   .nav-menu-text { font-size: .75rem; letter-spacing: .1em; }
-  .hero-letter { font-size: clamp(6rem, 30vw, 11rem); }
+  .hero-letter {
+    font-size: clamp(8rem, 45vw, 16rem);
+    color: rgba(255,255,255,.25);
+  }
   .hero-name {
-    gap: .05em;
-    top: 58% !important;
+    gap: 0;
+    top: 50% !important;
     transform: translate(-50%, -50%) !important;
   }
   .hero-portrait { padding-top: 80px; }
