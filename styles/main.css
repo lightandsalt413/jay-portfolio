@@ -345,12 +345,23 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 968px) {
+  html, body { overflow-x: hidden; }
   .navbar { padding: 1.25rem 1.5rem; }
-
   .nav-line { width: 60px; }
+  .hero-letter { color: rgba(255,255,255,.22); }
+  .hero-name {
+    gap: 0;
+    top: 45%;
+  }
+  .hero-portrait { padding-top: 90px; }
+  .hero-portrait img {
+    filter:
+      drop-shadow(0 0 6px rgba(100, 140, 255, .35))
+      drop-shadow(0 0 15px rgba(100, 140, 255, .2))
+      drop-shadow(0 0 30px rgba(80, 120, 255, .1));
+  }
 }
 @media (max-width: 600px) {
-  html, body { overflow-x: hidden; }
   .container { padding: 0 1.5rem; }
   .navbar { padding: 1rem 1.25rem; }
   .nav-brand { font-size: .9rem; }
@@ -359,18 +370,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-line { width: 30px; }
   .nav-menu-text { font-size: .75rem; letter-spacing: .1em; }
   .hero-letter { color: rgba(255,255,255,.25); }
-  .hero-name {
-    gap: 0;
-    top: 42% !important;
-    transform: translate(-50%, -50%) !important;
-  }
+  .hero-name { top: 42%; }
   .hero-portrait { padding-top: 100px; }
-  .hero-portrait img {
-    filter:
-      drop-shadow(0 0 6px rgba(100, 140, 255, .35))
-      drop-shadow(0 0 15px rgba(100, 140, 255, .2))
-      drop-shadow(0 0 30px rgba(80, 120, 255, .1));
-  }
   .hero-tagline { bottom: 2rem; gap: 1rem; }
   .hero-tagline span { font-size: .75rem; letter-spacing: .2em; }
   .hero-tagline-line { width: 30px; }
