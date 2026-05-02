@@ -364,10 +364,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .hero-name {
     gap: 0;
-    top: 50% !important;
+    top: 42% !important;
     transform: translate(-50%, -50%) !important;
   }
-  .hero-portrait { padding-top: 80px; }
+  .hero-portrait { padding-top: 100px; }
   .hero-portrait img {
     filter:
       drop-shadow(0 0 6px rgba(100, 140, 255, .35))
