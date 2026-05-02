@@ -358,9 +358,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .nav-center { gap: 8px; }
   .nav-line { width: 30px; }
   .nav-menu-text { font-size: .75rem; letter-spacing: .1em; }
-  .hero-letter { font-size: clamp(6rem, 32vw, 12rem); }
-  .hero-name { gap: .1em; top: 55%; }
-  .hero-portrait { padding-top: 60px; }
+  .hero-letter { font-size: clamp(6rem, 30vw, 11rem); }
+  .hero-name {
+    gap: .05em;
+    top: 58% !important;
+    transform: translate(-50%, -50%) !important;
+  }
+  .hero-portrait { padding-top: 80px; }
   .hero-portrait img {
     filter:
       drop-shadow(0 0 6px rgba(100, 140, 255, .35))
