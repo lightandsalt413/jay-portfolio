@@ -39,7 +39,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   mix-blend-mode: difference;
 }
 .nav-brand {
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: .25em;
@@ -52,12 +52,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .nav-line { width: 120px; height: 1px; background: rgba(255,255,255,.5); }
 .nav-menu-text {
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 1.1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase;
   color: #fff; cursor: pointer;
 }
 .nav-contact {
-  font-family: var(--sans);
+  font-family: var(--serif);
   font-size: 1.1rem; font-weight: 600;
   letter-spacing: .25em; text-transform: uppercase;
   color: #fff;
