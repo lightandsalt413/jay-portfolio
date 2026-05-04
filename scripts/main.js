@@ -44,26 +44,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ===== 3D TILT EFFECT ===== */
-  const hero = document.querySelector('.hero');
-  const wrapper = document.getElementById('hero-3d');
+  /* ===== HERO PARALLAX ===== */
+  const heroName = document.querySelector('.hero-name');
+  const heroPortrait = document.querySelector('.hero-portrait');
+  const heroTagline = document.querySelector('.hero-tagline');
+  const heroLetters = document.querySelectorAll('.hero-letter');
 
-  if (hero && wrapper) {
+  /* Scroll Parallax — layers move at different speeds */
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    if (s > window.innerHeight) return; // stop computing past hero
+
+    // JAY text rises faster (creates depth)
+    if (heroName) heroName.style.transform = `translate(-50%, calc(-50% + ${s * -0.3}px))`;
+
+    // Portrait moves up slightly slower
+    if (heroPortrait) heroPortrait.style.transform = `translateY(${s * -0.1}px)`;
+
+    // Tagline fades out on scroll
+    if (heroTagline) {
+      heroTagline.style.opacity = Math.max(0, 1 - s / 300);
+      heroTagline.style.transform = `translateX(-50%) translateY(${s * 0.15}px)`;
+    }
+  });
+
+  /* Mouse-move Parallax — subtle 3D depth feel */
+  const hero = document.querySelector('.hero');
+  if (hero) {
     hero.addEventListener('mousemove', (e) => {
       const rect = hero.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;  // -0.5 to 0.5
       const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-      // Rotate the entire 3D wrapper — subtle but noticeable
-      const rotateY = x * 12;   // tilt left/right (max 6deg)
-      const rotateX = y * -8;  // tilt up/down (max 4deg)
+      // JAY text shifts opposite to mouse (far layer)
+      if (heroName) {
+        heroName.style.transform = `translate(calc(-50% + ${x * -20}px), calc(-50% + ${y * -15}px))`;
+      }
 
-      wrapper.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      // Portrait shifts toward mouse (close layer, subtle)
+      if (heroPortrait) {
+        heroPortrait.style.transform = `translate(${x * 8}px, ${y * 5}px)`;
+      }
     });
 
-    // Smooth reset on mouse leave
+    // Reset on mouse leave
     hero.addEventListener('mouseleave', () => {
-      wrapper.style.transform = 'rotateX(0deg) rotateY(0deg)';
+      if (heroName) heroName.style.transform = 'translate(-50%, -50%)';
+      if (heroPortrait) heroPortrait.style.transform = 'translate(0, 0)';
     });
   }
 
