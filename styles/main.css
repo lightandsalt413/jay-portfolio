@@ -156,35 +156,36 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: absolute; bottom: 3rem; left: 50%;
   transform: translateX(-50%);
   z-index: 3;
-  display: flex; flex-direction: column; align-items: center; gap: .6rem;
+  display: flex; flex-direction: column; align-items: center; gap: .35rem;
   pointer-events: none;
   text-align: center;
+  width: max-content;
 }
 .hero-tagline-role {
   font-family: var(--sans);
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: .25em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: .2em;
   text-transform: uppercase;
   color: var(--gold);
-  white-space: nowrap;
+  text-shadow: 0 0 20px rgba(201,169,110,.35);
+  margin-bottom: .25rem;
 }
 .hero-tagline-title {
   font-family: var(--sans);
-  font-size: 1.1rem;
-  font-weight: 400;
-  letter-spacing: .15em;
+  font-size: .85rem;
+  font-weight: 500;
+  letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.85);
-  white-space: nowrap;
+  color: rgba(255,255,255,.7);
 }
 .hero-tagline-desc {
   font-family: var(--sans);
-  font-size: .8rem;
+  font-size: .75rem;
   font-weight: 300;
-  letter-spacing: .05em;
-  color: rgba(255,255,255,.45);
-  max-width: 400px;
+  letter-spacing: .03em;
+  color: rgba(255,255,255,.35);
+  margin-top: .15rem;
 }
 
 /* Scroll indicator */
