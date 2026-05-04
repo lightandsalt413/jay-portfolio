@@ -1,6 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ===== PHASE 1: HERO PARALLAX FADE ===== */
+  /* ===== CUSTOM CURSOR (Premium Tech) ===== */
+  const cursor = document.getElementById('cursor');
+  const cursorDot = document.getElementById('cursor-dot');
+
+  if (cursor && cursorDot && window.innerWidth > 768) {
+    let cx = 0, cy = 0, dx = 0, dy = 0;
+
+    document.addEventListener('mousemove', e => {
+      dx = e.clientX; dy = e.clientY;
+      // Dot follows instantly
+      cursorDot.style.left = dx + 'px';
+      cursorDot.style.top = dy + 'px';
+    });
+
+    // Ring follows with inertia/lag
+    function animateCursor() {
+      cx += (dx - cx) * 0.12;
+      cy += (dy - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    // Expand on interactive elements
+    document.querySelectorAll('a, button, .svc-item, .expertise-item, .magnetic-btn, .project-card, .work-item').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+    });
+  }
+
+  /* ===== HERO PARALLAX FADE ===== */
   const portrait = document.getElementById('hero-portrait');
   const statement = document.getElementById('hero-statement');
 
@@ -8,33 +39,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const s = window.scrollY;
     const vh = window.innerHeight;
 
-    // Portrait fades out, statement fades in
     if (portrait && statement) {
       const progress = Math.min(1, s / (vh * 0.6));
       portrait.style.opacity = 1 - progress;
       portrait.style.transform = `scale(${1 - progress * 0.1}) translateY(${s * -0.15}px)`;
-
-      if (progress > 0.4) {
-        statement.classList.add('visible');
-      } else {
-        statement.classList.remove('visible');
-      }
+      if (progress > 0.4) statement.classList.add('visible');
+      else statement.classList.remove('visible');
     }
 
-    // Nav shrink
     const nav = document.getElementById('nav');
-    if (nav) {
-      nav.style.padding = s > 100 ? '1rem 4rem' : '2rem 4rem';
-    }
+    if (nav) nav.style.padding = s > 100 ? '1rem 4rem' : '2rem 4rem';
   });
 
   /* ===== SCROLL REVEAL ===== */
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('active');
-        obs.unobserve(e.target);
-      }
+      if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
@@ -60,19 +80,15 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.metric-num[data-count]').forEach(el => cObs.observe(el));
 
   /* ===== SERVICES HOVER IMAGE ===== */
-  const svcItems = document.querySelectorAll('.svc-item[data-svc]');
   const svcBgs = {};
   document.querySelectorAll('.svc-bg-img').forEach(el => {
     svcBgs[el.id.replace('svc-bg-', '')] = el;
   });
-
-  svcItems.forEach(item => {
+  document.querySelectorAll('.svc-item[data-svc]').forEach(item => {
     item.addEventListener('mouseenter', () => {
-      const id = item.dataset.svc;
-      // Hide all
       Object.values(svcBgs).forEach(bg => bg.classList.remove('active'));
-      // Show this one
-      if (svcBgs[id]) svcBgs[id].classList.add('active');
+      const bg = svcBgs[item.dataset.svc];
+      if (bg) bg.classList.add('active');
     });
     item.addEventListener('mouseleave', () => {
       Object.values(svcBgs).forEach(bg => bg.classList.remove('active'));
@@ -87,16 +103,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ===== 01. INTRO — Scale-up on scroll ===== */
-  const introText = document.getElementById('intro-text');
-  if (introText) {
-    const introObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) introText.classList.add('visible');
-        else introText.classList.remove('visible');
+  /* ===== 01. TEXT REVEAL — Letters appear on scroll (Cinematic) ===== */
+  const introEl = document.getElementById('intro-text');
+  if (introEl) {
+    const fullText = introEl.dataset.reveal;
+    const goldStart = fullText.indexOf('maximal');
+    introEl.innerHTML = '';
+
+    // Build letter spans
+    for (let i = 0; i < fullText.length; i++) {
+      const span = document.createElement('span');
+      if (fullText[i] === ' ') {
+        span.className = 'letter space';
+        span.innerHTML = '&nbsp;';
+      } else {
+        span.className = 'letter' + (i >= goldStart ? ' gold' : '');
+        span.textContent = fullText[i];
+      }
+      introEl.appendChild(span);
+    }
+
+    const letters = introEl.querySelectorAll('.letter');
+    const introSection = document.getElementById('intro');
+
+    window.addEventListener('scroll', () => {
+      const rect = introSection.getBoundingClientRect();
+      const vh = window.innerHeight;
+      // Progress 0→1 as section scrolls through viewport
+      const progress = Math.max(0, Math.min(1, 1 - (rect.top / (vh * 0.6))));
+      const litCount = Math.floor(progress * letters.length);
+
+      letters.forEach((l, idx) => {
+        if (idx < litCount) l.classList.add('lit');
+        else l.classList.remove('lit');
       });
-    }, { threshold: 0.3 });
-    introObs.observe(introText);
+    });
   }
 
   /* ===== 03. PORTFOLIO — Full-bleed parallax ===== */
@@ -113,14 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ===== 04. CONNECT — Magnetic button ===== */
+  /* ===== 04. MAGNETIC BUTTON ===== */
   const magBtn = document.getElementById('magnetic-btn');
   if (magBtn) {
     magBtn.addEventListener('mousemove', e => {
       const rect = magBtn.getBoundingClientRect();
       const x = e.clientX - rect.left - rect.width / 2;
       const y = e.clientY - rect.top - rect.height / 2;
-      magBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+      magBtn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
     });
     magBtn.addEventListener('mouseleave', () => {
       magBtn.style.transform = 'translate(0, 0)';
