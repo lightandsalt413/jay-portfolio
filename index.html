@@ -3,197 +3,128 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAY — Creative Developer Portfolio</title>
-  <meta name="description" content="Jay is a Creative Developer and Social Media Specialist building premium digital experiences.">
-  <link rel="stylesheet" href="styles/main.css?v=25">
+  <title>JAY — Creative Developer</title>
+  <meta name="description" content="Creative Developer & Social Media Specialist. Merging functional code with high-impact visual narratives.">
+  <link rel="stylesheet" href="styles/main.css?v=30">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor" id="cursor"></div>
-
-  <!-- NAVBAR -->
-  <nav class="navbar" id="navbar">
-    <a href="about.html" target="_blank" class="nav-brand">About Me</a>
-    <div class="nav-center" id="menu-trigger">
-      <div class="nav-line"></div>
-      <span class="nav-menu-text">Services</span>
-      <div class="nav-line"></div>
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">Jay.</a>
+    <div class="nav-links">
+      <a href="#works">Work</a>
+      <a href="#services">Services</a>
+      <a href="#footer">Contact</a>
     </div>
-    <a href="#contact" class="nav-contact">Contact</a>
   </nav>
 
-  <!-- FULLSCREEN MENU -->
-  <div class="fs-menu" id="fs-menu">
-    <button class="fs-menu-close" id="menu-close">&times;</button>
-    <div class="fs-menu-links">
-      <a href="#hero" class="menu-link">Home</a>
-      <a href="#about" class="menu-link">About</a>
-      <a href="#projects" class="menu-link">Work</a>
-      <a href="#services" class="menu-link">Services</a>
-      <a href="#toolkit" class="menu-link">Toolkit</a>
-      <a href="#contact" class="menu-link">Contact</a>
-    </div>
-  </div>
-
-  <!-- HERO -->
+  <!-- PHASE 1: HERO — Sticky parallax fade -->
   <section class="hero" id="hero">
-    <canvas id="particles-canvas"></canvas>
-    <div class="hero-name">
-      <span class="hero-letter">J</span>
-      <span class="hero-letter">A</span>
-      <span class="hero-letter">Y</span>
-    </div>
-    <div class="hero-portrait">
-      <img src="assets/images/hero-portrait.png" alt="Jay — Creative Developer">
-    </div>
-    <div class="hero-tagline">
-      <span class="hero-tagline-role">Creative Developer &amp; Social Media Specialist</span>
-      <span class="hero-tagline-title">Web &amp; Visual Specialist</span>
-      <span class="hero-tagline-desc">Building functional websites and high-impact digital experiences.</span>
-    </div>
-    <div class="scroll-indicator">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
+    <div class="hero-sticky">
+      <div class="hero-portrait" id="hero-portrait">
+        <img src="assets/images/hero-portrait.png" alt="Jay">
+      </div>
+      <div class="hero-statement" id="hero-statement">
+        <p>"Merging functional code with <span>high-impact visual narratives.</span>"</p>
+      </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="about-grid">
-        <div>
-          <span class="section-label reveal">Executive Summary</span>
-          <h2 class="section-heading reveal">A versatile creative bridging <em>code &amp; design</em></h2>
-          <div class="section-line reveal"></div>
-          <p class="about-text reveal">A versatile Creative Developer and Social Media Specialist dedicated to bridging the gap between technical functionality and visual storytelling. I specialize in developing seamless web solutions—specifically on Shopify—while crafting high-impact digital content that drives brand engagement.</p>
-          <p class="about-text reveal">With a foundation in both code and creative strategy, I provide a holistic approach to building a modern and professional online presence.</p>
-          <div class="about-stats reveal">
-            <div class="stat"><span class="stat-num" data-count="5">0</span><span class="stat-label">Projects Built</span></div>
-            <div class="stat"><span class="stat-num" data-count="3">0</span><span class="stat-label">Brands Managed</span></div>
-            <div class="stat"><span class="stat-num" data-count="100">0</span><span class="stat-label">Client Satisfaction</span></div>
-          </div>
+  <!-- PHASE 2: SELECTED WORKS — Full-screen images -->
+  <section class="works" id="works">
+
+    <a href="https://lightandsalt413.github.io/deeply-rooted/" target="_blank" class="work-item reveal">
+      <div class="work-bg"><img src="assets/images/project-deeplyrooted.png" alt="Deeply Rooted"></div>
+      <div class="work-meta">
+        <span class="work-num">01</span>
+        <h2 class="work-name">Deeply Rooted</h2>
+        <span class="work-role">Creative Developer / Shopify E-commerce</span>
+        <span class="work-link">View Project →</span>
+      </div>
+    </a>
+
+    <a href="https://lightandsalt413.github.io/fzi-construction/" target="_blank" class="work-item reveal">
+      <div class="work-bg"><img src="assets/images/project-fzi.png" alt="FZI Construction"></div>
+      <div class="work-meta">
+        <span class="work-num">02</span>
+        <h2 class="work-name">FZI Construction</h2>
+        <span class="work-role">Web Developer / Brand Identity</span>
+        <span class="work-link">View Project →</span>
+      </div>
+    </a>
+
+    <div class="work-item reveal">
+      <div class="work-bg"><img src="assets/images/project-bloombox.png" alt="Rebel Family Motors"></div>
+      <div class="work-meta">
+        <span class="work-num">03</span>
+        <h2 class="work-name">Rebel Family Motors</h2>
+        <span class="work-role">Social Media Specialist / Video Production</span>
+      </div>
+    </div>
+
+    <div class="works-more">
+      <a href="https://github.com/lightandsalt413" target="_blank">View more experiments on GitHub →</a>
+    </div>
+  </section>
+
+  <!-- PHASE 3: METRICS — Humble flex -->
+  <section class="metrics" id="metrics">
+    <div class="metrics-grid">
+      <div class="reveal">
+        <div class="metric-num" data-count="500">0</div>
+        <div class="metric-line"></div>
+        <div class="metric-label">Total Reach (k+)</div>
+      </div>
+      <div class="reveal">
+        <div class="metric-num" data-count="5">0</div>
+        <div class="metric-line"></div>
+        <div class="metric-label">Years of Dev Experience</div>
+      </div>
+      <div class="reveal">
+        <div class="metric-num" data-count="100">0</div>
+        <div class="metric-line"></div>
+        <div class="metric-label">Visual Assets Created</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 4: SERVICES — Restaurant menu style -->
+  <section class="services" id="services">
+    <div class="svc-bg-img" id="svc-bg-1"><img src="assets/images/project-deeplyrooted.png" alt=""></div>
+    <div class="svc-bg-img" id="svc-bg-2"><img src="assets/images/project-fzi.png" alt=""></div>
+    <div class="svc-bg-img" id="svc-bg-3"><img src="assets/images/project-bloombox.png" alt=""></div>
+    <div class="services-inner">
+      <span class="services-label reveal">What I Do</span>
+      <div class="services-list">
+        <div class="svc-item reveal" data-svc="1">
+          <h3 class="svc-title">Creative Direction</h3>
+          <span class="svc-arrow">→</span>
         </div>
-        <div class="about-portrait reveal">
-          <img src="assets/images/hero-portrait.png" alt="Jay">
+        <div class="svc-item reveal" data-svc="2">
+          <h3 class="svc-title">Full-stack Development</h3>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="svc-item reveal" data-svc="3">
+          <h3 class="svc-title">Social Media Architecture</h3>
+          <span class="svc-arrow">→</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- MARQUEE -->
-  <div class="marquee">
-    <div class="marquee-track">
-      <span class="marquee-item">Web Development<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Shopify<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Social Media<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Video Editing<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Brand Identity<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">E-commerce<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Content Creation<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">UI/UX<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Web Development<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Shopify<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Social Media<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Video Editing<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Brand Identity<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">E-commerce<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">Content Creation<span class="marquee-dot">●</span></span>
-      <span class="marquee-item">UI/UX<span class="marquee-dot">●</span></span>
-    </div>
-  </div>
-
-  <!-- PROJECTS — HORIZONTAL SCROLL -->
-  <section class="section section-alt" id="projects">
-    <div class="container">
-      <span class="section-label reveal">Work Experience</span>
-      <h2 class="section-heading reveal">Selected <em>Projects</em></h2>
-      <div class="section-line reveal"></div>
-    </div>
-    <div class="projects-scroll reveal">
-      <div class="projects-track" style="padding-left:calc((100vw - 1100px)/2 + 2.5rem)">
-
-        <a href="https://lightandsalt413.github.io/deeply-rooted/" target="_blank" class="project-card">
-          <div class="project-img"><img src="assets/images/project-deeplyrooted.png" alt="Deeply Rooted"><div class="project-overlay"><span class="project-btn">View Project</span></div></div>
-          <div class="project-body"><span class="project-tag">Creative Developer</span><h3>Deeply Rooted</h3><p>Full-stack web app with Shopify e-commerce. Mobile-first UI/UX design.</p></div>
-        </a>
-
-        <a href="https://lightandsalt413.github.io/fzi-construction/" target="_blank" class="project-card">
-          <div class="project-img"><img src="assets/images/project-fzi.png" alt="FZI Construction"><div class="project-overlay"><span class="project-btn">View Project</span></div></div>
-          <div class="project-body"><span class="project-tag">Web Developer</span><h3>FZI Construction</h3><p>Company website from scratch. Professional digital presence for construction services.</p></div>
-        </a>
-
-        <div class="project-card">
-          <div class="project-img"><img src="assets/images/project-bloombox.png" alt="Rebel Family Motors"><div class="project-overlay"><span class="project-btn">View Work</span></div></div>
-          <div class="project-body"><span class="project-tag">Social Media Specialist</span><h3>Rebel Family Motors</h3><p>High-quality video content and visual assets for the automotive industry.</p></div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-img"><img src="assets/images/about-portrait.png" alt="Janerockstar Salon"><div class="project-overlay"><span class="project-btn">View Work</span></div></div>
-          <div class="project-body"><span class="project-tag">Social Media Manager</span><h3>Janerockstar Salon</h3><p>Short-form video and professional photography for salon services.</p></div>
-        </div>
-
-      </div>
+  <!-- PHASE 5: FOOTER -->
+  <section class="footer-contact" id="footer">
+    <p class="footer-cta reveal">"Let's build something quiet but impactful."</p>
+    <div class="footer-name reveal">JAY</div>
+    <div class="footer-email reveal">
+      <a href="mailto:lightandsalt413@gmail.com">lightandsalt413@gmail.com</a>
     </div>
   </section>
-
-  <!-- SERVICES -->
-  <section class="section" id="services">
-    <div class="container">
-      <span class="section-label reveal">Core Competencies</span>
-      <h2 class="section-heading reveal">What I <em>Do</em></h2>
-      <div class="section-line reveal"></div>
-      <div class="services-grid">
-        <div class="svc reveal rd1"><span class="svc-num">01</span><h3>Web Development</h3><p>Full-stack foundations with Shopify integration and responsive design. Fast, functional websites that convert.</p></div>
-        <div class="svc reveal rd2"><span class="svc-num">02</span><h3>Social Media</h3><p>Content strategy, community management, and audience growth across all major platforms.</p></div>
-        <div class="svc reveal rd3"><span class="svc-num">03</span><h3>Visual Arts &amp; Editing</h3><p>Professional video editing for short-form content. Graphic design and brand identity creation.</p></div>
-        <div class="svc reveal rd4"><span class="svc-num">04</span><h3>Digital Marketing</h3><p>E-commerce management, Meta Business Suite, and data-informed content strategies.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TOOLKIT -->
-  <section class="section section-alt" id="toolkit">
-    <div class="container">
-      <span class="section-label reveal">Toolkit</span>
-      <h2 class="section-heading reveal">Tools I <em>Use</em></h2>
-      <div class="section-line reveal"></div>
-      <div class="toolkit-grid">
-        <div class="tk-group reveal rd1"><h4 class="tk-title">Development</h4><div class="tk-tags"><span class="tk-tag">HTML</span><span class="tk-tag">CSS</span><span class="tk-tag">JavaScript</span><span class="tk-tag">Shopify Liquid</span><span class="tk-tag">Git &amp; GitHub</span><span class="tk-tag">Node.js</span></div></div>
-        <div class="tk-group reveal rd2"><h4 class="tk-title">Platforms</h4><div class="tk-tags"><span class="tk-tag">Shopify</span><span class="tk-tag">Meta Business Suite</span><span class="tk-tag">TikTok Shop</span><span class="tk-tag">GitHub Pages</span></div></div>
-        <div class="tk-group reveal rd3"><h4 class="tk-title">Creative Tools</h4><div class="tk-tags"><span class="tk-tag">CapCut</span><span class="tk-tag">Adobe Premiere</span><span class="tk-tag">Canva</span><span class="tk-tag">Photoshop</span><span class="tk-tag">Figma</span></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="contact-grid">
-        <div>
-          <span class="section-label reveal">Connect</span>
-          <h2 class="section-heading reveal">Let's build something <em>great</em></h2>
-          <div class="section-line reveal"></div>
-          <p class="contact-text reveal">Whether you need a website, a social media strategy, or a complete digital overhaul—I'm here to help your brand grow.</p>
-          <div class="contact-links reveal">
-            <a href="mailto:lightandsalt413@gmail.com" class="contact-link"><span class="cl-label">Email</span>lightandsalt413@gmail.com</a>
-            <a href="https://lightandsalt413.github.io/jay-portfolio/" target="_blank" class="contact-link"><span class="cl-label">Web</span>lightandsalt413.github.io</a>
-          </div>
-        </div>
-        <form class="contact-form reveal" id="contact-form">
-          <div class="form-group"><input type="text" name="name" placeholder="Your Name" required></div>
-          <div class="form-group"><input type="email" name="email" placeholder="Your Email" required></div>
-          <div class="form-group"><textarea name="message" placeholder="Tell me about your project..." required></textarea></div>
-          <button type="submit" class="btn-submit">Send Message</button>
-        </form>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container"><div class="footer-inner"><span class="footer-brand">JAY</span><span class="footer-copy">&copy; 2026 Jay. All rights reserved.</span></div></div>
+  <footer class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 Jay. All rights reserved.</span>
+    <span class="footer-copy">Creative Developer &amp; Social Media Specialist</span>
   </footer>
 
   <script src="scripts/main.js"></script>
