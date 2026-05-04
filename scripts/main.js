@@ -87,4 +87,44 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ===== 01. INTRO — Scale-up on scroll ===== */
+  const introText = document.getElementById('intro-text');
+  if (introText) {
+    const introObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) introText.classList.add('visible');
+        else introText.classList.remove('visible');
+      });
+    }, { threshold: 0.3 });
+    introObs.observe(introText);
+  }
+
+  /* ===== 03. PORTFOLIO — Full-bleed parallax ===== */
+  const fbItems = document.querySelectorAll('.fb-item');
+  window.addEventListener('scroll', () => {
+    fbItems.forEach(item => {
+      const rect = item.getBoundingClientRect();
+      const speed = parseFloat(item.dataset.speed) || 0.3;
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const offset = (rect.top - window.innerHeight / 2) * speed;
+        const img = item.querySelector('img');
+        if (img) img.style.transform = `translateY(${offset}px)`;
+      }
+    });
+  });
+
+  /* ===== 04. CONNECT — Magnetic button ===== */
+  const magBtn = document.getElementById('magnetic-btn');
+  if (magBtn) {
+    magBtn.addEventListener('mousemove', e => {
+      const rect = magBtn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+      magBtn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+    magBtn.addEventListener('mouseleave', () => {
+      magBtn.style.transform = 'translate(0, 0)';
+    });
+  }
+
 });
