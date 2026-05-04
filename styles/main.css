@@ -108,7 +108,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .hero-letter {
   font-family: var(--serif);
-  font-size: max(28vw, 22vh);
+  font-size: max(28vw, 35vh);
   font-weight: 400;
   line-height: .82;
   color: rgba(255,255,255,.18);
@@ -339,6 +339,49 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .footer-brand { font-family: var(--sans); font-size: 1rem; font-weight: 600; letter-spacing: .25em; text-transform: uppercase; }
 .footer-copy { font-size: .75rem; color: var(--text-muted); }
 
+/* ===== ABOUT ===== */
+.about {
+  padding: 8rem 0;
+  background: #12151c;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.about-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+.about-label {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.5rem;
+  padding: .5rem 1.5rem;
+  border: 1px solid rgba(201,169,110,.25);
+  border-radius: 50px;
+}
+.about-heading {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: var(--text);
+  margin-bottom: 2.5rem;
+  line-height: 1.1;
+}
+.about-text {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text-dim);
+  max-width: 640px;
+  margin: 0 auto;
+  letter-spacing: .01em;
+}
+
 /* ===== REVEAL ===== */
 .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.active { opacity: 1; transform: translateY(0); }
@@ -357,8 +400,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   }
   .hero-portrait {
     padding-top: 60px;
-    left: 15%;
-    right: 15%;
+    left: 20%;
+    right: 20%;
     width: auto;
   }
   .hero-portrait img {
