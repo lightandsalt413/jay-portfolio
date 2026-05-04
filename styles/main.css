@@ -51,30 +51,37 @@ button{cursor:none;border:none;background:none;font-family:inherit;color:inherit
 .intro-text.visible{opacity:1;transform:scale(1)}
 .intro-text span{color:var(--gold);font-style:italic}
 
-/* ===== 02. EXPERTISE — Gold dots + Blue glow hover ===== */
-.expertise-section{padding:10rem 4rem;background:var(--navy2);display:flex;flex-direction:column;align-items:center}
-.section-tag{font-size:.6rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);margin-bottom:3rem;display:block}
-.expertise-list{list-style:none;max-width:600px;width:100%}
-.expertise-item{font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.6rem);font-weight:400;color:var(--white);padding:1.25rem 0 1.25rem 2rem;border-bottom:1px solid rgba(255,255,255,.04);position:relative;transition:all .5s var(--slow);cursor:default}
-.expertise-item::before{content:'●';position:absolute;left:0;top:50%;transform:translateY(-50%);color:var(--gold);font-size:.5rem}
-.expertise-item:hover{padding-left:2.5rem;text-shadow:0 0 20px rgba(80,120,255,.5),0 0 40px rgba(80,120,255,.3),0 0 80px rgba(60,100,255,.15);color:#fff}
+/* ===== SCROLL-JACKING STATEMENTS ===== */
+.statements{height:300vh;position:relative;background:var(--navy)}
+.stmt-track{position:sticky;top:0;height:100vh;display:flex;align-items:center;justify-content:center}
+.stmt-slide{position:absolute;opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease;text-align:center;padding:0 3rem}
+.stmt-slide.active{opacity:1;transform:translateY(0)}
+.stmt-slide p{font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.8rem);font-weight:400;font-style:italic;line-height:1.5;color:var(--white)}
+.stmt-slide p span{color:var(--gold)}
+.stmt-dots{position:sticky;bottom:3rem;display:flex;justify-content:center;gap:.6rem;padding-bottom:2rem}
+.stmt-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.15);transition:all .4s}
+.stmt-dot.active{background:var(--gold);transform:scale(1.3)}
 
-/* ===== 03. PORTFOLIO — Full-bleed parallax ===== */
-.fullbleed-section{background:var(--navy)}
-.fb-item{position:relative;height:80vh;overflow:hidden}
-.fb-item img{position:absolute;inset:-15% 0;width:100%;height:130%;object-fit:cover;filter:brightness(.45) grayscale(20%);transition:filter .8s ease}
-.fb-item:hover img{filter:brightness(.6) grayscale(0)}
-.fb-label{position:absolute;bottom:3rem;left:4rem;z-index:2;display:flex;align-items:baseline;gap:1.5rem}
-.fb-num{font-family:var(--sans);font-size:.65rem;font-weight:300;letter-spacing:.3em;color:var(--gold)}
-.fb-name{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.5rem);font-weight:400;color:var(--white)}
+/* ===== DRAGGABLE WORK ===== */
+.drag-section{height:100vh;position:relative;background:var(--navy2);overflow:hidden}
+.drag-hint{position:absolute;top:3rem;left:50%;transform:translateX(-50%);font-size:.6rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);z-index:5}
+.drag-canvas{position:relative;width:100%;height:100%}
+.drag-img{position:absolute;width:280px;cursor:grab;z-index:2;transition:box-shadow .3s,z-index 0s;border-radius:6px;overflow:hidden;box-shadow:0 10px 40px rgba(0,0,0,.4)}
+.drag-img:active{cursor:grabbing;z-index:10;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.drag-img img{width:100%;display:block;pointer-events:none;filter:brightness(.8);transition:filter .4s}
+.drag-img:hover img{filter:brightness(1)}
+.drag-label{position:absolute;bottom:0;left:0;right:0;padding:.6rem .8rem;background:linear-gradient(transparent,rgba(0,0,0,.7));font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.1em;color:var(--white);text-transform:uppercase}
 
-/* ===== 04. CONNECT — Magnetic button ===== */
-.connect-section{height:80vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--navy);gap:3rem}
-.connect-text{font-family:var(--serif);font-size:clamp(1.2rem,2.5vw,1.8rem);font-weight:400;font-style:italic;color:var(--gray)}
-.magnetic-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;width:160px;height:160px;border-radius:50%;border:1px solid var(--gold);transition:transform .3s ease,box-shadow .4s;cursor:pointer}
-.magnetic-btn span{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);transition:color .3s}
-.magnetic-btn:hover{box-shadow:0 0 30px rgba(255,215,0,.15),0 0 60px rgba(255,215,0,.08);border-color:var(--gold)}
-.magnetic-btn:hover span{color:#fff}
+/* ===== ENDING — Glow-pulse ===== */
+.ending{height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;background:var(--navy);gap:2rem}
+.ending-name{font-family:var(--serif);font-size:clamp(5rem,12vw,10rem);font-weight:700;-webkit-text-stroke:1.5px rgba(255,255,255,.06);color:transparent;user-select:none;margin-bottom:1rem}
+.glow-email{font-family:var(--sans);font-size:clamp(.9rem,2vw,1.3rem);font-weight:300;letter-spacing:.15em;color:var(--white);animation:glowPulse 3s ease-in-out infinite}
+.glow-email:hover{color:var(--gold)}
+.ending-copy{font-size:.6rem;color:rgba(255,255,255,.15);letter-spacing:.15em;margin-top:2rem}
+@keyframes glowPulse{
+  0%,100%{text-shadow:0 0 10px rgba(80,120,255,.3),0 0 30px rgba(80,120,255,.15),0 0 60px rgba(60,100,255,.08)}
+  50%{text-shadow:0 0 20px rgba(100,150,255,.5),0 0 50px rgba(80,120,255,.3),0 0 100px rgba(60,100,255,.15)}
+}
 
 /* ===== PHASE 2: SELECTED WORKS ===== */
 .works{background:var(--navy)}

@@ -41,41 +41,47 @@
     <h2 class="intro-text" id="intro-text" data-reveal="Minimalist design, maximal impact."></h2>
   </section>
 
-  <!-- 02. EXPERTISE — Gold dots, blue glow hover -->
-  <section class="expertise-section" id="expertise">
-    <span class="section-tag reveal">Expertise</span>
-    <ul class="expertise-list">
-      <li class="expertise-item reveal">Web Development &amp; Shopify</li>
-      <li class="expertise-item reveal">Social Media Strategy &amp; Content</li>
-      <li class="expertise-item reveal">Video Editing &amp; Visual Production</li>
-      <li class="expertise-item reveal">E-commerce &amp; Digital Marketing</li>
-      <li class="expertise-item reveal">Brand Identity &amp; Creative Direction</li>
-      <li class="expertise-item reveal">UI/UX &amp; Responsive Design</li>
-    </ul>
-  </section>
-
-  <!-- 03. PORTFOLIO — Full-bleed parallax images -->
-  <section class="fullbleed-section" id="portfolio">
-    <div class="fb-item" data-speed="0.3">
-      <img src="assets/images/project-deeplyrooted.png" alt="Deeply Rooted">
-      <div class="fb-label"><span class="fb-num">01</span><span class="fb-name">Deeply Rooted</span></div>
+  <!-- SCROLL-JACKING STATEMENTS -->
+  <section class="statements" id="statements">
+    <div class="stmt-track">
+      <div class="stmt-slide active" data-idx="0">
+        <p>"Digital solutions. Visual experiences. <span>Crafted with precision.</span>"</p>
+      </div>
+      <div class="stmt-slide" data-idx="1">
+        <p>"I don't just build websites; I build <span>digital identities.</span>"</p>
+      </div>
+      <div class="stmt-slide" data-idx="2">
+        <p>"A specialist in the intersection of <span>code and aesthetics.</span>"</p>
+      </div>
     </div>
-    <div class="fb-item" data-speed="0.2">
-      <img src="assets/images/project-fzi.png" alt="FZI Construction">
-      <div class="fb-label"><span class="fb-num">02</span><span class="fb-name">FZI Construction</span></div>
-    </div>
-    <div class="fb-item" data-speed="0.35">
-      <img src="assets/images/project-bloombox.png" alt="Rebel Family Motors">
-      <div class="fb-label"><span class="fb-num">03</span><span class="fb-name">Rebel Family Motors</span></div>
+    <div class="stmt-dots">
+      <span class="stmt-dot active"></span>
+      <span class="stmt-dot"></span>
+      <span class="stmt-dot"></span>
     </div>
   </section>
 
-  <!-- 04. CONNECT — Magnetic button -->
-  <section class="connect-section" id="connect">
-    <p class="connect-text reveal">"Ready to elevate your brand?"</p>
-    <a href="mailto:lightandsalt413@gmail.com" class="magnetic-btn" id="magnetic-btn">
-      <span>Let's Talk</span>
-    </a>
+  <!-- DRAGGABLE WORK -->
+  <section class="drag-section" id="work">
+    <span class="drag-hint">Drag to explore</span>
+    <div class="drag-canvas" id="drag-canvas">
+      <div class="drag-img" style="top:10%;left:8%;transform:rotate(-6deg)" data-drag>
+        <img src="assets/images/project-deeplyrooted.png" alt="Deeply Rooted">
+        <span class="drag-label">Deeply Rooted</span>
+      </div>
+      <div class="drag-img" style="top:15%;left:45%;transform:rotate(4deg)" data-drag>
+        <img src="assets/images/project-fzi.png" alt="FZI Construction">
+        <span class="drag-label">FZI Construction</span>
+      </div>
+      <div class="drag-img" style="top:40%;left:25%;transform:rotate(-3deg)" data-drag>
+        <img src="assets/images/project-bloombox.png" alt="Rebel Family Motors">
+        <span class="drag-label">Rebel Family Motors</span>
+      </div>
+      <div class="drag-img" style="top:5%;left:70%;transform:rotate(7deg)" data-drag>
+        <img src="assets/images/about-portrait.png" alt="Janerockstar Salon">
+        <span class="drag-label">Janerockstar Salon</span>
+      </div>
+    </div>
   </section>
 
   <!-- PHASE 2: SELECTED WORKS — Full-screen images -->
@@ -162,18 +168,12 @@
     </div>
   </section>
 
-  <!-- PHASE 5: FOOTER -->
-  <section class="footer-contact" id="footer">
-    <p class="footer-cta reveal">"Ready to elevate your brand? <span>Let's talk.</span>"</p>
-    <div class="footer-name reveal">JAY</div>
-    <div class="footer-email reveal">
-      <a href="mailto:lightandsalt413@gmail.com">lightandsalt413@gmail.com</a>
-    </div>
+  <!-- ENDING — Glow-pulse email -->
+  <section class="ending" id="ending">
+    <div class="ending-name">JAY</div>
+    <a href="mailto:lightandsalt413@gmail.com" class="glow-email">lightandsalt413@gmail.com</a>
+    <p class="ending-copy">&copy; 2026</p>
   </section>
-  <footer class="footer-bottom">
-    <span class="footer-copy">&copy; 2026 Jay. All rights reserved.</span>
-    <span class="footer-copy">Creative Developer &amp; Social Media Specialist</span>
-  </footer>
 
   <script src="scripts/main.js"></script>
 </body>

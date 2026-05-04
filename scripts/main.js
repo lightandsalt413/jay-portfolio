@@ -1,52 +1,56 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ===== CUSTOM CURSOR (Premium Tech) ===== */
+  /* ===== CUSTOM CURSOR ===== */
   const cursor = document.getElementById('cursor');
   const cursorDot = document.getElementById('cursor-dot');
-
   if (cursor && cursorDot && window.innerWidth > 768) {
     let cx = 0, cy = 0, dx = 0, dy = 0;
-
     document.addEventListener('mousemove', e => {
       dx = e.clientX; dy = e.clientY;
-      // Dot follows instantly
       cursorDot.style.left = dx + 'px';
       cursorDot.style.top = dy + 'px';
     });
-
-    // Ring follows with inertia/lag
-    function animateCursor() {
+    function animC() {
       cx += (dx - cx) * 0.12;
       cy += (dy - cy) * 0.12;
       cursor.style.left = cx + 'px';
       cursor.style.top = cy + 'px';
-      requestAnimationFrame(animateCursor);
+      requestAnimationFrame(animC);
     }
-    animateCursor();
-
-    // Expand on interactive elements
-    document.querySelectorAll('a, button, .svc-item, .expertise-item, .magnetic-btn, .project-card, .work-item').forEach(el => {
+    animC();
+    document.querySelectorAll('a, button, .svc-item, .drag-img, .work-item, .glow-email').forEach(el => {
       el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
       el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
     });
   }
 
-  /* ===== HERO PARALLAX FADE ===== */
+  /* ===== HERO — Zoom-out on scroll ===== */
   const portrait = document.getElementById('hero-portrait');
-  const statement = document.getElementById('hero-statement');
+  const heroStatement = document.getElementById('hero-statement');
+  const heroSection = document.querySelector('.hero');
 
   window.addEventListener('scroll', () => {
     const s = window.scrollY;
     const vh = window.innerHeight;
 
-    if (portrait && statement) {
+    if (portrait && heroStatement) {
       const progress = Math.min(1, s / (vh * 0.6));
+      // Zoom-out: starts at scale(1.1) -> scale(1) as you scroll
+      const scale = 1.1 - progress * 0.2;
       portrait.style.opacity = 1 - progress;
-      portrait.style.transform = `scale(${1 - progress * 0.1}) translateY(${s * -0.15}px)`;
-      if (progress > 0.4) statement.classList.add('visible');
-      else statement.classList.remove('visible');
+      portrait.style.transform = `scale(${scale}) translateY(${s * -0.1}px)`;
+      if (progress > 0.4) heroStatement.classList.add('visible');
+      else heroStatement.classList.remove('visible');
     }
 
+    // Hero section zoom-out
+    if (heroSection) {
+      const heroP = Math.min(1, s / vh);
+      heroSection.style.transform = `scale(${1 - heroP * 0.05})`;
+      heroSection.style.opacity = 1 - heroP * 0.5;
+    }
+
+    // Nav shrink
     const nav = document.getElementById('nav');
     if (nav) nav.style.padding = s > 100 ? '1rem 4rem' : '2rem 4rem';
   });
@@ -87,8 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.svc-item[data-svc]').forEach(item => {
     item.addEventListener('mouseenter', () => {
       Object.values(svcBgs).forEach(bg => bg.classList.remove('active'));
-      const bg = svcBgs[item.dataset.svc];
-      if (bg) bg.classList.add('active');
+      if (svcBgs[item.dataset.svc]) svcBgs[item.dataset.svc].classList.add('active');
     });
     item.addEventListener('mouseleave', () => {
       Object.values(svcBgs).forEach(bg => bg.classList.remove('active'));
@@ -103,14 +106,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ===== 01. TEXT REVEAL — Letters appear on scroll (Cinematic) ===== */
+  /* ===== LETTER REVEAL ===== */
   const introEl = document.getElementById('intro-text');
   if (introEl) {
     const fullText = introEl.dataset.reveal;
     const goldStart = fullText.indexOf('maximal');
     introEl.innerHTML = '';
-
-    // Build letter spans
     for (let i = 0; i < fullText.length; i++) {
       const span = document.createElement('span');
       if (fullText[i] === ' ') {
@@ -122,17 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       introEl.appendChild(span);
     }
-
     const letters = introEl.querySelectorAll('.letter');
     const introSection = document.getElementById('intro');
-
     window.addEventListener('scroll', () => {
       const rect = introSection.getBoundingClientRect();
       const vh = window.innerHeight;
-      // Progress 0→1 as section scrolls through viewport
       const progress = Math.max(0, Math.min(1, 1 - (rect.top / (vh * 0.6))));
       const litCount = Math.floor(progress * letters.length);
-
       letters.forEach((l, idx) => {
         if (idx < litCount) l.classList.add('lit');
         else l.classList.remove('lit');
@@ -140,32 +137,78 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ===== 03. PORTFOLIO — Full-bleed parallax ===== */
-  const fbItems = document.querySelectorAll('.fb-item');
-  window.addEventListener('scroll', () => {
-    fbItems.forEach(item => {
-      const rect = item.getBoundingClientRect();
-      const speed = parseFloat(item.dataset.speed) || 0.3;
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        const offset = (rect.top - window.innerHeight / 2) * speed;
-        const img = item.querySelector('img');
-        if (img) img.style.transform = `translateY(${offset}px)`;
-      }
-    });
-  });
+  /* ===== SCROLL-JACKING STATEMENTS ===== */
+  const stmtSection = document.querySelector('.statements');
+  const slides = document.querySelectorAll('.stmt-slide');
+  const dots = document.querySelectorAll('.stmt-dot');
 
-  /* ===== 04. MAGNETIC BUTTON ===== */
-  const magBtn = document.getElementById('magnetic-btn');
-  if (magBtn) {
-    magBtn.addEventListener('mousemove', e => {
-      const rect = magBtn.getBoundingClientRect();
-      const x = e.clientX - rect.left - rect.width / 2;
-      const y = e.clientY - rect.top - rect.height / 2;
-      magBtn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
-    });
-    magBtn.addEventListener('mouseleave', () => {
-      magBtn.style.transform = 'translate(0, 0)';
+  if (stmtSection && slides.length) {
+    window.addEventListener('scroll', () => {
+      const rect = stmtSection.getBoundingClientRect();
+      const totalH = stmtSection.offsetHeight;
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / (totalH - window.innerHeight)));
+      const idx = Math.min(slides.length - 1, Math.floor(progress * slides.length));
+
+      slides.forEach((s, i) => {
+        s.classList.toggle('active', i === idx);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('active', i === idx);
+      });
     });
   }
+
+  /* ===== DRAGGABLE IMAGES ===== */
+  const dragItems = document.querySelectorAll('[data-drag]');
+  let activeEl = null, offsetX = 0, offsetY = 0, maxZ = 10;
+
+  dragItems.forEach(el => {
+    el.addEventListener('mousedown', e => {
+      activeEl = el;
+      const rect = el.getBoundingClientRect();
+      offsetX = e.clientX - rect.left;
+      offsetY = e.clientY - rect.top;
+      maxZ++;
+      el.style.zIndex = maxZ;
+      el.style.transition = 'none';
+      e.preventDefault();
+    });
+
+    // Touch support
+    el.addEventListener('touchstart', e => {
+      activeEl = el;
+      const touch = e.touches[0];
+      const rect = el.getBoundingClientRect();
+      offsetX = touch.clientX - rect.left;
+      offsetY = touch.clientY - rect.top;
+      maxZ++;
+      el.style.zIndex = maxZ;
+      el.style.transition = 'none';
+    }, { passive: false });
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!activeEl) return;
+    const canvas = document.getElementById('drag-canvas');
+    const cr = canvas.getBoundingClientRect();
+    activeEl.style.left = (e.clientX - cr.left - offsetX) + 'px';
+    activeEl.style.top = (e.clientY - cr.top - offsetY) + 'px';
+    activeEl.style.transform = 'rotate(0deg)';
+  });
+
+  document.addEventListener('touchmove', e => {
+    if (!activeEl) return;
+    const touch = e.touches[0];
+    const canvas = document.getElementById('drag-canvas');
+    const cr = canvas.getBoundingClientRect();
+    activeEl.style.left = (touch.clientX - cr.left - offsetX) + 'px';
+    activeEl.style.top = (touch.clientY - cr.top - offsetY) + 'px';
+    activeEl.style.transform = 'rotate(0deg)';
+    e.preventDefault();
+  }, { passive: false });
+
+  document.addEventListener('mouseup', () => { activeEl = null; });
+  document.addEventListener('touchend', () => { activeEl = null; });
 
 });
