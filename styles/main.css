@@ -91,20 +91,29 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ===== HERO — MAGAZINE COVER ===== */
 .hero {
-  position: relative; width: 100%; height: 100vh;
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
+  background: var(--bg);
+  perspective: 1200px;
+}
+.hero-3d-wrapper {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform .15s ease-out;
 }
 
 /* Layer 1: Giant JAY text — BEHIND person */
 .hero-name {
   position: absolute; top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) translateZ(-80px);
   z-index: 1;
-  display: flex; justify-content: center; align-items: center;
-  width: 100%;
+  display: flex; gap: .06em;
   pointer-events: none;
-  transition: transform .15s ease-out;
 }
 .hero-letter {
   font-family: var(--serif);
@@ -118,9 +127,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* Layer 2: Person cutout — IN FRONT of text */
 .hero-portrait {
-  position: absolute; inset: 0; z-index: 2;
-  padding-top: 90px;
-  transition: transform .15s ease-out;
+  position: relative;
+  z-index: 2;
+  width: min(380px, 70vw);
+  pointer-events: none;
+  margin-top: auto;
+  transform: translateZ(40px);
 }
 .hero-portrait img {
   width: 100%; height: 100%;
@@ -154,7 +166,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 /* Layer 3: Tagline at bottom */
 .hero-tagline {
   position: absolute; bottom: 3rem; left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateZ(60px);
   z-index: 3;
   display: flex; flex-direction: column; align-items: center; gap: .35rem;
   pointer-events: none;
