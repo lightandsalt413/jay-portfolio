@@ -164,7 +164,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-tagline-role {
   font-family: var(--sans);
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: .2em;
   text-transform: uppercase;
   color: #fff;
@@ -173,7 +173,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-tagline-title {
   font-family: var(--sans);
   font-size: .85rem;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: .18em;
   text-transform: uppercase;
   color: #fff;
@@ -181,8 +181,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-tagline-desc {
   font-family: var(--sans);
   font-size: .75rem;
-  font-weight: 300;
-  letter-spacing: .03em;
+  font-weight: 400;
+  letter-spacing: .12em;
   text-transform: uppercase;
   color: #fff;
   margin-top: .15rem;
