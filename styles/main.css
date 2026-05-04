@@ -167,8 +167,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 700;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--gold);
-  text-shadow: 0 0 20px rgba(201,169,110,.35);
+  color: #fff;
   margin-bottom: .25rem;
 }
 .hero-tagline-title {
@@ -177,14 +176,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 500;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.7);
+  color: #fff;
 }
 .hero-tagline-desc {
   font-family: var(--sans);
   font-size: .75rem;
   font-weight: 300;
   letter-spacing: .03em;
-  color: rgba(255,255,255,.65);
+  text-transform: uppercase;
+  color: #fff;
   margin-top: .15rem;
 }
 
