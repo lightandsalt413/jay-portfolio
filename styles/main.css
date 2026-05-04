@@ -167,7 +167,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-weight: 400;
   letter-spacing: .2em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--gold);
   margin-bottom: .25rem;
 }
 .hero-tagline-title {
