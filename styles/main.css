@@ -194,13 +194,43 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-  .nav{padding:1.25rem 1.5rem;grid-template-columns:1fr 1fr;gap:1rem}
-  .nav-link-left,.nav-link-right{font-size:.7rem}
+  /* Nav — compact, 2 columns */
+  .nav{padding:1rem 1.5rem;grid-template-columns:1fr 1fr;gap:.5rem}
+  .nav-link-left,.nav-link-right{font-size:.65rem;letter-spacing:.15em}
   .nav-center{display:none}
-  .hero-portrait{height:65vh}
-  .hero-letter-j,.hero-letter-y{font-size:clamp(10rem,22vw,18rem)}
-  .hero-tagline{font-size:.65rem;letter-spacing:.25em;bottom:6vh}
-  .hero-tagline::before,.hero-tagline::after{width:30px}
+
+  /* Hero — fill the screen */
+  .hero-inner{align-items:flex-end}
+  .hero-portrait{height:80vh;margin-bottom:-5vh;animation:none !important}
+  .hero-portrait img{height:100%}
+
+  /* Letters — sized for mobile */
+  .hero-letter-j,.hero-letter-y{font-size:clamp(8rem,40vw,16rem)}
+  .hero-letters{gap:clamp(60px,30vw,140px)}
+
+  /* Glow — smaller on mobile */
+  .hero-glow{width:180px;height:300px}
+
+  /* Tagline — compact */
+  .hero-tagline{font-size:.55rem;letter-spacing:.2em;bottom:4vh;gap:.8rem}
+  .hero-tagline::before,.hero-tagline::after{width:25px}
+
+  /* Curtain — mobile sizing */
+  .curtain-title{font-size:clamp(2rem,12vw,4rem)}
+
+  /* About page */
   .about-details{padding:4rem 2rem}
   .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-portrait{width:min(200px,60vw)}
+  .about-intro{font-size:clamp(1.1rem,4vw,1.6rem);padding:0 1.5rem}
+}
+
+/* Extra small phones */
+@media(max-width:380px){
+  .nav{padding:.8rem 1rem}
+  .nav-link-left,.nav-link-right{font-size:.55rem;letter-spacing:.1em}
+  .hero-portrait{height:75vh}
+  .hero-letter-j,.hero-letter-y{font-size:clamp(6rem,35vw,12rem)}
+  .hero-tagline{font-size:.45rem;letter-spacing:.15em;bottom:3vh}
+  .hero-tagline::before,.hero-tagline::after{width:15px}
 }
