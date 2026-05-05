@@ -45,36 +45,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== LOADING SCREEN ANIMATION ===== */
+  /* ===== LOADING SCREEN — Cool Effects ===== */
   const loader = document.getElementById('loader');
   if (loader) {
     const l1 = document.getElementById('loader-line1');
-    const ln = document.getElementById('loader-name');
-    const ld = document.getElementById('loader-divider');
+    const chars = document.querySelectorAll('.loader-char');
+    const glow = document.getElementById('loader-glow');
     const l2 = document.getElementById('loader-line2');
-    const bt = document.getElementById('loader-bar-track');
-    const bb = document.getElementById('loader-bar');
+    const loaderParticles = document.getElementById('loader-particles');
 
-    // Staggered reveal
-    setTimeout(() => { if (l1) l1.classList.add('show'); }, 200);
-    setTimeout(() => { if (ln) ln.classList.add('show'); }, 600);
-    setTimeout(() => { if (ld) ld.classList.add('show'); }, 1200);
-    setTimeout(() => { if (l2) l2.classList.add('show'); }, 1600);
-    setTimeout(() => { if (bt) bt.classList.add('show'); }, 1800);
-    setTimeout(() => { if (bb) bb.classList.add('fill'); }, 2000);
+    // Spawn floating particles
+    if (loaderParticles) {
+      for (let i = 0; i < 20; i++) {
+        const p = document.createElement('div');
+        p.className = 'loader-particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.top = 40 + Math.random() * 40 + '%';
+        p.style.animationDuration = 2 + Math.random() * 3 + 's';
+        p.style.animationDelay = Math.random() * 2 + 's';
+        loaderParticles.appendChild(p);
+      }
+    }
 
-    // Fade out loader, reveal page
+    // Step 1: Typewriter "Hello, I'm"
+    const text = "Hello, I'm";
+    let idx = 0;
+    const typeInterval = setInterval(() => {
+      if (idx < text.length) {
+        l1.textContent += text[idx];
+        idx++;
+      } else {
+        clearInterval(typeInterval);
+        l1.classList.add('typed');
+      }
+    }, 80);
+
+    // Step 2: JAY letters drop in one by one
+    chars.forEach((ch, i) => {
+      setTimeout(() => {
+        ch.classList.add('drop');
+      }, 1200 + i * 250);
+    });
+
+    // Step 3: Glow pulse after all letters land
+    setTimeout(() => { if (glow) glow.classList.add('pulse'); }, 2200);
+
+    // Step 4: Welcome text slides up with blur
+    setTimeout(() => { if (l2) l2.classList.add('show'); }, 2600);
+
+    // Step 5: Zoom out to reveal hero
     setTimeout(() => {
-      loader.classList.add('done');
-      // Remove from DOM after transition
-      setTimeout(() => loader.remove(), 800);
-    }, 3800);
+      loader.classList.add('zoom-out');
+      setTimeout(() => loader.remove(), 900);
+    }, 4200);
   }
 
   /* ===== TAGLINE WORD-BY-WORD (after loader) ===== */
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
-    const delay = document.getElementById('loader') ? 4200 : 500;
+    const delay = document.getElementById('loader') ? 4800 : 500;
     const words = tagline.querySelectorAll('.tagline-word');
     words.forEach((word, i) => {
       setTimeout(() => word.classList.add('visible'), delay + i * 400);
