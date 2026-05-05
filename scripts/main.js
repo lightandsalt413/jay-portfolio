@@ -83,13 +83,43 @@ document.addEventListener('DOMContentLoaded', () => {
     if (nav) nav.style.padding = s > 100 ? '1rem 4rem' : '2rem 4rem';
   });
 
-  /* ===== SCROLL REVEAL ===== */
+  /* ===== SCROLL REVEAL (all variants) ===== */
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
     });
   }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => obs.observe(el));
+
+  /* ===== PARALLAX BACKGROUND ===== */
+  const parallaxBg = document.getElementById('parallax-bg');
+  window.addEventListener('scroll', () => {
+    if (parallaxBg) {
+      parallaxBg.style.transform = `translateY(${window.scrollY * 0.3}px)`;
+    }
+  });
+
+  /* ===== WORD-BY-WORD REVEAL ===== */
+  document.querySelectorAll('.word-reveal p').forEach(p => {
+    const html = p.innerHTML;
+    const words = html.split(/(\s+)/);
+    p.innerHTML = words.map(w => {
+      if (w.trim() === '') return w;
+      return `<span class="word">${w}</span>`;
+    }).join('');
+  });
+  const wordObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const words = e.target.querySelectorAll('.word');
+        words.forEach((w, i) => {
+          setTimeout(() => w.classList.add('visible'), i * 100);
+        });
+        wordObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.word-reveal').forEach(el => wordObs.observe(el));
 
   /* ===== COUNTER ANIMATION ===== */
   const cObs = new IntersectionObserver(entries => {

@@ -159,9 +159,78 @@ body.gated{overflow:hidden}
 .footer-bottom{padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.04);background:var(--navy)}
 .footer-copy{font-size:.6rem;color:var(--gray2);letter-spacing:.1em}
 
-/* ===== REVEALS ===== */
+/* ===== REVEALS — Fade-up on scroll ===== */
 .reveal{opacity:0;transform:translateY(25px);transition:opacity .9s ease,transform .9s ease}
 .reveal.active{opacity:1;transform:translateY(0)}
+/* Staggered variants */
+.reveal.rd1{transition-delay:.1s}
+.reveal.rd2{transition-delay:.2s}
+.reveal.rd3{transition-delay:.3s}
+.reveal.rd4{transition-delay:.4s}
+/* Fade-up from different directions */
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .9s ease,transform .9s ease}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .9s ease,transform .9s ease}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.8);transition:opacity .9s ease,transform .9s ease}
+.reveal-scale.active{opacity:1;transform:scale(1)}
+
+/* ===== 1. FLOATING KEYFRAMES ===== */
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+@keyframes floatSlow{
+  0%,100%{transform:translateY(0) rotate(0deg)}
+  50%{transform:translateY(-8px) rotate(.5deg)}
+}
+@keyframes bounce{
+  0%,20%,50%,80%,100%{transform:translateY(0)}
+  40%{transform:translateY(-15px)}
+  60%{transform:translateY(-7px)}
+}
+.float{animation:float 4s ease-in-out infinite}
+.float-slow{animation:floatSlow 6s ease-in-out infinite}
+.bounce{animation:bounce 2s ease infinite}
+
+/* Apply floating to hero portrait */
+.hero-portrait img{width:100%;object-fit:contain;filter:grayscale(20%);animation:floatSlow 6s ease-in-out infinite}
+/* Apply floating to nav logo */
+.nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:400;letter-spacing:.05em;color:var(--white);animation:float 5s ease-in-out infinite}
+
+/* ===== 2. PARALLAX BACKGROUND ===== */
+.parallax-bg{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(255,215,0,.03) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(80,120,255,.03) 0%,transparent 50%),radial-gradient(circle at 50% 80%,rgba(255,215,0,.02) 0%,transparent 50%);background-size:100% 100%;will-change:transform;pointer-events:none}
+
+/* ===== 3. HOVER EFFECTS — Glow, Scale, Rotate ===== */
+.hover-glow{transition:all .4s ease}
+.hover-glow:hover{box-shadow:0 0 20px rgba(255,215,0,.2),0 0 40px rgba(255,215,0,.1);transform:translateY(-3px)}
+.hover-scale{transition:transform .3s ease}
+.hover-scale:hover{transform:scale(1.05)}
+.hover-rotate{transition:transform .4s ease}
+.hover-rotate:hover{transform:rotate(3deg) scale(1.02)}
+
+/* Apply to nav links */
+.nav-links a{transition:color .4s,text-shadow .4s}
+.nav-links a:hover{color:var(--gold);text-shadow:0 0 15px rgba(255,215,0,.3)}
+
+/* Apply glow to services */
+.svc-item:hover{padding-left:1.5rem;box-shadow:inset 3px 0 0 var(--gold)}
+
+/* Apply to drag images */
+.drag-img:hover{box-shadow:0 15px 50px rgba(255,215,0,.15),0 5px 20px rgba(0,0,0,.4)}
+
+/* Apply to gate button */
+.gate-btn:hover{transform:translateY(-2px)}
+.gate-btn:hover .gate-btn-text{text-shadow:0 0 20px rgba(255,215,0,.4)}
+
+/* ===== 4. WORD-BY-WORD TEXT ANIMATION ===== */
+.word-reveal .word{display:inline-block;opacity:0;transform:translateY(15px);transition:opacity .5s ease,transform .5s ease}
+.word-reveal .word.visible{opacity:1;transform:translateY(0)}
+
+/* ===== 5. SCROLL INDICATOR BOUNCE ===== */
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:.4}
+.scroll-hint span{font-family:var(--sans);font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gray)}
+.scroll-hint-line{width:1px;height:30px;background:linear-gradient(var(--gold),transparent);animation:bounce 2s ease infinite}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
