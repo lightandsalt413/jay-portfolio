@@ -45,39 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== CV ENTRANCE — Animated Resume ===== */
-  const curtain = document.getElementById('curtain');
-  const filmGrain = document.getElementById('film-grain');
-  const nameChars = document.querySelectorAll('#cv-name .char');
-  const cvBody = document.getElementById('cv-body');
-
-  if (curtain) {
-    nameChars.forEach((ch, i) => {
-      setTimeout(() => ch.classList.add('visible'), 300 + i * 200);
-    });
-    setTimeout(() => curtain.classList.add('expand-line'), 1000);
-    setTimeout(() => { if (cvBody) cvBody.classList.add('visible'); }, 1500);
-    setTimeout(() => {
-      document.querySelectorAll('.cv-bar').forEach((bar, i) => {
-        setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, i * 150);
-      });
-    }, 1800);
-    setTimeout(() => curtain.classList.add('open'), 4500);
-    setTimeout(() => { if (filmGrain) filmGrain.classList.add('fade-out'); }, 5000);
-    setTimeout(() => {
-      curtain.remove();
-      if (filmGrain) filmGrain.remove();
-    }, 5800);
-  }
-
-  /* ===== TAGLINE WORD-BY-WORD (after doors open) ===== */
+  /* ===== TAGLINE WORD-BY-WORD ===== */
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
     const words = tagline.querySelectorAll('.tagline-word');
     words.forEach((word, i) => {
-      setTimeout(() => word.classList.add('visible'), 5000 + i * 400);
+      setTimeout(() => word.classList.add('visible'), 500 + i * 400);
     });
-    setTimeout(() => tagline.classList.add('lines-visible'), 5000 + words.length * 400 + 300);
+    setTimeout(() => tagline.classList.add('lines-visible'), 500 + words.length * 400 + 300);
   }
 
   /* ===== Step 2: SCROLL REVEAL (IntersectionObserver) ===== */
