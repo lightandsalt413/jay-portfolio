@@ -201,7 +201,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
   /* Hero — fill the screen */
   .hero-inner{align-items:flex-end}
-  .hero-portrait{height:80vh;margin-bottom:-5vh;animation:none !important}
+  .hero-portrait{height:80vh;margin-bottom:-5vh;animation:portraitEntrance 1.2s ease forwards !important;opacity:0;transform:scale(.92)}
   .hero-portrait img{height:100%}
 
   /* Letters — sized for mobile */
