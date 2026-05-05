@@ -60,24 +60,24 @@ body.gated{overflow:hidden}
 .nav-center-text:hover{color:var(--white)}
 
 /* ===== HERO — Classic JAY design ===== */
-.hero{position:relative;height:100vh;background:#0c1018;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero{position:relative;height:100vh;background:#0a0e17;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-inner{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%}
 
 /* Giant J and Y letters */
-.hero-letters{position:absolute;display:flex;align-items:center;justify-content:center;width:100%;gap:clamp(200px,32vw,450px);pointer-events:none;z-index:1}
-.hero-letter-j,.hero-letter-y{font-family:var(--serif);font-size:clamp(16rem,28vw,26rem);font-weight:400;color:rgba(255,255,255,.06);-webkit-text-stroke:1.5px rgba(255,255,255,.1);user-select:none;line-height:.85}
+.hero-letters{position:absolute;display:flex;align-items:center;justify-content:center;width:100%;gap:clamp(120px,18vw,280px);pointer-events:none;z-index:1}
+.hero-letter-j,.hero-letter-y{font-family:var(--serif);font-size:clamp(18rem,35vw,32rem);font-weight:400;color:rgba(255,255,255,.07);-webkit-text-stroke:1px rgba(255,255,255,.08);user-select:none;line-height:.8}
 
 /* Portrait with glow */
-.hero-portrait{position:relative;z-index:2;width:min(420px,58vw);display:flex;flex-direction:column;align-items:center}
-.hero-glow{position:absolute;top:-15%;left:50%;transform:translateX(-50%);width:200px;height:200px;background:radial-gradient(circle,rgba(160,190,255,.35) 0%,rgba(120,160,255,.15) 35%,transparent 65%);border-radius:50%;filter:blur(35px);animation:auraGlow 4s ease-in-out infinite;pointer-events:none;z-index:0}
+.hero-portrait{position:relative;z-index:2;width:min(460px,62vw);display:flex;flex-direction:column;align-items:center}
+.hero-glow{position:absolute;top:-10%;left:50%;transform:translateX(-50%);width:280px;height:300px;background:radial-gradient(ellipse at center,rgba(130,170,255,.3) 0%,rgba(100,150,255,.15) 30%,rgba(80,120,255,.05) 55%,transparent 70%);border-radius:50%;filter:blur(30px);animation:auraGlow 4s ease-in-out infinite;pointer-events:none;z-index:0}
 @keyframes auraGlow{
   0%,100%{opacity:.5;transform:translateX(-50%) scale(1)}
-  50%{opacity:.9;transform:translateX(-50%) scale(1.12)}
+  50%{opacity:.85;transform:translateX(-50%) scale(1.1)}
 }
 .hero-portrait img{position:relative;z-index:1;width:100%;object-fit:contain}
 
-/* Tagline */
-.hero-tagline{position:absolute;bottom:clamp(5rem,12vh,8rem);z-index:3;font-family:var(--sans);font-size:.65rem;font-weight:300;letter-spacing:.45em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+/* Tagline — positioned at waist level, overlapping portrait */
+.hero-tagline{position:absolute;bottom:clamp(8rem,22vh,14rem);z-index:3;font-family:var(--sans);font-size:.6rem;font-weight:300;letter-spacing:.45em;text-transform:uppercase;color:rgba(255,255,255,.45)}
 
 /* ===== 01. THE INTRO — Scale-up ===== */
 .intro-section{height:100vh;display:flex;align-items:center;justify-content:center;background:var(--navy);padding:0 3rem}
