@@ -28,6 +28,26 @@ button{cursor:none;border:none;background:none;font-family:inherit;color:inherit
 .intro-text .letter.gold{color:var(--gold);font-style:italic}
 .intro-text .letter.space{width:.3em}
 
+/* ===== GATE — Exclusive entry ===== */
+body.gated{overflow:hidden}
+.gate{position:fixed;inset:0;z-index:9998;background:#050508;display:flex;align-items:center;justify-content:center;transition:opacity 1.2s ease,visibility 1.2s}
+.gate.unlocked{opacity:0;pointer-events:none;visibility:hidden}
+.gate-scanline{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.01) 2px,rgba(255,255,255,.01) 4px);pointer-events:none;animation:scanMove 8s linear infinite}
+@keyframes scanMove{0%{transform:translateY(0)}100%{transform:translateY(8px)}}
+.gate-content{text-align:center;position:relative;z-index:2}
+.gate-logo{font-family:var(--serif);font-size:clamp(4rem,10vw,7rem);font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);margin-bottom:2.5rem;user-select:none;animation:logoFlicker 4s ease-in-out infinite}
+@keyframes logoFlicker{0%,100%{-webkit-text-stroke-color:rgba(255,255,255,.08)}50%{-webkit-text-stroke-color:rgba(255,215,0,.15)}}
+.gate-typing{font-family:var(--sans);font-size:clamp(.8rem,1.5vw,1rem);font-weight:300;letter-spacing:.12em;color:rgba(255,255,255,.6);min-height:1.5em;margin-bottom:1rem}
+.gate-typing::after{content:'|';animation:blink 1s step-end infinite;color:var(--gold);margin-left:2px}
+@keyframes blink{50%{opacity:0}}
+.gate-sub{font-family:var(--sans);font-size:.6rem;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.15);margin-bottom:3rem}
+.gate-btn{position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:.6rem;padding:1rem 3rem;cursor:none;transition:all .4s}
+.gate-btn-text{font-family:var(--sans);font-size:.65rem;font-weight:500;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .5s}
+.gate-btn-line{width:1px;height:25px;background:rgba(255,255,255,.1);transition:all .5s}
+.gate-btn:hover .gate-btn-text{color:var(--gold);letter-spacing:.45em}
+.gate-btn:hover .gate-btn-line{height:35px;background:var(--gold)}
+.gate-footnote{font-family:var(--sans);font-size:.5rem;font-weight:300;letter-spacing:.15em;color:rgba(255,255,255,.08);margin-top:3rem;max-width:300px;line-height:1.8}
+
 /* ===== NAV ===== */
 .nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:padding var(--smooth)}
 .nav-logo{font-family:var(--serif);font-size:1.4rem;font-weight:400;letter-spacing:.05em;color:var(--white)}

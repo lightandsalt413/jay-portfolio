@@ -1,5 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ===== GATEKEEPING ENTRY ===== */
+  const gate = document.getElementById('gate');
+  const gateBtn = document.getElementById('gate-enter');
+  const gateTyping = document.getElementById('gate-typing');
+
+  if (gate) {
+    document.body.classList.add('gated');
+
+    // Typewriter effect
+    const msg = 'Access granted. Welcome.';
+    let i = 0;
+    function typeChar() {
+      if (i < msg.length) {
+        gateTyping.textContent += msg[i];
+        i++;
+        setTimeout(typeChar, 60 + Math.random() * 40);
+      }
+    }
+    setTimeout(typeChar, 800);
+
+    // Unlock
+    gateBtn.addEventListener('click', () => {
+      gate.classList.add('unlocked');
+      document.body.classList.remove('gated');
+      setTimeout(() => gate.remove(), 1500);
+    });
+  }
+
   /* ===== CUSTOM CURSOR ===== */
   const cursor = document.getElementById('cursor');
   const cursorDot = document.getElementById('cursor-dot');
