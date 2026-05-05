@@ -45,14 +45,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== TAGLINE WORD-BY-WORD ===== */
+  /* ===== LOADING SCREEN ANIMATION ===== */
+  const loader = document.getElementById('loader');
+  if (loader) {
+    const l1 = document.getElementById('loader-line1');
+    const ln = document.getElementById('loader-name');
+    const ld = document.getElementById('loader-divider');
+    const l2 = document.getElementById('loader-line2');
+    const bt = document.getElementById('loader-bar-track');
+    const bb = document.getElementById('loader-bar');
+
+    // Staggered reveal
+    setTimeout(() => { if (l1) l1.classList.add('show'); }, 200);
+    setTimeout(() => { if (ln) ln.classList.add('show'); }, 600);
+    setTimeout(() => { if (ld) ld.classList.add('show'); }, 1200);
+    setTimeout(() => { if (l2) l2.classList.add('show'); }, 1600);
+    setTimeout(() => { if (bt) bt.classList.add('show'); }, 1800);
+    setTimeout(() => { if (bb) bb.classList.add('fill'); }, 2000);
+
+    // Fade out loader, reveal page
+    setTimeout(() => {
+      loader.classList.add('done');
+      // Remove from DOM after transition
+      setTimeout(() => loader.remove(), 800);
+    }, 3800);
+  }
+
+  /* ===== TAGLINE WORD-BY-WORD (after loader) ===== */
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
+    const delay = document.getElementById('loader') ? 4200 : 500;
     const words = tagline.querySelectorAll('.tagline-word');
     words.forEach((word, i) => {
-      setTimeout(() => word.classList.add('visible'), 500 + i * 400);
+      setTimeout(() => word.classList.add('visible'), delay + i * 400);
     });
-    setTimeout(() => tagline.classList.add('lines-visible'), 500 + words.length * 400 + 300);
+    setTimeout(() => tagline.classList.add('lines-visible'), delay + words.length * 400 + 300);
   }
 
   /* ===== Step 2: SCROLL REVEAL (IntersectionObserver) ===== */

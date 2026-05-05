@@ -17,6 +17,39 @@ img{max-width:100%;display:block}
 button{border:none;background:none;font-family:inherit;color:inherit}
 ::selection{background:var(--gold);color:var(--navy)}
 
+/* ===== LOADING SCREEN ===== */
+.loader{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;transition:opacity .8s ease,visibility .8s ease}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader-bg{position:absolute;inset:0;background:linear-gradient(135deg,#030710 0%,#0a1628 40%,#0d1b30 60%,#050a15 100%)}
+.loader-bg::after{content:'';position:absolute;top:30%;left:50%;transform:translateX(-50%);width:400px;height:400px;background:radial-gradient(circle,rgba(50,100,255,.06) 0%,transparent 70%);border-radius:50%;filter:blur(50px)}
+.loader-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:.8rem}
+
+/* "Hello, I'm" */
+.loader-line1{font-family:var(--serif);font-size:clamp(1rem,2.5vw,1.4rem);font-weight:400;font-style:italic;color:rgba(255,255,255,.4);letter-spacing:.1em;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.loader-line1.show{opacity:1;transform:translateY(0)}
+
+/* "JAY" — big gold shimmer */
+.loader-name{font-family:var(--display);font-size:clamp(4rem,14vw,9rem);font-weight:600;letter-spacing:.3em;line-height:1;background:linear-gradient(90deg,rgba(255,255,255,.3) 0%,rgba(255,215,0,.7) 45%,rgba(255,255,255,.95) 50%,rgba(255,215,0,.7) 55%,rgba(255,255,255,.3) 100%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:scale(.8);transition:opacity .5s ease,transform .7s cubic-bezier(.34,1.56,.64,1)}
+.loader-name.show{opacity:1;transform:scale(1);animation:loaderShimmer 2s ease-in-out .5s forwards}
+@keyframes loaderShimmer{
+  0%{background-position:200% center}
+  100%{background-position:-200% center}
+}
+
+/* Gold divider */
+.loader-divider{width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.5),rgba(255,255,255,.6),rgba(255,215,0,.5),transparent);transition:width 1s ease;box-shadow:0 0 10px rgba(255,215,0,.2)}
+.loader-divider.show{width:180px}
+
+/* "Welcome to my Portfolio" */
+.loader-line2{font-family:var(--sans);font-size:clamp(.5rem,1.2vw,.75rem);font-weight:300;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,0);transition:color .8s ease}
+.loader-line2.show{color:rgba(255,255,255,.4)}
+
+/* Progress bar */
+.loader-bar-track{width:120px;height:2px;background:rgba(255,255,255,.05);border-radius:1px;overflow:hidden;margin-top:.5rem;opacity:0;transition:opacity .4s ease}
+.loader-bar-track.show{opacity:1}
+.loader-bar{height:100%;width:0;background:linear-gradient(90deg,rgba(255,215,0,.4),rgba(255,215,0,.8));border-radius:1px;transition:width 2s cubic-bezier(.25,.46,.45,.94);box-shadow:0 0 6px rgba(255,215,0,.3)}
+.loader-bar.fill{width:100%}
+
 /* ===== NAV — Classic 3-part ===== */
 .nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:2.5rem 4rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
 .nav-link-left,.nav-link-right{font-family:var(--display);font-size:.85rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);transition:color .4s,text-shadow .4s,letter-spacing .4s}
