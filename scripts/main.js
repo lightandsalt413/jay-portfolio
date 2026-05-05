@@ -52,31 +52,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ===== HERO — Zoom-out on scroll ===== */
+  /* ===== HERO — Zoom-out on scroll ===== */  /* ===== CLASSIC JAY HERO ===== */
+  const hero = document.querySelector('.hero');
   const portrait = document.getElementById('hero-portrait');
-  const heroStatement = document.getElementById('hero-statement');
-  const heroSection = document.querySelector('.hero');
+  const letterJ = document.querySelector('.hero-letter-j');
+  const letterY = document.querySelector('.hero-letter-y');
 
+  // Mouse move parallax on hero
+  if (hero) {
+    hero.addEventListener('mousemove', e => {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - .5;
+      const y = (e.clientY - rect.top) / rect.height - .5;
+      if (letterJ) letterJ.style.transform = `translate(${x * -20}px, ${y * -15}px)`;
+      if (letterY) letterY.style.transform = `translate(${x * 20}px, ${y * -15}px)`;
+      if (portrait) portrait.style.transform = `translate(${x * 8}px, ${y * 5}px)`;
+    });
+    hero.addEventListener('mouseleave', () => {
+      if (letterJ) letterJ.style.transform = '';
+      if (letterY) letterY.style.transform = '';
+      if (portrait) portrait.style.transform = '';
+    });
+  }
+
+  // Scroll parallax for letters
   window.addEventListener('scroll', () => {
     const s = window.scrollY;
-    const vh = window.innerHeight;
-
-    if (portrait && heroStatement) {
-      const progress = Math.min(1, s / (vh * 0.6));
-      // Zoom-out: starts at scale(1.1) -> scale(1) as you scroll
-      const scale = 1.1 - progress * 0.2;
-      portrait.style.opacity = 1 - progress;
-      portrait.style.transform = `scale(${scale}) translateY(${s * -0.1}px)`;
-      if (progress > 0.4) heroStatement.classList.add('visible');
-      else heroStatement.classList.remove('visible');
-    }
-
-    // Hero section zoom-out
-    if (heroSection) {
-      const heroP = Math.min(1, s / vh);
-      heroSection.style.transform = `scale(${1 - heroP * 0.05})`;
-      heroSection.style.opacity = 1 - heroP * 0.5;
-    }
+    if (letterJ) letterJ.style.opacity = Math.max(0, 1 - s / 400);
+    if (letterY) letterY.style.opacity = Math.max(0, 1 - s / 400);
 
     // Nav shrink
     const nav = document.getElementById('nav');
