@@ -45,26 +45,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== Step 5: WORD-BY-WORD TAGLINE ANIMATION ===== */
+  /* ===== CINEMATIC SPLIT-SCREEN DOOR REVEAL ===== */
+  const curtain = document.getElementById('curtain');
+  const filmGrain = document.getElementById('film-grain');
+  const curtainChars = document.querySelectorAll('#curtain-title .char');
+
+  if (curtain) {
+    // Step 1: Typewriter — J, A, Y appear one by one
+    curtainChars.forEach((ch, i) => {
+      setTimeout(() => ch.classList.add('visible'), 200 + i * 250);
+    });
+
+    // Step 2: Line expands from center
+    setTimeout(() => curtain.classList.add('expand-line'), 1000);
+
+    // Step 3: Doors split open
+    setTimeout(() => curtain.classList.add('open'), 1600);
+
+    // Step 4: Film grain fades out
+    setTimeout(() => {
+      if (filmGrain) filmGrain.classList.add('fade-out');
+    }, 2200);
+
+    // Step 5: Remove curtain from DOM
+    setTimeout(() => {
+      curtain.remove();
+      if (filmGrain) filmGrain.remove();
+    }, 3000);
+  }
+
+  /* ===== TAGLINE WORD-BY-WORD (after curtain opens) ===== */
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
     const words = tagline.querySelectorAll('.tagline-word');
-    // Stagger each word — starts after curtain + portrait entrance
     words.forEach((word, i) => {
-      setTimeout(() => {
-        word.classList.add('visible');
-      }, 2000 + i * 400);
+      setTimeout(() => word.classList.add('visible'), 2200 + i * 400);
     });
-    // Animate the lines after words
-    setTimeout(() => {
-      tagline.classList.add('lines-visible');
-    }, 2000 + words.length * 400 + 300);
-  }
-
-  /* ===== Remove curtain from DOM after animation ===== */
-  const curtain = document.getElementById('curtain');
-  if (curtain) {
-    setTimeout(() => curtain.remove(), 1800);
+    setTimeout(() => tagline.classList.add('lines-visible'), 2200 + words.length * 400 + 300);
   }
 
   /* ===== Step 2: SCROLL REVEAL (IntersectionObserver) ===== */
