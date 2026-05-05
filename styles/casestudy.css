@@ -1,0 +1,57 @@
+/* ===== CASE STUDY STYLES ===== */
+
+/* Hero */
+.cs-hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.cs-hero-bg{position:absolute;inset:0;z-index:0}
+.cs-hero-bg img{width:100%;height:100%;object-fit:cover;object-position:top;filter:brightness(.4)}
+.cs-hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(transparent 40%,var(--navy) 100%)}
+.cs-hero-content{position:relative;z-index:2;text-align:center;padding:0 2rem 6rem;max-width:800px}
+.cs-num{font-family:var(--serif);font-size:clamp(5rem,12vw,10rem);font-weight:400;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.08);line-height:1;display:block;margin-bottom:1rem}
+.cs-title{font-family:var(--serif);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:400;color:var(--white);letter-spacing:.02em;line-height:1.1;margin-bottom:1rem}
+.cs-subtitle{font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+
+/* Details Bar */
+.cs-details{padding:4rem;background:var(--navy);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04)}
+.cs-details-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
+.cs-detail-item{display:flex;flex-direction:column;gap:.5rem}
+.cs-detail-label{font-family:var(--sans);font-size:.55rem;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+.cs-detail-value{font-family:var(--sans);font-size:.85rem;color:var(--gray);letter-spacing:.05em}
+.cs-live{color:#4ade80}
+
+/* Content Sections */
+.cs-section{padding:8rem 4rem;background:var(--navy)}
+.cs-section-alt{background:rgba(255,255,255,.01)}
+.cs-section-inner{max-width:700px;margin:0 auto}
+.cs-section-label{display:inline-block;font-family:var(--sans);font-size:.65rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;position:relative;padding-left:2rem}
+.cs-section-label::before{content:'';position:absolute;left:0;top:50%;width:1rem;height:1px;background:var(--gold)}
+.cs-section-title{font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:400;color:var(--white);line-height:1.3;margin-bottom:2rem;letter-spacing:.01em}
+.cs-section-text{font-family:var(--serif);font-size:1.05rem;line-height:2;color:var(--gray);letter-spacing:.01em}
+
+/* Highlights */
+.cs-highlights{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:4rem;padding-top:3rem;border-top:1px solid rgba(255,255,255,.04)}
+.cs-highlight{text-align:center}
+.cs-highlight-num{font-family:var(--sans);font-size:2.2rem;font-weight:300;color:var(--gold);display:block;margin-bottom:.5rem}
+.cs-highlight-text{font-family:var(--sans);font-size:.65rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--gray2)}
+
+/* CTA */
+.cs-cta{margin-top:4rem;display:flex;justify-content:center}
+
+/* Next Project */
+.cs-next{padding:6rem 4rem;background:var(--navy);border-top:1px solid rgba(255,255,255,.04);text-align:center}
+.cs-next-label{font-family:var(--sans);font-size:.55rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gray2);display:block;margin-bottom:2rem}
+.cs-next-link{display:inline-flex;flex-direction:column;align-items:center;gap:1rem;transition:transform .4s ease}
+.cs-next-link:hover{transform:translateY(-5px)}
+.cs-next-num{font-family:var(--serif);font-size:3rem;font-weight:400;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);line-height:1}
+.cs-next-title{font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.5rem);font-weight:400;color:var(--white);letter-spacing:.02em;transition:color .3s}
+.cs-next-link:hover .cs-next-title{color:var(--gold)}
+.cs-next-arrow{font-size:1.5rem;color:var(--gold);transition:transform .4s}
+.cs-next-link:hover .cs-next-arrow{transform:translateX(10px)}
+
+/* Responsive */
+@media(max-width:768px){
+  .cs-details-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .cs-section{padding:5rem 2rem}
+  .cs-highlights{grid-template-columns:1fr;gap:2rem}
+  .cs-hero-content{padding:0 1.5rem 4rem}
+  .cs-next{padding:4rem 2rem}
+}
