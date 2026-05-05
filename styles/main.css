@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Display:wght@400;500;600;700;900&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@200;300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#0d1117;--navy2:#111820;--navy3:#161d27;
-  --gold:#FFD700;--gold-dim:rgba(255,215,0,.15);
-  --white:#f0f0f0;--gray:#8b9ab0;--gray2:rgba(139,154,176,.4);
-  --serif:'Playfair Display',Georgia,serif;
-  --display:'Noto Serif Display',Georgia,serif;
-  --sans:'Inter',-apple-system,sans-serif;
+  --navy:#090909;--navy2:#0f0f0f;--navy3:#161616;
+  --gold:#C9956B;--gold-dim:rgba(201,149,107,.15);
+  --white:#ede8e3;--gray:#8a8278;--gray2:rgba(138,130,120,.4);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --display:'Outfit',sans-serif;
+  --sans:'Space Grotesk',-apple-system,sans-serif;
   --slow:.8s cubic-bezier(.16,1,.3,1);
   --smooth:.6s cubic-bezier(.25,.46,.45,.94);
 }
@@ -24,12 +24,12 @@ button{border:none;background:none;font-family:inherit;color:inherit}
   0%{transform:scale(1);opacity:1}
   100%{transform:scale(1.5);opacity:0;visibility:hidden;pointer-events:none}
 }
-.loader-bg{position:absolute;inset:0;background:linear-gradient(135deg,#020508 0%,#0a1628 50%,#050a15 100%)}
-.loader-bg::after{content:'';position:absolute;top:30%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(50,100,255,.05) 0%,transparent 70%);border-radius:50%;filter:blur(60px)}
+.loader-bg{position:absolute;inset:0;background:linear-gradient(135deg,#050505 0%,#0a0a0a 50%,#080808 100%)}
+.loader-bg::after{content:'';position:absolute;top:30%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(201,149,107,.04) 0%,transparent 70%);border-radius:50%;filter:blur(60px)}
 
 /* Floating particles in loader */
 .loader-particles{position:absolute;inset:0;z-index:1;pointer-events:none}
-.loader-particle{position:absolute;width:2px;height:2px;background:rgba(255,215,0,.3);border-radius:50%;animation:loaderParticleFloat linear infinite}
+.loader-particle{position:absolute;width:2px;height:2px;background:rgba(201,149,107,.3);border-radius:50%;animation:loaderParticleFloat linear infinite}
 @keyframes loaderParticleFloat{
   0%{transform:translateY(0) scale(0);opacity:0}
   20%{opacity:1;transform:translateY(-20px) scale(1)}
@@ -39,23 +39,23 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .loader-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1rem}
 
 /* Typewriter "Hello, I'm" */
-.loader-line1{font-family:var(--serif);font-size:clamp(1rem,2.5vw,1.4rem);font-weight:400;font-style:italic;color:rgba(255,255,255,.45);letter-spacing:.1em;min-height:1.8rem;border-right:2px solid rgba(255,215,0,.6);padding-right:4px;animation:cursorBlink .6s step-end infinite}
-@keyframes cursorBlink{0%,100%{border-color:rgba(255,215,0,.6)}50%{border-color:transparent}}
+.loader-line1{font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:300;font-style:italic;color:rgba(237,232,227,.4);letter-spacing:.1em;min-height:1.8rem;border-right:2px solid rgba(201,149,107,.6);padding-right:4px;animation:cursorBlink .6s step-end infinite}
+@keyframes cursorBlink{0%,100%{border-color:rgba(201,149,107,.6)}50%{border-color:transparent}}
 .loader-line1.typed{border-color:transparent;animation:none}
 
 /* JAY letters — drop in with blur */
 .loader-name{display:flex;gap:.05em;position:relative;overflow:visible}
-.loader-char{font-family:var(--display);font-size:clamp(5rem,16vw,10rem);font-weight:600;line-height:1;color:rgba(255,215,0,.8);opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);transition:none;text-shadow:0 0 30px rgba(255,215,0,0)}
+.loader-char{font-family:var(--display);font-size:clamp(5rem,16vw,10rem);font-weight:600;line-height:1;color:rgba(201,149,107,.85);opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);transition:none;text-shadow:0 0 30px rgba(201,149,107,0)}
 .loader-char.drop{animation:charDrop .7s cubic-bezier(.34,1.56,.64,1) forwards}
 @keyframes charDrop{
-  0%{opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);text-shadow:0 0 30px rgba(255,215,0,0)}
-  60%{opacity:1;transform:translateY(5px) scale(1);filter:blur(0);text-shadow:0 0 40px rgba(255,215,0,.4)}
+  0%{opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);text-shadow:0 0 30px rgba(201,149,107,0)}
+  60%{opacity:1;transform:translateY(5px) scale(1);filter:blur(0);text-shadow:0 0 40px rgba(201,149,107,.4)}
   80%{transform:translateY(-3px) scale(1)}
-  100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);text-shadow:0 0 20px rgba(255,215,0,.2)}
+  100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);text-shadow:0 0 20px rgba(201,149,107,.2)}
 }
 
 /* Glow pulse from center */
-.loader-glow{width:0;height:0;border-radius:50%;background:radial-gradient(circle,rgba(255,215,0,.15) 0%,rgba(50,100,255,.05) 50%,transparent 70%);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:none}
+.loader-glow{width:0;height:0;border-radius:50%;background:radial-gradient(circle,rgba(201,149,107,.12) 0%,rgba(201,149,107,.03) 50%,transparent 70%);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:none}
 .loader-glow.pulse{animation:glowPulse 1.2s ease-out forwards}
 @keyframes glowPulse{
   0%{width:0;height:0;opacity:.8}
@@ -64,7 +64,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 }
 
 /* "Welcome to my Portfolio" — blur slide up */
-.loader-line2{font-family:var(--sans);font-size:clamp(.5rem,1.2vw,.75rem);font-weight:300;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.45);opacity:0;transform:translateY(25px);filter:blur(6px);transition:all .8s ease}
+.loader-line2{font-family:var(--sans);font-size:clamp(.5rem,1.2vw,.75rem);font-weight:300;letter-spacing:.4em;text-transform:uppercase;color:rgba(237,232,227,.4);opacity:0;transform:translateY(25px);filter:blur(6px);transition:all .8s ease}
 .loader-line2.show{opacity:1;transform:translateY(0);filter:blur(0)}
 
 /* ===== NAV — Classic 3-part ===== */
@@ -77,21 +77,21 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .nav-center-text{font-family:var(--display);font-size:.85rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);transition:color .4s,text-shadow .4s,letter-spacing .4s}
 
 /* ===== Step 4: HOVER EFFECTS — Glow on nav links ===== */
-.hover-glow-text:hover{color:var(--gold);text-shadow:0 0 15px rgba(255,215,0,.4),0 0 30px rgba(255,215,0,.15);letter-spacing:.3em}
+.hover-glow-text:hover{color:var(--gold);text-shadow:0 0 15px rgba(201,149,107,.4),0 0 30px rgba(201,149,107,.15);letter-spacing:.3em}
 
 /* ===== HERO — Classic JAY design ===== */
-.hero{position:relative;height:100vh;background:#090d14;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero{position:relative;height:100vh;background:#090909;display:flex;align-items:center;justify-content:center;overflow:hidden}
 
 /* ===== Step 3: PARALLAX BACKGROUND — Subtle depth layer ===== */
 .hero-parallax-bg{position:absolute;inset:-10%;width:120%;height:120%;background:
-  radial-gradient(circle at 25% 30%,rgba(50,100,255,.08) 0%,transparent 50%),
-  radial-gradient(circle at 75% 60%,rgba(255,215,0,.04) 0%,transparent 45%),
-  radial-gradient(circle at 50% 80%,rgba(80,120,255,.06) 0%,transparent 40%);
+  radial-gradient(circle at 25% 30%,rgba(201,149,107,.06) 0%,transparent 50%),
+  radial-gradient(circle at 75% 60%,rgba(201,149,107,.03) 0%,transparent 45%),
+  radial-gradient(circle at 50% 80%,rgba(160,120,80,.04) 0%,transparent 40%);
   pointer-events:none;z-index:0;will-change:transform}
 
 /* Floating particles for depth */
 .parallax-particles{position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden}
-.particle{position:absolute;width:2px;height:2px;background:rgba(255,255,255,.15);border-radius:50%;animation:particleFloat linear infinite}
+.particle{position:absolute;width:2px;height:2px;background:rgba(201,149,107,.12);border-radius:50%;animation:particleFloat linear infinite}
 @keyframes particleFloat{
   0%{transform:translateY(100vh) translateX(0);opacity:0}
   10%{opacity:1}
@@ -103,7 +103,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 /* Giant J and Y letters */
 .hero-letters{position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:100%;gap:clamp(80px,12vw,200px);pointer-events:none;z-index:1}
-.hero-letter-j,.hero-letter-y{font-family:var(--display);font-size:clamp(14rem,28vw,26rem);font-weight:600;color:rgba(255,255,255,.12);user-select:none;line-height:.75}
+.hero-letter-j,.hero-letter-y{font-family:var(--display);font-size:clamp(14rem,28vw,26rem);font-weight:600;color:rgba(237,232,227,.08);user-select:none;line-height:.75}
 
 /* ===== Step 1: CSS KEYFRAMES — Float effect on portrait ===== */
 @keyframes heroFloat{
@@ -118,7 +118,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 /* Portrait — massive, fills viewport */
 .hero-portrait{position:relative;z-index:2;height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;animation:heroFloat 5s ease-in-out infinite;margin-bottom:-8vh}
-.hero-glow{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:280px;height:450px;background:radial-gradient(ellipse at center,rgba(50,100,255,.45) 0%,rgba(40,80,255,.25) 30%,transparent 70%);border-radius:50%;filter:blur(30px);animation:auraGlow 4s ease-in-out infinite;pointer-events:none;z-index:0}
+.hero-glow{position:absolute;top:10%;left:50%;transform:translateX(-50%);width:280px;height:450px;background:radial-gradient(ellipse at center,rgba(201,149,107,.3) 0%,rgba(180,130,90,.15) 30%,transparent 70%);border-radius:50%;filter:blur(30px);animation:auraGlow 4s ease-in-out infinite;pointer-events:none;z-index:0}
 @keyframes auraGlow{
   0%,100%{opacity:.7;transform:translateX(-50%) scale(1)}
   50%{opacity:1;transform:translateX(-50%) scale(1.05)}
