@@ -5,24 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JAY — Creative Developer</title>
   <meta name="description" content="Creative Developer & Social Media Specialist. Merging functional code with high-impact visual narratives.">
-  <link rel="stylesheet" href="styles/main.css?v=33">
+  <link rel="stylesheet" href="styles/main.css?v=40">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
 
+  <!-- PARALLAX PARTICLES — subtle depth layer -->
+  <div class="parallax-particles" id="parallax-particles"></div>
+
   <!-- NAV — Classic 3-part layout -->
   <nav class="nav" id="nav">
-    <a href="about.html" class="nav-link-left">About Me</a>
+    <a href="about.html" class="nav-link-left hover-glow-text">About Me</a>
     <div class="nav-center">
       <div class="nav-line"></div>
-      <a href="#services" class="nav-center-text">Services</a>
+      <a href="contact.html" class="nav-center-text hover-glow-text">Services</a>
       <div class="nav-line"></div>
     </div>
-    <a href="contact.html" class="nav-link-right">Contact</a>
+    <a href="contact.html" class="nav-link-right hover-glow-text">Contact</a>
   </nav>
 
   <!-- HERO — Classic JAY with portrait -->
   <section class="hero" id="hero">
+    <!-- Parallax background gradient layer -->
+    <div class="hero-parallax-bg" id="hero-parallax-bg"></div>
+
     <div class="hero-inner">
       <div class="hero-letters">
         <span class="hero-letter-j">J</span>
@@ -32,7 +38,11 @@
         <div class="hero-glow"></div>
         <img src="assets/images/hero-portrait.png" alt="Jay">
       </div>
-      <div class="hero-tagline">CREATIVE DEVELOPER</div>
+      <!-- Step 5: Word-by-word animated tagline -->
+      <div class="hero-tagline word-reveal" id="hero-tagline">
+        <span class="tagline-word">C R E A T I V E</span>
+        <span class="tagline-word">D E V E L O P E R</span>
+      </div>
     </div>
   </section>
 

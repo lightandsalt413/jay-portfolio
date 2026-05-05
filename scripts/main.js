@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ===== HERO — Mouse Parallax on J, Y, and Portrait ===== */
+  /* ===== Step 1: HERO — Mouse Parallax on J, Y, and Portrait ===== */
   const hero = document.querySelector('.hero');
   const portrait = document.getElementById('hero-portrait');
   const letterJ = document.querySelector('.hero-letter-j');
@@ -13,16 +13,55 @@ document.addEventListener('DOMContentLoaded', () => {
       const y = (e.clientY - rect.top) / rect.height - .5;
       if (letterJ) letterJ.style.transform = `translate(${x * -20}px, ${y * -15}px)`;
       if (letterY) letterY.style.transform = `translate(${x * 20}px, ${y * -15}px)`;
-      if (portrait) portrait.style.transform = `translate(${x * 8}px, ${y * 5}px)`;
     });
     hero.addEventListener('mouseleave', () => {
       if (letterJ) letterJ.style.transform = '';
       if (letterY) letterY.style.transform = '';
-      if (portrait) portrait.style.transform = '';
     });
   }
 
-  /* ===== SCROLL REVEAL (IntersectionObserver) ===== */
+  /* ===== Step 3: PARALLAX BACKGROUND — Depth on scroll ===== */
+  const parallaxBg = document.getElementById('hero-parallax-bg');
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY;
+    if (parallaxBg) {
+      parallaxBg.style.transform = `translateY(${s * 0.4}px)`;
+    }
+  });
+
+  /* ===== Step 3b: FLOATING PARTICLES — Ambient depth ===== */
+  const particleContainer = document.getElementById('parallax-particles');
+  if (particleContainer) {
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.animationDuration = (8 + Math.random() * 12) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      p.style.width = (1 + Math.random() * 2) + 'px';
+      p.style.height = p.style.width;
+      p.style.opacity = 0.05 + Math.random() * 0.15;
+      particleContainer.appendChild(p);
+    }
+  }
+
+  /* ===== Step 5: WORD-BY-WORD TAGLINE ANIMATION ===== */
+  const tagline = document.getElementById('hero-tagline');
+  if (tagline) {
+    const words = tagline.querySelectorAll('.tagline-word');
+    // Stagger each word with a delay
+    words.forEach((word, i) => {
+      setTimeout(() => {
+        word.classList.add('visible');
+      }, 600 + i * 400);
+    });
+    // Animate the lines after words
+    setTimeout(() => {
+      tagline.classList.add('lines-visible');
+    }, 600 + words.length * 400 + 200);
+  }
+
+  /* ===== Step 2: SCROLL REVEAL (IntersectionObserver) ===== */
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) { e.target.classList.add('active'); obs.unobserve(e.target); }
@@ -30,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.15 });
   document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => obs.observe(el));
 
-  /* ===== WORD-BY-WORD REVEAL ===== */
+  /* ===== Step 5b: WORD-BY-WORD REVEAL (reusable for any section) ===== */
   document.querySelectorAll('.word-reveal p').forEach(p => {
     const html = p.innerHTML;
     const words = html.split(/(\s+)/);
@@ -50,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, { threshold: 0.3 });
-  document.querySelectorAll('.word-reveal').forEach(el => wordObs.observe(el));
+  document.querySelectorAll('.word-reveal:not(#hero-tagline)').forEach(el => wordObs.observe(el));
 
   /* ===== SMOOTH SCROLL for anchor links ===== */
   document.querySelectorAll('a[href^="#"]').forEach(a => {
