@@ -102,7 +102,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .hero-inner{position:relative;display:flex;align-items:flex-end;justify-content:center;width:100%;height:100%;z-index:2}
 
 /* Giant J and Y letters */
-.hero-letters{position:absolute;top:28%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:100%;gap:clamp(140px,18vw,280px);pointer-events:none;z-index:1}
+.hero-letters{position:absolute;top:35%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:100%;gap:clamp(140px,18vw,280px);pointer-events:none;z-index:1}
 .hero-letter-j,.hero-letter-y{font-family:var(--serif);font-size:clamp(14rem,28vw,26rem);font-weight:600;color:rgba(237,232,227,.08);user-select:none;line-height:.75}
 
 /* ===== Step 1: CSS KEYFRAMES — Float effect on portrait ===== */
