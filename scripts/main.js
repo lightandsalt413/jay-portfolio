@@ -45,43 +45,49 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== CINEMATIC SPLIT-SCREEN DOOR REVEAL ===== */
+  /* ===== CV-STYLE PORTFOLIO ENTRANCE ===== */
   const curtain = document.getElementById('curtain');
   const filmGrain = document.getElementById('film-grain');
-  const curtainChars = document.querySelectorAll('#curtain-title .char');
+  const greeting = document.getElementById('cv-greeting');
+  const nameChars = document.querySelectorAll('#cv-name .char');
+  const cvStats = document.getElementById('cv-stats');
 
   if (curtain) {
-    // Step 1: Typewriter — J, A, Y appear one by one
-    curtainChars.forEach((ch, i) => {
-      setTimeout(() => ch.classList.add('visible'), 200 + i * 250);
+    // Step 1: "Hello, I'm" fades in
+    setTimeout(() => { if (greeting) greeting.classList.add('visible'); }, 200);
+
+    // Step 2: J, A, Y appear one by one
+    nameChars.forEach((ch, i) => {
+      setTimeout(() => ch.classList.add('visible'), 600 + i * 250);
     });
 
-    // Step 2: Line expands from center
-    setTimeout(() => curtain.classList.add('expand-line'), 1000);
+    // Step 3: Gold line expands + role title appears
+    setTimeout(() => curtain.classList.add('expand-line'), 1400);
 
-    // Step 3: Doors split open
-    setTimeout(() => curtain.classList.add('open'), 1600);
+    // Step 4: Stats fade in
+    setTimeout(() => { if (cvStats) cvStats.classList.add('visible'); }, 1900);
 
-    // Step 4: Film grain fades out
-    setTimeout(() => {
-      if (filmGrain) filmGrain.classList.add('fade-out');
-    }, 2200);
+    // Step 5: Doors split open to reveal hero
+    setTimeout(() => curtain.classList.add('open'), 2800);
 
-    // Step 5: Remove curtain from DOM
+    // Step 6: Film grain fades out
+    setTimeout(() => { if (filmGrain) filmGrain.classList.add('fade-out'); }, 3400);
+
+    // Step 7: Cleanup
     setTimeout(() => {
       curtain.remove();
       if (filmGrain) filmGrain.remove();
-    }, 3000);
+    }, 4200);
   }
 
-  /* ===== TAGLINE WORD-BY-WORD (after curtain opens) ===== */
+  /* ===== TAGLINE WORD-BY-WORD (after doors open) ===== */
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
     const words = tagline.querySelectorAll('.tagline-word');
     words.forEach((word, i) => {
-      setTimeout(() => word.classList.add('visible'), 2200 + i * 400);
+      setTimeout(() => word.classList.add('visible'), 3200 + i * 400);
     });
-    setTimeout(() => tagline.classList.add('lines-visible'), 2200 + words.length * 400 + 300);
+    setTimeout(() => tagline.classList.add('lines-visible'), 3200 + words.length * 400 + 300);
   }
 
   /* ===== Step 2: SCROLL REVEAL (IntersectionObserver) ===== */
