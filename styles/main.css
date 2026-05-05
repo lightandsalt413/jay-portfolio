@@ -45,7 +45,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 /* JAY letters — drop in with blur */
 .loader-name{display:flex;gap:.05em;position:relative;overflow:visible}
-.loader-char{font-family:var(--display);font-size:clamp(5rem,16vw,10rem);font-weight:600;line-height:1;color:rgba(201,149,107,.85);opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);transition:none;text-shadow:0 0 30px rgba(201,149,107,0)}
+.loader-char{font-family:var(--serif);font-size:clamp(5rem,16vw,10rem);font-weight:600;line-height:1;color:rgba(201,149,107,.85);opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);transition:none;text-shadow:0 0 30px rgba(201,149,107,0)}
 .loader-char.drop{animation:charDrop .7s cubic-bezier(.34,1.56,.64,1) forwards}
 @keyframes charDrop{
   0%{opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);text-shadow:0 0 30px rgba(201,149,107,0)}
