@@ -111,10 +111,10 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .curtain-left::after,.curtain-right::after{content:'';position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(255,255,255,.005) 2px,rgba(255,255,255,.005) 4px);pointer-events:none}
 
 /* Center content — CV layout */
-.curtain-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:1.2rem;width:90%;max-width:800px}
+.curtain-center{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;padding:4rem 2rem 3rem;overflow-y:auto;overflow-x:hidden}
 
 /* CV Top — header */
-.cv-top{text-align:center;width:100%}
+.cv-top{text-align:center;width:100%;max-width:800px;margin-bottom:1.5rem}
 .cv-label{font-family:var(--sans);font-size:.45rem;font-weight:300;letter-spacing:.6em;text-transform:uppercase;color:rgba(255,215,0,.5);display:block;margin-bottom:.8rem}
 .cv-name{font-family:var(--display);font-size:clamp(2.5rem,8vw,5rem);font-weight:600;letter-spacing:.3em;display:flex;justify-content:center;gap:.05em;background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,215,0,.6),rgba(255,255,255,.5));-webkit-background-clip:text;background-clip:text;color:transparent}
 .cv-name .char{display:inline-block;opacity:0;transform:translateY(20px) scale(.85);transition:opacity .4s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
@@ -125,7 +125,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .curtain.expand-line .cv-line{width:200px}
 
 /* CV Body — two columns */
-.cv-body{display:grid;grid-template-columns:1fr 1fr;gap:2rem;width:100%;opacity:0;transform:translateY(15px);transition:opacity .6s ease,transform .6s ease}
+.cv-body{display:grid;grid-template-columns:1fr 1fr;gap:2rem;width:100%;max-width:800px;opacity:0;transform:translateY(15px);transition:opacity .6s ease,transform .6s ease}
 .cv-body.visible{opacity:1;transform:translateY(0)}
 
 /* CV Block */
