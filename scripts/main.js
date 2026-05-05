@@ -45,49 +45,40 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== CV-STYLE PORTFOLIO ENTRANCE ===== */
-  const curtain = document.getElementById('curtain');
-  const filmGrain = document.getElementById('film-grain');
-  const greeting = document.getElementById('cv-greeting');
-  const nameChars = document.querySelectorAll('#cv-name .char');
-  const cvStats = document.getElementById('cv-stats');
-
-  if (curtain) {
-    // Step 1: "Hello, I'm" fades in
-    setTimeout(() => { if (greeting) greeting.classList.add('visible'); }, 200);
-
-    // Step 2: J, A, Y appear one by one
-    nameChars.forEach((ch, i) => {
-      setTimeout(() => ch.classList.add('visible'), 600 + i * 250);
+  /* ===== CV SKILL BAR ANIMATIONS ===== */
+  const skillObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        // Animate all skill bars in this block
+        e.target.querySelectorAll('.cv-skill-bar').forEach((bar, i) => {
+          setTimeout(() => {
+            bar.style.width = bar.dataset.width + '%';
+          }, i * 200);
+        });
+        skillObserver.unobserve(e.target);
+      }
     });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.cv-block').forEach(block => {
+    if (block.querySelector('.cv-skill-bar')) skillObserver.observe(block);
+  });
 
-    // Step 3: Gold line expands + role title appears
-    setTimeout(() => curtain.classList.add('expand-line'), 1400);
-
-    // Step 4: Stats fade in
-    setTimeout(() => { if (cvStats) cvStats.classList.add('visible'); }, 1900);
-
-    // Step 5: Doors split open to reveal hero
-    setTimeout(() => curtain.classList.add('open'), 2800);
-
-    // Step 6: Film grain fades out
-    setTimeout(() => { if (filmGrain) filmGrain.classList.add('fade-out'); }, 3400);
-
-    // Step 7: Cleanup
-    setTimeout(() => {
-      curtain.remove();
-      if (filmGrain) filmGrain.remove();
-    }, 4200);
-  }
-
-  /* ===== TAGLINE WORD-BY-WORD (after doors open) ===== */
+  /* ===== TAGLINE WORD-BY-WORD ===== */
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
-    const words = tagline.querySelectorAll('.tagline-word');
-    words.forEach((word, i) => {
-      setTimeout(() => word.classList.add('visible'), 3200 + i * 400);
-    });
-    setTimeout(() => tagline.classList.add('lines-visible'), 3200 + words.length * 400 + 300);
+    const tagObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const words = tagline.querySelectorAll('.tagline-word');
+          words.forEach((word, i) => {
+            setTimeout(() => word.classList.add('visible'), i * 400);
+          });
+          setTimeout(() => tagline.classList.add('lines-visible'), words.length * 400 + 300);
+          tagObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    tagObs.observe(tagline);
   }
 
   /* ===== Step 2: SCROLL REVEAL (IntersectionObserver) ===== */
