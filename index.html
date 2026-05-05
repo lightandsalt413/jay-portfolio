@@ -5,15 +5,58 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JAY — Creative Developer</title>
   <meta name="description" content="Creative Developer & Social Media Specialist. Merging functional code with high-impact visual narratives.">
-  <link rel="stylesheet" href="styles/main.css?v=50">
+  <link rel="stylesheet" href="styles/main.css?v=41">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
 
-  <!-- PARALLAX PARTICLES -->
+  <!-- CV ENTRANCE — Full resume inside the split-screen door -->
+  <div class="curtain active" id="curtain">
+    <div class="curtain-left"></div>
+    <div class="curtain-right"></div>
+    <div class="curtain-center" id="curtain-center">
+      <div class="cv-top">
+        <span class="cv-label">CURRICULUM VITAE</span>
+        <div class="cv-name" id="cv-name">
+          <span class="char">J</span><span class="char">A</span><span class="char">Y</span>
+        </div>
+        <span class="cv-role" id="cv-role">Creative Developer &amp; Social Media Specialist</span>
+        <div class="cv-line"></div>
+      </div>
+      <div class="cv-body" id="cv-body">
+        <div class="cv-left">
+          <div class="cv-block"><h3 class="cv-heading">About</h3><p class="cv-text">Passionate developer who merges functional code with high-impact visual narratives.</p></div>
+          <div class="cv-block"><h3 class="cv-heading">Skills</h3>
+            <div class="cv-skill"><span>Web Development</span><div class="cv-bar-track"><div class="cv-bar" data-w="90"></div></div></div>
+            <div class="cv-skill"><span>UI/UX Design</span><div class="cv-bar-track"><div class="cv-bar" data-w="85"></div></div></div>
+            <div class="cv-skill"><span>Social Media</span><div class="cv-bar-track"><div class="cv-bar" data-w="95"></div></div></div>
+            <div class="cv-skill"><span>Content Creation</span><div class="cv-bar-track"><div class="cv-bar" data-w="88"></div></div></div>
+          </div>
+          <div class="cv-block"><h3 class="cv-heading">Tools</h3><div class="cv-tags"><span>HTML/CSS</span><span>JavaScript</span><span>Figma</span><span>Photoshop</span><span>WordPress</span><span>Git</span></div></div>
+        </div>
+        <div class="cv-right">
+          <div class="cv-block"><h3 class="cv-heading">Experience</h3>
+            <div class="cv-entry"><span class="cv-date">2023 — Present</span><strong>Freelance Creative Developer</strong><p>Building premium websites for clients.</p></div>
+            <div class="cv-entry"><span class="cv-date">2022 — 2023</span><strong>Social Media Specialist</strong><p>Managed brand presence across platforms.</p></div>
+          </div>
+          <div class="cv-block"><h3 class="cv-heading">Education</h3>
+            <div class="cv-entry"><span class="cv-date">2019 — 2023</span><strong>BS Information Technology</strong><p>Web technologies &amp; software engineering.</p></div>
+          </div>
+          <div class="cv-block"><h3 class="cv-heading">Contact</h3>
+            <div class="cv-contact">📧 jay.creative@email.com</div>
+            <div class="cv-contact">📱 +63 912 345 6789</div>
+            <div class="cv-contact">📍 Philippines</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="film-grain" id="film-grain"></div>
+
+  <!-- PARALLAX PARTICLES — subtle depth layer -->
   <div class="parallax-particles" id="parallax-particles"></div>
 
-  <!-- NAV -->
+  <!-- NAV — Classic 3-part layout -->
   <nav class="nav" id="nav">
     <a href="about.html" class="nav-link-left hover-glow-text">About Me</a>
     <div class="nav-center">
@@ -24,157 +67,11 @@
     <a href="contact.html" class="nav-link-right hover-glow-text">Contact</a>
   </nav>
 
-  <!-- ===== CV SECTION — Full Resume with Effects ===== -->
-  <section class="cv-section" id="cv-section">
-    <div class="cv-bg-glow"></div>
-
-    <!-- CV Header -->
-    <div class="cv-header reveal">
-      <span class="cv-label">CURRICULUM VITAE</span>
-      <h1 class="cv-name-big">JAY</h1>
-      <p class="cv-title">Creative Developer & Social Media Specialist</p>
-      <div class="cv-divider"></div>
-    </div>
-
-    <!-- CV Grid -->
-    <div class="cv-grid">
-
-      <!-- Left Column -->
-      <div class="cv-col-left">
-
-        <!-- About -->
-        <div class="cv-block reveal">
-          <h2 class="cv-heading">About Me</h2>
-          <p class="cv-text">Passionate developer who merges functional code with high-impact visual narratives. I design and build premium digital experiences that leave lasting impressions.</p>
-        </div>
-
-        <!-- Skills with animated bars -->
-        <div class="cv-block reveal">
-          <h2 class="cv-heading">Skills</h2>
-          <div class="cv-skill">
-            <div class="cv-skill-header">
-              <span>Web Development</span><span>90%</span>
-            </div>
-            <div class="cv-skill-track"><div class="cv-skill-bar" data-width="90"></div></div>
-          </div>
-          <div class="cv-skill">
-            <div class="cv-skill-header">
-              <span>UI/UX Design</span><span>85%</span>
-            </div>
-            <div class="cv-skill-track"><div class="cv-skill-bar" data-width="85"></div></div>
-          </div>
-          <div class="cv-skill">
-            <div class="cv-skill-header">
-              <span>Social Media Marketing</span><span>95%</span>
-            </div>
-            <div class="cv-skill-track"><div class="cv-skill-bar" data-width="95"></div></div>
-          </div>
-          <div class="cv-skill">
-            <div class="cv-skill-header">
-              <span>Content Creation</span><span>88%</span>
-            </div>
-            <div class="cv-skill-track"><div class="cv-skill-bar" data-width="88"></div></div>
-          </div>
-          <div class="cv-skill">
-            <div class="cv-skill-header">
-              <span>Graphic Design</span><span>80%</span>
-            </div>
-            <div class="cv-skill-track"><div class="cv-skill-bar" data-width="80"></div></div>
-          </div>
-        </div>
-
-        <!-- Tools -->
-        <div class="cv-block reveal">
-          <h2 class="cv-heading">Tools & Tech</h2>
-          <div class="cv-tags">
-            <span class="cv-tag">HTML/CSS</span>
-            <span class="cv-tag">JavaScript</span>
-            <span class="cv-tag">Figma</span>
-            <span class="cv-tag">Photoshop</span>
-            <span class="cv-tag">Canva</span>
-            <span class="cv-tag">WordPress</span>
-            <span class="cv-tag">Git</span>
-            <span class="cv-tag">Meta Business</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Right Column -->
-      <div class="cv-col-right">
-
-        <!-- Experience Timeline -->
-        <div class="cv-block reveal">
-          <h2 class="cv-heading">Experience</h2>
-          <div class="cv-timeline">
-            <div class="cv-timeline-item">
-              <div class="cv-timeline-dot"></div>
-              <span class="cv-timeline-date">2023 — Present</span>
-              <h3 class="cv-timeline-role">Freelance Creative Developer</h3>
-              <p class="cv-timeline-desc">Building premium websites and digital experiences for local businesses and international clients.</p>
-            </div>
-            <div class="cv-timeline-item">
-              <div class="cv-timeline-dot"></div>
-              <span class="cv-timeline-date">2022 — 2023</span>
-              <h3 class="cv-timeline-role">Social Media Specialist</h3>
-              <p class="cv-timeline-desc">Managed brand presence, created content strategies, and grew engagement across multiple platforms.</p>
-            </div>
-            <div class="cv-timeline-item">
-              <div class="cv-timeline-dot"></div>
-              <span class="cv-timeline-date">2021 — 2022</span>
-              <h3 class="cv-timeline-role">Junior Web Developer</h3>
-              <p class="cv-timeline-desc">Developed responsive websites and learned modern frameworks while building client solutions.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Education -->
-        <div class="cv-block reveal">
-          <h2 class="cv-heading">Education</h2>
-          <div class="cv-timeline">
-            <div class="cv-timeline-item">
-              <div class="cv-timeline-dot"></div>
-              <span class="cv-timeline-date">2019 — 2023</span>
-              <h3 class="cv-timeline-role">Bachelor of Science in Information Technology</h3>
-              <p class="cv-timeline-desc">Focused on web technologies, database management, and software engineering.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Contact -->
-        <div class="cv-block reveal">
-          <h2 class="cv-heading">Contact</h2>
-          <div class="cv-contact-grid">
-            <div class="cv-contact-item">
-              <span class="cv-contact-icon">📧</span>
-              <span>jay.creative@email.com</span>
-            </div>
-            <div class="cv-contact-item">
-              <span class="cv-contact-icon">📱</span>
-              <span>+63 912 345 6789</span>
-            </div>
-            <div class="cv-contact-item">
-              <span class="cv-contact-icon">🌐</span>
-              <span>lightandsalt413.github.io</span>
-            </div>
-            <div class="cv-contact-item">
-              <span class="cv-contact-icon">📍</span>
-              <span>Philippines</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="cv-scroll-hint reveal">
-      <span>Scroll to see my portfolio</span>
-      <div class="cv-scroll-arrow">↓</div>
-    </div>
-  </section>
-
   <!-- HERO — Classic JAY with portrait -->
   <section class="hero" id="hero">
+    <!-- Parallax background gradient layer -->
     <div class="hero-parallax-bg" id="hero-parallax-bg"></div>
+
     <div class="hero-inner">
       <div class="hero-letters">
         <span class="hero-letter-j">J</span>
@@ -184,6 +81,7 @@
         <div class="hero-glow"></div>
         <img src="assets/images/hero-portrait.png" alt="Jay">
       </div>
+      <!-- Step 5: Word-by-word animated tagline -->
       <div class="hero-tagline word-reveal" id="hero-tagline">
         <span class="tagline-word">C R E A T I V E</span>
         <span class="tagline-word">D E V E L O P E R</span>
