@@ -49,16 +49,22 @@ document.addEventListener('DOMContentLoaded', () => {
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
     const words = tagline.querySelectorAll('.tagline-word');
-    // Stagger each word with a delay
+    // Stagger each word — starts after curtain + portrait entrance
     words.forEach((word, i) => {
       setTimeout(() => {
         word.classList.add('visible');
-      }, 600 + i * 400);
+      }, 2000 + i * 400);
     });
     // Animate the lines after words
     setTimeout(() => {
       tagline.classList.add('lines-visible');
-    }, 600 + words.length * 400 + 200);
+    }, 2000 + words.length * 400 + 300);
+  }
+
+  /* ===== Remove curtain from DOM after animation ===== */
+  const curtain = document.getElementById('curtain');
+  if (curtain) {
+    setTimeout(() => curtain.remove(), 1800);
   }
 
   /* ===== Step 2: SCROLL REVEAL (IntersectionObserver) ===== */
