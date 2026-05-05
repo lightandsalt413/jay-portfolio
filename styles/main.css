@@ -118,18 +118,12 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 /* Portrait — massive, fills viewport */
 .hero-portrait{position:relative;z-index:2;height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;animation:heroFloat 5s ease-in-out infinite;margin-bottom:-8vh}
-.hero-glow{position:absolute;top:2%;left:50%;transform:translateX(-50%);width:300px;height:85%;background:radial-gradient(ellipse at center,rgba(255,255,255,.25) 0%,rgba(255,255,255,.15) 30%,rgba(255,255,255,.05) 55%,transparent 70%);border-radius:40%;filter:blur(20px);animation:nenPulse 3s ease-in-out infinite;pointer-events:none;z-index:0}
-/* Nen outer aura — flowing energy */
-.hero-nen{position:absolute;top:-5%;left:50%;transform:translateX(-50%);width:400px;height:90%;background:radial-gradient(ellipse at center,rgba(255,255,255,.12) 0%,rgba(255,255,255,.06) 35%,rgba(255,255,255,.02) 55%,transparent 65%);border-radius:45%;filter:blur(30px);animation:nenFlow 4s ease-in-out infinite alternate;pointer-events:none;z-index:0}
-@keyframes nenPulse{
-  0%,100%{opacity:.7;transform:translateX(-50%) scaleX(1) scaleY(1)}
-  30%{opacity:1;transform:translateX(-50%) scaleX(1.06) scaleY(1.03)}
-  60%{opacity:.8;transform:translateX(-50%) scaleX(.96) scaleY(1.01)}
-}
-@keyframes nenFlow{
-  0%{opacity:.5;transform:translateX(-50%) scale(1);filter:blur(30px)}
-  50%{opacity:.8;transform:translateX(-50%) scale(1.1);filter:blur(35px)}
-  100%{opacity:.45;transform:translateX(-50%) scale(1.05);filter:blur(28px)}
+.hero-glow,.hero-nen{display:none}
+/* Nen aura — drop-shadow follows body silhouette */
+.hero-portrait img{position:relative;z-index:1;filter:drop-shadow(0 0 12px rgba(255,255,255,.2)) drop-shadow(0 0 25px rgba(255,255,255,.12)) drop-shadow(0 0 50px rgba(255,255,255,.06));animation:nenBody 3s ease-in-out infinite}
+@keyframes nenBody{
+  0%,100%{filter:drop-shadow(0 0 12px rgba(255,255,255,.2)) drop-shadow(0 0 25px rgba(255,255,255,.12)) drop-shadow(0 0 50px rgba(255,255,255,.06))}
+  50%{filter:drop-shadow(0 0 18px rgba(255,255,255,.3)) drop-shadow(0 0 35px rgba(255,255,255,.18)) drop-shadow(0 0 60px rgba(255,255,255,.1))}
 }
 
 /* ===== CINEMATIC ENTRANCE KEYFRAMES ===== */
