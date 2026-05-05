@@ -65,8 +65,8 @@ body.gated{overflow:hidden}
 .hero-inner{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding-top:5vh}
 
 /* Giant J and Y letters — solid dark grey-blue */
-.hero-letters{position:absolute;top:52%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:100%;gap:clamp(120px,25vw,380px);pointer-events:none;z-index:1}
-.hero-letter-j,.hero-letter-y{font-family:var(--display);font-size:clamp(20rem,45vw,42rem);font-weight:400;color:rgba(255,255,255,.12);user-select:none;line-height:.75}
+.hero-letters{position:absolute;top:48%;left:50%;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:100%;gap:clamp(80px,12vw,180px);pointer-events:none;z-index:1}
+.hero-letter-j,.hero-letter-y{font-family:var(--display);font-size:clamp(14rem,28vw,26rem);font-weight:400;color:rgba(255,255,255,.12);user-select:none;line-height:.75}
 
 /* Portrait — massive, fills viewport */
 .hero-portrait{position:relative;z-index:2;height:82vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
