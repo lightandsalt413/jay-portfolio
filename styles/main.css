@@ -120,7 +120,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .hero-portrait{position:relative;z-index:2;height:92vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;animation:heroFloat 5s ease-in-out infinite;margin-bottom:-8vh}
 .hero-glow,.hero-nen{display:none}
 /* Nen aura — drop-shadow follows body silhouette */
-.hero-portrait img{position:relative;z-index:1;filter:drop-shadow(0 0 12px rgba(255,255,255,.2)) drop-shadow(0 0 25px rgba(255,255,255,.12)) drop-shadow(0 0 50px rgba(255,255,255,.06));animation:nenBody 3s ease-in-out infinite}
+.hero-portrait img{position:relative;z-index:1;height:100%;width:auto;max-width:none;object-fit:contain;filter:drop-shadow(0 0 12px rgba(255,255,255,.2)) drop-shadow(0 0 25px rgba(255,255,255,.12)) drop-shadow(0 0 50px rgba(255,255,255,.06));animation:nenBody 3s ease-in-out infinite}
 @keyframes nenBody{
   0%,100%{filter:drop-shadow(0 0 12px rgba(255,255,255,.2)) drop-shadow(0 0 25px rgba(255,255,255,.12)) drop-shadow(0 0 50px rgba(255,255,255,.06))}
   50%{filter:drop-shadow(0 0 18px rgba(255,255,255,.3)) drop-shadow(0 0 35px rgba(255,255,255,.18)) drop-shadow(0 0 60px rgba(255,255,255,.1))}
@@ -207,7 +207,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .film-grain{position:fixed;inset:0;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;transition:opacity 1.5s ease}
 .film-grain.fade-out{opacity:0}
 
-.hero-portrait img{position:relative;z-index:1;height:100%;width:auto;max-width:none;object-fit:contain}
+
 
 /* ===== Step 5: WORD-BY-WORD TAGLINE ANIMATION ===== */
 .hero-tagline{position:absolute;bottom:10vh;z-index:3;display:flex;align-items:center;gap:1.5rem;font-family:var(--display);font-size:.9rem;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,255,255,.9);text-shadow:0 2px 8px rgba(0,0,0,.6)}
