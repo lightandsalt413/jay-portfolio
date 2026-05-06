@@ -261,18 +261,29 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .about-intro{font-family:var(--serif);font-size:clamp(1.4rem,3vw,2.2rem);font-weight:400;font-style:italic;line-height:1.6;color:var(--white);letter-spacing:.01em;text-align:center;max-width:600px;padding:0 2rem}
 .about-intro span{color:var(--gold)}
 
-.about-details{padding:8rem 4rem;background:var(--navy);display:flex;flex-direction:column;align-items:center}
-.about-grid{max-width:1000px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:6rem}
-.about-heading{font-family:var(--sans);font-size:.8rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;position:relative;padding-bottom:1rem}
-.about-heading::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:1px;background:rgba(255,215,0,.3)}
-.about-bio p{font-family:var(--serif);font-size:1.1rem;line-height:2;color:var(--gray);margin-bottom:1.5rem}
-.about-bio strong{color:var(--white);font-weight:400;font-style:italic}
+.about-details{padding:6rem 4rem 8rem;background:var(--navy);display:flex;flex-direction:column;align-items:center}
 
-.skills-list{list-style:none;display:flex;flex-direction:column;gap:1.5rem}
-.skill-item{font-family:var(--sans);font-size:.9rem;letter-spacing:.1em;color:var(--gray);display:flex;align-items:center;gap:1rem;cursor:default}
-.skill-item:hover{color:var(--white)}
-.skill-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,215,0,.3);transition:all .3s ease}
-.skill-item:hover .skill-dot{background:var(--gold);box-shadow:0 0 10px var(--gold)}
+/* Intro block — full width lead paragraphs */
+.about-intro-block{max-width:800px;width:100%;margin-bottom:4rem}
+.about-lead{font-family:var(--serif);font-size:clamp(1rem,1.8vw,1.2rem);line-height:2;color:var(--gray);margin-bottom:1.5rem;font-weight:300}
+.about-lead strong{color:var(--white);font-weight:400}
+.about-lead em{color:var(--gold);font-style:italic}
+
+/* Divider */
+.about-divider{display:flex;align-items:center;gap:1.5rem;width:100%;max-width:800px;margin-bottom:4rem}
+.divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,149,107,.25),transparent)}
+.divider-label{font-family:var(--sans);font-size:.65rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+
+/* Grid */
+.about-grid{max-width:800px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:5rem}
+.about-heading{font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;position:relative;padding-bottom:1rem}
+.about-heading::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:1px;background:rgba(201,149,107,.3)}
+
+/* Project entries */
+.project-entry{margin-bottom:1.8rem;padding-left:1rem;border-left:1px solid rgba(201,149,107,.15);transition:border-color .3s ease}
+.project-entry:hover{border-left-color:var(--gold)}
+.project-name{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--white);margin-bottom:.4rem;letter-spacing:.02em}
+.project-desc{font-family:var(--sans);font-size:.8rem;line-height:1.7;color:var(--gray);font-weight:300}
 
 .about-resume{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
 .resume-note{font-family:var(--sans);font-size:.6rem;color:var(--gray2);letter-spacing:.1em;text-transform:uppercase}
@@ -302,8 +313,12 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 
   /* About page */
-  .about-details{padding:4rem 2rem}
-  .about-grid{grid-template-columns:1fr;gap:3rem}
+  .about-details{padding:3rem 1.5rem 5rem}
+  .about-intro-block{margin-bottom:2.5rem}
+  .about-lead{font-size:.95rem;line-height:1.8}
+  .about-divider{margin-bottom:2.5rem;gap:1rem}
+  .divider-label{font-size:.5rem;letter-spacing:.25em}
+  .about-grid{grid-template-columns:1fr;gap:2.5rem;margin-bottom:3rem}
   .about-portrait{width:min(200px,60vw)}
   .about-intro{font-size:clamp(1.1rem,4vw,1.6rem);padding:0 1.5rem}
 }
