@@ -43,6 +43,11 @@
       .contact-page{padding:100px 1.5rem 4rem}
       .contact-socials{flex-direction:column;gap:1.5rem;align-items:center}
     }
+
+    /* Disable entrance transitions — instant load for Contact page */
+    .reveal,.reveal-left,.reveal-right,.reveal-scale{opacity:1!important;transform:none!important;transition:none!important}
+    .reveal.active,.reveal-left.active,.reveal-right.active,.reveal-scale.active{opacity:1!important;transform:none!important}
+    .word-reveal .word{opacity:1!important;transform:none!important;transition:none!important}
   </style>
 </head>
 <body>
