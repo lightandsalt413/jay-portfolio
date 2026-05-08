@@ -99,33 +99,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ===== CUSTOM CURSOR — Smooth follow + Magnetic hover ===== */
+  /* ===== CUSTOM CURSOR — Instant crosshair ===== */
   const cursor = document.getElementById('cursor');
   const cursorDot = document.getElementById('cursor-dot');
   if (cursor && cursorDot && window.innerWidth > 768) {
-    let mx = -100, my = -100, cx = -100, cy = -100;
 
-    // Track mouse position
+    // Direct position — no lerp, no lag
     document.addEventListener('mousemove', e => {
-      mx = e.clientX;
-      my = e.clientY;
-      // Show cursor on first move
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+      cursorDot.style.left = e.clientX + 'px';
+      cursorDot.style.top = e.clientY + 'px';
       if (!cursor.classList.contains('visible')) {
         cursor.classList.add('visible');
         cursorDot.classList.add('visible');
       }
     });
-
-    // Smooth follow loop (ring lags behind, dot is precise)
-    (function tick() {
-      cx += (mx - cx) * 0.12;
-      cy += (my - cy) * 0.12;
-      cursor.style.left = cx + 'px';
-      cursor.style.top = cy + 'px';
-      cursorDot.style.left = mx + 'px';
-      cursorDot.style.top = my + 'px';
-      requestAnimationFrame(tick);
-    })();
 
     // Hover expand on interactive elements
     document.querySelectorAll('a, button, .magnetic-btn, .form-submit, .nav-link-left, .nav-link-right, .nav-center-text').forEach(el => {
@@ -133,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
       el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
-    // Magnetic pull on magnetic elements
+    // Magnetic pull
     document.querySelectorAll('.magnetic-btn, .nav-link-left, .nav-link-right, .nav-center-text, .hover-glow-text').forEach(el => {
       el.addEventListener('mousemove', e => {
         const rect = el.getBoundingClientRect();
