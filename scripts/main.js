@@ -45,13 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== CINEMATIC INTRO — New Sequence ===== */
+  /* ===== COUNTER INTRO — New Sequence ===== */
   const loader = document.getElementById('loader');
   if (loader) {
-    const introLine = document.getElementById('intro-line');
-    const introChars = document.querySelectorAll('.intro-char');
-    const introRole = document.getElementById('intro-role');
-    const corners = document.querySelectorAll('.intro-corner');
+    const counter = document.getElementById('intro-counter');
+    const introName = document.getElementById('intro-name');
+    const introTagline = document.getElementById('intro-tagline');
+    const lineTop = document.getElementById('intro-line-top');
+    const lineBot = document.getElementById('intro-line-bot');
     const loaderParticles = document.getElementById('loader-particles');
 
     // Spawn floating particles
@@ -67,31 +68,48 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Step 1: Line expands from center (300ms delay)
-    setTimeout(() => {
-      if (introLine) introLine.classList.add('expand');
-    }, 300);
+    // Step 1: Fast counter 00 → 99 (1.8 seconds)
+    let count = 0;
+    const counterInterval = setInterval(() => {
+      count += Math.floor(Math.random() * 4) + 1;
+      if (count >= 99) { count = 99; clearInterval(counterInterval); }
+      counter.textContent = String(count).padStart(2, '0');
+    }, 35);
 
-    // Step 2: JAY letters rise up one by one
-    introChars.forEach((ch, i) => {
-      setTimeout(() => ch.classList.add('rise'), 900 + i * 200);
-    });
-
-    // Step 3: Corner marks appear
+    // Step 2: Flash at "100" then swap to JAY
     setTimeout(() => {
-      corners.forEach(c => c.classList.add('show'));
-    }, 1600);
-
-    // Step 4: Role text fades in
-    setTimeout(() => {
-      if (introRole) introRole.classList.add('show');
+      counter.textContent = '100';
+      counter.classList.add('flash');
     }, 1900);
 
-    // Step 5: Cinematic exit — blur + scale out
     setTimeout(() => {
-      loader.classList.add('cinematic-exit');
+      counter.classList.add('hide');
+      introName.classList.add('reveal');
+      // Lines expand
+      if (lineTop) lineTop.classList.add('expand');
+      if (lineBot) lineBot.classList.add('expand');
+    }, 2200);
+
+    // Step 3: Type tagline letter by letter
+    const tagText = 'CREATIVE DEVELOPER';
+    let ti = 0;
+    setTimeout(() => {
+      const typeTimer = setInterval(() => {
+        if (ti < tagText.length) {
+          introTagline.textContent += tagText[ti];
+          ti++;
+        } else {
+          clearInterval(typeTimer);
+          introTagline.classList.add('done');
+        }
+      }, 50);
+    }, 2600);
+
+    // Step 4: Slide up exit
+    setTimeout(() => {
+      loader.classList.add('slide-exit');
       setTimeout(() => loader.remove(), 1000);
-    }, 3800);
+    }, 4500);
   }
 
   /* ===== TAGLINE WORD-BY-WORD (after loader) ===== */
