@@ -28,55 +28,6 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 .cursor.hover~.cursor-dot{width:0;height:0;opacity:0}
 @media(max-width:768px){body{cursor:auto}a,button,.magnetic-btn,.form-submit{cursor:pointer}.cursor,.cursor-dot{display:none!important}}
 
-/* ===== LOADING SCREEN — Cool Effects ===== */
-.loader{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.loader.zoom-out{animation:loaderZoomOut .9s cubic-bezier(.7,0,.3,1) forwards}
-@keyframes loaderZoomOut{
-  0%{transform:scale(1);opacity:1}
-  100%{transform:scale(1.5);opacity:0;visibility:hidden;pointer-events:none}
-}
-.loader-bg{position:absolute;inset:0;background:linear-gradient(135deg,#050505 0%,#0a0a0a 50%,#080808 100%)}
-.loader-bg::after{content:'';position:absolute;top:30%;left:50%;transform:translateX(-50%);width:500px;height:500px;background:radial-gradient(circle,rgba(201,149,107,.04) 0%,transparent 70%);border-radius:50%;filter:blur(60px)}
-
-/* Floating particles in loader */
-.loader-particles{position:absolute;inset:0;z-index:1;pointer-events:none}
-.loader-particle{position:absolute;width:2px;height:2px;background:rgba(201,149,107,.3);border-radius:50%;animation:loaderParticleFloat linear infinite}
-@keyframes loaderParticleFloat{
-  0%{transform:translateY(0) scale(0);opacity:0}
-  20%{opacity:1;transform:translateY(-20px) scale(1)}
-  100%{transform:translateY(-200px) scale(0);opacity:0}
-}
-
-.loader-content{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:1rem}
-
-/* Typewriter "Hello, I'm" */
-.loader-line1{font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.5rem);font-weight:300;font-style:italic;color:rgba(237,232,227,.4);letter-spacing:.1em;min-height:1.8rem;border-right:2px solid rgba(201,149,107,.6);padding-right:4px;animation:cursorBlink .6s step-end infinite}
-@keyframes cursorBlink{0%,100%{border-color:rgba(201,149,107,.6)}50%{border-color:transparent}}
-.loader-line1.typed{border-color:transparent;animation:none}
-
-/* JAY letters — drop in with blur */
-.loader-name{display:flex;gap:.05em;position:relative;overflow:visible}
-.loader-char{font-family:var(--serif);font-size:clamp(5rem,16vw,10rem);font-weight:600;line-height:1;color:rgba(201,149,107,.85);opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);transition:none;text-shadow:0 0 30px rgba(201,149,107,0)}
-.loader-char.drop{animation:charDrop .7s cubic-bezier(.34,1.56,.64,1) forwards}
-@keyframes charDrop{
-  0%{opacity:0;transform:translateY(-80px) scale(1.2);filter:blur(8px);text-shadow:0 0 30px rgba(201,149,107,0)}
-  60%{opacity:1;transform:translateY(5px) scale(1);filter:blur(0);text-shadow:0 0 40px rgba(201,149,107,.4)}
-  80%{transform:translateY(-3px) scale(1)}
-  100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0);text-shadow:0 0 20px rgba(201,149,107,.2)}
-}
-
-/* Glow pulse from center */
-.loader-glow{width:0;height:0;border-radius:50%;background:radial-gradient(circle,rgba(201,149,107,.12) 0%,rgba(201,149,107,.03) 50%,transparent 70%);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:none}
-.loader-glow.pulse{animation:glowPulse 1.2s ease-out forwards}
-@keyframes glowPulse{
-  0%{width:0;height:0;opacity:.8}
-  50%{opacity:.4}
-  100%{width:600px;height:600px;opacity:0}
-}
-
-/* "Welcome to my Portfolio" — blur slide up */
-.loader-line2{font-family:var(--sans);font-size:clamp(.5rem,1.2vw,.75rem);font-weight:300;letter-spacing:.4em;text-transform:uppercase;color:rgba(237,232,227,.4);opacity:0;transform:translateY(25px);filter:blur(6px);transition:all .8s ease}
-.loader-line2.show{opacity:1;transform:translateY(0);filter:blur(0)}
 
 /* ===== NAV — Classic 3-part ===== */
 .nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:2.5rem 4rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center}
