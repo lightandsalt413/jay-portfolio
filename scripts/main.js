@@ -145,4 +145,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ===== CUSTOM CURSOR — Smooth follow + Magnetic hover ===== */
+  const cursor = document.getElementById('cursor');
+  const cursorDot = document.getElementById('cursor-dot');
+  if (cursor && cursorDot && window.innerWidth > 768) {
+    let mx = -100, my = -100, cx = -100, cy = -100;
+
+    // Track mouse position
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX;
+      my = e.clientY;
+      // Show cursor on first move
+      if (!cursor.classList.contains('visible')) {
+        cursor.classList.add('visible');
+        cursorDot.classList.add('visible');
+      }
+    });
+
+    // Smooth follow loop (ring lags behind, dot is precise)
+    (function tick() {
+      cx += (mx - cx) * 0.12;
+      cy += (my - cy) * 0.12;
+      cursor.style.left = cx + 'px';
+      cursor.style.top = cy + 'px';
+      cursorDot.style.left = mx + 'px';
+      cursorDot.style.top = my + 'px';
+      requestAnimationFrame(tick);
+    })();
+
+    // Hover expand on interactive elements
+    document.querySelectorAll('a, button, .magnetic-btn, .form-submit, .nav-link-left, .nav-link-right, .nav-center-text').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
+
+    // Magnetic pull on magnetic elements
+    document.querySelectorAll('.magnetic-btn, .nav-link-left, .nav-link-right, .nav-center-text, .hover-glow-text').forEach(el => {
+      el.addEventListener('mousemove', e => {
+        const rect = el.getBoundingClientRect();
+        const elX = rect.left + rect.width / 2;
+        const elY = rect.top + rect.height / 2;
+        const pullX = (e.clientX - elX) * 0.3;
+        const pullY = (e.clientY - elY) * 0.3;
+        el.style.transform = `translate(${pullX}px, ${pullY}px)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+        el.style.transition = 'transform .4s cubic-bezier(.16,1,.3,1)';
+        setTimeout(() => el.style.transition = '', 400);
+      });
+    });
+  }
+
 });

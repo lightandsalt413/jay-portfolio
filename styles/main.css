@@ -17,6 +17,17 @@ img{max-width:100%;display:block}
 button{border:none;background:none;font-family:inherit;color:inherit}
 ::selection{background:var(--gold);color:var(--navy)}
 
+/* ===== CUSTOM CURSOR ===== */
+body{cursor:none}
+a,button,.magnetic-btn,.form-submit{cursor:none}
+.cursor{position:fixed;width:36px;height:36px;border:1.5px solid rgba(201,149,107,.35);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .25s ease,height .25s ease,border-color .25s ease,background .25s ease,opacity .25s ease;mix-blend-mode:difference;opacity:0}
+.cursor.visible{opacity:1}
+.cursor-dot{position:fixed;width:5px;height:5px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:width .15s ease,height .15s ease,opacity .15s ease;opacity:0}
+.cursor-dot.visible{opacity:1}
+.cursor.hover{width:56px;height:56px;border-color:rgba(201,149,107,.6);background:rgba(201,149,107,.06)}
+.cursor.hover~.cursor-dot{width:0;height:0;opacity:0}
+@media(max-width:768px){body{cursor:auto}a,button,.magnetic-btn,.form-submit{cursor:pointer}.cursor,.cursor-dot{display:none!important}}
+
 /* ===== LOADING SCREEN — Cool Effects ===== */
 .loader{position:fixed;inset:0;z-index:10000;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .loader.zoom-out{animation:loaderZoomOut .9s cubic-bezier(.7,0,.3,1) forwards}
