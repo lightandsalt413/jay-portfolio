@@ -7,6 +7,46 @@
   <meta name="description" content="Creative Developer & Social Media Specialist. Merging functional code with high-impact visual narratives.">
   <link rel="stylesheet" href="styles/main.css?v=50">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <style>
+    /* "Hello, I'm" greeting above hero letters */
+    .hero-greeting{
+      position:absolute;
+      top:22%;
+      left:50%;
+      transform:translateX(-50%);
+      z-index:3;
+      text-align:center;
+      opacity:0;
+      animation:greetingFadeIn 1.2s ease forwards;
+      animation-delay:5s;
+    }
+    .hero-greeting-text{
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-size:clamp(1rem,2vw,1.4rem);
+      font-weight:300;
+      font-style:italic;
+      color:rgba(237,232,227,.45);
+      letter-spacing:.15em;
+      white-space:nowrap;
+    }
+    .hero-greeting-name{
+      display:block;
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-size:clamp(1.2rem,2.5vw,1.8rem);
+      font-weight:400;
+      font-style:italic;
+      color:rgba(201,149,107,.6);
+      letter-spacing:.1em;
+      margin-top:.3rem;
+    }
+    @keyframes greetingFadeIn{
+      0%{opacity:0;transform:translateX(-50%) translateY(10px)}
+      100%{opacity:1;transform:translateX(-50%) translateY(0)}
+    }
+    @media(max-width:768px){
+      .hero-greeting{top:18%}
+    }
+  </style>
 </head>
 <body>
 
@@ -47,6 +87,11 @@
     <div class="hero-parallax-bg" id="hero-parallax-bg"></div>
 
     <div class="hero-inner">
+      <!-- "Hello, I'm" greeting -->
+      <div class="hero-greeting">
+        <span class="hero-greeting-text">Hello, I'm</span>
+        <span class="hero-greeting-name">Jay</span>
+      </div>
       <div class="hero-letters">
         <span class="hero-letter-j">J</span>
         <span class="hero-letter-y">Y</span>
