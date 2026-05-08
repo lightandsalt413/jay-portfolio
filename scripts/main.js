@@ -20,13 +20,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ===== Step 3: PARALLAX BACKGROUND — Depth on scroll ===== */
-  const parallaxBg = document.getElementById('hero-parallax-bg');
-  window.addEventListener('scroll', () => {
+  /* ===== UNIVERSAL PARALLAX — data-parallax attribute ===== */
+  const parallaxEls = document.querySelectorAll('[data-parallax]');
+  let ticking = false;
+  function updateParallax() {
     const s = window.scrollY;
-    if (parallaxBg) {
-      parallaxBg.style.transform = `translateY(${s * 0.4}px)`;
-    }
+    parallaxEls.forEach(el => {
+      const speed = parseFloat(el.dataset.parallax) || 0;
+      el.style.transform = `translateY(${s * speed}px)`;
+    });
+    ticking = false;
+  }
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateParallax); ticking = true; }
   });
 
   /* ===== Step 3b: FLOATING PARTICLES — Ambient depth ===== */
@@ -195,6 +201,28 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => el.style.transition = '', 400);
       });
     });
+  }
+
+  /* ===== SMOOTH SCROLL MOMENTUM ===== */
+  // Lerp-based smooth scroll for premium feel
+  if (window.innerWidth > 768) {
+    let scrollTarget = window.scrollY;
+    let scrollCurrent = window.scrollY;
+    const ease = 0.08;
+    
+    window.addEventListener('wheel', e => {
+      e.preventDefault();
+      scrollTarget += e.deltaY;
+      scrollTarget = Math.max(0, Math.min(scrollTarget, document.documentElement.scrollHeight - window.innerHeight));
+    }, { passive: false });
+
+    (function smoothScroll() {
+      scrollCurrent += (scrollTarget - scrollCurrent) * ease;
+      // Snap if close enough
+      if (Math.abs(scrollTarget - scrollCurrent) < 0.5) scrollCurrent = scrollTarget;
+      window.scrollTo(0, scrollCurrent);
+      requestAnimationFrame(smoothScroll);
+    })();
   }
 
 });
