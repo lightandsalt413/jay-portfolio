@@ -37,7 +37,7 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 .nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:1.8rem 4rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:linear-gradient(180deg,rgba(9,9,9,.85) 0%,rgba(9,9,9,.4) 70%,transparent 100%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
 
 /* Side links — corner bracket frames */
-.nav-link-left,.nav-link-right{font-family:var(--display);font-size:.75rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);transition:all .4s ease;position:relative;padding:.6rem 1.2rem;border:1px solid rgba(201,149,107,.15)}
+.nav-link-left,.nav-link-right{font-family:var(--display);font-size:.75rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);transition:all .4s ease;position:relative;padding:.6rem 1.2rem;border:1px solid rgba(201,149,107,.15)}
 .nav-link-left:hover,.nav-link-right:hover{color:var(--gold);border-color:rgba(201,149,107,.5);background:rgba(201,149,107,.05);text-shadow:0 0 15px rgba(201,149,107,.25);letter-spacing:.35em}
 .nav-link-left{justify-self:start}
 .nav-link-right{justify-self:end}
@@ -45,7 +45,7 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 /* Center — decorative SERVICES */
 .nav-center{display:flex;align-items:center;gap:2rem}
 .nav-line{width:100px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,149,107,.25),transparent)}
-.nav-center-text{font-family:var(--display);font-size:.75rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.7);transition:all .4s ease;position:relative;padding:.6rem 1.8rem;border:1px solid rgba(201,149,107,.25)}
+.nav-center-text{font-family:var(--display);font-size:.75rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.7);transition:all .4s ease;position:relative;padding:.6rem 1.8rem;border:1px solid rgba(201,149,107,.25)}
 .nav-center-text::before,.nav-center-text::after{content:'';position:absolute;width:6px;height:6px;border:1px solid rgba(201,149,107,.35);transform:rotate(45deg);transition:all .4s ease}
 .nav-center-text::before{left:-4px;top:50%;margin-top:-3px;background:rgba(201,149,107,.15)}
 .nav-center-text::after{right:-4px;top:50%;margin-top:-3px;background:rgba(201,149,107,.15)}
