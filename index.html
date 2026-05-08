@@ -14,22 +14,42 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-dot" id="cursor-dot"></div>
 
-  <!-- CINEMATIC INTRO -->
+
+  <!-- MULTI-LAYERED STAGGERED SWEEP -->
   <div class="loader" id="loader">
     <div class="loader-bg"></div>
     <div class="loader-particles" id="loader-particles"></div>
+    <!-- Sweep panels -->
+    <div class="sweep-panel sweep-1" id="sweep-1"></div>
+    <div class="sweep-panel sweep-2" id="sweep-2"></div>
+    <div class="sweep-panel sweep-3" id="sweep-3"></div>
+    <div class="sweep-panel sweep-4" id="sweep-4"></div>
+    <!-- Content revealed between sweeps -->
     <div class="loader-content" id="loader-content">
       <div class="intro-name" id="intro-name">JAY</div>
-      <!-- Typing tagline -->
       <div class="intro-tagline" id="intro-tagline"></div>
-      <!-- Thin line above and below -->
-      <div class="intro-line-top" id="intro-line-top"></div>
-      <div class="intro-line-bot" id="intro-line-bot"></div>
     </div>
   </div>
 
   <style>
-    /* ===== JAY INTRO ===== */
+    /* ===== MULTI-LAYERED STAGGERED SWEEP ===== */
+    .sweep-panel{
+      position:absolute;inset:0;z-index:10001;
+      transform:translateX(0);
+      will-change:transform;
+    }
+    .sweep-1{background:#0c0a08}
+    .sweep-2{background:#12100d}
+    .sweep-3{background:#1a1612}
+    .sweep-4{background:linear-gradient(90deg,#1a1612 60%,rgba(201,149,107,.08) 100%)}
+
+    .sweep-panel.sweep-out{
+      animation:sweepOut .9s cubic-bezier(.76,0,.24,1) forwards;
+    }
+    @keyframes sweepOut{
+      0%{transform:translateX(0)}
+      100%{transform:translateX(100%)}
+    }
 
     .intro-name{
       font-family:'Cormorant Garamond',Georgia,serif;
@@ -39,13 +59,12 @@
       letter-spacing:.08em;
       position:relative;z-index:2;
       opacity:0;
-      transform:scale(1.5);
-      filter:blur(10px);
-      transition:all .7s cubic-bezier(.25,.46,.45,.94);
+      transform:translateY(20px);
+      transition:all .6s cubic-bezier(.16,1,.3,1);
       text-shadow:0 0 40px rgba(201,149,107,.15);
     }
     .intro-name.reveal{
-      opacity:1;transform:scale(1);filter:blur(0);
+      opacity:1;transform:translateY(0);
     }
 
     .intro-tagline{
@@ -65,30 +84,13 @@
     .intro-tagline.done{border-right-color:transparent;animation:none}
     @keyframes cursorPulse{0%,100%{border-color:rgba(201,149,107,.4)}50%{border-color:transparent}}
 
-    /* Decorative lines */
-    .intro-line-top,.intro-line-bot{
-      position:absolute;left:50%;transform:translateX(-50%);
-      width:0;height:1px;
-      background:linear-gradient(90deg,transparent,rgba(201,149,107,.3),transparent);
-      transition:width .8s ease;
-      z-index:1;
+    /* Exit */
+    .loader.fade-exit{
+      animation:loaderFade .8s ease forwards;
     }
-    .intro-line-top{top:35%}
-    .intro-line-bot{bottom:35%}
-    .intro-line-top.expand,.intro-line-bot.expand{width:min(350px,70vw)}
-
-    /* Exit: slide up */
-    .loader.slide-exit{
-      animation:slideExit 1s cubic-bezier(.7,0,.3,1) forwards;
-    }
-    @keyframes slideExit{
-      0%{transform:translateY(0);opacity:1}
-      100%{transform:translateY(-100%);opacity:0;visibility:hidden;pointer-events:none}
-    }
-
-    @media(max-width:768px){
-      .intro-line-top{top:30%}
-      .intro-line-bot{bottom:30%}
+    @keyframes loaderFade{
+      0%{opacity:1}
+      100%{opacity:0;visibility:hidden;pointer-events:none}
     }
 
     /* ===== STAGGERED HERO ENTRANCE ===== */
@@ -104,12 +106,12 @@
     @keyframes staggerFromUp{0%{opacity:0;transform:translateY(60px)}100%{opacity:1;transform:translateY(0)}}
     @keyframes staggerFromDown{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
 
-    /* Stagger delays (timed after loader exit at ~3.8s) */
-    .s-d1{animation-delay:3.8s}
-    .s-d2{animation-delay:4.1s}
-    .s-d3{animation-delay:4.4s}
-    .s-d4{animation-delay:4.7s}
-    .s-d5{animation-delay:5s}
+    /* Stagger delays (timed after loader exit at ~4.2s) */
+    .s-d1{animation-delay:4.2s}
+    .s-d2{animation-delay:4.5s}
+    .s-d3{animation-delay:4.8s}
+    .s-d4{animation-delay:5.1s}
+    .s-d5{animation-delay:5.4s}
   </style>
 
 

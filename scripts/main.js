@@ -51,13 +51,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== JAY INTRO ===== */
+  /* ===== MULTI-LAYERED STAGGERED SWEEP ===== */
   const loader = document.getElementById('loader');
   if (loader) {
     const introName = document.getElementById('intro-name');
     const introTagline = document.getElementById('intro-tagline');
-    const lineTop = document.getElementById('intro-line-top');
-    const lineBot = document.getElementById('intro-line-bot');
+    const sweeps = [
+      document.getElementById('sweep-1'),
+      document.getElementById('sweep-2'),
+      document.getElementById('sweep-3'),
+      document.getElementById('sweep-4')
+    ];
     const loaderParticles = document.getElementById('loader-particles');
 
     // Spawn floating particles
@@ -73,14 +77,19 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Step 1: JAY appears (blur → sharp)
+    // Step 1: Sweep panels out one by one (staggered)
+    sweeps.forEach((panel, i) => {
+      if (panel) {
+        setTimeout(() => panel.classList.add('sweep-out'), 400 + i * 220);
+      }
+    });
+
+    // Step 2: JAY name reveals after panels clear
     setTimeout(() => {
       introName.classList.add('reveal');
-      if (lineTop) lineTop.classList.add('expand');
-      if (lineBot) lineBot.classList.add('expand');
-    }, 500);
+    }, 1500);
 
-    // Step 2: Type tagline letter by letter
+    // Step 3: Type tagline letter by letter
     const tagText = 'CREATIVE DEVELOPER';
     let ti = 0;
     setTimeout(() => {
@@ -93,13 +102,13 @@ document.addEventListener('DOMContentLoaded', () => {
           introTagline.classList.add('done');
         }
       }, 50);
-    }, 1200);
+    }, 2000);
 
-    // Step 3: Slide up exit
+    // Step 4: Fade out the loader
     setTimeout(() => {
-      loader.classList.add('slide-exit');
-      setTimeout(() => loader.remove(), 1000);
-    }, 3800);
+      loader.classList.add('fade-exit');
+      setTimeout(() => loader.remove(), 800);
+    }, 4200);
   }
 
   /* ===== TAGLINE WORD-BY-WORD (after loader) ===== */
