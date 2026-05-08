@@ -203,26 +203,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ===== SMOOTH SCROLL MOMENTUM ===== */
-  // Lerp-based smooth scroll for premium feel
-  if (window.innerWidth > 768) {
-    let scrollTarget = window.scrollY;
-    let scrollCurrent = window.scrollY;
-    const ease = 0.08;
-    
-    window.addEventListener('wheel', e => {
-      e.preventDefault();
-      scrollTarget += e.deltaY;
-      scrollTarget = Math.max(0, Math.min(scrollTarget, document.documentElement.scrollHeight - window.innerHeight));
-    }, { passive: false });
-
-    (function smoothScroll() {
-      scrollCurrent += (scrollTarget - scrollCurrent) * ease;
-      // Snap if close enough
-      if (Math.abs(scrollTarget - scrollCurrent) < 0.5) scrollCurrent = scrollTarget;
-      window.scrollTo(0, scrollCurrent);
-      requestAnimationFrame(smoothScroll);
-    })();
-  }
-
 });
