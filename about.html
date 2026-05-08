@@ -7,11 +7,231 @@
   <meta name="description" content="Learn about Jay — a multi-disciplinary creative developer specializing in web development, social media, and Shopify integrations.">
   <link rel="stylesheet" href="styles/main.css?v=51">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-  <!-- Disable entrance transitions — instant load for About page -->
+  <!-- About Page — Premium Visual Overhaul -->
   <style>
+    /* ===== DISABLE TRANSITIONS (instant load) ===== */
     .reveal,.reveal-left,.reveal-right,.reveal-scale{opacity:1!important;transform:none!important;transition:none!important}
     .reveal.active,.reveal-left.active,.reveal-right.active,.reveal-scale.active{opacity:1!important;transform:none!important}
     .word-reveal .word{opacity:1!important;transform:none!important;transition:none!important}
+
+    /* ===== NAV — Glassmorphism ===== */
+    .nav{
+      background:rgba(9,9,9,.65)!important;
+      backdrop-filter:blur(20px)!important;
+      -webkit-backdrop-filter:blur(20px)!important;
+      border-bottom:1px solid rgba(201,149,107,.06);
+      padding:1.8rem 4rem!important;
+    }
+
+    /* ===== ABOUT HERO — Rich gradient background ===== */
+    .about-hero{
+      background:
+        radial-gradient(ellipse at 50% 0%,rgba(201,149,107,.08) 0%,transparent 60%),
+        radial-gradient(ellipse at 20% 80%,rgba(201,149,107,.04) 0%,transparent 50%),
+        radial-gradient(ellipse at 80% 60%,rgba(120,100,80,.03) 0%,transparent 45%),
+        linear-gradient(180deg,#090909 0%,#0d0b09 50%,#090909 100%)!important;
+      position:relative;
+      overflow:hidden;
+    }
+    .about-hero::before{
+      content:'';position:absolute;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity:.5;pointer-events:none;z-index:0;
+    }
+    .about-hero-inner{position:relative;z-index:1}
+
+    /* Portrait glow — stronger, warmer */
+    .about-glow{
+      filter:blur(80px)!important;
+      opacity:.2!important;
+      animation:auraGlow 4s ease-in-out infinite;
+    }
+    @keyframes auraGlow{
+      0%,100%{opacity:.15;transform:translate(-50%,-50%) scale(1)}
+      50%{opacity:.25;transform:translate(-50%,-50%) scale(1.1)}
+    }
+
+    /* Quote text — more impactful */
+    .about-intro{
+      font-size:clamp(1.5rem,3.5vw,2.5rem)!important;
+      line-height:1.7!important;
+      text-shadow:0 2px 20px rgba(0,0,0,.5);
+    }
+    .about-intro span{
+      color:var(--gold)!important;
+      text-shadow:0 0 20px rgba(201,149,107,.3);
+    }
+
+    /* ===== ABOUT DETAILS — Rich layered background ===== */
+    .about-details{
+      background:
+        radial-gradient(ellipse at 15% 20%,rgba(201,149,107,.05) 0%,transparent 50%),
+        radial-gradient(ellipse at 85% 70%,rgba(201,149,107,.04) 0%,transparent 45%),
+        radial-gradient(ellipse at 50% 100%,rgba(201,149,107,.06) 0%,transparent 40%),
+        linear-gradient(180deg,#090909 0%,#0c0a08 30%,#0a0908 70%,#090909 100%)!important;
+      padding:8rem 4rem 10rem!important;
+      position:relative;
+      overflow:hidden;
+    }
+    .about-details::before{
+      content:'';position:absolute;inset:0;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      opacity:.4;pointer-events:none;z-index:0;
+    }
+    .about-details>*{position:relative;z-index:1}
+
+    /* ===== TEXT READABILITY — Higher contrast ===== */
+    .about-lead{
+      font-size:clamp(1.05rem,2vw,1.35rem)!important;
+      line-height:2.2!important;
+      color:rgba(200,195,188,.7)!important;
+      margin-bottom:2rem!important;
+    }
+    .about-lead strong{
+      color:var(--white)!important;
+      font-weight:500!important;
+    }
+
+    /* ===== BRAND LINKS — Enhanced gold glow hover ===== */
+    .brand-link{
+      color:var(--gold)!important;
+      position:relative;
+      transition:all .4s ease!important;
+    }
+    .brand-link::after{
+      content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;
+      background:linear-gradient(90deg,var(--gold),rgba(201,149,107,.3));
+      transition:width .4s ease;
+    }
+    .brand-link:hover::after{width:100%}
+    .brand-link:hover{
+      color:#e8c9a0!important;
+      text-shadow:0 0 12px rgba(201,149,107,.35);
+    }
+
+    /* ===== DIVIDER — Animated glow line ===== */
+    .about-divider{margin-bottom:5rem!important;margin-top:1rem!important}
+    .divider-line{
+      background:linear-gradient(90deg,transparent,rgba(201,149,107,.35),transparent)!important;
+      height:1px;
+    }
+    .divider-label{
+      font-size:.7rem!important;
+      letter-spacing:.4em!important;
+      text-shadow:0 0 15px rgba(201,149,107,.2);
+    }
+
+    /* ===== SECTION HEADINGS — Bolder, more visible ===== */
+    .about-heading{
+      font-size:.85rem!important;
+      font-weight:500!important;
+      letter-spacing:.35em!important;
+      margin-bottom:2.5rem!important;
+    }
+    .about-heading::after{
+      width:50px!important;
+      background:linear-gradient(90deg,var(--gold),transparent)!important;
+    }
+
+    /* ===== PROJECT ENTRIES — Enhanced cards ===== */
+    .project-entry{
+      padding:1.2rem 1.5rem!important;
+      margin-bottom:2rem!important;
+      border-left:2px solid rgba(201,149,107,.1)!important;
+      background:rgba(201,149,107,.01);
+      border-radius:0 4px 4px 0;
+      transition:all .4s ease!important;
+    }
+    .project-entry:hover{
+      border-left-color:var(--gold)!important;
+      background:rgba(201,149,107,.04)!important;
+      box-shadow:0 4px 30px rgba(201,149,107,.06),inset 0 0 30px rgba(201,149,107,.02);
+      transform:translateX(4px);
+    }
+
+    /* Project names — bigger */
+    .project-name{
+      font-size:1.1rem!important;
+      margin-bottom:.6rem!important;
+    }
+    .project-name .brand-link{
+      font-style:normal!important;
+      color:var(--white)!important;
+    }
+    .project-name .brand-link:hover{
+      color:var(--gold)!important;
+      text-shadow:0 0 15px rgba(201,149,107,.3);
+    }
+
+    /* Project descriptions — more readable */
+    .project-desc{
+      font-size:.85rem!important;
+      line-height:1.8!important;
+      color:rgba(180,175,168,.65)!important;
+    }
+
+    /* ===== GRID — More gap ===== */
+    .about-grid{gap:5rem!important;margin-bottom:6rem!important}
+
+    /* ===== RESUME BUTTON — Premium styling ===== */
+    .about-resume{gap:2rem!important}
+    .magnetic-btn{
+      padding:1.2rem 3.5rem!important;
+      border-color:rgba(201,149,107,.4)!important;
+      font-size:.75rem!important;
+      letter-spacing:.35em!important;
+      box-shadow:0 0 20px rgba(201,149,107,.05);
+      transition:all .5s ease!important;
+    }
+    .magnetic-btn:hover{
+      box-shadow:0 0 40px rgba(201,149,107,.15),0 0 80px rgba(201,149,107,.05)!important;
+    }
+
+    /* ===== ENDING SECTION — Gradient into footer ===== */
+    .ending{
+      background:
+        radial-gradient(ellipse at 50% 0%,rgba(201,149,107,.06) 0%,transparent 60%),
+        linear-gradient(180deg,#090909 0%,#060505 100%)!important;
+      padding:6rem 2rem 4rem!important;
+      text-align:center;
+    }
+    .ending-name{
+      font-family:var(--serif)!important;
+      font-size:clamp(4rem,12vw,8rem)!important;
+      font-weight:600!important;
+      background:linear-gradient(180deg,rgba(201,149,107,.15),rgba(201,149,107,.05))!important;
+      -webkit-background-clip:text!important;
+      background-clip:text!important;
+      color:transparent!important;
+      letter-spacing:.2em;
+    }
+    .glow-email{
+      display:block;
+      font-family:var(--sans);
+      font-size:.75rem;
+      letter-spacing:.15em;
+      color:rgba(201,149,107,.5)!important;
+      transition:all .4s ease;
+      margin-bottom:1rem;
+    }
+    .glow-email:hover{
+      color:var(--gold)!important;
+      text-shadow:0 0 20px rgba(201,149,107,.3);
+    }
+    .ending-copy{
+      font-size:.6rem;
+      color:rgba(255,255,255,.15);
+      letter-spacing:.2em;
+    }
+
+    /* ===== RESPONSIVE OVERRIDES ===== */
+    @media(max-width:768px){
+      .nav{padding:1rem 1.5rem!important}
+      .about-details{padding:4rem 1.5rem 6rem!important}
+      .about-lead{font-size:1rem!important;line-height:1.9!important}
+      .about-grid{gap:3rem!important}
+      .project-entry{padding:1rem 1.2rem!important}
+    }
   </style>
 </head>
 <body class="about-page">
