@@ -51,72 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== CURTAIN INTRO ===== */
-  const loader = document.getElementById('loader');
-  if (loader) {
-    const introName = document.getElementById('intro-name');
-    const introTagline = document.getElementById('intro-tagline');
-    const curtainL = document.getElementById('curtain-left');
-    const curtainR = document.getElementById('curtain-right');
-    const seam = document.getElementById('curtain-seam');
-    const loaderParticles = document.getElementById('loader-particles');
-
-    // Spawn floating particles
-    if (loaderParticles) {
-      for (let i = 0; i < 20; i++) {
-        const p = document.createElement('div');
-        p.className = 'loader-particle';
-        p.style.left = Math.random() * 100 + '%';
-        p.style.top = 40 + Math.random() * 40 + '%';
-        p.style.animationDuration = 2 + Math.random() * 3 + 's';
-        p.style.animationDelay = Math.random() * 2 + 's';
-        loaderParticles.appendChild(p);
-      }
-    }
-
-    // Step 1: JAY name appears
-    setTimeout(() => {
-      introName.classList.add('reveal');
-    }, 500);
-
-    // Step 2: Type tagline
-    const tagText = 'CREATIVE DEVELOPER';
-    let ti = 0;
-    setTimeout(() => {
-      const typeTimer = setInterval(() => {
-        if (ti < tagText.length) {
-          introTagline.textContent += tagText[ti];
-          ti++;
-        } else {
-          clearInterval(typeTimer);
-          introTagline.classList.add('done');
-        }
-      }, 50);
-    }, 1200);
-
-    // Step 3: Curtains open!
-    setTimeout(() => {
-      if (seam) seam.classList.add('hide');
-      if (curtainL) curtainL.classList.add('open');
-      if (curtainR) curtainR.classList.add('open');
-    }, 2800);
-
-    // Step 4: Fade out loader
-    setTimeout(() => {
-      loader.classList.add('fade-exit');
-      setTimeout(() => loader.remove(), 800);
-    }, 4200);
-  }
-
-  /* ===== TAGLINE WORD-BY-WORD (after loader) ===== */
+  /* ===== TAGLINE WORD-BY-WORD ===== */
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
-    const delay = document.getElementById('loader') ? 4500 : 500;
     const words = tagline.querySelectorAll('.tagline-word');
     words.forEach((word, i) => {
-      setTimeout(() => word.classList.add('visible'), delay + i * 400);
+      setTimeout(() => word.classList.add('visible'), 500 + i * 400);
     });
-    setTimeout(() => tagline.classList.add('lines-visible'), delay + words.length * 400 + 300);
+    setTimeout(() => tagline.classList.add('lines-visible'), 500 + words.length * 400 + 300);
   }
 
   /* ===== Step 2: SCROLL REVEAL (IntersectionObserver) ===== */

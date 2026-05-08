@@ -15,126 +15,12 @@
   <div class="cursor-dot" id="cursor-dot"></div>
 
 
-  <!-- CURTAIN INTRO -->
-  <div class="loader" id="loader">
-    <div class="loader-bg"></div>
-    <div class="loader-particles" id="loader-particles"></div>
-    <!-- Curtain panels -->
-    <div class="curtain-left" id="curtain-left"></div>
-    <div class="curtain-right" id="curtain-right"></div>
-    <div class="curtain-seam" id="curtain-seam"></div>
-    <!-- Content shown before curtains open -->
-    <div class="loader-content" id="loader-content">
-      <div class="intro-name" id="intro-name">JAY</div>
-      <div class="intro-tagline" id="intro-tagline"></div>
-    </div>
-  </div>
 
-  <style>
-    /* ===== CURTAIN INTRO ===== */
-    .curtain-left,.curtain-right{
-      position:absolute;top:0;bottom:0;width:50%;
-      z-index:10001;
-      will-change:transform;
-    }
-    .curtain-left{
-      left:0;
-      background:linear-gradient(90deg,#0a0908 70%,#0f0d0b 100%);
-    }
-    .curtain-right{
-      right:0;
-      background:linear-gradient(270deg,#0a0908 70%,#0f0d0b 100%);
-    }
-    .curtain-seam{
-      position:absolute;top:0;bottom:0;left:50%;
-      width:1px;z-index:10002;
-      background:linear-gradient(180deg,transparent 10%,rgba(201,149,107,.25) 50%,transparent 90%);
-      transform:translateX(-50%);
-      transition:opacity .4s ease;
-    }
-    .curtain-seam.hide{opacity:0}
-
-    .curtain-left.open{animation:curtainOpenLeft 1.2s cubic-bezier(.76,0,.24,1) forwards}
-    .curtain-right.open{animation:curtainOpenRight 1.2s cubic-bezier(.76,0,.24,1) forwards}
-
-    @keyframes curtainOpenLeft{
-      0%{transform:translateX(0)}
-      100%{transform:translateX(-100%)}
-    }
-    @keyframes curtainOpenRight{
-      0%{transform:translateX(0)}
-      100%{transform:translateX(100%)}
-    }
-
-    .intro-name{
-      font-family:'Cormorant Garamond',Georgia,serif;
-      font-size:clamp(5rem,18vw,12rem);
-      font-weight:600;line-height:1;
-      color:rgba(201,149,107,.85);
-      letter-spacing:.08em;
-      position:relative;z-index:10003;
-      opacity:0;
-      transform:scale(.9);
-      transition:all .6s cubic-bezier(.16,1,.3,1);
-      text-shadow:0 0 40px rgba(201,149,107,.15);
-    }
-    .intro-name.reveal{
-      opacity:1;transform:scale(1);
-    }
-
-    .intro-tagline{
-      font-family:'Space Grotesk',-apple-system,sans-serif;
-      font-size:clamp(.5rem,1.1vw,.7rem);
-      font-weight:300;
-      letter-spacing:.6em;
-      text-transform:uppercase;
-      color:rgba(237,232,227,.4);
-      min-height:1.2rem;
-      position:relative;z-index:10003;
-      margin-top:.8rem;
-      border-right:1px solid rgba(201,149,107,.4);
-      padding-right:3px;
-      animation:cursorPulse .7s step-end infinite;
-    }
-    .intro-tagline.done{border-right-color:transparent;animation:none}
-    @keyframes cursorPulse{0%,100%{border-color:rgba(201,149,107,.4)}50%{border-color:transparent}}
-
-    /* Exit */
-    .loader.fade-exit{
-      animation:loaderFade .8s ease forwards;
-    }
-    @keyframes loaderFade{
-      0%{opacity:1}
-      100%{opacity:0;visibility:hidden;pointer-events:none}
-    }
-
-    /* ===== STAGGERED HERO ENTRANCE ===== */
-    .stagger{opacity:0;animation:staggerIn .9s cubic-bezier(.16,1,.3,1) forwards}
-    .stagger-left{opacity:0;animation:staggerFromLeft 1s cubic-bezier(.16,1,.3,1) forwards}
-    .stagger-right{opacity:0;animation:staggerFromRight 1s cubic-bezier(.16,1,.3,1) forwards}
-    .stagger-up{opacity:0;animation:staggerFromUp .9s cubic-bezier(.16,1,.3,1) forwards}
-    .stagger-down{opacity:0;animation:staggerFromDown .8s cubic-bezier(.16,1,.3,1) forwards}
-
-    @keyframes staggerIn{0%{opacity:0;transform:scale(.9)}100%{opacity:1;transform:scale(1)}}
-    @keyframes staggerFromLeft{0%{opacity:0;transform:translateX(-80px)}100%{opacity:1;transform:translateX(0)}}
-    @keyframes staggerFromRight{0%{opacity:0;transform:translateX(80px)}100%{opacity:1;transform:translateX(0)}}
-    @keyframes staggerFromUp{0%{opacity:0;transform:translateY(60px)}100%{opacity:1;transform:translateY(0)}}
-    @keyframes staggerFromDown{0%{opacity:0;transform:translateY(-40px)}100%{opacity:1;transform:translateY(0)}}
-
-    /* Stagger delays (timed after loader exit at ~4.2s) */
-    .s-d1{animation-delay:4.2s}
-    .s-d2{animation-delay:4.5s}
-    .s-d3{animation-delay:4.8s}
-    .s-d4{animation-delay:5.1s}
-    .s-d5{animation-delay:5.4s}
-  </style>
-
-
-  <!-- PARALLAX PARTICLES — subtle depth layer -->
+  <!-- PARALLAX PARTICLES -->
   <div class="parallax-particles" id="parallax-particles"></div>
 
-  <!-- NAV — Classic 3-part layout -->
-  <nav class="nav stagger-down s-d1" id="nav">
+  <!-- NAV -->
+  <nav class="nav" id="nav">
     <a href="about.html" class="nav-link-left hover-glow-text">About Me</a>
     <div class="nav-center">
       <div class="nav-line"></div>
@@ -144,23 +30,21 @@
     <a href="contact.html" class="nav-link-right hover-glow-text">Contact</a>
   </nav>
 
-  <!-- HERO — Classic JAY with portrait -->
+  <!-- HERO -->
   <section class="hero" id="hero">
-    <!-- Parallax background gradient layer -->
     <div class="hero-parallax-bg" id="hero-parallax-bg" data-parallax="0.4"></div>
 
     <div class="hero-inner">
       <div class="hero-letters">
-        <span class="hero-letter-j stagger-left s-d2" data-parallax="-0.15">J</span>
-        <span class="hero-letter-y stagger-right s-d3" data-parallax="-0.1">Y</span>
+        <span class="hero-letter-j" data-parallax="-0.15">J</span>
+        <span class="hero-letter-y" data-parallax="-0.1">Y</span>
       </div>
-      <div class="hero-portrait stagger-up s-d2" id="hero-portrait" data-parallax="-0.05">
+      <div class="hero-portrait" id="hero-portrait" data-parallax="-0.05">
         <div class="hero-glow"></div>
         <div class="hero-nen"></div>
         <img src="assets/images/hero-portrait.png" alt="Jay">
       </div>
-      <!-- Tagline -->
-      <div class="hero-tagline word-reveal stagger s-d5" id="hero-tagline">
+      <div class="hero-tagline word-reveal" id="hero-tagline">
         <span class="tagline-word">C R E A T I V E</span>
         <span class="tagline-word">D E V E L O P E R</span>
       </div>
