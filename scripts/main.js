@@ -45,13 +45,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== LOADING SCREEN — Cool Effects ===== */
+  /* ===== CINEMATIC INTRO — New Sequence ===== */
   const loader = document.getElementById('loader');
   if (loader) {
-    const l1 = document.getElementById('loader-line1');
-    const chars = document.querySelectorAll('.loader-char');
-    const glow = document.getElementById('loader-glow');
-    const l2 = document.getElementById('loader-line2');
+    const introLine = document.getElementById('intro-line');
+    const introChars = document.querySelectorAll('.intro-char');
+    const introRole = document.getElementById('intro-role');
+    const corners = document.querySelectorAll('.intro-corner');
     const loaderParticles = document.getElementById('loader-particles');
 
     // Spawn floating particles
@@ -67,43 +67,37 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Step 1: Typewriter "Hello, I'm"
-    const text = "Hello, I'm";
-    let idx = 0;
-    const typeInterval = setInterval(() => {
-      if (idx < text.length) {
-        l1.textContent += text[idx];
-        idx++;
-      } else {
-        clearInterval(typeInterval);
-        l1.classList.add('typed');
-      }
-    }, 80);
+    // Step 1: Line expands from center (300ms delay)
+    setTimeout(() => {
+      if (introLine) introLine.classList.add('expand');
+    }, 300);
 
-    // Step 2: JAY letters drop in one by one
-    chars.forEach((ch, i) => {
-      setTimeout(() => {
-        ch.classList.add('drop');
-      }, 1200 + i * 250);
+    // Step 2: JAY letters rise up one by one
+    introChars.forEach((ch, i) => {
+      setTimeout(() => ch.classList.add('rise'), 900 + i * 200);
     });
 
-    // Step 3: Glow pulse after all letters land
-    setTimeout(() => { if (glow) glow.classList.add('pulse'); }, 2200);
-
-    // Step 4: Welcome text slides up with blur
-    setTimeout(() => { if (l2) l2.classList.add('show'); }, 2600);
-
-    // Step 5: Zoom out to reveal hero
+    // Step 3: Corner marks appear
     setTimeout(() => {
-      loader.classList.add('zoom-out');
-      setTimeout(() => loader.remove(), 900);
-    }, 4200);
+      corners.forEach(c => c.classList.add('show'));
+    }, 1600);
+
+    // Step 4: Role text fades in
+    setTimeout(() => {
+      if (introRole) introRole.classList.add('show');
+    }, 1900);
+
+    // Step 5: Cinematic exit — blur + scale out
+    setTimeout(() => {
+      loader.classList.add('cinematic-exit');
+      setTimeout(() => loader.remove(), 1000);
+    }, 3800);
   }
 
   /* ===== TAGLINE WORD-BY-WORD (after loader) ===== */
   const tagline = document.getElementById('hero-tagline');
   if (tagline) {
-    const delay = document.getElementById('loader') ? 4800 : 500;
+    const delay = document.getElementById('loader') ? 4500 : 500;
     const words = tagline.querySelectorAll('.tagline-word');
     words.forEach((word, i) => {
       setTimeout(() => word.classList.add('visible'), delay + i * 400);

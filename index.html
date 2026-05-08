@@ -10,21 +10,99 @@
 </head>
 <body>
 
-  <!-- LOADING SCREEN -->
+  <!-- CINEMATIC INTRO -->
   <div class="loader" id="loader">
     <div class="loader-bg"></div>
     <div class="loader-particles" id="loader-particles"></div>
-    <div class="loader-content">
-      <span class="loader-line1" id="loader-line1"></span>
-      <div class="loader-name" id="loader-name">
-        <span class="loader-char" data-i="0">J</span>
-        <span class="loader-char" data-i="1">A</span>
-        <span class="loader-char" data-i="2">Y</span>
+    <div class="loader-content" id="loader-content">
+      <!-- Expanding line -->
+      <div class="intro-line" id="intro-line"></div>
+      <!-- Name -->
+      <div class="intro-name" id="intro-name">
+        <span class="intro-char">J</span>
+        <span class="intro-char">A</span>
+        <span class="intro-char">Y</span>
       </div>
-      <div class="loader-glow" id="loader-glow"></div>
-      <span class="loader-line2" id="loader-line2">Welcome to my Portfolio</span>
+      <!-- Role -->
+      <div class="intro-role" id="intro-role">Creative Developer & Strategist</div>
+      <!-- Decorative corner marks -->
+      <div class="intro-corner intro-corner-tl"></div>
+      <div class="intro-corner intro-corner-br"></div>
     </div>
   </div>
+
+  <style>
+    /* ===== NEW CINEMATIC INTRO ===== */
+    .intro-line{
+      width:0;height:1px;
+      background:linear-gradient(90deg,transparent,rgba(201,149,107,.8),rgba(237,232,227,.6),rgba(201,149,107,.8),transparent);
+      box-shadow:0 0 15px rgba(201,149,107,.3);
+      transition:width 1s cubic-bezier(.25,.46,.45,.94);
+      position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    }
+    .intro-line.expand{width:min(400px,80vw)}
+
+    .intro-name{
+      display:flex;gap:.15em;
+      position:relative;z-index:2;
+      margin-bottom:.8rem;
+    }
+    .intro-char{
+      font-family:'Cormorant Garamond',Georgia,serif;
+      font-size:clamp(5rem,18vw,12rem);
+      font-weight:600;line-height:1;
+      color:rgba(201,149,107,0);
+      transform:translateY(30px) scale(.85);
+      transition:all .8s cubic-bezier(.34,1.56,.64,1);
+      text-shadow:0 0 40px rgba(201,149,107,0);
+    }
+    .intro-char.rise{
+      color:rgba(201,149,107,.9);
+      transform:translateY(0) scale(1);
+      text-shadow:0 0 60px rgba(201,149,107,.2);
+    }
+
+    .intro-role{
+      font-family:'Space Grotesk',-apple-system,sans-serif;
+      font-size:clamp(.55rem,1.2vw,.75rem);
+      font-weight:300;
+      letter-spacing:.5em;
+      text-transform:uppercase;
+      color:rgba(237,232,227,0);
+      transform:translateY(15px);
+      transition:all .8s ease;
+      position:relative;z-index:2;
+    }
+    .intro-role.show{
+      color:rgba(237,232,227,.45);
+      transform:translateY(0);
+    }
+
+    /* Corner marks */
+    .intro-corner{
+      position:absolute;width:25px;height:25px;
+      border-color:rgba(201,149,107,.2);border-style:solid;
+      opacity:0;transition:opacity .6s ease;
+    }
+    .intro-corner-tl{top:25%;left:30%;border-width:1px 0 0 1px}
+    .intro-corner-br{bottom:25%;right:30%;border-width:0 1px 1px 0}
+    .intro-corner.show{opacity:1}
+
+    /* Exit: scale up + fade */
+    .loader.cinematic-exit{
+      animation:cinematicExit 1s cubic-bezier(.7,0,.3,1) forwards;
+    }
+    @keyframes cinematicExit{
+      0%{transform:scale(1);opacity:1;filter:blur(0)}
+      60%{opacity:.6;filter:blur(2px)}
+      100%{transform:scale(1.15);opacity:0;filter:blur(8px);visibility:hidden;pointer-events:none}
+    }
+
+    @media(max-width:768px){
+      .intro-corner-tl{left:10%;top:30%}
+      .intro-corner-br{right:10%;bottom:30%}
+    }
+  </style>
 
 
   <!-- PARALLAX PARTICLES — subtle depth layer -->
