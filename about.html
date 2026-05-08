@@ -334,45 +334,51 @@
 
   <script src="scripts/main.js"></script>
 
-  <!-- MATRIX RAIN -->
+  <!-- MATRIX CODE BACKGROUND -->
   <script>
   (function(){
     const c=document.getElementById('matrix-canvas');
     if(!c)return;
     const ctx=c.getContext('2d');
-    function resize(){c.width=window.innerWidth;c.height=window.innerHeight}
-    resize();
-    window.addEventListener('resize',resize);
-
     const chars='01{}[]()<>/\\|=+*~@#$%^&;:アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
     const fontSize=14;
-    let columns=Math.floor(c.width/fontSize);
-    let drops=Array(columns).fill(1);
+    let cols,rows,grid;
 
-    function draw(){
-      ctx.fillStyle='rgba(9,9,9,.06)';
-      ctx.fillRect(0,0,c.width,c.height);
-      ctx.font=fontSize+'px monospace';
-
-      for(let i=0;i<drops.length;i++){
-        const char=chars[Math.floor(Math.random()*chars.length)];
-        // Gold tones
-        const r=180+Math.floor(Math.random()*40);
-        const g=130+Math.floor(Math.random()*30);
-        const b=70+Math.floor(Math.random()*20);
-        ctx.fillStyle='rgb('+r+','+g+','+b+')';
-        ctx.fillText(char,i*fontSize,drops[i]*fontSize);
-
-        if(drops[i]*fontSize>c.height&&Math.random()>.975)drops[i]=0;
-        drops[i]++;
+    function init(){
+      c.width=window.innerWidth;
+      c.height=window.innerHeight;
+      cols=Math.floor(c.width/fontSize);
+      rows=Math.floor(c.height/fontSize);
+      grid=[];
+      for(let i=0;i<cols*rows;i++){
+        grid.push({
+          char:chars[Math.floor(Math.random()*chars.length)],
+          alpha:Math.random()*0.4
+        });
       }
     }
+    init();
+    window.addEventListener('resize',init);
 
-    setInterval(draw,45);
-    window.addEventListener('resize',()=>{
-      columns=Math.floor(c.width/fontSize);
-      drops=Array(columns).fill(1);
-    });
+    function draw(){
+      ctx.clearRect(0,0,c.width,c.height);
+      ctx.font=fontSize+'px monospace';
+      for(let y=0;y<rows;y++){
+        for(let x=0;x<cols;x++){
+          const cell=grid[y*cols+x];
+          if(Math.random()<0.02){
+            cell.char=chars[Math.floor(Math.random()*chars.length)];
+            cell.alpha=Math.random()*0.4;
+          }
+          const r=180+Math.floor(Math.random()*20);
+          const g=130+Math.floor(Math.random()*15);
+          const b=70+Math.floor(Math.random()*10);
+          ctx.fillStyle='rgba('+r+','+g+','+b+','+cell.alpha+')';
+          ctx.fillText(cell.char,x*fontSize,y*fontSize+fontSize);
+        }
+      }
+    }
+    setInterval(draw,100);
   })();
   </script>
 </body>
