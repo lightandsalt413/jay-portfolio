@@ -51,17 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== MULTI-LAYERED STAGGERED SWEEP ===== */
+  /* ===== CURTAIN INTRO ===== */
   const loader = document.getElementById('loader');
   if (loader) {
     const introName = document.getElementById('intro-name');
     const introTagline = document.getElementById('intro-tagline');
-    const sweeps = [
-      document.getElementById('sweep-1'),
-      document.getElementById('sweep-2'),
-      document.getElementById('sweep-3'),
-      document.getElementById('sweep-4')
-    ];
+    const curtainL = document.getElementById('curtain-left');
+    const curtainR = document.getElementById('curtain-right');
+    const seam = document.getElementById('curtain-seam');
     const loaderParticles = document.getElementById('loader-particles');
 
     // Spawn floating particles
@@ -77,19 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Step 1: Sweep panels out one by one (staggered)
-    sweeps.forEach((panel, i) => {
-      if (panel) {
-        setTimeout(() => panel.classList.add('sweep-out'), 400 + i * 220);
-      }
-    });
-
-    // Step 2: JAY name reveals after panels clear
+    // Step 1: JAY name appears
     setTimeout(() => {
       introName.classList.add('reveal');
-    }, 1500);
+    }, 500);
 
-    // Step 3: Type tagline letter by letter
+    // Step 2: Type tagline
     const tagText = 'CREATIVE DEVELOPER';
     let ti = 0;
     setTimeout(() => {
@@ -102,9 +92,16 @@ document.addEventListener('DOMContentLoaded', () => {
           introTagline.classList.add('done');
         }
       }, 50);
-    }, 2000);
+    }, 1200);
 
-    // Step 4: Fade out the loader
+    // Step 3: Curtains open!
+    setTimeout(() => {
+      if (seam) seam.classList.add('hide');
+      if (curtainL) curtainL.classList.add('open');
+      if (curtainR) curtainR.classList.add('open');
+    }, 2800);
+
+    // Step 4: Fade out loader
     setTimeout(() => {
       loader.classList.add('fade-exit');
       setTimeout(() => loader.remove(), 800);
