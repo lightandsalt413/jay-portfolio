@@ -240,7 +240,10 @@
   <div class="cursor" id="cursor"></div>
   <div class="cursor-dot" id="cursor-dot"></div>
 
-  <!-- NAV — Classic 3-part layout -->
+  <!-- MATRIX RAIN BACKGROUND -->
+  <canvas id="matrix-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.07"></canvas>
+
+  <!-- NAV -->
   <nav class="nav" id="nav">
     <a href="index.html" class="nav-link-left">Back Home</a>
     <div class="nav-center">
@@ -330,5 +333,47 @@
   </section>
 
   <script src="scripts/main.js"></script>
+
+  <!-- MATRIX RAIN -->
+  <script>
+  (function(){
+    const c=document.getElementById('matrix-canvas');
+    if(!c)return;
+    const ctx=c.getContext('2d');
+    function resize(){c.width=window.innerWidth;c.height=window.innerHeight}
+    resize();
+    window.addEventListener('resize',resize);
+
+    const chars='01{}[]()<>/\\|=+*~@#$%^&;:アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+    const fontSize=14;
+    let columns=Math.floor(c.width/fontSize);
+    let drops=Array(columns).fill(1);
+
+    function draw(){
+      ctx.fillStyle='rgba(9,9,9,.06)';
+      ctx.fillRect(0,0,c.width,c.height);
+      ctx.font=fontSize+'px monospace';
+
+      for(let i=0;i<drops.length;i++){
+        const char=chars[Math.floor(Math.random()*chars.length)];
+        // Gold tones
+        const r=180+Math.floor(Math.random()*40);
+        const g=130+Math.floor(Math.random()*30);
+        const b=70+Math.floor(Math.random()*20);
+        ctx.fillStyle='rgb('+r+','+g+','+b+')';
+        ctx.fillText(char,i*fontSize,drops[i]*fontSize);
+
+        if(drops[i]*fontSize>c.height&&Math.random()>.975)drops[i]=0;
+        drops[i]++;
+      }
+    }
+
+    setInterval(draw,45);
+    window.addEventListener('resize',()=>{
+      columns=Math.floor(c.width/fontSize);
+      drops=Array(columns).fill(1);
+    });
+  })();
+  </script>
 </body>
 </html>
