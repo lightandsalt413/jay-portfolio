@@ -11,7 +11,7 @@
   --smooth:.6s cubic-bezier(.25,.46,.45,.94);
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:var(--sans);background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:var(--serif);background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block;pointer-events:none}
 button{border:none;background:none;font-family:inherit;color:inherit}
@@ -139,11 +139,11 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 
 /* CV Top — header */
 .cv-top{text-align:center;width:100%;max-width:800px;margin-bottom:1.5rem}
-.cv-label{font-family:var(--sans);font-size:.45rem;font-weight:300;letter-spacing:.6em;text-transform:uppercase;color:rgba(255,215,0,.5);display:block;margin-bottom:.8rem}
+.cv-label{font-family:var(--serif);font-size:.45rem;font-weight:300;letter-spacing:.6em;text-transform:uppercase;color:rgba(255,215,0,.5);display:block;margin-bottom:.8rem}
 .cv-name{font-family:var(--display);font-size:clamp(2.5rem,8vw,5rem);font-weight:600;letter-spacing:.3em;display:flex;justify-content:center;gap:.05em;background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(255,215,0,.6),rgba(255,255,255,.5));-webkit-background-clip:text;background-clip:text;color:transparent}
 .cv-name .char{display:inline-block;opacity:0;transform:translateY(20px) scale(.85);transition:opacity .4s ease,transform .5s cubic-bezier(.34,1.56,.64,1)}
 .cv-name .char.visible{opacity:1;transform:translateY(0) scale(1)}
-.cv-role{font-family:var(--sans);font-size:clamp(.45rem,1vw,.6rem);font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,0);transition:color .6s ease .2s;display:block;margin-top:.5rem}
+.cv-role{font-family:var(--serif);font-size:clamp(.45rem,1vw,.6rem);font-weight:300;letter-spacing:.35em;text-transform:uppercase;color:rgba(255,255,255,0);transition:color .6s ease .2s;display:block;margin-top:.5rem}
 .curtain.expand-line .cv-role{color:rgba(255,255,255,.35)}
 .cv-line{width:0;height:1px;background:linear-gradient(90deg,transparent,rgba(255,215,0,.5),rgba(255,255,255,.6),rgba(255,215,0,.5),transparent);transition:width 1s ease;margin:.8rem auto 0;box-shadow:0 0 8px rgba(255,215,0,.15)}
 .curtain.expand-line .cv-line{width:200px}
@@ -153,28 +153,28 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 .cv-body.visible{opacity:1;transform:translateY(0)}
 
 /* CV Block */
-.cv-heading{font-family:var(--sans);font-size:.45rem;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,215,0,.55);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.04)}
+.cv-heading{font-family:var(--serif);font-size:.45rem;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,215,0,.55);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid rgba(255,255,255,.04)}
 .cv-text{font-family:var(--serif);font-size:.7rem;line-height:1.7;color:rgba(255,255,255,.35);font-weight:300}
 .cv-block{margin-bottom:.8rem}
 
 /* Skills bars */
 .cv-skill{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem}
-.cv-skill span{font-family:var(--sans);font-size:.5rem;color:rgba(255,255,255,.35);min-width:90px;letter-spacing:.05em}
+.cv-skill span{font-family:var(--serif);font-size:.5rem;color:rgba(255,255,255,.35);min-width:90px;letter-spacing:.05em}
 .cv-bar-track{flex:1;height:2px;background:rgba(255,255,255,.05);border-radius:1px;overflow:hidden}
 .cv-bar{height:100%;width:0;background:linear-gradient(90deg,rgba(255,215,0,.3),rgba(255,215,0,.7));border-radius:1px;transition:width 1s ease}
 
 /* Tags */
 .cv-tags{display:flex;flex-wrap:wrap;gap:.3rem}
-.cv-tags span{font-family:var(--sans);font-size:.4rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:.25rem .5rem;border:1px solid rgba(255,255,255,.06);border-radius:2px}
+.cv-tags span{font-family:var(--serif);font-size:.4rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);padding:.25rem .5rem;border:1px solid rgba(255,255,255,.06);border-radius:2px}
 
 /* Entries */
 .cv-entry{margin-bottom:.7rem}
-.cv-date{font-family:var(--sans);font-size:.4rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,215,0,.4)}
+.cv-date{font-family:var(--serif);font-size:.4rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,215,0,.4)}
 .cv-entry strong{font-family:var(--serif);font-size:.7rem;font-weight:400;color:rgba(255,255,255,.55);display:block;margin:.15rem 0}
-.cv-entry p{font-family:var(--sans);font-size:.55rem;color:rgba(255,255,255,.25);line-height:1.5;margin:0}
+.cv-entry p{font-family:var(--serif);font-size:.55rem;color:rgba(255,255,255,.25);line-height:1.5;margin:0}
 
 /* Contact */
-.cv-contact{font-family:var(--sans);font-size:.55rem;color:rgba(255,255,255,.3);margin-bottom:.3rem;letter-spacing:.05em}
+.cv-contact{font-family:var(--serif);font-size:.55rem;color:rgba(255,255,255,.3);margin-bottom:.3rem;letter-spacing:.05em}
 
 /* Film grain */
 .film-grain{position:fixed;inset:0;z-index:9998;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");opacity:.4;pointer-events:none;transition:opacity 1.5s ease}
@@ -215,7 +215,7 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 .hover-rotate:hover{transform:rotate(2deg) scale(1.03)}
 
 /* Magnetic button effect */
-.magnetic-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:1rem 3rem;border:1px solid rgba(255,215,0,.3);font-family:var(--sans);font-size:.7rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);transition:all .4s ease;overflow:hidden}
+.magnetic-btn{position:relative;display:inline-flex;align-items:center;justify-content:center;padding:1rem 3rem;border:1px solid rgba(255,215,0,.3);font-family:var(--serif);font-size:.7rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);transition:all .4s ease;overflow:hidden}
 .magnetic-btn::before{content:'';position:absolute;inset:0;background:var(--gold);transform:translateY(100%);transition:transform .4s ease;z-index:0}
 .magnetic-btn:hover::before{transform:translateY(0)}
 .magnetic-btn:hover{color:var(--navy);border-color:var(--gold)}
@@ -245,18 +245,18 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 /* Divider */
 .about-divider{display:flex;align-items:center;gap:1.5rem;width:100%;max-width:800px;margin-bottom:4rem}
 .divider-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,149,107,.25),transparent)}
-.divider-label{font-family:var(--sans);font-size:.65rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
+.divider-label{font-family:var(--serif);font-size:.65rem;font-weight:400;letter-spacing:.35em;text-transform:uppercase;color:var(--gold);white-space:nowrap}
 
 /* Grid */
 .about-grid{max-width:800px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:5rem}
-.about-heading{font-family:var(--sans);font-size:.75rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;position:relative;padding-bottom:1rem}
+.about-heading{font-family:var(--serif);font-size:.75rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;position:relative;padding-bottom:1rem}
 .about-heading::after{content:'';position:absolute;bottom:0;left:0;width:40px;height:1px;background:rgba(201,149,107,.3)}
 
 /* Project entries */
 .project-entry{margin-bottom:1.8rem;padding-left:1rem;border-left:1px solid rgba(201,149,107,.15);transition:border-color .3s ease}
 .project-entry:hover{border-left-color:var(--gold)}
 .project-name{font-family:var(--serif);font-size:1rem;font-weight:400;color:var(--white);margin-bottom:.4rem;letter-spacing:.02em}
-.project-desc{font-family:var(--sans);font-size:.8rem;line-height:1.7;color:var(--gray);font-weight:300}
+.project-desc{font-family:var(--serif);font-size:.8rem;line-height:1.7;color:var(--gray);font-weight:300}
 
 /* Brand links — clickable gold links */
 .brand-link{color:var(--gold);font-style:italic;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .3s ease,color .3s ease}
@@ -265,7 +265,7 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 .project-name .brand-link:hover{color:var(--gold)}
 
 .about-resume{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
-.resume-note{font-family:var(--sans);font-size:.6rem;color:var(--gray2);letter-spacing:.1em;text-transform:uppercase}
+.resume-note{font-family:var(--serif);font-size:.6rem;color:var(--gray2);letter-spacing:.1em;text-transform:uppercase}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
