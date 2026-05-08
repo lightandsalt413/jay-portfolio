@@ -34,7 +34,7 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 
 
 /* ===== NAV — Luxury Gold Glass ===== */
-.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:2rem 4rem 1.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:linear-gradient(180deg,rgba(201,149,107,.12) 0%,rgba(201,149,107,.04) 40%,rgba(9,9,9,.85) 70%,transparent 100%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(201,149,107,.2)}
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:2rem 4rem 1.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:linear-gradient(180deg,rgba(201,149,107,.22) 0%,rgba(201,149,107,.1) 40%,rgba(9,9,9,.85) 75%,transparent 100%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(201,149,107,.35)}
 /* Bottom separator */
 .nav::after{content:'';position:absolute;bottom:0;left:5%;width:90%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,149,107,.25),rgba(255,255,255,.06),rgba(201,149,107,.25),transparent)}
 
