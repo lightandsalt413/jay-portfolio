@@ -45,9 +45,7 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 
 /* Center — SERVICES with gold box */
 .nav-center{display:flex;align-items:center;gap:1.2rem}
-.nav-line{width:70px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,149,107,.45));transition:width .4s,box-shadow .4s}
-.nav-line:last-child{background:linear-gradient(270deg,transparent,rgba(201,149,107,.45))}
-.nav-center:hover .nav-line{width:90px;box-shadow:0 0 6px rgba(201,149,107,.15)}
+.nav-line{display:none}
 .nav-center-text{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:rgba(237,232,227,.9);transition:all .4s ease;position:relative;padding:.6rem 1.6rem;border:1px solid rgba(201,149,107,.3);background:rgba(201,149,107,.06)}
 .nav-center-text::before,.nav-center-text::after{content:'✦';position:absolute;top:50%;transform:translateY(-50%);color:var(--gold);font-size:.45rem;opacity:.6;transition:opacity .4s,transform .4s}
 .nav-center-text::before{left:.4rem}
