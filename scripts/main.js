@@ -45,10 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  /* ===== COUNTER INTRO — New Sequence ===== */
+  /* ===== JAY INTRO ===== */
   const loader = document.getElementById('loader');
   if (loader) {
-    const counter = document.getElementById('intro-counter');
     const introName = document.getElementById('intro-name');
     const introTagline = document.getElementById('intro-tagline');
     const lineTop = document.getElementById('intro-line-top');
@@ -68,29 +67,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // Step 1: Fast counter 00 → 99 (1.8 seconds)
-    let count = 0;
-    const counterInterval = setInterval(() => {
-      count += Math.floor(Math.random() * 4) + 1;
-      if (count >= 99) { count = 99; clearInterval(counterInterval); }
-      counter.textContent = String(count).padStart(2, '0');
-    }, 35);
-
-    // Step 2: Flash at "100" then swap to JAY
+    // Step 1: JAY appears (blur → sharp)
     setTimeout(() => {
-      counter.textContent = '100';
-      counter.classList.add('flash');
-    }, 1900);
-
-    setTimeout(() => {
-      counter.classList.add('hide');
       introName.classList.add('reveal');
-      // Lines expand
       if (lineTop) lineTop.classList.add('expand');
       if (lineBot) lineBot.classList.add('expand');
-    }, 2200);
+    }, 500);
 
-    // Step 3: Type tagline letter by letter
+    // Step 2: Type tagline letter by letter
     const tagText = 'CREATIVE DEVELOPER';
     let ti = 0;
     setTimeout(() => {
@@ -103,13 +87,13 @@ document.addEventListener('DOMContentLoaded', () => {
           introTagline.classList.add('done');
         }
       }, 50);
-    }, 2600);
+    }, 1200);
 
-    // Step 4: Slide up exit
+    // Step 3: Slide up exit
     setTimeout(() => {
       loader.classList.add('slide-exit');
       setTimeout(() => loader.remove(), 1000);
-    }, 4500);
+    }, 3800);
   }
 
   /* ===== TAGLINE WORD-BY-WORD (after loader) ===== */
