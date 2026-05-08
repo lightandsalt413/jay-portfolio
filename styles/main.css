@@ -11,7 +11,8 @@
   --smooth:.6s cubic-bezier(.25,.46,.45,.94);
 }
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{font-family:var(--sans);background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{font-family:var(--sans);background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased;animation:pageReveal .8s ease forwards}
+@keyframes pageReveal{0%{opacity:0}100%{opacity:1}}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 button{border:none;background:none;font-family:inherit;color:inherit}
@@ -293,6 +294,28 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 .about-resume{display:flex;flex-direction:column;align-items:center;gap:1.5rem}
 .resume-note{font-family:var(--sans);font-size:.6rem;color:var(--gray2);letter-spacing:.1em;text-transform:uppercase}
+
+/* ===== CUSTOM CURSOR ===== */
+.cursor{position:fixed;width:36px;height:36px;border:1px solid rgba(201,149,107,.35);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s ease,height .3s ease,border-color .3s ease,background .3s ease}
+.cursor-dot{position:fixed;width:5px;height:5px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:10000;transform:translate(-50%,-50%);transition:width .2s ease,height .2s ease}
+.cursor.hover{width:50px;height:50px;border-color:rgba(201,149,107,.5);background:rgba(201,149,107,.06)}
+.cursor.hover+.cursor-dot{opacity:0}
+@media(max-width:768px){.cursor,.cursor-dot{display:none}}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold),rgba(201,149,107,.4));z-index:10001;transition:width .1s linear;box-shadow:0 0 10px rgba(201,149,107,.3)}
+
+/* ===== GLASSMORPHISM NAV (global) ===== */
+.nav{background:rgba(9,9,9,.6);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,149,107,.06);transition:transform .4s ease,opacity .4s ease}
+.nav.nav-hidden{transform:translateY(-100%);opacity:0}
+
+/* ===== ENDING / FOOTER (global) ===== */
+.ending{position:relative;padding:6rem 2rem 4rem;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(201,149,107,.06) 0%,transparent 60%),linear-gradient(180deg,var(--navy) 0%,#060505 100%);overflow:hidden}
+.ending::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,149,107,.25),transparent)}
+.ending-name{font-family:var(--serif);font-size:clamp(4rem,12vw,8rem);font-weight:600;background:linear-gradient(180deg,rgba(201,149,107,.18),rgba(201,149,107,.05));-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.2em;line-height:1.2;margin-bottom:1rem}
+.glow-email{display:inline-block;font-family:var(--sans);font-size:.75rem;letter-spacing:.15em;color:rgba(201,149,107,.5);transition:all .4s ease;margin-bottom:1rem}
+.glow-email:hover{color:var(--gold);text-shadow:0 0 20px rgba(201,149,107,.3)}
+.ending-copy{font-size:.6rem;color:rgba(255,255,255,.15);letter-spacing:.2em}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){

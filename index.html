@@ -113,7 +113,7 @@
     <a href="about.html" class="nav-link-left hover-glow-text">About Me</a>
     <div class="nav-center">
       <div class="nav-line"></div>
-      <a href="contact.html" class="nav-center-text hover-glow-text">Services</a>
+      <a href="#works" class="nav-center-text hover-glow-text">Works</a>
       <div class="nav-line"></div>
     </div>
     <a href="contact.html" class="nav-link-right hover-glow-text">Contact</a>
@@ -140,8 +140,97 @@
         <span class="tagline-word">D E V E L O P E R</span>
       </div>
     </div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator" id="scroll-indicator">
+      <span class="scroll-text">Scroll</span>
+      <div class="scroll-arrow"></div>
+    </div>
   </section>
+
+  <!-- SELECTED WORKS — Project Showcase -->
+  <section class="works" id="works">
+    <div class="works-header">
+      <span class="works-label reveal">Portfolio</span>
+      <h2 class="works-title reveal">Selected Works</h2>
+    </div>
+    <div class="works-grid">
+      <a href="project-deeplyrooted.html" class="project-card reveal">
+        <div class="card-img"><img src="assets/images/project-deeplyrooted.png" alt="DeeplyRooted Hair Botox"></div>
+        <div class="card-info">
+          <span class="card-num">01</span>
+          <h3 class="card-title">DeeplyRooted</h3>
+          <p class="card-desc">Premium Hair Care Brand & E-commerce</p>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+      <a href="project-fzi.html" class="project-card reveal rd1">
+        <div class="card-img"><img src="assets/images/project-fzi.png" alt="FZI Construction"></div>
+        <div class="card-info">
+          <span class="card-num">02</span>
+          <h3 class="card-title">FZI Construction</h3>
+          <p class="card-desc">Professional Construction Firm Identity</p>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+      <a href="project-rebel.html" class="project-card reveal rd2">
+        <div class="card-img"><img src="assets/images/project-bloombox.png" alt="Rebel Family Motors"></div>
+        <div class="card-info">
+          <span class="card-num">03</span>
+          <h3 class="card-title">Rebel Family Motors</h3>
+          <p class="card-desc">Social Media & Content Strategy</p>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ENDING -->
+  <section class="ending" id="ending">
+    <div class="ending-name">JAY</div>
+    <a href="mailto:lightandsalt413@gmail.com" class="glow-email">lightandsalt413@gmail.com</a>
+    <p class="ending-copy">&copy; 2026</p>
+  </section>
+
+  <style>
+    /* ===== SCROLL INDICATOR ===== */
+    .scroll-indicator{position:absolute;bottom:3vh;left:50%;transform:translateX(-50%);z-index:5;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:scrollFadeIn 1s ease forwards;animation-delay:5.5s}
+    .scroll-text{font-family:var(--sans);font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+    .scroll-arrow{width:1px;height:25px;background:linear-gradient(180deg,rgba(201,149,107,.5),transparent);position:relative;animation:scrollBounce 2s ease-in-out infinite}
+    .scroll-arrow::before{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%) rotate(45deg);width:6px;height:6px;border-right:1px solid rgba(201,149,107,.4);border-bottom:1px solid rgba(201,149,107,.4)}
+    @keyframes scrollFadeIn{0%{opacity:0}100%{opacity:1}}
+    @keyframes scrollBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+
+    /* ===== SELECTED WORKS ===== */
+    .works{padding:8rem 4rem 10rem;background:radial-gradient(ellipse at 50% 0%,rgba(201,149,107,.05) 0%,transparent 50%),linear-gradient(180deg,var(--navy) 0%,#0a0908 50%,var(--navy) 100%);position:relative}
+    .works::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:300px;height:1px;background:linear-gradient(90deg,transparent,rgba(201,149,107,.2),transparent)}
+    .works-header{text-align:center;margin-bottom:5rem}
+    .works-label{display:inline-block;font-family:var(--sans);font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .works-title{font-family:var(--serif);font-size:clamp(2rem,5vw,3.5rem);font-weight:400;color:var(--white);letter-spacing:.02em}
+    .works-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+
+    /* Project cards */
+    .project-card{position:relative;overflow:hidden;border:1px solid rgba(201,149,107,.08);border-radius:4px;background:rgba(255,255,255,.01);transition:all .5s ease;display:block}
+    .project-card:hover{border-color:rgba(201,149,107,.25);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 40px rgba(201,149,107,.06)}
+    .card-img{height:220px;overflow:hidden}
+    .card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .6s ease;filter:brightness(.7) saturate(.8)}
+    .project-card:hover .card-img img{transform:scale(1.08);filter:brightness(.85) saturate(1)}
+    .card-info{padding:1.5rem;position:relative}
+    .card-num{font-family:var(--serif);font-size:2.5rem;font-weight:400;color:transparent;-webkit-text-stroke:1px rgba(201,149,107,.12);position:absolute;top:-.8rem;right:1.5rem;line-height:1}
+    .card-title{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:.5rem;letter-spacing:.02em;transition:color .3s}
+    .project-card:hover .card-title{color:var(--gold)}
+    .card-desc{font-family:var(--sans);font-size:.7rem;color:var(--gray);letter-spacing:.1em;line-height:1.6}
+    .card-arrow{position:absolute;bottom:1.5rem;right:1.5rem;font-size:1.2rem;color:var(--gold);opacity:0;transform:translateX(-10px);transition:all .4s ease}
+    .project-card:hover .card-arrow{opacity:1;transform:translateX(0)}
+
+    @media(max-width:768px){
+      .works{padding:5rem 1.5rem 6rem}
+      .works-grid{grid-template-columns:1fr;gap:1.5rem}
+      .card-img{height:180px}
+    }
+  </style>
 
   <script src="scripts/main.js"></script>
 </body>
 </html>
+
