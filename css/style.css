@@ -81,6 +81,22 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .hero-bg{position:absolute;inset:0;z-index:0}
 .hero-bg canvas{width:100%;height:100%}
 .hero-portrait{position:absolute;right:8%;bottom:0;height:85%;z-index:1;opacity:.9;filter:brightness(.8) contrast(1.1) saturate(.9)}
+/* ===== NEN AURA EFFECT ===== */
+.hero-portrait::before{content:'';position:absolute;inset:-20px;z-index:-1;background:radial-gradient(ellipse at 50% 40%,rgba(196,147,85,.25) 0%,rgba(196,147,85,.12) 25%,rgba(196,147,85,.04) 50%,transparent 70%);animation:nenPulse 3s ease-in-out infinite;filter:blur(20px)}
+.hero-portrait::after{content:'';position:absolute;inset:-35px;z-index:-2;background:radial-gradient(ellipse at 50% 35%,rgba(196,147,85,.1) 0%,rgba(100,140,200,.06) 30%,rgba(196,147,85,.03) 55%,transparent 75%);animation:nenPulse 3s ease-in-out infinite .5s;filter:blur(35px)}
+@keyframes nenPulse{0%,100%{opacity:.6;transform:scale(1)}25%{opacity:1;transform:scale(1.03)}50%{opacity:.75;transform:scale(1.01)}75%{opacity:.95;transform:scale(1.04)}}
+/* Nen flow particles */
+.hero-portrait .nen-flow{position:absolute;inset:-40px;z-index:-1;overflow:hidden;pointer-events:none}
+.hero-portrait .nen-flow span{position:absolute;width:2px;height:2px;background:var(--gold);border-radius:50%;opacity:0;animation:nenRise 4s ease-out infinite}
+.hero-portrait .nen-flow span:nth-child(1){left:20%;bottom:0;animation-delay:0s}
+.hero-portrait .nen-flow span:nth-child(2){left:35%;bottom:0;animation-delay:.6s;width:3px;height:3px}
+.hero-portrait .nen-flow span:nth-child(3){left:50%;bottom:0;animation-delay:1.2s}
+.hero-portrait .nen-flow span:nth-child(4){left:65%;bottom:0;animation-delay:1.8s;width:3px;height:3px}
+.hero-portrait .nen-flow span:nth-child(5){left:80%;bottom:0;animation-delay:2.4s}
+.hero-portrait .nen-flow span:nth-child(6){left:42%;bottom:0;animation-delay:3s;width:2px;height:2px}
+.hero-portrait .nen-flow span:nth-child(7){left:58%;bottom:0;animation-delay:3.5s}
+.hero-portrait .nen-flow span:nth-child(8){left:25%;bottom:0;animation-delay:.3s;width:3px;height:3px}
+@keyframes nenRise{0%{transform:translateY(0) scale(1);opacity:0}10%{opacity:.8}50%{opacity:.5;transform:translateY(-250px) scale(1.5) translateX(10px)}100%{transform:translateY(-500px) scale(0);opacity:0}}
 .hero-gradient{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,var(--bg) 0%,rgba(23,23,25,.55) 50%,rgba(23,23,25,.2) 100%)}
 .hero-gradient2{position:absolute;inset:0;z-index:2;background:linear-gradient(0deg,var(--bg) 0%,transparent 25%)}
 .hero-content{position:relative;z-index:3;padding:0 3rem;max-width:700px}
