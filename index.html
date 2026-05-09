@@ -5,10 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JAY — Creative Developer</title>
   <meta name="description" content="Creative Developer &amp; Social Media Specialist. Merging functional code with high-impact visual narratives.">
-  <link rel="stylesheet" href="styles/main.css?v=128">
+  <link rel="stylesheet" href="styles/main.css?v=129">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+  <style>
+    /* ===== PARALLAX CORE ===== */
+    .parallax-wrap{overflow-x:hidden}
+
+    /* Hero parallax layers */
+    .hero-editorial{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#080d18}
+    .hero-3d-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;display:block}
+    .hero-ed-bg{position:absolute;inset:0;z-index:1;display:flex;justify-content:center;align-items:center;will-change:transform}
+    .hero-ed-photo{height:90%;width:auto;max-width:none;object-fit:contain;transform:scale(1.15) translateY(5%);mix-blend-mode:screen}
+    .hero-ed-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 0%,transparent 60%,rgba(8,13,24,.6) 100%)}
+
+    /* Scroll indicator */
+    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:scrollBounce 2s ease-in-out infinite}
+    .scroll-hint span{font-family:var(--sans);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,235,.3)}
+    .scroll-line{width:1px;height:30px;background:linear-gradient(180deg,var(--gold),transparent);opacity:.5}
+    @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+    /* ===== PARALLAX SECTIONS ===== */
+    .px-section{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:5rem 2.5rem}
+    .px-section--dark{background:#0a0a0a}
+    .px-section--navy{background:#080d18}
+    .px-section--accent{background:linear-gradient(135deg,#0d1117,#131820)}
+
+    /* Reveal animation */
+    .px-reveal{opacity:0;transform:translateY(60px);transition:all 1s cubic-bezier(.16,1,.3,1)}
+    .px-reveal.visible{opacity:1;transform:translateY(0)}
+    .px-reveal-left{opacity:0;transform:translateX(-80px);transition:all 1s cubic-bezier(.16,1,.3,1)}
+    .px-reveal-left.visible{opacity:1;transform:translateX(0)}
+    .px-reveal-right{opacity:0;transform:translateX(80px);transition:all 1s cubic-bezier(.16,1,.3,1)}
+    .px-reveal-right.visible{opacity:1;transform:translateX(0)}
+    .px-reveal-scale{opacity:0;transform:scale(.85);transition:all 1.2s cubic-bezier(.16,1,.3,1)}
+    .px-reveal-scale.visible{opacity:1;transform:scale(1)}
+
+    /* Stagger delays */
+    .delay-1{transition-delay:.1s}
+    .delay-2{transition-delay:.2s}
+    .delay-3{transition-delay:.3s}
+    .delay-4{transition-delay:.4s}
+
+    /* ===== INTRO SECTION ===== */
+    .intro-content{max-width:800px;text-align:center}
+    .intro-eyebrow{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
+    .intro-heading{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:300;color:#f5f0eb;line-height:1.2;margin-bottom:1.5rem}
+    .intro-heading em{font-style:italic;color:var(--gold)}
+    .intro-desc{font-family:var(--sans);font-size:.9rem;color:rgba(245,240,235,.4);line-height:1.8;max-width:550px;margin:0 auto}
+
+    /* ===== SERVICES SPLIT ===== */
+    .services-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1100px;width:100%;align-items:center}
+    .service-block{padding:2rem 0}
+    .service-num{font-family:var(--sans);font-size:.65rem;font-weight:600;letter-spacing:.15em;color:rgba(201,149,107,.3);margin-bottom:1rem}
+    .service-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:#f5f0eb;line-height:1.15;margin-bottom:1rem}
+    .service-body{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,235,.4);line-height:1.8;margin-bottom:1.5rem}
+    .service-link{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:gap .3s ease}
+    .service-link:hover{gap:.8rem}
+    .service-divider{width:40px;height:1px;background:var(--gold);opacity:.3;margin-bottom:1.5rem}
+
+    /* ===== STATS ROW ===== */
+    .stats-row{display:flex;gap:4rem;justify-content:center;flex-wrap:wrap}
+    .stat-item{text-align:center}
+    .stat-big{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,6vw,5rem);font-weight:300;color:var(--gold);line-height:1}
+    .stat-text{font-family:var(--sans);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.3);margin-top:.5rem}
+
+    /* ===== CTA SECTION ===== */
+    .cta-content{text-align:center;max-width:600px}
+    .cta-heading{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#f5f0eb;margin-bottom:1rem}
+    .cta-sub{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,235,.4);margin-bottom:2.5rem;line-height:1.7}
+    .cta-btn{display:inline-block;font-family:var(--sans);font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#080d18;background:var(--gold);padding:1rem 2.5rem;text-decoration:none;transition:all .4s ease}
+    .cta-btn:hover{background:#f5f0eb;transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,149,107,.2)}
+
+    /* ===== RESPONSIVE ===== */
+    @media(max-width:768px){
+      .services-grid{grid-template-columns:1fr;gap:2rem}
+      .stats-row{gap:2rem}
+      .px-section{padding:4rem 1.5rem}
+    }
+  </style>
 </head>
-<body>
+<body class="parallax-wrap">
 
   <!-- CUSTOM CURSOR -->
   <div class="cursor" id="cursor"></div>
@@ -31,21 +107,117 @@
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ===== HERO — Parallax Layer ===== -->
   <section class="hero-editorial" id="hero">
     <canvas class="hero-3d-canvas" id="hero3d"></canvas>
-    <div class="hero-ed-bg">
+    <div class="hero-ed-bg" id="parallax-portrait">
       <img src="assets/images/hero-portrait.png" alt="Jay Ynclino" class="hero-ed-photo">
     </div>
     <div class="hero-ed-overlay"></div>
-    <div class="hero-ed-content"></div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== INTRO ===== -->
+  <section class="px-section px-section--dark">
+    <div class="intro-content">
+      <p class="intro-eyebrow px-reveal">Creative Developer & Strategist</p>
+      <h2 class="intro-heading px-reveal delay-1">Crafting digital experiences that <em>inspire</em> and <em>convert.</em></h2>
+      <p class="intro-desc px-reveal delay-2">I merge functional code with high-impact visual narratives — building brands that stand out in the digital landscape.</p>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section class="px-section px-section--navy">
+    <div class="services-grid">
+      <div class="service-block px-reveal-left">
+        <p class="service-num">01</p>
+        <div class="service-divider"></div>
+        <h3 class="service-title">Pixel-Perfect<br>Websites</h3>
+        <p class="service-body">Custom-built, responsive websites — from sleek corporate pages to premium e-commerce. Hand-coded with clean architecture.</p>
+        <a href="work.html" class="service-link">View Services →</a>
+      </div>
+      <div class="service-block px-reveal-right">
+        <p class="service-num">02</p>
+        <div class="service-divider"></div>
+        <h3 class="service-title">Content That<br>Converts</h3>
+        <p class="service-body">Full-scale social media management — brand identity, visual campaigns, engagement strategies, and audience growth.</p>
+        <a href="work.html" class="service-link">See Campaigns →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="px-section px-section--accent">
+    <div class="stats-row">
+      <div class="stat-item px-reveal-scale">
+        <div class="stat-big">5+</div>
+        <div class="stat-text">Projects Delivered</div>
+      </div>
+      <div class="stat-item px-reveal-scale delay-1">
+        <div class="stat-big">4+</div>
+        <div class="stat-text">Brands Managed</div>
+      </div>
+      <div class="stat-item px-reveal-scale delay-2">
+        <div class="stat-big">2+</div>
+        <div class="stat-text">Years Experience</div>
+      </div>
+      <div class="stat-item px-reveal-scale delay-3">
+        <div class="stat-big">100%</div>
+        <div class="stat-text">Client Satisfaction</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="px-section px-section--dark">
+    <div class="cta-content">
+      <h2 class="cta-heading px-reveal">Let's Build<br>Something Great.</h2>
+      <p class="cta-sub px-reveal delay-1">Have a project in mind? Let's talk about how we can bring your vision to life.</p>
+      <a href="contact.html" class="cta-btn px-reveal delay-2">Get In Touch</a>
+    </div>
   </section>
 
   <script src="scripts/main.js"></script>
 
-  <!-- AURORA WAVE 3D BACKGROUND -->
+  <!-- ===== PARALLAX + REVEAL ENGINE ===== -->
   <script>
   (function(){
+    // ===== SCROLL REVEAL =====
+    const reveals = document.querySelectorAll('.px-reveal,.px-reveal-left,.px-reveal-right,.px-reveal-scale');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+        }
+      });
+    }, {threshold: 0.15});
+    reveals.forEach(el => observer.observe(el));
+
+    // ===== PARALLAX SCROLL =====
+    const portrait = document.getElementById('parallax-portrait');
+    const heroCanvas = document.getElementById('hero3d');
+
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const vh = window.innerHeight;
+
+      // Portrait moves slower (parallax)
+      if(portrait && scrollY < vh * 1.5){
+        portrait.style.transform = `translateY(${scrollY * 0.35}px)`;
+      }
+      // Canvas moves even slower
+      if(heroCanvas && scrollY < vh * 1.5){
+        heroCanvas.style.transform = `translateY(${scrollY * 0.2}px)`;
+      }
+      // Fade scroll hint
+      const hint = document.querySelector('.scroll-hint');
+      if(hint) hint.style.opacity = Math.max(0, 1 - scrollY / 200);
+    });
+
+    // ===== AURORA WAVE BACKGROUND =====
     const canvas = document.getElementById('hero3d');
     if(!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -64,7 +236,6 @@
       mouse.y = e.clientY / H;
     });
 
-    // ===== AURORA WAVE RIBBONS =====
     function drawWave(yBase, amp, freq, speed, color, lw){
       ctx.beginPath();
       ctx.strokeStyle = color;
@@ -80,116 +251,58 @@
       ctx.stroke();
     }
 
-    // ===== MESH GRID FLOOR =====
-    function drawGrid(){
-      const rows = 15;
-      const cols = 30;
-      const horizon = H * 0.55;
-      const depth = H * 0.5;
-
-      ctx.strokeStyle = 'rgba(100,140,200,0.06)';
-      ctx.lineWidth = 0.5;
-
-      // Horizontal lines
-      for(let i = 0; i <= rows; i++){
-        const t = i / rows;
-        const y = horizon + t * t * depth;
-        ctx.beginPath();
-        const spread = 1 + t * 2;
-        ctx.moveTo(W/2 - W * spread / 2, y);
-        ctx.lineTo(W/2 + W * spread / 2, y);
-        ctx.stroke();
-      }
-
-      // Vertical lines
-      for(let j = 0; j <= cols; j++){
-        const xFrac = j / cols - 0.5;
-        ctx.beginPath();
-        for(let i = 0; i <= rows; i++){
-          const t = i / rows;
-          const y = horizon + t * t * depth;
-          const spread = 1 + t * 2;
-          const x = W/2 + xFrac * W * spread;
-          if(i === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-        }
-        ctx.stroke();
-      }
-    }
-
-    // ===== STAR FIELD =====
     const stars = [];
-    for(let i = 0; i < 120; i++){
+    for(let i = 0; i < 100; i++){
       stars.push({
-        x: Math.random() * 2000,
-        y: Math.random() * 1000,
+        x: Math.random() * 2000, y: Math.random() * 1000,
         r: Math.random() * 1.2 + 0.2,
-        twinkle: Math.random() * Math.PI * 2,
-        speed: 0.5 + Math.random() * 2
+        tw: Math.random() * Math.PI * 2,
+        sp: 0.5 + Math.random() * 2
       });
     }
 
-    // ===== MAIN ANIMATE =====
     function animate(){
       time += 0.012;
-
-      // Clear with dark navy
       ctx.globalAlpha = 1;
       ctx.fillStyle = '#080d18';
       ctx.fillRect(0, 0, W, H);
 
-      // Subtle top gradient glow
-      const topGlow = ctx.createRadialGradient(W*0.5, H*0.15, 0, W*0.5, H*0.15, H*0.7);
-      topGlow.addColorStop(0, 'rgba(60,90,160,0.08)');
-      topGlow.addColorStop(1, 'transparent');
-      ctx.fillStyle = topGlow;
+      // Ambient glow
+      const glow = ctx.createRadialGradient(W*0.45, H*0.4, 0, W*0.45, H*0.4, H*0.6);
+      glow.addColorStop(0, 'rgba(60,90,160,0.06)');
+      glow.addColorStop(1, 'transparent');
+      ctx.fillStyle = glow;
       ctx.fillRect(0, 0, W, H);
 
-      // Gold center glow
-      const goldGlow = ctx.createRadialGradient(W*0.45, H*0.5, 0, W*0.45, H*0.5, H*0.5);
-      goldGlow.addColorStop(0, 'rgba(201,149,107,0.04)');
-      goldGlow.addColorStop(1, 'transparent');
-      ctx.fillStyle = goldGlow;
-      ctx.fillRect(0, 0, W, H);
-
-      // Draw perspective grid
-      drawGrid();
-
-      // Draw aurora waves
-      for(let i = 0; i < 6; i++){
-        const yBase = H * 0.2 + i * H * 0.08;
-        const hue = 200 + i * 15;
-        const alpha = 0.06 - i * 0.005;
-        drawWave(yBase, 25 + i * 8, 0.003 - i * 0.0002, 0.8 + i * 0.15,
-          `hsla(${hue},60%,55%,${alpha})`, 1.5 - i * 0.1);
+      // Aurora waves
+      for(let i = 0; i < 5; i++){
+        drawWave(H*0.25 + i*H*0.08, 20+i*6, 0.003-i*0.0002, 0.8+i*0.15,
+          `hsla(${210+i*12},55%,50%,${0.06-i*0.008})`, 1.2);
       }
-
-      // Gold accent waves
+      // Gold waves
       for(let i = 0; i < 3; i++){
-        const yBase = H * 0.6 + i * H * 0.06;
-        drawWave(yBase, 15 + i * 5, 0.004, 1.2 + i * 0.2,
-          `rgba(201,149,107,${0.07 - i * 0.015})`, 1);
+        drawWave(H*0.65+i*H*0.05, 12+i*4, 0.004, 1.2+i*0.2,
+          `rgba(201,149,107,${0.06-i*0.015})`, 0.8);
       }
 
       // Stars
       stars.forEach(s => {
-        const flicker = 0.4 + Math.sin(time * s.speed + s.twinkle) * 0.4;
+        const f = 0.3 + Math.sin(time*s.sp+s.tw)*0.4;
         ctx.beginPath();
-        ctx.arc(s.x % W, s.y % H, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(200,210,240,${flicker * 0.5})`;
+        ctx.arc(s.x%W, s.y%H, s.r, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(200,210,240,${f*0.4})`;
         ctx.fill();
       });
 
       // Vignette
-      const vig = ctx.createRadialGradient(W/2, H/2, H*0.25, W/2, H/2, H*0.95);
-      vig.addColorStop(0, 'transparent');
-      vig.addColorStop(1, 'rgba(8,13,24,0.5)');
-      ctx.fillStyle = vig;
-      ctx.fillRect(0, 0, W, H);
+      const v = ctx.createRadialGradient(W/2,H/2,H*0.25,W/2,H/2,H*0.95);
+      v.addColorStop(0,'transparent');
+      v.addColorStop(1,'rgba(8,13,24,0.5)');
+      ctx.fillStyle = v;
+      ctx.fillRect(0,0,W,H);
 
       requestAnimationFrame(animate);
     }
-
     animate();
   })();
   </script>
