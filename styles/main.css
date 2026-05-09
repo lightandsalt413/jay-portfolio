@@ -40,17 +40,17 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 
 .nav-ed-left,.nav-ed-right{display:flex;align-items:center;gap:1.8rem}
 
-.nav-ed-link{font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:.04em;color:#3a3530;transition:all .3s ease;text-decoration:none}
+.nav-ed-link{font-family:var(--sans);font-size:.85rem;font-weight:500;letter-spacing:.04em;color:#1a1714;transition:all .3s ease;text-decoration:none}
 .nav-ed-link:hover{color:var(--gold)}
 
 /* Active page — boxed */
 .nav-ed-active{border:1px solid var(--gold);padding:.35rem .8rem;color:var(--gold)}
 
 /* Center logo */
-.nav-ed-logo{font-family:var(--serif);font-size:1.3rem;font-weight:600;font-style:italic;color:var(--gold);letter-spacing:.05em}
+.nav-ed-logo{font-family:var(--serif);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--gold);letter-spacing:.05em}
 
 /* Boxed link (services) */
-.nav-ed-boxed{border:1px solid #3a3530;padding:.35rem .8rem}
+.nav-ed-boxed{border:1.5px solid #1a1714;padding:.4rem .9rem}
 .nav-ed-boxed:hover{border-color:var(--gold);color:var(--gold)}
 
 /* Divider */
