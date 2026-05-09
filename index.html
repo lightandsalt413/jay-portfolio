@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JAY — Creative Developer</title>
   <meta name="description" content="Creative Developer & Social Media Specialist. Merging functional code with high-impact visual narratives.">
-  <link rel="stylesheet" href="styles/main.css?v=98">
+  <link rel="stylesheet" href="styles/main.css?v=99">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
@@ -15,11 +15,7 @@
   <div class="cursor-dot" id="cursor-dot"></div>
 
 
-  <!-- MATRIX FALLING RAIN -->
-  <canvas id="matrix-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.18"></canvas>
 
-  <!-- PARALLAX PARTICLES -->
-  <div class="parallax-particles" id="parallax-particles"></div>
 
   <!-- NAV -->
   <nav class="nav" id="nav">
@@ -34,6 +30,12 @@
 
   <!-- HERO -->
   <section class="hero" id="hero">
+    <!-- MATRIX FALLING RAIN -->
+    <canvas id="matrix-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.18"></canvas>
+
+    <!-- PARALLAX PARTICLES -->
+    <div class="parallax-particles" id="parallax-particles"></div>
+
     <div class="hero-parallax-bg" id="hero-parallax-bg" data-parallax="0.4"></div>
 
     <!-- Cinematic vignette -->
