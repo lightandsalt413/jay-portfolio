@@ -66,7 +66,7 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 
 
 /* ===== EDITORIAL HERO — Cinematic full-viewport ===== */
-.hero-editorial{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(90deg,#d5ddd3 0%,#d5ddd3 35%,#e5e5e0 50%,#f5f0eb 65%,#f5f0eb 100%)}
+.hero-editorial{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(90deg,#e8e6e3 0%,#d0cdc9 30%,#6b6560 65%,#2a2622 100%)}
 
 /* Background photo */
 .hero-ed-bg{position:absolute;inset:0;z-index:1;display:flex;justify-content:center;align-items:center;padding-top:5%}
