@@ -70,13 +70,16 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 .hero-ed-content{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:0 2rem}
 
 /* Label */
-.hero-ed-label{font-family:var(--sans);font-size:.7rem;font-weight:400;letter-spacing:.4em;text-transform:uppercase;color:rgba(237,232,227,.5)}
+.hero-ed-label{font-family:var(--sans);font-size:.65rem;font-weight:400;letter-spacing:.45em;text-transform:uppercase;color:rgba(201,149,107,.6)}
 
-/* Title — large italic serif in gold */
-.hero-ed-title{font-family:var(--serif);font-size:clamp(4rem,12vw,9rem);font-weight:400;font-style:italic;line-height:.95;color:var(--gold);text-shadow:0 4px 40px rgba(201,149,107,.15)}
+/* Title — bold clean display font */
+.hero-ed-title{font-family:var(--display);font-size:clamp(3.5rem,10vw,7.5rem);font-weight:700;font-style:normal;line-height:1;letter-spacing:-.02em;color:var(--white);text-transform:uppercase}
+
+/* Gold line divider */
+.hero-ed-content::after{content:'';display:block;width:60px;height:1px;background:var(--gold);margin:0 auto;opacity:.5}
 
 /* Subtitle */
-.hero-ed-subtitle{font-family:var(--serif);font-size:clamp(.85rem,1.5vw,1.05rem);font-weight:300;line-height:1.8;color:rgba(237,232,227,.55);max-width:550px;margin-top:.5rem}
+.hero-ed-subtitle{font-family:var(--serif);font-size:clamp(.9rem,1.5vw,1.1rem);font-weight:400;font-style:italic;line-height:1.8;color:rgba(237,232,227,.5);max-width:520px}
 
 /* Bottom nav links */
 .hero-ed-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem 2.5rem;margin-top:2rem}
