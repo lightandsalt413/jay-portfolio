@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Outfit:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&family=Outfit:wght@200;300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --navy:#090909;--navy2:#0f0f0f;--navy3:#161616;
@@ -47,7 +47,7 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 .nav-ed-active{border:1px solid var(--gold);padding:.35rem .8rem;color:var(--gold)}
 
 /* Center logo */
-.nav-ed-logo{font-family:var(--serif);font-size:1.5rem;font-weight:700;font-style:italic;color:var(--gold);letter-spacing:.05em}
+.nav-ed-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.6rem;font-weight:600;font-style:normal;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
 
 /* Boxed link (services) */
 .nav-ed-boxed{border:1.5px solid #1a1714;padding:.4rem .9rem}
