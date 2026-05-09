@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JAY — Creative Developer</title>
   <meta name="description" content="Creative Developer &amp; Social Media Specialist. Merging functional code with high-impact visual narratives.">
-  <link rel="stylesheet" href="styles/main.css?v=121">
+  <link rel="stylesheet" href="styles/main.css?v=122">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
@@ -33,6 +33,8 @@
 
   <!-- HERO -->
   <section class="hero-editorial" id="hero">
+    <!-- 3D Background -->
+    <canvas class="hero-3d-canvas" id="hero3d"></canvas>
     <!-- Background photo -->
     <div class="hero-ed-bg">
       <img src="assets/images/hero-portrait.png" alt="Jay Ynclino" class="hero-ed-photo">
@@ -42,7 +44,129 @@
     </div>
   </section>
 
-
   <script src="scripts/main.js"></script>
+
+  <!-- 3D PARTICLE BACKGROUND -->
+  <script>
+  (function(){
+    const canvas = document.getElementById('hero3d');
+    if(!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], mouse = {x: 0, y: 0};
+
+    function resize(){
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Track mouse for parallax
+    document.addEventListener('mousemove', e => {
+      mouse.x = (e.clientX / W - 0.5) * 2;
+      mouse.y = (e.clientY / H - 0.5) * 2;
+    });
+
+    // Particle class with 3D projection
+    class Particle {
+      constructor(){
+        this.reset();
+      }
+      reset(){
+        this.x = (Math.random() - 0.5) * 1600;
+        this.y = (Math.random() - 0.5) * 1600;
+        this.z = Math.random() * 1500 + 200;
+        this.vz = -(Math.random() * 1.5 + 0.3);
+        this.size = Math.random() * 2.5 + 0.5;
+        // Gold palette with variation
+        const hue = 28 + Math.random() * 15;
+        const sat = 50 + Math.random() * 30;
+        const lit = 55 + Math.random() * 25;
+        this.color = `hsl(${hue},${sat}%,${lit}%)`;
+        this.alpha = Math.random() * 0.6 + 0.2;
+      }
+      update(){
+        this.z += this.vz;
+        if(this.z < 1) this.reset();
+      }
+      draw(){
+        const fov = 600;
+        const scale = fov / (fov + this.z);
+        const px = (this.x + mouse.x * 40) * scale + W/2;
+        const py = (this.y + mouse.y * 40) * scale + H/2;
+        const r = this.size * scale;
+        const a = this.alpha * scale;
+
+        if(px < -50 || px > W+50 || py < -50 || py > H+50) return;
+
+        ctx.beginPath();
+        ctx.arc(px, py, r, 0, Math.PI*2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = a;
+        ctx.fill();
+
+        // Glow
+        if(r > 1){
+          ctx.beginPath();
+          ctx.arc(px, py, r*3, 0, Math.PI*2);
+          const g = ctx.createRadialGradient(px,py,0,px,py,r*3);
+          g.addColorStop(0, this.color);
+          g.addColorStop(1, 'transparent');
+          ctx.fillStyle = g;
+          ctx.globalAlpha = a * 0.3;
+          ctx.fill();
+        }
+      }
+    }
+
+    // Create particles
+    for(let i = 0; i < 150; i++){
+      particles.push(new Particle());
+    }
+
+    // Floating geometric rings
+    let ringAngle = 0;
+    function drawRings(){
+      ringAngle += 0.003;
+      ctx.globalAlpha = 0.06;
+      ctx.strokeStyle = '#C9956B';
+      ctx.lineWidth = 1;
+
+      for(let i = 0; i < 3; i++){
+        const cx = W/2 + Math.sin(ringAngle + i*2.1) * 100;
+        const cy = H/2 + Math.cos(ringAngle + i*2.1) * 60;
+        const rx = 200 + i*80;
+        const ry = rx * 0.3;
+
+        ctx.beginPath();
+        ctx.ellipse(cx, cy, rx, ry, ringAngle*0.5 + i, 0, Math.PI*2);
+        ctx.stroke();
+      }
+    }
+
+    function animate(){
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = 'rgba(10,10,10,0.15)';
+      ctx.fillRect(0,0,W,H);
+
+      drawRings();
+
+      // Sort by z for depth
+      particles.sort((a,b) => b.z - a.z);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(animate);
+    }
+
+    // Clear once then start
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0,0,W,H);
+    animate();
+  })();
+  </script>
 </body>
 </html>
