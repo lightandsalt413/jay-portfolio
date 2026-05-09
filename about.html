@@ -1,376 +1,61 @@
-<!DOCTYPE html><!-- v51-links -->
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About JAY — Creative Developer</title>
-  <meta name="description" content="Learn about Jay — a multi-disciplinary creative developer specializing in web development, social media, and Shopify integrations.">
-  <link rel="stylesheet" href="styles/main.css?v=129">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — JAY</title>
+  <meta name="description" content="Jay Ynclino — a multi-disciplinary creative developer specializing in web development, social media, and brand strategy.">
+  <link rel="canonical" href="https://lightandsalt413.github.io/jay-portfolio/about.html">
+  <meta property="og:type" content="profile"><meta property="og:title" content="About — JAY"><meta property="og:description" content="Multi-disciplinary creative developer specializing in web development and social media."><meta property="og:url" content="https://lightandsalt413.github.io/jay-portfolio/about.html"><meta property="og:image" content="https://lightandsalt413.github.io/jay-portfolio/assets/images/og-share.png"><meta property="og:site_name" content="JAY Portfolio">
+  <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="About — JAY"><meta name="twitter:description" content="Multi-disciplinary creative developer."><meta name="twitter:image" content="https://lightandsalt413.github.io/jay-portfolio/assets/images/og-share.png">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-  <!-- About Page — Premium Visual Overhaul -->
-  <style>
-    /* ===== DISABLE TRANSITIONS (instant load) ===== */
-    .reveal,.reveal-left,.reveal-right,.reveal-scale{opacity:1!important;transform:none!important;transition:none!important}
-    .reveal.active,.reveal-left.active,.reveal-right.active,.reveal-scale.active{opacity:1!important;transform:none!important}
-    .word-reveal .word{opacity:1!important;transform:none!important;transition:none!important}
-
-    /* ===== NAV — Clean glassmorphism ===== */
-    .nav{
-      background:rgba(9,9,9,.7)!important;
-      backdrop-filter:blur(20px)!important;
-      -webkit-backdrop-filter:blur(20px)!important;
-      border:none!important;
-      padding:1.8rem 4rem!important;
-    }
-
-    /* ===== ABOUT HERO — Cinematic intro ===== */
-    .about-hero{
-      background:
-        radial-gradient(ellipse at 50% 40%,rgba(201,149,107,.06) 0%,transparent 60%),
-        linear-gradient(180deg,#090909 0%,#0d0b09 50%,#090909 100%)!important;
-      position:relative;
-      overflow:hidden;
-      min-height:80vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .about-hero::before{
-      content:'';position:absolute;inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity:.4;pointer-events:none;z-index:0;
-    }
-    .about-hero-inner{position:relative;z-index:1}
-
-    /* Quote text */
-    .about-intro{
-      font-size:clamp(1.6rem,3.5vw,2.6rem)!important;
-      line-height:1.7!important;
-      text-shadow:0 2px 30px rgba(0,0,0,.6);
-    }
-    .about-intro span{
-      color:var(--gold)!important;
-      text-shadow:0 0 25px rgba(201,149,107,.25);
-    }
-
-    /* ===== ABOUT DETAILS ===== */
-    .about-details{
-      background:
-        radial-gradient(ellipse at 15% 10%,rgba(201,149,107,.04) 0%,transparent 50%),
-        radial-gradient(ellipse at 85% 80%,rgba(201,149,107,.03) 0%,transparent 45%),
-        linear-gradient(180deg,#090909 0%,#0c0a08 40%,#090909 100%)!important;
-      padding:6rem 4rem 8rem!important;
-      position:relative;
-      overflow:hidden;
-    }
-    .about-details::before{
-      content:'';position:absolute;inset:0;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity:.3;pointer-events:none;z-index:0;
-    }
-    .about-details>*{position:relative;z-index:1}
-
-    /* ===== TEXT READABILITY ===== */
-    .about-lead{
-      font-size:clamp(1.05rem,1.8vw,1.25rem)!important;
-      line-height:2.1!important;
-      color:rgba(200,195,188,.65)!important;
-      margin-bottom:2rem!important;
-      max-width:800px;
-    }
-    .about-lead strong{
-      color:rgba(237,232,227,.9)!important;
-      font-weight:500!important;
-    }
-
-    /* ===== BRAND LINKS ===== */
-    .brand-link{
-      color:var(--gold)!important;
-      position:relative;
-      transition:all .4s ease!important;
-    }
-    .brand-link::after{
-      content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;
-      background:linear-gradient(90deg,var(--gold),rgba(201,149,107,.3));
-      transition:width .4s ease;
-    }
-    .brand-link:hover::after{width:100%}
-    .brand-link:hover{
-      color:#e8c9a0!important;
-      text-shadow:0 0 12px rgba(201,149,107,.3);
-    }
-
-    /* ===== DIVIDER ===== */
-    .about-divider{margin-bottom:4rem!important;margin-top:1rem!important}
-    .divider-line{
-      background:linear-gradient(90deg,transparent,rgba(201,149,107,.25),transparent)!important;
-      height:1px;
-    }
-    .divider-label{
-      font-size:.65rem!important;
-      letter-spacing:.4em!important;
-      color:rgba(201,149,107,.5);
-    }
-
-    /* ===== SECTION HEADINGS ===== */
-    .about-heading{
-      font-size:.8rem!important;
-      font-weight:500!important;
-      letter-spacing:.35em!important;
-      margin-bottom:2.5rem!important;
-      color:rgba(201,149,107,.6);
-    }
-    .about-heading::after{
-      width:40px!important;
-      background:linear-gradient(90deg,rgba(201,149,107,.3),transparent)!important;
-    }
-
-    /* ===== PROJECT ENTRIES — Clean cards ===== */
-    .project-entry{
-      padding:1.5rem 1.8rem!important;
-      margin-bottom:1.5rem!important;
-      border-left:1px solid rgba(201,149,107,.15)!important;
-      border-right:none!important;border-top:none!important;border-bottom:none!important;
-      background:rgba(201,149,107,.015);
-      border-radius:0 2px 2px 0;
-      transition:all .4s ease!important;
-    }
-    .project-entry::before,.project-entry::after{display:none!important}
-    .project-entry:hover{
-      border-left-color:rgba(201,149,107,.5)!important;
-      background:rgba(201,149,107,.03)!important;
-      transform:translateX(4px);
-    }
-
-    .project-name{
-      font-size:1.05rem!important;
-      margin-bottom:.5rem!important;
-    }
-    .project-name .brand-link{
-      font-style:normal!important;
-      color:rgba(237,232,227,.85)!important;
-    }
-    .project-name .brand-link:hover{
-      color:var(--gold)!important;
-    }
-    .project-desc{
-      font-size:.82rem!important;
-      line-height:1.8!important;
-      color:rgba(180,175,168,.55)!important;
-    }
-
-    /* ===== GRID ===== */
-    .about-grid{gap:4rem!important;margin-bottom:5rem!important}
-
-    /* ===== RESUME BUTTON ===== */
-    .about-resume{gap:1.5rem!important}
-    .magnetic-btn{
-      padding:1.1rem 3rem!important;
-      border-color:rgba(201,149,107,.3)!important;
-      font-size:.7rem!important;
-      letter-spacing:.3em!important;
-      transition:all .5s ease!important;
-    }
-    .magnetic-btn:hover{
-      border-color:rgba(201,149,107,.6)!important;
-      box-shadow:0 0 30px rgba(201,149,107,.1)!important;
-    }
-
-    /* ===== ENDING ===== */
-    .ending{
-      background:
-        radial-gradient(ellipse at 50% 0%,rgba(201,149,107,.04) 0%,transparent 60%),
-        linear-gradient(180deg,#090909 0%,#060505 100%)!important;
-      padding:5rem 2rem 3rem!important;
-      text-align:center;
-    }
-    .ending-name{
-      font-family:var(--serif)!important;
-      font-size:clamp(4rem,12vw,8rem)!important;
-      font-weight:600!important;
-      background:linear-gradient(180deg,rgba(201,149,107,.12),rgba(201,149,107,.04))!important;
-      -webkit-background-clip:text!important;
-      background-clip:text!important;
-      color:transparent!important;
-      letter-spacing:.2em;
-    }
-    .glow-email{
-      display:block;
-      font-family:var(--sans);
-      font-size:.7rem;
-      letter-spacing:.15em;
-      color:rgba(201,149,107,.4)!important;
-      transition:all .4s ease;
-      margin-bottom:1rem;
-    }
-    .glow-email:hover{
-      color:var(--gold)!important;
-      text-shadow:0 0 15px rgba(201,149,107,.25);
-    }
-    .ending-copy{
-      font-size:.55rem;
-      color:rgba(255,255,255,.12);
-      letter-spacing:.2em;
-    }
-
-    /* ===== RESPONSIVE ===== */
-    @media(max-width:768px){
-      .nav{padding:1rem 1.5rem!important}
-      .about-hero{min-height:60vh}
-      .about-details{padding:4rem 1.5rem 6rem!important}
-      .about-lead{font-size:1rem!important;line-height:1.9!important}
-      .about-grid{gap:3rem!important}
-      .project-entry{padding:1rem 1.2rem!important}
-    }
-  </style>
 </head>
-<body class="about-page">
+<body>
+  <div class="scroll-bar"></div><div class="pg-trans"><div class="pt-layer pt-1"></div><div class="pt-layer pt-2"></div><div class="pt-gold"></div><div class="pt-logo">JAY</div></div><div class="cur"></div><div class="dot"></div>
+  <nav class="nav"><a href="index.html" class="nav-logo">JAY</a><div class="nav-links"><a href="index.html" class="nav-link">Home</a><a href="projects.html" class="nav-link">Projects</a><a href="about.html" class="nav-link active">About</a><a href="contact.html" class="nav-link">Contact</a><a href="contact.html" class="nav-link nav-cta">Hire Me</a></div><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+  <div class="mob-menu"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-dot" id="cursor-dot"></div>
+  <!-- HERO QUOTE -->
+  <section class="about-hero rv">
+    <h1 class="about-quote">"I build where <em>creativity</em> meets <em>code</em> — crafting digital experiences that make brands unforgettable."</h1>
+  </section>
 
-  <!-- MATRIX RAIN BACKGROUND -->
-  <canvas id="matrix-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.08"></canvas>
-
-  <!-- NAV -->
-  <nav class="nav" id="nav">
-    <a href="index.html" class="nav-link-left">Back Home</a>
-    <div class="nav-center">
-      <div class="nav-line"></div>
-      <a href="#about-content" class="nav-center-text">The Story</a>
-      <div class="nav-line"></div>
+  <!-- BIO -->
+  <section class="section section--alt">
+    <div class="section-header"><p class="section-label rv">The Story</p><h2 class="section-title rv d1">Who I Am</h2><div class="section-line rv d2"></div></div>
+    <div class="about-body">
+      <p class="about-text rv">I'm <strong>Jay</strong> — a self-taught creative developer and digital strategist based in the Philippines. I work at the crossroads of <strong>web development</strong>, <strong>social media management</strong>, and <strong>visual design</strong>, helping businesses grow their presence online.</p>
+      <p class="about-text rv d1">From building responsive, pixel-perfect websites for companies like <a href="https://lightandsalt413.github.io/fzi-construction/" target="_blank" class="about-link">Fzi Construction</a> and <a href="https://lightandsalt413.github.io/deeplyrooted/" target="_blank" class="about-link">DeeplyRooted Hair Botox</a>, to managing full-scale social media campaigns for brands like <a href="https://www.janerockstarsalon.com/" target="_blank" class="about-link">Janerockstar Salon</a> and <a href="https://www.rebelfamilymotors.com/" target="_blank" class="about-link">Rebel Family Motors</a> — I bring a rare combination of technical skill and creative vision.</p>
+      <p class="about-text rv d2">I'm obsessed with the details: clean code, smooth animations, and designs that make people stop scrolling.</p>
     </div>
-    <a href="index.html#ending" class="nav-link-right">Contact</a>
-  </nav>
+  </section>
 
-  <!-- ABOUT HERO -->
-  <section class="about-hero" id="about-content">
-    <div class="about-hero-inner">
-      <div class="about-intro word-reveal">
-        <p>"I build where <span>creativity</span> meets <span>code.</span>"</p>
+  <!-- SKILLS -->
+  <section class="section section--dark">
+    <div class="section-header"><p class="section-label rv">Arsenal</p><h2 class="section-title rv d1">Tools & Technologies</h2><div class="section-line rv d2"></div></div>
+    <div style="max-width:700px;margin:0 auto">
+      <div class="skills rv">
+        <span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span><span class="skill">Shopify</span><span class="skill">WordPress</span><span class="skill">Figma</span><span class="skill">Canva</span><span class="skill">Git & GitHub</span><span class="skill">Responsive Design</span><span class="skill">SEO</span><span class="skill">Social Media Marketing</span><span class="skill">Content Strategy</span><span class="skill">Brand Identity</span><span class="skill">E-Commerce</span><span class="skill">UI/UX Design</span>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT CONTENT -->
-  <section class="about-details">
-    <!-- Intro Statement -->
-    <div class="about-intro-block reveal">
-      <p class="about-lead">I'm <strong>Jay</strong> — a self-taught creative developer and digital strategist based in the Philippines. I work at the crossroads of <strong>web development</strong>, <strong>social media management</strong>, and <strong>visual design</strong>, helping businesses grow their presence online through hand-crafted websites and data-driven content strategies.</p>
-      <p class="about-lead">From building responsive, pixel-perfect websites for companies like <a href="https://lightandsalt413.github.io/fzi-construction/" target="_blank" class="brand-link">Fzi Construction</a> and <a href="https://lightandsalt413.github.io/deeplyrooted/" target="_blank" class="brand-link">DeeplyRooted Hair Botox</a>, to managing full-scale social media campaigns for brands like <a href="https://www.janerockstarsalon.com/" target="_blank" class="brand-link">Janerockstar Salon</a> and <a href="https://www.rebelfamilymotors.com/" target="_blank" class="brand-link">Rebel Family Motors</a> — I bring a rare combination of technical skill and creative vision to every project I take on.</p>
-      <p class="about-lead">I'm obsessed with the details: clean code, smooth animations, and designs that make people stop scrolling. Whether it's an editorial portfolio, an e-commerce platform, or a full brand identity — I aim to make every pixel count.</p>
-    </div>
-
-    <!-- Section Divider -->
-    <div class="about-divider reveal rd1">
-      <span class="divider-line"></span>
-      <span class="divider-label">What I Do</span>
-      <span class="divider-line"></span>
-    </div>
-
-    <!-- Two Column Projects -->
-    <div class="about-grid">
-      <!-- Web Development -->
-      <div class="about-col reveal-left">
-        <h2 class="about-heading">Web Development</h2>
-        <div class="project-entry">
-          <h3 class="project-name"><a href="https://lightandsalt413.github.io/deeplyrooted/" target="_blank" class="brand-link">DeeplyRooted Hair Botox</a></h3>
-          <p class="project-desc">Designed and developed a premium e-commerce-ready website from scratch — featuring product showcases, booking integration, and a visual identity that elevated the brand's online presence.</p>
-        </div>
-        <div class="project-entry">
-          <h3 class="project-name"><a href="https://lightandsalt413.github.io/fzi-construction/" target="_blank" class="brand-link">Fzi Construction</a></h3>
-          <p class="project-desc">Built a professional corporate website showcasing the company's portfolio of construction projects, services, and team — with a clean, authoritative design language.</p>
-        </div>
-        <div class="project-entry">
-          <h3 class="project-name">Shopify & E-commerce Solutions</h3>
-          <p class="project-desc">Custom Shopify theme development and integrations — from product pages and checkout flows to inventory management systems for growing businesses.</p>
-        </div>
-      </div>
-
-      <!-- Social Media -->
-      <div class="about-col reveal-right">
-        <h2 class="about-heading">Social Media & Brand Strategy</h2>
-        <div class="project-entry">
-          <h3 class="project-name"><a href="https://www.janerockstarsalon.com/" target="_blank" class="brand-link">Janerockstar Salon</a></h3>
-          <p class="project-desc">Led social media management and content creation — crafting visual campaigns, engagement strategies, and brand positioning that drove client growth and community loyalty.</p>
-        </div>
-        <div class="project-entry">
-          <h3 class="project-name"><a href="https://www.rebelfamilymotors.com/" target="_blank" class="brand-link">Rebel Family Motors</a></h3>
-          <p class="project-desc">Developed a content strategy focused on automotive lifestyle — managing posts, stories, and promotional campaigns that strengthened brand identity and audience reach.</p>
-        </div>
-        <div class="project-entry">
-          <h3 class="project-name"><a href="https://lightandsalt413.github.io/deeplyrooted/" target="_blank" class="brand-link">DeeplyRooted Hair Botox</a></h3>
-          <p class="project-desc">End-to-end digital brand management — from visual identity design and social media content to website integration, creating a cohesive online presence across all platforms.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Resume CTA -->
-    <div class="about-resume reveal rd2">
-      <a href="assets/resume.pdf" class="magnetic-btn" download>
-        <span class="magnetic-btn-text">Download Resume</span>
-      </a>
-      <p class="resume-note">*PDF format (500KB)</p>
+  <!-- EXPERIENCE -->
+  <section class="section section--alt">
+    <div class="section-header"><p class="section-label rv">Experience</p><h2 class="section-title rv d1">Work History</h2><div class="section-line rv d2"></div></div>
+    <div class="exp-list">
+      <div class="exp-item rv"><h3 class="exp-role">Creative Developer</h3><p class="exp-company">Freelance — 2024–Present</p><p class="exp-desc">Building premium websites and digital experiences for clients across industries. Specializing in hand-coded, responsive sites with cinematic design.</p></div>
+      <div class="exp-item rv d1"><h3 class="exp-role">Social Media Manager</h3><p class="exp-company">Janerockstar Salon & Rebel Family Motors — 2024–Present</p><p class="exp-desc">Managing end-to-end social media presence — content creation, visual campaigns, engagement strategies, and audience growth.</p></div>
+      <div class="exp-item rv d2"><h3 class="exp-role">Web Developer</h3><p class="exp-company">DeeplyRooted & FZI Construction — 2024–Present</p><p class="exp-desc">Designed and developed full multi-page websites from scratch with Shopify integration, booking systems, and responsive layouts.</p></div>
     </div>
   </section>
 
-  <!-- ENDING -->
-  <section class="ending" id="ending">
-    <div class="ending-name float">JAY</div>
-    <a href="mailto:lightandsalt413@gmail.com" class="glow-email">lightandsalt413@gmail.com</a>
-    <p class="ending-copy">&copy; 2026</p>
+  <!-- RESUME CTA -->
+  <section class="section section--dark">
+    <div class="cta"><h2 class="cta-title rv">Want the Full Picture?</h2><p class="cta-desc rv d1">Download my resume or get in touch directly.</p><div style="display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap"><a href="assets/resume.pdf" class="btn-outline rv d2" download>Download Resume</a><a href="contact.html" class="btn-primary rv d3">Contact Me</a></div></div>
   </section>
 
-  <script src="scripts/main.js"></script>
-
-  <!-- MATRIX FALLING RAIN -->
-  <script>
-  (function(){
-    const c=document.getElementById('matrix-canvas');
-    if(!c)return;
-    const ctx=c.getContext('2d');
-    const chars='01{}[]()<>/\\|=+*~@#$%^&;:アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-    const fontSize=14;
-    let columns,drops;
-
-    function init(){
-      c.width=window.innerWidth;
-      c.height=window.innerHeight;
-      columns=Math.floor(c.width/fontSize);
-      drops=[];
-      for(let i=0;i<columns;i++){
-        drops[i]=Math.floor(Math.random()*-50);
-      }
-    }
-    init();
-    window.addEventListener('resize',init);
-
-    function draw(){
-      // Semi-transparent black overlay creates the trail/fade effect
-      ctx.fillStyle='rgba(9,9,8,.08)';
-      ctx.fillRect(0,0,c.width,c.height);
-      ctx.font=fontSize+'px monospace';
-
-      for(let i=0;i<columns;i++){
-        const char=chars[Math.floor(Math.random()*chars.length)];
-        // Gold/amber color
-        const r=180+Math.floor(Math.random()*40);
-        const g=130+Math.floor(Math.random()*30);
-        const b=70+Math.floor(Math.random()*20);
-        ctx.fillStyle='rgb('+r+','+g+','+b+')';
-        ctx.fillText(char,i*fontSize,drops[i]*fontSize);
-
-        // Reset drop to top when it reaches bottom
-        if(drops[i]*fontSize>c.height && Math.random()>0.975){
-          drops[i]=0;
-        }
-        drops[i]++;
-      }
-    }
-
-    setInterval(draw,40);
-  })();
-  </script>
+  <footer class="footer"><div class="footer-logo">JAY</div><a href="mailto:lightandsalt413@gmail.com" class="footer-email">lightandsalt413@gmail.com</a><p class="footer-copy">&copy; 2026 Jay Ynclino. All rights reserved.</p></footer>
+  <script src="js/app.js"></script>
 </body>
 </html>

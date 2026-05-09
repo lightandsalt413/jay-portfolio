@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | JAY</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+  <div class="cur"></div><div class="dot"></div>
+  <nav class="nav"><a href="index.html" class="nav-logo">JAY</a><div class="nav-links"><a href="index.html" class="nav-link">Home</a><a href="projects.html" class="nav-link">Projects</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link">Contact</a></div><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+  <div class="mob-menu"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
+
+  <section class="contact-wrap">
+    <div class="contact-inner">
+      <div style="font-family:var(--serif);font-size:clamp(6rem,15vw,10rem);font-weight:300;background:linear-gradient(180deg,rgba(201,149,107,.2),rgba(201,149,107,.03));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1;margin-bottom:1rem">404</div>
+      <h1 class="contact-title">Page Not Found</h1>
+      <p class="contact-sub">The page you're looking for doesn't exist or has been moved.</p>
+      <a href="index.html" class="btn-primary">Back to Home</a>
+      <p style="margin-top:2rem;font-size:.7rem;color:var(--gray2)">Redirecting in <span id="countdown">10</span>s...</p>
+    </div>
+  </section>
+
+  <script src="js/app.js"></script>
+  <script>let c=10;const el=document.getElementById('countdown');setInterval(()=>{c--;if(el)el.textContent=c;if(c<=0)window.location.href='index.html'},1000)</script>
+</body>
+</html>

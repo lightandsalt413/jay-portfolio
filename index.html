@@ -3,308 +3,169 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JAY — Creative Developer</title>
-  <meta name="description" content="Creative Developer &amp; Social Media Specialist. Merging functional code with high-impact visual narratives.">
-  <link rel="stylesheet" href="styles/main.css?v=129">
+  <title>JAY — Creative Developer & Digital Strategist</title>
+  <meta name="description" content="Jay Ynclino — Creative Developer & Social Media Specialist crafting premium digital experiences.">
+  <link rel="canonical" href="https://lightandsalt413.github.io/jay-portfolio/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="JAY — Creative Developer">
+  <meta property="og:description" content="Creative Developer & Social Media Specialist crafting premium digital experiences.">
+  <meta property="og:url" content="https://lightandsalt413.github.io/jay-portfolio/">
+  <meta property="og:image" content="https://lightandsalt413.github.io/jay-portfolio/assets/images/og-share.png">
+  <meta property="og:site_name" content="JAY Portfolio">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="JAY — Creative Developer">
+  <meta name="twitter:description" content="Creative Developer & Social Media Specialist crafting premium digital experiences.">
+  <meta name="twitter:image" content="https://lightandsalt413.github.io/jay-portfolio/assets/images/og-share.png">
+  <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
-  <style>
-    /* ===== PARALLAX CORE ===== */
-    .parallax-wrap{overflow-x:hidden}
-
-    /* Hero parallax layers */
-    .hero-editorial{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#080d18}
-    .hero-3d-canvas{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;display:block}
-    .hero-ed-bg{position:absolute;inset:0;z-index:1;display:flex;justify-content:center;align-items:center;will-change:transform}
-    .hero-ed-photo{height:90%;width:auto;max-width:none;object-fit:contain;transform:scale(1.15) translateY(5%);mix-blend-mode:screen}
-    .hero-ed-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,transparent 0%,transparent 60%,rgba(8,13,24,.6) 100%)}
-
-    /* Scroll indicator */
-    .scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:scrollBounce 2s ease-in-out infinite}
-    .scroll-hint span{font-family:var(--sans);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(245,240,235,.3)}
-    .scroll-line{width:1px;height:30px;background:linear-gradient(180deg,var(--gold),transparent);opacity:.5}
-    @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
-
-    /* ===== PARALLAX SECTIONS ===== */
-    .px-section{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:5rem 2.5rem}
-    .px-section--dark{background:#0a0a0a}
-    .px-section--navy{background:#080d18}
-    .px-section--accent{background:linear-gradient(135deg,#0d1117,#131820)}
-
-    /* Reveal animation */
-    .px-reveal{opacity:0;transform:translateY(60px);transition:all 1s cubic-bezier(.16,1,.3,1)}
-    .px-reveal.visible{opacity:1;transform:translateY(0)}
-    .px-reveal-left{opacity:0;transform:translateX(-80px);transition:all 1s cubic-bezier(.16,1,.3,1)}
-    .px-reveal-left.visible{opacity:1;transform:translateX(0)}
-    .px-reveal-right{opacity:0;transform:translateX(80px);transition:all 1s cubic-bezier(.16,1,.3,1)}
-    .px-reveal-right.visible{opacity:1;transform:translateX(0)}
-    .px-reveal-scale{opacity:0;transform:scale(.85);transition:all 1.2s cubic-bezier(.16,1,.3,1)}
-    .px-reveal-scale.visible{opacity:1;transform:scale(1)}
-
-    /* Stagger delays */
-    .delay-1{transition-delay:.1s}
-    .delay-2{transition-delay:.2s}
-    .delay-3{transition-delay:.3s}
-    .delay-4{transition-delay:.4s}
-
-    /* ===== INTRO SECTION ===== */
-    .intro-content{max-width:800px;text-align:center}
-    .intro-eyebrow{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem}
-    .intro-heading{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2.2rem,5vw,4rem);font-weight:300;color:#f5f0eb;line-height:1.2;margin-bottom:1.5rem}
-    .intro-heading em{font-style:italic;color:var(--gold)}
-    .intro-desc{font-family:var(--sans);font-size:.9rem;color:rgba(245,240,235,.4);line-height:1.8;max-width:550px;margin:0 auto}
-
-    /* ===== SERVICES SPLIT ===== */
-    .services-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;max-width:1100px;width:100%;align-items:center}
-    .service-block{padding:2rem 0}
-    .service-num{font-family:var(--sans);font-size:.65rem;font-weight:600;letter-spacing:.15em;color:rgba(201,149,107,.3);margin-bottom:1rem}
-    .service-title{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;color:#f5f0eb;line-height:1.15;margin-bottom:1rem}
-    .service-body{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,235,.4);line-height:1.8;margin-bottom:1.5rem}
-    .service-link{font-family:var(--sans);font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:gap .3s ease}
-    .service-link:hover{gap:.8rem}
-    .service-divider{width:40px;height:1px;background:var(--gold);opacity:.3;margin-bottom:1.5rem}
-
-    /* ===== STATS ROW ===== */
-    .stats-row{display:flex;gap:4rem;justify-content:center;flex-wrap:wrap}
-    .stat-item{text-align:center}
-    .stat-big{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(3rem,6vw,5rem);font-weight:300;color:var(--gold);line-height:1}
-    .stat-text{font-family:var(--sans);font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(245,240,235,.3);margin-top:.5rem}
-
-    /* ===== CTA SECTION ===== */
-    .cta-content{text-align:center;max-width:600px}
-    .cta-heading{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:300;color:#f5f0eb;margin-bottom:1rem}
-    .cta-sub{font-family:var(--sans);font-size:.8rem;color:rgba(245,240,235,.4);margin-bottom:2.5rem;line-height:1.7}
-    .cta-btn{display:inline-block;font-family:var(--sans);font-size:.75rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#080d18;background:var(--gold);padding:1rem 2.5rem;text-decoration:none;transition:all .4s ease}
-    .cta-btn:hover{background:#f5f0eb;transform:translateY(-2px);box-shadow:0 10px 30px rgba(201,149,107,.2)}
-
-    /* ===== RESPONSIVE ===== */
-    @media(max-width:768px){
-      .services-grid{grid-template-columns:1fr;gap:2rem}
-      .stats-row{gap:2rem}
-      .px-section{padding:4rem 1.5rem}
-    }
-  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Jay Ynclino","url":"https://lightandsalt413.github.io/jay-portfolio/","jobTitle":"Creative Developer & Social Media Specialist","email":"lightandsalt413@gmail.com","sameAs":["https://github.com/lightandsalt413"],"knowsAbout":["Web Development","HTML","CSS","JavaScript","Shopify","Social Media Marketing","Brand Identity","UI/UX Design"]}
+  </script>
 </head>
-<body class="parallax-wrap">
+<body>
 
-  <!-- CUSTOM CURSOR -->
-  <div class="cursor" id="cursor"></div>
-  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="scroll-bar"></div>
+  <div class="pg-trans"><div class="pt-layer pt-1"></div><div class="pt-layer pt-2"></div><div class="pt-gold"></div><div class="pt-logo">JAY</div></div>
+  <div class="cur"></div>
+  <div class="dot"></div>
 
   <!-- NAV -->
-  <nav class="nav-ed" id="nav">
-    <div class="nav-ed-left">
-      <a href="index.html" class="nav-ed-link nav-ed-active">home</a>
-      <a href="work.html" class="nav-ed-link">work</a>
-      <a href="portfolio.html" class="nav-ed-link">portfolio</a>
-      <a href="about.html" class="nav-ed-link">about</a>
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">JAY</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+      <a href="contact.html" class="nav-link nav-cta">Hire Me</a>
     </div>
-    <a href="index.html" class="nav-ed-logo">JAY</a>
-    <div class="nav-ed-right">
-      <a href="contact.html" class="nav-ed-link nav-ed-boxed">services</a>
-      <a href="contact.html" class="nav-ed-link">contact</a>
-      <span class="nav-ed-divider">|</span>
-      <a href="portfolio.html" class="nav-ed-link nav-ed-cta">view work <span class="nav-ed-dot"></span></a>
-    </div>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </nav>
 
-  <!-- ===== HERO — Parallax Layer ===== -->
-  <section class="hero-editorial" id="hero">
-    <canvas class="hero-3d-canvas" id="hero3d"></canvas>
-    <div class="hero-ed-bg" id="parallax-portrait">
-      <img src="assets/images/hero-portrait.png" alt="Jay Ynclino" class="hero-ed-photo">
+  <div class="mob-menu">
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"><canvas id="hero-canvas"></canvas></div>
+    <img src="assets/images/hero-portrait.png" alt="Jay Ynclino" class="hero-portrait">
+    <div class="hero-gradient"></div>
+    <div class="hero-gradient2"></div>
+    <div class="hero-content">
+      <p class="hero-label">Creative Developer</p>
+      <h1 class="hero-title">I build digital<br>experiences that<br><em>inspire.</em></h1>
+      <p class="hero-desc">Merging clean code with cinematic design — crafting websites and brand strategies that make people stop scrolling.</p>
+      <div class="hero-btns">
+        <a href="projects.html" class="btn-primary">View Work</a>
+        <a href="contact.html" class="btn-outline">Get In Touch</a>
+      </div>
     </div>
-    <div class="hero-ed-overlay"></div>
-    <div class="scroll-hint">
-      <span>Scroll</span>
-      <div class="scroll-line"></div>
-    </div>
+    <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
   </section>
 
-  <!-- ===== INTRO ===== -->
-  <section class="px-section px-section--dark">
-    <div class="intro-content">
-      <p class="intro-eyebrow px-reveal">Creative Developer & Strategist</p>
-      <h2 class="intro-heading px-reveal delay-1">Crafting digital experiences that <em>inspire</em> and <em>convert.</em></h2>
-      <p class="intro-desc px-reveal delay-2">I merge functional code with high-impact visual narratives — building brands that stand out in the digital landscape.</p>
+  <!-- SERVICES -->
+  <section class="section section--alt">
+    <div class="section-header">
+      <p class="section-label rv">What I Do</p>
+      <h2 class="section-title rv d1">Services & Expertise</h2>
+      <div class="section-line rv d2"></div>
     </div>
-  </section>
-
-  <!-- ===== SERVICES ===== -->
-  <section class="px-section px-section--navy">
-    <div class="services-grid">
-      <div class="service-block px-reveal-left">
-        <p class="service-num">01</p>
-        <div class="service-divider"></div>
-        <h3 class="service-title">Pixel-Perfect<br>Websites</h3>
-        <p class="service-body">Custom-built, responsive websites — from sleek corporate pages to premium e-commerce. Hand-coded with clean architecture.</p>
-        <a href="work.html" class="service-link">View Services →</a>
+    <div class="services">
+      <div class="service-card rv">
+        <div class="service-icon">◈</div>
+        <h3 class="service-name">Web Development</h3>
+        <p class="service-desc">Custom-built, responsive websites — from sleek corporate pages to premium e-commerce. Hand-coded with clean architecture and attention to every pixel.</p>
       </div>
-      <div class="service-block px-reveal-right">
-        <p class="service-num">02</p>
-        <div class="service-divider"></div>
-        <h3 class="service-title">Content That<br>Converts</h3>
-        <p class="service-body">Full-scale social media management — brand identity, visual campaigns, engagement strategies, and audience growth.</p>
-        <a href="work.html" class="service-link">See Campaigns →</a>
+      <div class="service-card rv d1">
+        <div class="service-icon">◉</div>
+        <h3 class="service-name">Social Media</h3>
+        <p class="service-desc">Full-scale social media management — brand identity, visual campaigns, engagement strategies, and audience growth that drives real results.</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ===== STATS ===== -->
-  <section class="px-section px-section--accent">
-    <div class="stats-row">
-      <div class="stat-item px-reveal-scale">
-        <div class="stat-big">5+</div>
-        <div class="stat-text">Projects Delivered</div>
-      </div>
-      <div class="stat-item px-reveal-scale delay-1">
-        <div class="stat-big">4+</div>
-        <div class="stat-text">Brands Managed</div>
-      </div>
-      <div class="stat-item px-reveal-scale delay-2">
-        <div class="stat-big">2+</div>
-        <div class="stat-text">Years Experience</div>
-      </div>
-      <div class="stat-item px-reveal-scale delay-3">
-        <div class="stat-big">100%</div>
-        <div class="stat-text">Client Satisfaction</div>
+      <div class="service-card rv d2">
+        <div class="service-icon">✦</div>
+        <h3 class="service-name">Brand Strategy</h3>
+        <p class="service-desc">End-to-end digital brand management — from visual identity design and content creation to cohesive online presence across all platforms.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===== CTA ===== -->
-  <section class="px-section px-section--dark">
-    <div class="cta-content">
-      <h2 class="cta-heading px-reveal">Let's Build<br>Something Great.</h2>
-      <p class="cta-sub px-reveal delay-1">Have a project in mind? Let's talk about how we can bring your vision to life.</p>
-      <a href="contact.html" class="cta-btn px-reveal delay-2">Get In Touch</a>
+  <!-- FEATURED PROJECTS -->
+  <section class="section section--dark">
+    <div class="section-header">
+      <p class="section-label rv">Selected Work</p>
+      <h2 class="section-title rv d1">Featured Projects</h2>
+      <div class="section-line rv d2"></div>
+    </div>
+    <div class="projects-grid">
+      <a href="project-deeplyrooted.html" class="project-card rv">
+        <img src="assets/images/project-deeplyrooted.png" alt="DeeplyRooted" class="project-img">
+        <div class="project-overlay"></div>
+        <span class="project-arrow">→</span>
+        <div class="project-info">
+          <p class="project-num">01</p>
+          <h3 class="project-name">DeeplyRooted Hair Botox</h3>
+          <p class="project-type">E-Commerce Website</p>
+        </div>
+      </a>
+      <a href="project-fzi.html" class="project-card rv d1">
+        <img src="assets/images/project-fzi.png" alt="FZI Construction" class="project-img">
+        <div class="project-overlay"></div>
+        <span class="project-arrow">→</span>
+        <div class="project-info">
+          <p class="project-num">02</p>
+          <h3 class="project-name">FZI Construction</h3>
+          <p class="project-type">Corporate Website</p>
+        </div>
+      </a>
+      <a href="project-rebel.html" class="project-card rv d2">
+        <img src="assets/images/project-bloombox.png" alt="Rebel Family Motors" class="project-img">
+        <div class="project-overlay"></div>
+        <span class="project-arrow">→</span>
+        <div class="project-info">
+          <p class="project-num">03</p>
+          <h3 class="project-name">Rebel Family Motors</h3>
+          <p class="project-type">Social Media & Content</p>
+        </div>
+      </a>
+      <a href="projects.html" class="project-card rv d3" style="display:flex;align-items:center;justify-content:center;background:var(--bg2);border:1px solid rgba(201,149,107,.1)">
+        <div style="text-align:center">
+          <p style="font-family:var(--serif);font-size:1.5rem;color:var(--gold);margin-bottom:.5rem">View All</p>
+          <p style="font-size:.7rem;color:var(--gray);letter-spacing:.1em">→ See full portfolio</p>
+        </div>
+      </a>
     </div>
   </section>
 
-  <script src="scripts/main.js"></script>
+  <!-- STATS -->
+  <section class="section section--accent">
+    <div class="stats">
+      <div class="stat rv-s"><div class="stat-num">5+</div><div class="stat-text">Projects Delivered</div></div>
+      <div class="stat rv-s d1"><div class="stat-num">4+</div><div class="stat-text">Brands Managed</div></div>
+      <div class="stat rv-s d2"><div class="stat-num">2+</div><div class="stat-text">Years Experience</div></div>
+      <div class="stat rv-s d3"><div class="stat-num">100%</div><div class="stat-text">Client Satisfaction</div></div>
+    </div>
+  </section>
 
-  <!-- ===== PARALLAX + REVEAL ENGINE ===== -->
-  <script>
-  (function(){
-    // ===== SCROLL REVEAL =====
-    const reveals = document.querySelectorAll('.px-reveal,.px-reveal-left,.px-reveal-right,.px-reveal-scale');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if(e.isIntersecting){
-          e.target.classList.add('visible');
-        }
-      });
-    }, {threshold: 0.15});
-    reveals.forEach(el => observer.observe(el));
+  <!-- CTA -->
+  <section class="section section--dark">
+    <div class="cta">
+      <h2 class="cta-title rv">Let's Build<br>Something Great.</h2>
+      <p class="cta-desc rv d1">Have a project in mind? Let's talk about how we can bring your vision to life.</p>
+      <a href="contact.html" class="btn-primary rv d2">Start a Project</a>
+    </div>
+  </section>
 
-    // ===== PARALLAX SCROLL =====
-    const portrait = document.getElementById('parallax-portrait');
-    const heroCanvas = document.getElementById('hero3d');
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-logo">JAY</div>
+    <a href="mailto:lightandsalt413@gmail.com" class="footer-email">lightandsalt413@gmail.com</a>
+    <p class="footer-copy">&copy; 2026 Jay Ynclino. All rights reserved.</p>
+  </footer>
 
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      const vh = window.innerHeight;
-
-      // Portrait moves slower (parallax)
-      if(portrait && scrollY < vh * 1.5){
-        portrait.style.transform = `translateY(${scrollY * 0.35}px)`;
-      }
-      // Canvas moves even slower
-      if(heroCanvas && scrollY < vh * 1.5){
-        heroCanvas.style.transform = `translateY(${scrollY * 0.2}px)`;
-      }
-      // Fade scroll hint
-      const hint = document.querySelector('.scroll-hint');
-      if(hint) hint.style.opacity = Math.max(0, 1 - scrollY / 200);
-    });
-
-    // ===== AURORA WAVE BACKGROUND =====
-    const canvas = document.getElementById('hero3d');
-    if(!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let W, H, time = 0;
-    let mouse = {x: 0.5, y: 0.5};
-
-    function resize(){
-      const p = canvas.parentElement;
-      W = canvas.width = p.clientWidth;
-      H = canvas.height = p.clientHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-    document.addEventListener('mousemove', e => {
-      mouse.x = e.clientX / W;
-      mouse.y = e.clientY / H;
-    });
-
-    function drawWave(yBase, amp, freq, speed, color, lw){
-      ctx.beginPath();
-      ctx.strokeStyle = color;
-      ctx.lineWidth = lw;
-      for(let x = 0; x <= W; x += 3){
-        const y = yBase
-          + Math.sin(x * freq + time * speed) * amp
-          + Math.sin(x * freq * 0.5 + time * speed * 1.3) * amp * 0.5
-          + (mouse.y - 0.5) * 30;
-        if(x === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-    }
-
-    const stars = [];
-    for(let i = 0; i < 100; i++){
-      stars.push({
-        x: Math.random() * 2000, y: Math.random() * 1000,
-        r: Math.random() * 1.2 + 0.2,
-        tw: Math.random() * Math.PI * 2,
-        sp: 0.5 + Math.random() * 2
-      });
-    }
-
-    function animate(){
-      time += 0.012;
-      ctx.globalAlpha = 1;
-      ctx.fillStyle = '#080d18';
-      ctx.fillRect(0, 0, W, H);
-
-      // Ambient glow
-      const glow = ctx.createRadialGradient(W*0.45, H*0.4, 0, W*0.45, H*0.4, H*0.6);
-      glow.addColorStop(0, 'rgba(60,90,160,0.06)');
-      glow.addColorStop(1, 'transparent');
-      ctx.fillStyle = glow;
-      ctx.fillRect(0, 0, W, H);
-
-      // Aurora waves
-      for(let i = 0; i < 5; i++){
-        drawWave(H*0.25 + i*H*0.08, 20+i*6, 0.003-i*0.0002, 0.8+i*0.15,
-          `hsla(${210+i*12},55%,50%,${0.06-i*0.008})`, 1.2);
-      }
-      // Gold waves
-      for(let i = 0; i < 3; i++){
-        drawWave(H*0.65+i*H*0.05, 12+i*4, 0.004, 1.2+i*0.2,
-          `rgba(201,149,107,${0.06-i*0.015})`, 0.8);
-      }
-
-      // Stars
-      stars.forEach(s => {
-        const f = 0.3 + Math.sin(time*s.sp+s.tw)*0.4;
-        ctx.beginPath();
-        ctx.arc(s.x%W, s.y%H, s.r, 0, Math.PI*2);
-        ctx.fillStyle = `rgba(200,210,240,${f*0.4})`;
-        ctx.fill();
-      });
-
-      // Vignette
-      const v = ctx.createRadialGradient(W/2,H/2,H*0.25,W/2,H/2,H*0.95);
-      v.addColorStop(0,'transparent');
-      v.addColorStop(1,'rgba(8,13,24,0.5)');
-      ctx.fillStyle = v;
-      ctx.fillRect(0,0,W,H);
-
-      requestAnimationFrame(animate);
-    }
-    animate();
-  })();
-  </script>
+  <script src="js/app.js"></script>
 </body>
 </html>
