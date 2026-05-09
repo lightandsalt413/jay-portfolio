@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Jay Ynclino</title>
   <meta name="description" content="Selected projects and case studies by Jay Ynclino — web development, social media, and brand strategy.">
-  <link rel="stylesheet" href="styles/main.css?v=123">
+  <link rel="stylesheet" href="styles/main.css?v=124">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
@@ -34,65 +34,108 @@
   <!-- Spacer for fixed nav -->
   <div style="height:60px"></div>
 
-  <!-- ===== WORK / EXPERIENCE CARDS ===== -->
-  <section class="section-light-alt" id="portfolio">
-    <div class="section-inner">
-      <p class="section-label">Selected Work</p>
-      <h2 class="section-title">The Portfolio</h2>
-      <div class="work-grid">
-        <!-- Card 01 -->
-        <div class="work-card">
-          <div class="work-card-number">01</div>
-          <p class="work-card-label">E-Commerce Website</p>
-          <h3 class="work-card-title">DeeplyRooted Hair Botox</h3>
-          <p class="work-card-desc">Designed and developed a premium e-commerce-ready website from scratch — featuring product showcases, booking integration, and a visual identity that elevated the brand's online presence.</p>
-          <div class="work-card-tags">
-            <span class="tech-tag">HTML/CSS</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">Responsive</span>
+  <!-- ===== BENTO GRID PORTFOLIO ===== -->
+  <section class="bento-section">
+    <div class="bento-header">
+      <p class="bento-label">Selected Work</p>
+      <h2 class="bento-title">The Portfolio</h2>
+    </div>
+
+    <div class="bento-grid">
+
+      <!-- CARD 01 — Large featured -->
+      <div class="bento-card bento-lg" id="bento-1">
+        <div class="bento-card-inner">
+          <span class="bento-num">01</span>
+          <div class="bento-badge">E-Commerce Website</div>
+          <h3 class="bento-card-title">DeeplyRooted<br>Hair Botox</h3>
+          <p class="bento-card-desc">Premium e-commerce website — product showcases, booking integration, and elevated brand identity.</p>
+          <div class="bento-tags">
+            <span>HTML/CSS</span>
+            <span>JavaScript</span>
+            <span>Responsive</span>
           </div>
-          <p class="work-card-date">2024 – Present</p>
-        </div>
-        <!-- Card 02 -->
-        <div class="work-card">
-          <div class="work-card-number">02</div>
-          <p class="work-card-label">Social Media Management</p>
-          <h3 class="work-card-title">Janerockstar Salon</h3>
-          <p class="work-card-desc">Led social media management and content creation — crafting visual campaigns, engagement strategies, and brand positioning that drove client growth and community loyalty.</p>
-          <div class="work-card-tags">
-            <span class="tech-tag">Content Strategy</span>
-            <span class="tech-tag">Visual Design</span>
-            <span class="tech-tag">Analytics</span>
+          <div class="bento-card-footer">
+            <span class="bento-year">2024 – Present</span>
+            <a href="project-deeplyrooted.html" class="bento-arrow">→</a>
           </div>
-          <p class="work-card-date">2024 – Present</p>
-        </div>
-        <!-- Card 03 -->
-        <div class="work-card">
-          <div class="work-card-number">03</div>
-          <p class="work-card-label">Corporate Website</p>
-          <h3 class="work-card-title">FZI Construction</h3>
-          <p class="work-card-desc">Built a professional corporate website showcasing the company's portfolio of construction projects, services, and team — with a clean, authoritative design language.</p>
-          <div class="work-card-tags">
-            <span class="tech-tag">HTML/CSS</span>
-            <span class="tech-tag">JavaScript</span>
-            <span class="tech-tag">UI/UX</span>
-          </div>
-          <p class="work-card-date">2024 – Present</p>
-        </div>
-        <!-- Card 04 -->
-        <div class="work-card">
-          <div class="work-card-number">04</div>
-          <p class="work-card-label">Brand & Content Strategy</p>
-          <h3 class="work-card-title">Rebel Family Motors</h3>
-          <p class="work-card-desc">Developed a content strategy focused on automotive lifestyle — managing posts, stories, and promotional campaigns that strengthened brand identity and audience reach.</p>
-          <div class="work-card-tags">
-            <span class="tech-tag">Social Media</span>
-            <span class="tech-tag">Video Content</span>
-            <span class="tech-tag">Brand Identity</span>
-          </div>
-          <p class="work-card-date">2024 – Present</p>
         </div>
       </div>
+
+      <!-- CARD 02 — Medium -->
+      <div class="bento-card bento-md" id="bento-2">
+        <div class="bento-card-inner">
+          <span class="bento-num">02</span>
+          <div class="bento-badge">Social Media</div>
+          <h3 class="bento-card-title">Janerockstar<br>Salon</h3>
+          <p class="bento-card-desc">Social media management, visual campaigns, and brand positioning.</p>
+          <div class="bento-tags">
+            <span>Content Strategy</span>
+            <span>Visual Design</span>
+          </div>
+          <div class="bento-card-footer">
+            <span class="bento-year">2024 – Present</span>
+            <span class="bento-arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 03 — Medium -->
+      <div class="bento-card bento-md" id="bento-3">
+        <div class="bento-card-inner">
+          <span class="bento-num">03</span>
+          <div class="bento-badge">Corporate Website</div>
+          <h3 class="bento-card-title">FZI<br>Construction</h3>
+          <p class="bento-card-desc">Professional corporate site — projects, services, and authoritative design.</p>
+          <div class="bento-tags">
+            <span>HTML/CSS</span>
+            <span>JavaScript</span>
+            <span>UI/UX</span>
+          </div>
+          <div class="bento-card-footer">
+            <span class="bento-year">2024 – Present</span>
+            <span class="bento-arrow">→</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CARD 04 — Large -->
+      <div class="bento-card bento-lg" id="bento-4">
+        <div class="bento-card-inner">
+          <span class="bento-num">04</span>
+          <div class="bento-badge">Brand & Content</div>
+          <h3 class="bento-card-title">Rebel Family<br>Motors</h3>
+          <p class="bento-card-desc">Content strategy for automotive lifestyle — posts, stories, and campaigns that strengthened brand identity.</p>
+          <div class="bento-tags">
+            <span>Social Media</span>
+            <span>Video Content</span>
+            <span>Brand Identity</span>
+          </div>
+          <div class="bento-card-footer">
+            <span class="bento-year">2024 – Present</span>
+            <a href="project-rebel.html" class="bento-arrow">→</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- STAT CARD — Mini -->
+      <div class="bento-card bento-stat" id="bento-stat1">
+        <div class="bento-stat-num">5+</div>
+        <div class="bento-stat-label">Projects</div>
+      </div>
+
+      <!-- STAT CARD — Mini -->
+      <div class="bento-card bento-stat" id="bento-stat2">
+        <div class="bento-stat-num">4+</div>
+        <div class="bento-stat-label">Brands</div>
+      </div>
+
+      <!-- STAT CARD — Mini -->
+      <div class="bento-card bento-stat" id="bento-stat3">
+        <div class="bento-stat-num">100%</div>
+        <div class="bento-stat-label">Satisfaction</div>
+      </div>
+
     </div>
   </section>
 
