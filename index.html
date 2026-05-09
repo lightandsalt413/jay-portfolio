@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JAY — Creative Developer</title>
   <meta name="description" content="Creative Developer &amp; Social Media Specialist. Merging functional code with high-impact visual narratives.">
-  <link rel="stylesheet" href="styles/main.css?v=125">
+  <link rel="stylesheet" href="styles/main.css?v=126">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
@@ -55,8 +55,9 @@
     let W, H, particles = [], mouse = {x: 0, y: 0};
 
     function resize(){
-      W = canvas.width = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
+      const parent = canvas.parentElement;
+      W = canvas.width = parent.clientWidth;
+      H = canvas.height = parent.clientHeight;
     }
     resize();
     window.addEventListener('resize', resize);
