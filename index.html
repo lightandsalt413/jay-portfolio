@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JAY — Creative Developer</title>
   <meta name="description" content="Creative Developer & Social Media Specialist. Merging functional code with high-impact visual narratives.">
-  <link rel="stylesheet" href="styles/main.css?v=99">
+  <link rel="stylesheet" href="styles/main.css?v=100">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 </head>
 <body>
@@ -29,39 +29,33 @@
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="hero">
-    <!-- MATRIX FALLING RAIN -->
-    <canvas id="matrix-canvas" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:.18"></canvas>
-
-    <!-- PARALLAX PARTICLES -->
-    <div class="parallax-particles" id="parallax-particles"></div>
-
-    <div class="hero-parallax-bg" id="hero-parallax-bg" data-parallax="0.4"></div>
-
-    <!-- Cinematic vignette -->
-    <div class="hero-vignette"></div>
-
-
-
-    <!-- Side name badge -->
-    <div class="hero-side-badge">Jay Ynclino · Portfolio 2025</div>
-
-    <div class="hero-inner">
-      <div class="hero-letters">
-        <span class="hero-letter-j" data-parallax="-0.15">J</span>
-        <span class="hero-letter-y" data-parallax="-0.1">Y</span>
-      </div>
-      <div class="hero-portrait" id="hero-portrait" data-parallax="-0.05">
-        <div class="hero-glow"></div>
-        <div class="hero-nen"></div>
-        <img src="assets/images/hero-portrait.png" alt="Jay">
-      </div>
+  <section class="hero-editorial" id="hero">
+    <!-- Background photo -->
+    <div class="hero-ed-bg">
+      <img src="assets/images/hero-portrait.png" alt="Jay Ynclino" class="hero-ed-photo">
     </div>
+    <div class="hero-ed-overlay"></div>
 
+    <!-- Content -->
+    <div class="hero-ed-content">
+      <p class="hero-ed-label">Creative Developer & Digital Strategist</p>
+      <h1 class="hero-ed-title">Jay<br>Ynclino</h1>
+      <p class="hero-ed-subtitle">Building where creativity meets code — from pixel-perfect<br>websites to full-scale brand strategies.</p>
+
+      <!-- Bottom nav links -->
+      <nav class="hero-ed-nav">
+        <a href="#stats">Work</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Services</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
   </section>
 
+
   <!-- ===== STATS SECTION ===== -->
-  <section class="section-light">
+  <section class="section-light" id="stats">
     <div class="section-inner">
       <p class="section-label">By the Numbers</p>
       <h2 class="section-title">Results That<br><em>Speak.</em></h2>
@@ -121,7 +115,7 @@
   </section>
 
   <!-- ===== WORK / EXPERIENCE CARDS ===== -->
-  <section class="section-light-alt">
+  <section class="section-light-alt" id="portfolio">
     <div class="section-inner">
       <p class="section-label">Selected Work</p>
       <h2 class="section-title">The Portfolio</h2>
