@@ -10,7 +10,8 @@
   --slow:.8s cubic-bezier(.16,1,.3,1);
   --smooth:.6s cubic-bezier(.25,.46,.45,.94);
 }
-html{scroll-behavior:smooth;overflow-x:hidden}
+html{scroll-behavior:smooth;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none}
+html::-webkit-scrollbar{display:none}
 body{font-family:var(--serif);background:var(--navy);color:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block;pointer-events:none}
