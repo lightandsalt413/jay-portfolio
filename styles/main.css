@@ -69,10 +69,14 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 
 /* Background photo */
 .hero-ed-bg{position:absolute;inset:0;z-index:1;display:flex;justify-content:center;align-items:flex-end}
-.hero-ed-photo{height:95%;width:auto;max-width:none;object-fit:contain;opacity:.35;filter:grayscale(.15)}
+.hero-ed-photo{height:95%;width:auto;max-width:none;object-fit:contain;opacity:.6;filter:saturate(1.1) contrast(1.05)}
 
-/* Dark overlay for text readability */
-.hero-ed-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(26,23,20,.3) 0%,rgba(26,23,20,.15) 40%,rgba(26,23,20,.5) 80%,rgba(26,23,20,.85) 100%)}
+/* Warm ambient glow behind portrait */
+.hero-ed-bg::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,149,107,.12) 0%,transparent 70%);top:20%;left:50%;transform:translateX(-50%);z-index:-1;animation:heroGlow 6s ease-in-out infinite}
+@keyframes heroGlow{0%,100%{opacity:.7;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.2)}}
+
+/* Dark overlay — lighter so photo shows through */
+.hero-ed-overlay{position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(26,23,20,.15) 0%,rgba(26,23,20,.05) 30%,rgba(26,23,20,.25) 70%,rgba(26,23,20,.75) 100%)}
 
 /* Content — centered */
 .hero-ed-content{position:relative;z-index:3;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1.5rem;padding:0 2rem}
