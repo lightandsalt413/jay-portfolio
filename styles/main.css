@@ -68,8 +68,8 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 .hero-editorial{position:relative;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#1a1714}
 
 /* Background photo */
-.hero-ed-bg{position:absolute;inset:0;z-index:1;display:flex;justify-content:center;align-items:flex-end}
-.hero-ed-photo{height:120%;width:auto;max-width:none;object-fit:contain;opacity:.6;filter:saturate(1.1) contrast(1.05);transform:translateY(15%)}
+.hero-ed-bg{position:absolute;inset:0;z-index:1;display:flex;justify-content:center;align-items:center;padding-top:5%}
+.hero-ed-photo{height:90%;width:auto;max-width:none;object-fit:contain;opacity:.6;filter:saturate(1.1) contrast(1.05);transform:scale(1.15) translateY(5%)}
 
 /* Warm ambient glow behind portrait */
 .hero-ed-bg::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(201,149,107,.12) 0%,transparent 70%);top:20%;left:50%;transform:translateX(-50%);z-index:-1;animation:heroGlow 6s ease-in-out infinite}
