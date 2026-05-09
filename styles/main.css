@@ -34,25 +34,33 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 @media(max-width:768px){body{cursor:auto}a,button,.magnetic-btn,.form-submit{cursor:pointer}.cursor,.cursor-dot{display:none!important}}
 
 
-/* ===== NAV — Luxury Gold Glass ===== */
-.nav{position:fixed;top:0;left:0;width:100%;z-index:100;padding:2rem 4rem 1.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;background:linear-gradient(180deg,rgba(9,9,9,.85) 0%,rgba(9,9,9,.5) 60%,transparent 100%);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+/* ===== NAV — Editorial Light Bar ===== */
+.nav-ed{position:fixed;top:0;left:0;width:100%;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;background:rgba(245,240,235,.97);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.06)}
+
+.nav-ed-left,.nav-ed-right{display:flex;align-items:center;gap:1.8rem}
+
+.nav-ed-link{font-family:var(--sans);font-size:.72rem;font-weight:400;letter-spacing:.04em;color:#3a3530;transition:all .3s ease;text-decoration:none}
+.nav-ed-link:hover{color:var(--gold)}
+
+/* Active page — boxed */
+.nav-ed-active{border:1px solid var(--gold);padding:.35rem .8rem;color:var(--gold)}
+
+/* Center logo */
+.nav-ed-logo{font-family:var(--serif);font-size:1.3rem;font-weight:600;font-style:italic;color:var(--gold);letter-spacing:.05em}
+
+/* Boxed link (services) */
+.nav-ed-boxed{border:1px solid #3a3530;padding:.35rem .8rem}
+.nav-ed-boxed:hover{border-color:var(--gold);color:var(--gold)}
+
+/* Divider */
+.nav-ed-divider{color:rgba(58,53,48,.2);font-size:.8rem;user-select:none}
+
+/* View Work CTA with gold dot */
+.nav-ed-cta{display:flex;align-items:center;gap:.4rem}
+.nav-ed-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block}
 
 
-/* Side links — gold-bordered box style */
-.nav-link-left,.nav-link-right{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;text-transform:uppercase;color:rgba(222,200,175,.7);transition:all .4s ease;position:relative;padding:.6rem 1.4rem;border:1px solid rgba(201,149,107,.25);background:rgba(201,149,107,.04)}
-.nav-link-left:hover,.nav-link-right:hover{color:var(--gold);letter-spacing:.3em;text-shadow:0 0 20px rgba(201,149,107,.3);border-color:rgba(201,149,107,.5);background:rgba(201,149,107,.08);box-shadow:0 0 15px rgba(201,149,107,.08)}
-.nav-link-left{justify-self:start}
-.nav-link-right{justify-self:end}
-
-/* Center — SERVICES with gold box */
-.nav-center{display:flex;align-items:center;gap:1.2rem}
-.nav-line{display:none}
-.nav-center-text{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.3em;text-transform:uppercase;color:rgba(237,232,227,.9);transition:all .4s ease;position:relative;padding:.6rem 1.6rem;border:1px solid rgba(201,149,107,.3);background:rgba(201,149,107,.06)}
-.nav-center-text::before,.nav-center-text::after{content:'✦';position:absolute;top:50%;transform:translateY(-50%);color:var(--gold);font-size:.45rem;opacity:.6;transition:opacity .4s,transform .4s}
-.nav-center-text::before{left:.4rem}
-.nav-center-text::after{right:.4rem}
-.nav-center-text:hover{color:var(--gold);letter-spacing:.35em;text-shadow:0 0 25px rgba(201,149,107,.35);border-color:rgba(201,149,107,.55);background:rgba(201,149,107,.1);box-shadow:0 0 20px rgba(201,149,107,.1)}
-.nav-center-text:hover::before,.nav-center-text:hover::after{opacity:1;transform:translateY(-50%) scale(1.3)}
 
 
 
@@ -377,10 +385,11 @@ a,button,.magnetic-btn,.form-submit{cursor:none}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-  /* Nav — compact, 2 columns */
-  .nav{padding:1rem 1.5rem;grid-template-columns:1fr 1fr;gap:.5rem}
-  .nav-link-left,.nav-link-right{font-size:.65rem;letter-spacing:.15em}
-  .nav-center{display:none}
+  /* Editorial nav — mobile */
+  .nav-ed{padding:.6rem 1rem;flex-wrap:wrap;gap:.5rem}
+  .nav-ed-left,.nav-ed-right{gap:.8rem}
+  .nav-ed-link{font-size:.6rem}
+  .nav-ed-divider,.nav-ed-cta{display:none}
 
   /* Editorial hero — mobile */
   .hero-ed-title{font-size:clamp(3rem,14vw,5rem)}
