@@ -170,6 +170,25 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 @media(max-width:768px){.projects-grid{grid-template-columns:1fr;gap:1.2rem}}
 
+/* ===== PROCESS / HOW I WORK ===== */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;max-width:1000px;margin:0 auto;padding:0 2rem}
+.process-step{text-align:center;padding:2rem 1.5rem;position:relative;border:1px solid rgba(196,147,85,.08);border-radius:8px;background:rgba(28,28,32,.5);transition:all .4s var(--ease)}
+.process-step:hover{border-color:rgba(196,147,85,.2);transform:translateY(-4px)}
+.process-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:var(--gold);opacity:.2;line-height:1;margin-bottom:.8rem}
+.process-icon{color:var(--gold);margin-bottom:1rem}
+.process-name{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:.6rem;letter-spacing:.03em}
+.process-desc{font-size:.72rem;color:var(--gray);line-height:1.7}
+@media(max-width:768px){.process-grid{grid-template-columns:1fr 1fr;gap:1rem}.process-step{padding:1.5rem 1rem}}
+@media(max-width:480px){.process-grid{grid-template-columns:1fr}}
+
+/* ===== TRUSTED BY ===== */
+.brands-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray);text-align:center;margin-bottom:1.5rem}
+.brands-strip{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:2rem}
+.brand-name{font-family:var(--serif);font-size:clamp(.9rem,1.5vw,1.2rem);color:var(--gray);opacity:.4;font-weight:400;letter-spacing:.05em;transition:opacity .3s}
+.brand-name:hover{opacity:.8}
+.brand-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);opacity:.3}
+@media(max-width:768px){.brands-strip{gap:1.2rem}.brand-dot{display:none}}
+
 /* ===== MARQUEE ===== */
 .marquee-wrap{overflow:hidden;padding:2rem 0;border-top:1px solid rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.03);background:var(--bg)}
 .marquee-track{display:flex;gap:3rem;animation:marqueeScroll 25s linear infinite;width:max-content}
