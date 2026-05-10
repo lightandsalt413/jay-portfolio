@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const h=document.documentElement.scrollHeight-window.innerHeight;
       scrollBar.style.width=h>0?(window.scrollY/h*100)+'%':'0';
     }
-  },{passive:true});
+  });
 
   /* ===== HAMBURGER ===== */
   const ham=document.querySelector('.hamburger'),mob=document.querySelector('.mob-menu');
@@ -45,111 +45,31 @@ document.addEventListener('DOMContentLoaded',()=>{
     }));
   }
 
-  /* ===== GSAP ANIMATIONS ===== */
-  if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
-    gsap.registerPlugin(ScrollTrigger);
+  /* ===== SCROLL REVEAL (IntersectionObserver — reliable) ===== */
+  const rObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rObs.unobserve(e.target)}});
+  },{threshold:.12});
+  document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s').forEach(el=>rObs.observe(el));
 
-    // Hero title
-    const heroTitle=document.querySelector('.hero-title');
-    if(heroTitle) gsap.from(heroTitle,{y:60,opacity:0,duration:1.2,ease:'power3.out',delay:.3});
-
-    // Hero elements
-    const heroLabel=document.querySelector('.hero-label');
-    const heroDesc=document.querySelector('.hero-desc');
-    const heroBtns=document.querySelector('.hero-btns');
-    const heroScroll=document.querySelector('.hero-scroll');
-    if(heroLabel) gsap.from(heroLabel,{y:20,opacity:0,duration:.8,ease:'power3.out',delay:.1});
-    if(heroDesc) gsap.from(heroDesc,{y:30,opacity:0,duration:.8,ease:'power3.out',delay:.6});
-    if(heroBtns) gsap.from(heroBtns,{y:20,opacity:0,duration:.8,ease:'power3.out',delay:.9});
-    if(heroScroll) gsap.from(heroScroll,{opacity:0,duration:1,delay:1.3});
-
-    // Hero portrait parallax
-    const heroPortrait=document.querySelector('.hero-portrait');
-    if(heroPortrait){
-      gsap.from(heroPortrait,{x:80,opacity:0,duration:1.2,ease:'power3.out',delay:.3});
-      gsap.to(heroPortrait,{y:-60,scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:2}});
-    }
-
-    // Section headers
-    gsap.utils.toArray('.section-header').forEach(header=>{
-      const tl=gsap.timeline({scrollTrigger:{trigger:header,start:'top 88%'}});
-      const l=header.querySelector('.section-label'),t=header.querySelector('.section-title'),ln=header.querySelector('.section-line');
-      if(l) tl.from(l,{y:15,opacity:0,duration:.5,ease:'power3.out'});
-      if(t) tl.from(t,{y:20,opacity:0,duration:.6,ease:'power3.out'},'-=.2');
-      if(ln) tl.from(ln,{scaleX:0,duration:.5,ease:'power3.inOut'},'-=.3');
-    });
-
-    // Service cards
-    gsap.utils.toArray('.service-card').forEach((c,i)=>{
-      gsap.from(c,{y:40,opacity:0,duration:.7,delay:i*.1,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 88%'}});
-    });
-
-    // Project cards
-    gsap.utils.toArray('.project-card').forEach((c,i)=>{
-      gsap.from(c,{y:30,opacity:0,duration:.7,delay:i*.08,ease:'power3.out',scrollTrigger:{trigger:c,start:'top 88%'}});
-    });
-
-    // Stats
-    gsap.utils.toArray('.stat').forEach((s,i)=>{
-      gsap.from(s,{y:30,opacity:0,duration:.6,delay:i*.1,ease:'power3.out',
-        scrollTrigger:{trigger:s,start:'top 88%',onEnter:()=>{
-          const n=s.querySelector('.stat-num');
-          if(n&&!n.dataset.done){n.dataset.done='1';animateNum(n)}
-        }}
-      });
-    });
-
-    // CTA
-    const cta=document.querySelector('.cta');
-    if(cta){
-      const tl=gsap.timeline({scrollTrigger:{trigger:cta,start:'top 85%'}});
-      const ct=cta.querySelector('.cta-title'),cd=cta.querySelector('.cta-desc'),cb=cta.querySelector('.btn-primary');
-      if(ct) tl.from(ct,{y:40,opacity:0,duration:.8,ease:'power3.out'});
-      if(cd) tl.from(cd,{y:20,opacity:0,duration:.6,ease:'power3.out'},'-=.4');
-      if(cb) tl.from(cb,{y:15,opacity:0,duration:.5,ease:'power3.out'},'-=.3');
-    }
-
-    // Footer
-    const fl=document.querySelector('.footer-logo');
-    if(fl) gsap.from(fl,{scale:.8,opacity:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:fl,start:'top 92%'}});
-
-    // Generic scroll reveals — skip elements with dedicated animations
-    gsap.utils.toArray('.rv,.rv-l,.rv-r,.rv-s').forEach(el=>{
-      if(el.closest('.hero')||el.closest('.section-header')||el.classList.contains('service-card')||el.closest('.cta'))return;
-      const dir=el.classList.contains('rv-l')?{x:-40}:el.classList.contains('rv-r')?{x:40}:el.classList.contains('rv-s')?{scale:.9}:{y:35};
-      gsap.from(el,{...dir,opacity:0,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
-    });
-
-    // About page
-    gsap.utils.toArray('.about-text').forEach((p,i)=>gsap.from(p,{y:20,opacity:0,duration:.6,delay:i*.1,ease:'power3.out',scrollTrigger:{trigger:p,start:'top 88%'}}));
-    gsap.utils.toArray('.exp-item').forEach((e,i)=>gsap.from(e,{x:-30,opacity:0,duration:.6,delay:i*.08,ease:'power3.out',scrollTrigger:{trigger:e,start:'top 88%'}}));
-
-    ScrollTrigger.refresh();
-
-  } else {
-    // Fallback: IntersectionObserver
-    const obs=new IntersectionObserver(entries=>{
-      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}});
-    },{threshold:.15});
-    document.querySelectorAll('.rv,.rv-l,.rv-r,.rv-s').forEach(el=>obs.observe(el));
-  }
-
-  /* ===== COUNTER ===== */
+  /* ===== COUNTER ANIMATION ===== */
   function animateNum(el){
-    const txt=el.textContent.trim(),m=txt.match(/^([\d.]+)(.*)$/);
+    const txt=el.textContent.trim();
+    const m=txt.match(/^([\d.]+)(.*)$/);
     if(!m)return;
     const target=parseFloat(m[1]),suffix=m[2]||'',dur=1500,start=performance.now();
     const isF=txt.includes('.');
+    function ease(t){return 1-Math.pow(1-t,4)}
     function tick(now){
-      const p=Math.min((now-start)/dur,1),v=(1-Math.pow(1-p,4))*target;
+      const p=Math.min((now-start)/dur,1),v=ease(p)*target;
       el.textContent=(isF?v.toFixed(1):Math.floor(v))+suffix;
       if(p<1)requestAnimationFrame(tick);else el.textContent=txt;
     }
     requestAnimationFrame(tick);
   }
-  document.querySelectorAll('.cs-metric-num').forEach(el=>{
-    new IntersectionObserver(([e])=>{if(e.isIntersecting){animateNum(el)}},{threshold:.5}).observe(el);
-  });
+  const cObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){animateNum(e.target);cObs.unobserve(e.target)}});
+  },{threshold:.5});
+  document.querySelectorAll('.stat-num,.cs-metric-num').forEach(el=>cObs.observe(el));
 
   /* ===== PAGE TRANSITION ===== */
   const trans=document.querySelector('.pg-trans');
@@ -159,7 +79,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       if(href&&href.endsWith('.html')&&!a.hasAttribute('target')&&!a.hasAttribute('download')){
         a.addEventListener('click',e=>{
           e.preventDefault();trans.classList.add('go');
-          setTimeout(()=>window.location.href=href,700);
+          setTimeout(()=>{window.location.href=href},700);
         });
       }
     });
@@ -167,10 +87,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   /* ===== LAZY IMAGES ===== */
   document.querySelectorAll('img').forEach((img,i)=>{
-    if(i>=2)img.loading='lazy';
+    if(i>=2&&!img.hasAttribute('loading'))img.setAttribute('loading','lazy');
   });
 
-  /* ===== AURORA CANVAS ===== */
+  /* ===== AURORA CANVAS (homepage hero) ===== */
   const canvas=document.getElementById('hero-canvas');
   if(canvas){
     const ctx=canvas.getContext('2d');let W,H,t=0,mx=.5,my=.5;
@@ -183,7 +103,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     function wave(yB,amp,freq,spd,col,lw){
       ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=lw;
       for(let x=0;x<=W;x+=4){
-        const y=yB+Math.sin(x*freq+t*spd)*amp+Math.sin(x*freq*.5+t*spd*1.3)*amp*.5;
+        const y=yB+Math.sin(x*freq+t*spd)*amp+Math.sin(x*freq*.5+t*spd*1.3)*amp*.5+(my-.5)*15;
         x===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
       }ctx.stroke();
     }
@@ -211,7 +131,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     draw();
   }
 
-  /* ===== FORM ===== */
+  /* ===== FORM HANDLER ===== */
   const form=document.getElementById('contact-form'),ok=document.getElementById('form-ok');
   if(form){
     form.addEventListener('submit',async e=>{
