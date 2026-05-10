@@ -98,10 +98,14 @@ document.addEventListener('DOMContentLoaded',()=>{
       gsap.from(heroTitle,{y:80,opacity:0,duration:1.5,ease:'power3.out',delay:.3});
     }
 
-    // Hero elements stagger
-    gsap.from('.hero-label',{y:30,opacity:0,duration:1,ease:'power3.out',delay:.2});
-    gsap.from('.hero-desc',{y:40,opacity:0,duration:1,ease:'power3.out',delay:.8});
-    gsap.from('.hero-btns',{y:30,opacity:0,duration:1,ease:'power3.out',delay:1});
+    // Hero elements stagger — only if they exist
+    const heroLabel=document.querySelector('.hero-label');
+    const heroDesc=document.querySelector('.hero-desc');
+    const heroBtns=document.querySelector('.hero-btns');
+    const heroScroll=document.querySelector('.hero-scroll');
+    if(heroLabel) gsap.from(heroLabel,{y:30,opacity:0,duration:1,ease:'power3.out',delay:.2});
+    if(heroDesc) gsap.from(heroDesc,{y:40,opacity:0,duration:1,ease:'power3.out',delay:.8});
+    if(heroBtns) gsap.from(heroBtns,{y:30,opacity:0,duration:1,ease:'power3.out',delay:1});
 
     // Hero portrait
     const heroPortrait=document.querySelector('.hero-portrait');
@@ -114,21 +118,24 @@ document.addEventListener('DOMContentLoaded',()=>{
     }
 
     // Hero scroll indicator
-    gsap.from('.hero-scroll',{opacity:0,y:20,duration:1,delay:1.5,ease:'power3.out'});
+    if(heroScroll) gsap.from(heroScroll,{opacity:0,y:20,duration:1,delay:1.5,ease:'power3.out'});
 
     // Section headers — slide up with gold line expand
     gsap.utils.toArray('.section-header').forEach(header=>{
+      const label=header.querySelector('.section-label');
+      const title=header.querySelector('.section-title');
+      const line=header.querySelector('.section-line');
       const tl=gsap.timeline({scrollTrigger:{trigger:header,start:'top 85%'}});
-      tl.from(header.querySelector('.section-label'),{y:20,opacity:0,duration:.6,ease:'power3.out'})
-        .from(header.querySelector('.section-title'),{y:30,opacity:0,duration:.8,ease:'power3.out'},'-=.3')
-        .from(header.querySelector('.section-line'),{scaleX:0,duration:.6,ease:'power3.inOut'},'-=.4');
+      if(label) tl.from(label,{y:20,opacity:0,duration:.6,ease:'power3.out'});
+      if(title) tl.from(title,{y:30,opacity:0,duration:.8,ease:'power3.out'},'-=.3');
+      if(line) tl.from(line,{scaleX:0,duration:.6,ease:'power3.inOut'},'-=.4');
     });
 
     // Service cards stagger with rotation
     gsap.utils.toArray('.service-card').forEach((card,i)=>{
       gsap.from(card,{
         y:60,opacity:0,rotateY:5,duration:.9,delay:i*.12,ease:'power3.out',
-        scrollTrigger:{trigger:card,start:'top 85%'}
+        scrollTrigger:{trigger:card,start:'top 88%'}
       });
     });
 
@@ -136,7 +143,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     gsap.utils.toArray('.project-card').forEach((card,i)=>{
       gsap.from(card,{
         scale:.85,opacity:0,y:40,duration:.9,delay:i*.1,ease:'power3.out',
-        scrollTrigger:{trigger:card,start:'top 85%'}
+        scrollTrigger:{trigger:card,start:'top 88%'}
       });
     });
 
@@ -154,7 +161,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     gsap.utils.toArray('.stat').forEach((stat,i)=>{
       gsap.from(stat,{
         y:40,opacity:0,scale:.9,duration:.7,delay:i*.12,ease:'power3.out',
-        scrollTrigger:{trigger:stat,start:'top 85%',onEnter:()=>{
+        scrollTrigger:{trigger:stat,start:'top 88%',onEnter:()=>{
           const numEl=stat.querySelector('.stat-num');
           if(numEl&&!numEl.dataset.done){numEl.dataset.done='1';animateNum(numEl)}
         }}
@@ -164,10 +171,13 @@ document.addEventListener('DOMContentLoaded',()=>{
     // CTA section
     const ctaSection=document.querySelector('.cta');
     if(ctaSection){
+      const ctaTitle=ctaSection.querySelector('.cta-title');
+      const ctaDesc=ctaSection.querySelector('.cta-desc');
+      const ctaBtn=ctaSection.querySelector('.btn-primary');
       const ctaTl=gsap.timeline({scrollTrigger:{trigger:ctaSection,start:'top 80%'}});
-      ctaTl.from('.cta-title',{y:60,opacity:0,duration:1,ease:'power3.out'})
-        .from('.cta-desc',{y:30,opacity:0,duration:.8,ease:'power3.out'},'-=.5')
-        .from('.cta .btn-primary',{y:20,opacity:0,scale:.9,duration:.7,ease:'power3.out'},'-=.4');
+      if(ctaTitle) ctaTl.from(ctaTitle,{y:60,opacity:0,duration:1,ease:'power3.out'});
+      if(ctaDesc) ctaTl.from(ctaDesc,{y:30,opacity:0,duration:.8,ease:'power3.out'},'-=.5');
+      if(ctaBtn) ctaTl.from(ctaBtn,{y:20,opacity:0,scale:.9,duration:.7,ease:'power3.out'},'-=.4');
     }
 
     // Footer logo
@@ -187,15 +197,18 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
     });
 
-    // Generic scroll reveals (fallback for pages without specific animations)
+    // Generic scroll reveals — SKIP hero elements (they have dedicated animations)
     gsap.utils.toArray('.rv,.rv-l,.rv-r,.rv-s').forEach(el=>{
-      if(el.closest('.hero-content'))return; // Skip hero, already animated
+      if(el.closest('.hero'))return;
+      if(el.closest('.section-header'))return;
+      if(el.classList.contains('service-card'))return;
+      if(el.closest('.cta'))return;
       const dir=el.classList.contains('rv-l')?{x:-60}:
                 el.classList.contains('rv-r')?{x:60}:
                 el.classList.contains('rv-s')?{scale:.85}:{y:50};
       gsap.from(el,{
         ...dir,opacity:0,duration:.9,ease:'power3.out',
-        scrollTrigger:{trigger:el,start:'top 85%',toggleActions:'play none none none'}
+        scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'}
       });
     });
 
