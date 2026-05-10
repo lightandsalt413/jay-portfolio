@@ -10,13 +10,15 @@ document.addEventListener('DOMContentLoaded',()=>{
       smoothWheel:true,
       wheelMultiplier:1
     });
-    function raf(time){lenis.raf(time);requestAnimationFrame(raf)}
-    requestAnimationFrame(raf);
-    // Connect GSAP ScrollTrigger to Lenis
-    if(typeof ScrollTrigger!=='undefined'){
+    if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
+      // Let GSAP drive Lenis — no separate raf loop
       lenis.on('scroll',ScrollTrigger.update);
-      gsap.ticker.add(time=>lenis.raf(time*1000));
+      gsap.ticker.add(time=>{lenis.raf(time*1000)});
       gsap.ticker.lagSmoothing(0);
+    } else {
+      // Standalone Lenis without GSAP
+      function raf(time){lenis.raf(time);requestAnimationFrame(raf)}
+      requestAnimationFrame(raf);
     }
   }
 
@@ -212,6 +214,10 @@ document.addEventListener('DOMContentLoaded',()=>{
         scrollTrigger:{trigger:item,start:'top 85%'}
       });
     });
+
+    // Force refresh after everything is set up
+    setTimeout(()=>ScrollTrigger.refresh(),500);
+    window.addEventListener('load',()=>ScrollTrigger.refresh());
 
   } else {
     // Fallback
