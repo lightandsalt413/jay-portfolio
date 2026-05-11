@@ -336,10 +336,10 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .cs-name{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:300;margin-bottom:.8rem;letter-spacing:.02em}
 .cs-tag{font-size:.7rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
 
-.cs-details{padding:3rem;background:var(--bg);border-top:1px solid rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.03)}
-.cs-details-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem}
-.cs-detail-label{font-size:.55rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
-.cs-detail-value{font-family:var(--serif);font-size:.85rem;color:var(--gray)}
+.cs-details{padding:4rem 3rem;background:var(--bg);border-top:1px solid rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.03)}
+.cs-details-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.cs-detail-label{font-size:.7rem;font-weight:500;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem}
+.cs-detail-value{font-family:var(--serif);font-size:1.05rem;color:var(--cream)}
 .cs-live{color:#4ade80}
 
 .cs-block{padding:6rem 3rem;background:var(--bg)}
