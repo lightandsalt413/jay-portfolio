@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       if(href&&href.endsWith('.html')&&!a.hasAttribute('target')&&!a.hasAttribute('download')){
         a.addEventListener('click',e=>{
           e.preventDefault();trans.classList.add('go');
-          setTimeout(()=>{window.location.href=href},700);
+          setTimeout(()=>{window.location.href=href},400);
         });
       }
     });
