@@ -325,6 +325,13 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .cs-hero-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.35) contrast(1.1)}
 .cs-hero-fade{position:absolute;inset:0;background:linear-gradient(transparent 40%,var(--bg) 100%)}
 .cs-hero-info{position:relative;z-index:1;text-align:center;padding:0 2rem 5rem;max-width:800px}
+
+/* Clean hero variant — gradient bg + floating mockup */
+.cs-hero--clean{height:auto;min-height:100vh;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8rem;padding-bottom:4rem;background:linear-gradient(180deg,#0e0e12 0%,#151518 40%,var(--bg) 100%)}
+.cs-hero--clean .cs-hero-info{padding:0 2rem 3rem}
+.cs-hero-mockup{position:relative;z-index:1;max-width:700px;width:90%;margin:0 auto}
+.cs-hero-mockup .screen-frame{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(196,147,85,.05);border:1px solid rgba(196,147,85,.1);border-radius:10px}
+.cs-hero-mockup .screen-display{aspect-ratio:16/10}
 .cs-number{font-family:var(--serif);font-size:clamp(4rem,10vw,8rem);font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.06);line-height:1;margin-bottom:1rem}
 .cs-name{font-family:var(--serif);font-size:clamp(2.2rem,5vw,4rem);font-weight:300;margin-bottom:.8rem;letter-spacing:.02em}
 .cs-tag{font-size:.7rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
