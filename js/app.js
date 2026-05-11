@@ -85,7 +85,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     resize();window.addEventListener('resize',resize);
     document.addEventListener('mousemove',e=>{mx=e.clientX/W;my=e.clientY/H});
 
-    const stars=[];for(let i=0;i<60;i++)stars.push({x:Math.random()*2e3,y:Math.random()*1e3,r:.3+Math.random()*.6,tw:Math.random()*6.28,sp:.5+Math.random()});
+    const stars=[];for(let i=0;i<25;i++)stars.push({x:Math.random()*2e3,y:Math.random()*1e3,r:.3+Math.random()*.6,tw:Math.random()*6.28,sp:.5+Math.random()});
+    let lastFrame=0;
 
     function wave(yB,amp,freq,spd,col,lw){
       ctx.beginPath();ctx.strokeStyle=col;ctx.lineWidth=lw;
@@ -95,7 +96,8 @@ document.addEventListener('DOMContentLoaded',()=>{
       }ctx.stroke();
     }
 
-    function draw(){
+    function draw(now){
+      if(now-lastFrame<33){requestAnimationFrame(draw);return}lastFrame=now;
       t+=.008;ctx.fillStyle='#171719';ctx.fillRect(0,0,W,H);
       const g=ctx.createRadialGradient(W*.4,H*.4,0,W*.4,H*.4,H*.6);
       g.addColorStop(0,'rgba(40,50,80,.08)');g.addColorStop(1,'transparent');

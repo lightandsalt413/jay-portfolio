@@ -173,7 +173,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 /* ===== FLOATING 3D SCREENS ===== */
 .float-screens{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:900px;margin:0 auto;padding:0 2rem;perspective:1200px}
 
-.float-screen{text-decoration:none;color:var(--cream);display:block;animation:screenFloat 6s ease-in-out infinite;cursor:pointer}
+.float-screen{text-decoration:none;color:var(--cream);display:block;animation:screenFloat 6s ease-in-out infinite;cursor:pointer;will-change:transform}
 .float-screen:nth-child(2){animation-delay:-2s}
 .float-screen:nth-child(3){animation-delay:-4s}
 
