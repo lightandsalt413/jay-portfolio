@@ -1,14 +1,5 @@
 document.addEventListener('DOMContentLoaded',()=>{
 
-  /* ===== CLEAR PAGE TRANSITION (prevent stuck overlay) ===== */
-  const pgTrans=document.querySelector('.pg-trans');
-  if(pgTrans) pgTrans.classList.remove('go');
-
-  /* Also handle bfcache (browser back/forward) */
-  window.addEventListener('pageshow',(e)=>{
-    if(e.persisted && pgTrans) pgTrans.classList.remove('go');
-  });
-
   /* ===== CURSOR ===== */
   const cur=document.querySelector('.cur'),dot=document.querySelector('.dot');
   if(cur&&dot&&window.innerWidth>768){
@@ -81,18 +72,18 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.stat-num,.cs-metric-num').forEach(el=>cObs.observe(el));
 
   /* ===== PAGE TRANSITION ===== */
-  const trans=document.querySelector('.pg-trans');
-  if(trans){
-    document.querySelectorAll('a').forEach(a=>{
-      const href=a.getAttribute('href');
-      if(href&&href.endsWith('.html')&&!a.hasAttribute('target')&&!a.hasAttribute('download')){
-        a.addEventListener('click',e=>{
-          e.preventDefault();trans.classList.add('go');
-          setTimeout(()=>{window.location.href=href},400);
-        });
-      }
-    });
-  }
+  /* ===== PAGE TRANSITION (simple fade — no hang) ===== */
+  document.querySelectorAll('a').forEach(a=>{
+    const href=a.getAttribute('href');
+    if(href&&href.endsWith('.html')&&!a.hasAttribute('target')&&!a.hasAttribute('download')){
+      a.addEventListener('click',e=>{
+        e.preventDefault();
+        document.body.style.opacity='0';
+        document.body.style.transition='opacity .2s ease';
+        setTimeout(()=>{window.location.href=href},200);
+      });
+    }
+  });
 
   /* ===== LAZY IMAGES ===== */
   document.querySelectorAll('img').forEach((img,i)=>{
