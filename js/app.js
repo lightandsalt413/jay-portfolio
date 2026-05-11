@@ -1,3 +1,7 @@
+/* Always ensure body is visible on load/restore */
+document.body.style.opacity='1';
+window.addEventListener('pageshow',()=>{document.body.style.opacity='1';document.body.style.transition='none'});
+
 document.addEventListener('DOMContentLoaded',()=>{
 
   /* ===== CURSOR ===== */
