@@ -1,7 +1,3 @@
-/* Always ensure body is visible on load/restore */
-document.body.style.opacity='1';
-window.addEventListener('pageshow',()=>{document.body.style.opacity='1';document.body.style.transition='none'});
-
 document.addEventListener('DOMContentLoaded',()=>{
 
   /* ===== CURSOR ===== */
@@ -75,19 +71,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   },{threshold:.5});
   document.querySelectorAll('.stat-num,.cs-metric-num').forEach(el=>cObs.observe(el));
 
-  /* ===== PAGE TRANSITION ===== */
-  /* ===== PAGE TRANSITION (simple fade — no hang) ===== */
-  document.querySelectorAll('a').forEach(a=>{
-    const href=a.getAttribute('href');
-    if(href&&href.endsWith('.html')&&!a.hasAttribute('target')&&!a.hasAttribute('download')){
-      a.addEventListener('click',e=>{
-        e.preventDefault();
-        document.body.style.opacity='0';
-        document.body.style.transition='opacity .2s ease';
-        setTimeout(()=>{window.location.href=href},200);
-      });
-    }
-  });
 
   /* ===== LAZY IMAGES ===== */
   document.querySelectorAll('img').forEach((img,i)=>{
