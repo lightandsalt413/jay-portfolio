@@ -327,7 +327,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .cs-hero-info{position:relative;z-index:1;text-align:center;padding:0 2rem 5rem;max-width:800px}
 
 /* Clean hero variant — gradient bg + floating mockup */
-.cs-hero--clean{height:auto;min-height:100vh;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:8rem;padding-bottom:4rem;background:linear-gradient(180deg,#0e0e12 0%,#151518 40%,var(--bg) 100%)}
+.cs-hero--clean{height:100vh;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(180deg,#0e0e12 0%,#151518 40%,var(--bg) 100%)}
 .cs-hero--clean .cs-hero-info{padding:0 2rem 3rem}
 .cs-hero-mockup{position:relative;z-index:1;max-width:700px;width:90%;margin:0 auto}
 .cs-hero-mockup .screen-frame{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(196,147,85,.05);border:1px solid rgba(196,147,85,.1);border-radius:10px}
