@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded',()=>{
 
+  /* ===== CLEAR PAGE TRANSITION (prevent stuck overlay) ===== */
+  const pgTrans=document.querySelector('.pg-trans');
+  if(pgTrans) pgTrans.classList.remove('go');
+
+  /* Also handle bfcache (browser back/forward) */
+  window.addEventListener('pageshow',(e)=>{
+    if(e.persisted && pgTrans) pgTrans.classList.remove('go');
+  });
+
   /* ===== CURSOR ===== */
   const cur=document.querySelector('.cur'),dot=document.querySelector('.dot');
   if(cur&&dot&&window.innerWidth>768){
