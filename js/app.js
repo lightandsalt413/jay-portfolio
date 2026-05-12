@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
 
     function goTo(idx){
-      current=Math.max(0,Math.min(idx,cards.length-1));
+      current=((idx%cards.length)+cards.length)%cards.length;
       const cardW=cards[0].offsetWidth+cards[0].offsetWidth*.03;
       const viewW=track.parentElement.offsetWidth;
       const offset=(viewW/2)-(cardW/2)-(current*cardW);
