@@ -372,6 +372,9 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .cs-metric-num{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--gold);margin-bottom:.3rem}
 .cs-metric-text{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray2)}
 
+.cs-video-showcase{max-width:750px;margin:2.5rem auto 0;padding:0 2rem}
+.cs-video-showcase .screen-frame{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(196,147,85,.05);border:1px solid rgba(196,147,85,.1);border-radius:10px}
+
 .cs-next{padding:5rem 3rem;text-align:center;border-top:1px solid rgba(255,255,255,.03)}
 .cs-next-label{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gray2);margin-bottom:1.5rem}
 .cs-next-link{display:inline-flex;flex-direction:column;align-items:center;gap:.8rem;transition:transform .4s}
