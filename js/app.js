@@ -77,6 +77,71 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(i>=2&&!img.hasAttribute('loading'))img.setAttribute('loading','lazy');
   });
 
+  /* ===== 3D CAROUSEL ===== */
+  const track=document.getElementById('carouselTrack');
+  if(track){
+    const cards=[...track.querySelectorAll('.carousel-card')];
+    const dotsWrap=document.getElementById('carouselDots');
+    const prevBtn=document.getElementById('carouselPrev');
+    const nextBtn=document.getElementById('carouselNext');
+    let current=0,startX=0,dragX=0,dragging=false;
+
+    // Create dots
+    cards.forEach((_,i)=>{
+      const dot=document.createElement('button');
+      dot.className='carousel-dot'+(i===0?' active':'');
+      dot.addEventListener('click',()=>goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function goTo(idx){
+      current=Math.max(0,Math.min(idx,cards.length-1));
+      const cardW=cards[0].offsetWidth+cards[0].offsetWidth*.03;
+      const viewW=track.parentElement.offsetWidth;
+      const offset=(viewW/2)-(cardW/2)-(current*cardW);
+      track.style.transform=`translateX(${offset}px)`;
+      cards.forEach((c,i)=>c.classList.toggle('active',i===current));
+      dotsWrap.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+    }
+
+    // Click card to navigate or go to link
+    cards.forEach((c,i)=>c.addEventListener('click',()=>{
+      if(i===current){window.location.href=c.dataset.href}
+      else{goTo(i)}
+    }));
+
+    // Arrow buttons
+    prevBtn.addEventListener('click',()=>goTo(current-1));
+    nextBtn.addEventListener('click',()=>goTo(current+1));
+
+    // Touch/swipe
+    track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;dragging=true},{passive:true});
+    track.addEventListener('touchmove',e=>{if(dragging)dragX=e.touches[0].clientX-startX},{passive:true});
+    track.addEventListener('touchend',()=>{
+      if(Math.abs(dragX)>50){dragX<0?goTo(current+1):goTo(current-1)}
+      dragX=0;dragging=false;
+    });
+
+    // Mouse drag
+    track.addEventListener('mousedown',e=>{startX=e.clientX;dragging=true;e.preventDefault()});
+    window.addEventListener('mousemove',e=>{if(dragging)dragX=e.clientX-startX});
+    window.addEventListener('mouseup',()=>{
+      if(dragging&&Math.abs(dragX)>50){dragX<0?goTo(current+1):goTo(current-1)}
+      dragX=0;dragging=false;
+    });
+
+    // Keyboard
+    document.addEventListener('keydown',e=>{
+      if(!track.closest('section'))return;
+      if(e.key==='ArrowLeft')goTo(current-1);
+      if(e.key==='ArrowRight')goTo(current+1);
+    });
+
+    // Init
+    goTo(0);
+    window.addEventListener('resize',()=>goTo(current));
+  }
+
   /* ===== AURORA CANVAS (homepage hero) ===== */
   const canvas=document.getElementById('hero-canvas');
   if(canvas){

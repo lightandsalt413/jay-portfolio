@@ -15,29 +15,67 @@
   <nav class="nav"><a href="index.html" class="nav-logo">JAY</a><div class="nav-links"><a href="index.html" class="nav-link">Home</a><a href="projects.html" class="nav-link active">Projects</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link nav-cta">Let's Talk</a></div><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
   <div class="mob-menu"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 
-  <section class="section section--dark" style="padding-top:10rem">
+  <section class="section section--dark" style="padding-top:10rem;overflow:hidden">
     <div class="section-header">
       <p class="section-label rv">Portfolio</p>
       <h1 class="section-title rv d1">All Projects</h1>
       <div class="section-line rv d2"></div>
     </div>
-    <div class="projects-grid">
-      <a href="project-deeplyrooted.html" class="project-card rv">
-        <img src="assets/images/project-deeplyrooted.webp" alt="DeeplyRooted" class="project-img"><div class="project-overlay"></div><span class="project-arrow">→</span>
-        <div class="project-info"><p class="project-num">01</p><h3 class="project-name">DeeplyRooted Hair Botox</h3><p class="project-type">E-Commerce Website</p></div>
-      </a>
-      <a href="project-fzi.html" class="project-card rv d1">
-        <img src="assets/images/project-fzi.webp" alt="FZI Construction" class="project-img"><div class="project-overlay"></div><span class="project-arrow">→</span>
-        <div class="project-info"><p class="project-num">02</p><h3 class="project-name">FZI Construction</h3><p class="project-type">Corporate Website</p></div>
-      </a>
-      <a href="project-rebel.html" class="project-card rv d2">
-        <img src="assets/images/project-bloombox.webp" alt="Rebel Family Motors" class="project-img"><div class="project-overlay"></div><span class="project-arrow">→</span>
-        <div class="project-info"><p class="project-num">03</p><h3 class="project-name">Rebel Family Motors</h3><p class="project-type">Social Media & Content</p></div>
-      </a>
-      <a href="about.html" class="project-card rv d3">
-        <div class="project-overlay" style="background:linear-gradient(135deg,rgba(201,149,107,.08),rgba(6,6,6,.95))"></div><span class="project-arrow">→</span>
-        <div class="project-info"><p class="project-num">04</p><h3 class="project-name">Janerockstar Salon</h3><p class="project-type">Social Media Management</p></div>
-      </a>
+
+    <div class="carousel-wrap">
+      <div class="carousel-viewport">
+        <div class="carousel-track" id="carouselTrack">
+          <div class="carousel-card" data-href="project-deeplyrooted.html">
+            <div class="carousel-card-inner">
+              <img src="assets/images/project-deeplyrooted.webp" alt="DeeplyRooted" class="carousel-img">
+              <div class="carousel-overlay"></div>
+              <div class="carousel-info">
+                <p class="carousel-num">01</p>
+                <h3 class="carousel-name">DeeplyRooted Hair Botox</h3>
+                <p class="carousel-type">E-Commerce Website</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-href="project-fzi.html">
+            <div class="carousel-card-inner">
+              <img src="assets/images/project-fzi.webp" alt="FZI Construction" class="carousel-img">
+              <div class="carousel-overlay"></div>
+              <div class="carousel-info">
+                <p class="carousel-num">02</p>
+                <h3 class="carousel-name">FZI Construction</h3>
+                <p class="carousel-type">Corporate Website</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-href="project-rebel.html">
+            <div class="carousel-card-inner">
+              <img src="assets/images/project-bloombox.webp" alt="Rebel Family Motors" class="carousel-img">
+              <div class="carousel-overlay"></div>
+              <div class="carousel-info">
+                <p class="carousel-num">03</p>
+                <h3 class="carousel-name">Rebel Family Motors</h3>
+                <p class="carousel-type">Social Media & Content</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-card" data-href="about.html">
+            <div class="carousel-card-inner">
+              <div class="carousel-overlay" style="background:linear-gradient(135deg,rgba(201,149,107,.15),rgba(6,6,6,.95))"></div>
+              <div class="carousel-info">
+                <p class="carousel-num">04</p>
+                <h3 class="carousel-name">Janerockstar Salon</h3>
+                <p class="carousel-type">Social Media Management</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button class="carousel-btn" id="carouselPrev">←</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+        <button class="carousel-btn" id="carouselNext">→</button>
+      </div>
+      <p class="carousel-hint">Swipe or tap arrows to browse</p>
     </div>
   </section>
 
