@@ -77,74 +77,97 @@ document.addEventListener('DOMContentLoaded',()=>{
     if(i>=2&&!img.hasAttribute('loading'))img.setAttribute('loading','lazy');
   });
 
-  /* ===== 3D CAROUSEL ===== */
+  /* ===== 3D CAROUSEL (infinite clone-based loop) ===== */
   const track=document.getElementById('carouselTrack');
   if(track){
-    const cards=[...track.querySelectorAll('.carousel-card')];
-    const dotsWrap=document.getElementById('carouselDots');
-    const prevBtn=document.getElementById('carouselPrev');
-    const nextBtn=document.getElementById('carouselNext');
-    let current=0,startX=0,dragX=0,dragging=false;
+    const origCards=[...track.querySelectorAll('.carousel-card')];
+    const total=origCards.length;
+    let startX=0,dragX=0,dragging=false,isTransitioning=false;
 
-    // Create dots (if container exists)
-    if(dotsWrap){
-      cards.forEach((_,i)=>{
-        const dot=document.createElement('button');
-        dot.className='carousel-dot'+(i===0?' active':'');
-        dot.addEventListener('click',()=>goTo(i));
-        dotsWrap.appendChild(dot);
+    // Clone cards for seamless infinite loop
+    origCards.forEach(c=>{const cl=c.cloneNode(true);cl.setAttribute('data-clone','true');track.appendChild(cl)});
+    origCards.forEach(c=>{const cl=c.cloneNode(true);cl.setAttribute('data-clone','true');track.insertBefore(cl,track.firstChild)});
+
+    const allCards=[...track.querySelectorAll('.carousel-card')];
+    let current=total; // start at first real card (after prepended clones)
+
+    function getCardWidth(){
+      return allCards[0].offsetWidth * 1.03; // card + gap
+    }
+
+    function setPosition(animate){
+      const cardW=getCardWidth();
+      const viewW=track.parentElement.offsetWidth;
+      const offset=(viewW/2)-(cardW/2)-(current*cardW);
+      if(animate){
+        track.style.transition='transform .5s cubic-bezier(.25,.8,.25,1)';
+      } else {
+        track.style.transition='none';
+      }
+      track.style.transform=`translateX(${offset}px)`;
+      allCards.forEach((c,i)=>{
+        c.classList.toggle('active',i===current);
       });
     }
 
     function goTo(idx){
-      current=((idx%cards.length)+cards.length)%cards.length;
-      const cardW=cards[0].offsetWidth+cards[0].offsetWidth*.03;
-      const viewW=track.parentElement.offsetWidth;
-      const offset=(viewW/2)-(cardW/2)-(current*cardW);
-      track.style.transform=`translateX(${offset}px)`;
-      cards.forEach((c,i)=>c.classList.toggle('active',i===current));
-      if(dotsWrap) dotsWrap.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+      if(isTransitioning) return;
+      current=idx;
+      isTransitioning=true;
+      setPosition(true);
     }
 
-    // Click card to navigate or go to link
-    cards.forEach((c,i)=>c.addEventListener('click',()=>{
-      if(i===current){
-        if(c.dataset.external){window.open(c.dataset.href,'_blank')}
-        else{window.location.href=c.dataset.href}
+    // After smooth transition, silently jump if on a clone
+    track.addEventListener('transitionend',()=>{
+      isTransitioning=false;
+      if(current<total){
+        current=current+total;
+        setPosition(false);
+      } else if(current>=total*2){
+        current=current-total;
+        setPosition(false);
       }
-      else{goTo(i)}
+    });
+
+    // Click card to navigate or go to link
+    allCards.forEach((c,i)=>c.addEventListener('click',(e)=>{
+      if(i===current){
+        const href=c.dataset.href;
+        if(href){
+          if(c.dataset.external){window.open(href,'_blank')}
+          else{window.location.href=href}
+        }
+      } else {
+        e.preventDefault();
+        goTo(i);
+      }
     }));
 
-    // Arrow buttons
-    if(prevBtn) prevBtn.addEventListener('click',()=>goTo(current-1));
-    if(nextBtn) nextBtn.addEventListener('click',()=>goTo(current+1));
-
     // Touch/swipe
-    track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;dragging=true},{passive:true});
+    track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;dragX=0;dragging=true},{passive:true});
     track.addEventListener('touchmove',e=>{if(dragging)dragX=e.touches[0].clientX-startX},{passive:true});
     track.addEventListener('touchend',()=>{
-      if(Math.abs(dragX)>50){dragX<0?goTo(current+1):goTo(current-1)}
+      if(Math.abs(dragX)>40){dragX<0?goTo(current+1):goTo(current-1)}
       dragX=0;dragging=false;
     });
 
     // Mouse drag
-    track.addEventListener('mousedown',e=>{startX=e.clientX;dragging=true;e.preventDefault()});
+    track.addEventListener('mousedown',e=>{startX=e.clientX;dragX=0;dragging=true;e.preventDefault()});
     window.addEventListener('mousemove',e=>{if(dragging)dragX=e.clientX-startX});
     window.addEventListener('mouseup',()=>{
-      if(dragging&&Math.abs(dragX)>50){dragX<0?goTo(current+1):goTo(current-1)}
+      if(dragging&&Math.abs(dragX)>40){dragX<0?goTo(current+1):goTo(current-1)}
       dragX=0;dragging=false;
     });
 
     // Keyboard
     document.addEventListener('keydown',e=>{
-      if(!track.closest('section'))return;
       if(e.key==='ArrowLeft')goTo(current-1);
       if(e.key==='ArrowRight')goTo(current+1);
     });
 
     // Init
-    goTo(0);
-    window.addEventListener('resize',()=>goTo(current));
+    setPosition(false);
+    window.addEventListener('resize',()=>setPosition(false));
   }
 
   /* ===== AURORA CANVAS (homepage hero) ===== */
