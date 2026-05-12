@@ -1,25 +1,6 @@
 document.addEventListener('DOMContentLoaded',()=>{
 
-  /* ===== CURSOR ===== */
-  const cur=document.querySelector('.cur'),dot=document.querySelector('.dot');
-  if(cur&&dot&&window.innerWidth>768){
-    let cx=0,cy=0,dx=0,dy=0;
-    document.addEventListener('mousemove',e=>{
-      cx=e.clientX;cy=e.clientY;
-      dot.style.left=cx+'px';dot.style.top=cy+'px';
-      if(!cur.classList.contains('on')){cur.classList.add('on');dot.classList.add('on')}
-    });
-    function tickCur(){
-      dx+=(cx-dx)*.35;dy+=(cy-dy)*.35;
-      cur.style.left=dx+'px';cur.style.top=dy+'px';
-      requestAnimationFrame(tickCur);
-    }
-    tickCur();
-    document.querySelectorAll('a,button,.service-card,.project-card,.footer-social').forEach(el=>{
-      el.addEventListener('mouseenter',()=>cur.classList.add('big'));
-      el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
-    });
-  }
+
 
   /* ===== NAV SCROLL ===== */
   const nav=document.querySelector('.nav');
