@@ -86,13 +86,15 @@ document.addEventListener('DOMContentLoaded',()=>{
     const nextBtn=document.getElementById('carouselNext');
     let current=0,startX=0,dragX=0,dragging=false;
 
-    // Create dots
-    cards.forEach((_,i)=>{
-      const dot=document.createElement('button');
-      dot.className='carousel-dot'+(i===0?' active':'');
-      dot.addEventListener('click',()=>goTo(i));
-      dotsWrap.appendChild(dot);
-    });
+    // Create dots (if container exists)
+    if(dotsWrap){
+      cards.forEach((_,i)=>{
+        const dot=document.createElement('button');
+        dot.className='carousel-dot'+(i===0?' active':'');
+        dot.addEventListener('click',()=>goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+    }
 
     function goTo(idx){
       current=((idx%cards.length)+cards.length)%cards.length;
@@ -101,7 +103,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const offset=(viewW/2)-(cardW/2)-(current*cardW);
       track.style.transform=`translateX(${offset}px)`;
       cards.forEach((c,i)=>c.classList.toggle('active',i===current));
-      dotsWrap.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
+      if(dotsWrap) dotsWrap.querySelectorAll('.carousel-dot').forEach((d,i)=>d.classList.toggle('active',i===current));
     }
 
     // Click card to navigate or go to link
@@ -114,8 +116,8 @@ document.addEventListener('DOMContentLoaded',()=>{
     }));
 
     // Arrow buttons
-    prevBtn.addEventListener('click',()=>goTo(current-1));
-    nextBtn.addEventListener('click',()=>goTo(current+1));
+    if(prevBtn) prevBtn.addEventListener('click',()=>goTo(current-1));
+    if(nextBtn) nextBtn.addEventListener('click',()=>goTo(current+1));
 
     // Touch/swipe
     track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;dragging=true},{passive:true});
