@@ -344,12 +344,12 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 /* ===== 3D CAROUSEL ===== */
 .carousel-wrap{max-width:100%;margin:0 auto;padding:0 0 2rem}
 .carousel-viewport{overflow:hidden;padding:2rem 0}
-.carousel-track{display:flex;transition:transform .5s cubic-bezier(.25,.8,.25,1);cursor:grab;user-select:none}
+.carousel-track{display:flex;cursor:grab;user-select:none}
 .carousel-track:active{cursor:grabbing}
-.carousel-card{flex:0 0 80%;max-width:500px;margin:0 1.5%;perspective:1000px;transition:transform .5s,opacity .5s}
+.carousel-card{flex:0 0 80%;max-width:500px;margin:0 1.5%;perspective:1000px;transition:transform .25s,opacity .25s}
 .carousel-card.active{transform:scale(1);opacity:1}
 .carousel-card:not(.active){transform:scale(.85);opacity:.4}
-.carousel-card-inner{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#0a0a0c;border:1px solid rgba(255,255,255,.06);transition:transform .5s,box-shadow .5s;transform-style:preserve-3d}
+.carousel-card-inner{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#0a0a0c;border:1px solid rgba(255,255,255,.06);transition:transform .25s,box-shadow .25s;transform-style:preserve-3d}
 .carousel-card.active .carousel-card-inner{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(196,147,85,.06)}
 .carousel-card:not(.active) .carousel-card-inner{transform:rotateY(15deg)}
 .carousel-card:nth-child(even):not(.active) .carousel-card-inner{transform:rotateY(-15deg)}

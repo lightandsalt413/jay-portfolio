@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const viewW=track.parentElement.offsetWidth;
       const offset=(viewW/2)-(cardW/2)-(current*cardW);
       if(animate){
-        track.style.transition='transform .5s cubic-bezier(.25,.8,.25,1)';
+        track.style.transition='transform .25s cubic-bezier(.4,0,.2,1)';
       } else {
         track.style.transition='none';
       }
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded',()=>{
     track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX;dragX=0;dragging=true},{passive:true});
     track.addEventListener('touchmove',e=>{if(dragging)dragX=e.touches[0].clientX-startX},{passive:true});
     track.addEventListener('touchend',()=>{
-      if(Math.abs(dragX)>40){dragX<0?goTo(current+1):goTo(current-1)}
+      if(Math.abs(dragX)>20){dragX<0?goTo(current+1):goTo(current-1)}
       dragX=0;dragging=false;
     });
 
