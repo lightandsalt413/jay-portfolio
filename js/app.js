@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       if(!cur.classList.contains('on')){cur.classList.add('on');dot.classList.add('on')}
     });
     function tickCur(){
-      dx+=(cx-dx)*.12;dy+=(cy-dy)*.12;
+      dx+=(cx-dx)*.35;dy+=(cy-dy)*.35;
       cur.style.left=dx+'px';cur.style.top=dy+'px';
       requestAnimationFrame(tickCur);
     }
