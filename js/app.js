@@ -106,7 +106,10 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     // Click card to navigate or go to link
     cards.forEach((c,i)=>c.addEventListener('click',()=>{
-      if(i===current){window.location.href=c.dataset.href}
+      if(i===current){
+        if(c.dataset.external){window.open(c.dataset.href,'_blank')}
+        else{window.location.href=c.dataset.href}
+      }
       else{goTo(i)}
     }));
 
