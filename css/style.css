@@ -24,7 +24,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 /* ===== CURSOR ===== */
 @media(min-width:769px){
-  body,a,button{cursor:none}
+  body,a,button{cursor:auto}
   .cur{position:fixed;width:22px;height:22px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);opacity:0;mix-blend-mode:difference;transition:width .3s var(--ease),height .3s var(--ease)}
   .cur::before,.cur::after{content:'';position:absolute;background:rgba(196,147,85,.6)}
   .cur::before{width:1px;height:100%;left:50%;transform:translateX(-50%)}
