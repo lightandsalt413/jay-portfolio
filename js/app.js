@@ -85,8 +85,10 @@ document.addEventListener('DOMContentLoaded',()=>{
     let startX=0,dragX=0,dragging=false,isTransitioning=false;
 
     // Clone cards for seamless infinite loop
+    // Append clones at end (in order)
     origCards.forEach(c=>{const cl=c.cloneNode(true);cl.setAttribute('data-clone','true');track.appendChild(cl)});
-    origCards.forEach(c=>{const cl=c.cloneNode(true);cl.setAttribute('data-clone','true');track.insertBefore(cl,track.firstChild)});
+    // Prepend clones at start (iterate backwards to keep order: ...clone3,clone4,orig1,orig2...)
+    for(let i=total-1;i>=0;i--){const cl=origCards[i].cloneNode(true);cl.setAttribute('data-clone','true');track.insertBefore(cl,track.firstChild)}
 
     const allCards=[...track.querySelectorAll('.carousel-card')];
     let current=total; // start at first real card (after prepended clones)
