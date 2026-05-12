@@ -205,6 +205,10 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .screen-img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s var(--ease)}
 .float-screen:hover .screen-img{transform:scale(1.05)}
 
+/* Hover overlay — "View Project" */
+.screen-display::after{content:'View Project →';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.55);color:#fff;font-family:var(--sans);font-size:.85rem;letter-spacing:.15em;text-transform:uppercase;opacity:0;transition:opacity .35s ease;pointer-events:none;backdrop-filter:blur(2px)}
+.float-screen:hover .screen-display::after{opacity:1}
+
 /* Glow underneath */
 .screen-glow{position:absolute;bottom:-20px;left:10%;right:10%;height:40px;background:radial-gradient(ellipse,rgba(196,147,85,.15),transparent);filter:blur(15px);opacity:0;transition:opacity .5s}
 .float-screen:hover .screen-glow{opacity:1}
