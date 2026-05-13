@@ -432,8 +432,41 @@ button{border:none;background:none;font-family:inherit;color:inherit}
   .rv,.rv-l,.rv-r,.rv-s{opacity:1!important;transform:none!important}
 }
 
+/* ===== PRELOADER ===== */
+.preloader{position:fixed;inset:0;z-index:9999;background:var(--bg);display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .6s ease,visibility .6s ease}
+.preloader.done{opacity:0;visibility:hidden;pointer-events:none}
+.preloader-logo{font-family:var(--serif);font-size:clamp(3rem,8vw,5rem);font-weight:600;color:var(--gold);letter-spacing:.15em;position:relative;overflow:hidden}
+.preloader-logo::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(196,147,85,.3),transparent);animation:preloaderSweep 1.2s ease forwards .3s}
+.preloader-line{width:60px;height:1px;background:var(--gold);margin-top:1.5rem;transform:scaleX(0);animation:preloaderLine 1s ease forwards .6s}
+@keyframes preloaderSweep{to{left:100%}}
+@keyframes preloaderLine{to{transform:scaleX(1)}}
+
+/* ===== ENHANCED GLASSMORPHISM NAV ===== */
+.nav.scrolled{background:rgba(23,23,25,.7);backdrop-filter:blur(24px) saturate(1.4);-webkit-backdrop-filter:blur(24px) saturate(1.4);box-shadow:0 1px 30px rgba(0,0,0,.4);border-bottom:1px solid rgba(196,147,85,.06)}
+
+/* ===== MAGNETIC BUTTONS ===== */
+.btn-magnetic{transition:transform .3s var(--ease)}
+
+/* ===== GSAP TEXT SPLIT ===== */
+.word-reveal{display:inline-block;overflow:hidden}
+.word-reveal .word{display:inline-block;transform:translateY(100%);opacity:0}
+
+/* ===== ANIMATED SECTION DIVIDER ===== */
+.section-line{position:relative;overflow:hidden}
+.section-line::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(196,147,85,.5),transparent);animation:shimmer 3s ease-in-out infinite}
+@keyframes shimmer{0%{left:-100%}50%{left:100%}100%{left:100%}}
+
+/* ===== SMOOTH PARALLAX ===== */
+.hero-content{will-change:transform,opacity}
+.float-screen{will-change:transform}
+
+/* ===== ENHANCED HOVER STATES ===== */
+.float-screen:hover .screen-frame{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 30px rgba(196,147,85,.06)}
+.float-screen .screen-frame{transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+
 /* ===== PRINT ===== */
 @media print{
-  .nav,.cur,.dot,.scroll-bar,.pg-trans,.hero-scroll,.mob-menu,.hamburger{display:none!important}
+  .nav,.cur,.dot,.scroll-bar,.pg-trans,.hero-scroll,.mob-menu,.hamburger,.preloader{display:none!important}
   body{background:#fff;color:#000;cursor:auto}
 }
+
