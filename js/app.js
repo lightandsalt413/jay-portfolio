@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       centeredSlides:true,
       slidesPerView:'auto',
       loop:true,
-      loopAdditionalSlides:4,
+      loopedSlides:8,
       speed:800,
       threshold:5,
       resistanceRatio:0,
