@@ -352,7 +352,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   /* ===== FLOATING WHATSAPP BUTTON ===== */
   const waBtn=document.createElement('a');
-  waBtn.href='https://wa.me/639661380614?text=Hi%20Jay!%20I%20found%20your%20portfolio%20and%20I%E2%80%99d%20like%20to%20discuss%20a%20project.';
+  waBtn.href='https://api.whatsapp.com/send?phone=639661380614&text=Hi%20Jay!%20I%20found%20your%20portfolio%20and%20I%20would%20like%20to%20discuss%20a%20project.';
   waBtn.target='_blank';
   waBtn.rel='noopener noreferrer';
   waBtn.id='wa-float';
