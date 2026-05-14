@@ -32,6 +32,39 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
 
+  /* ===== 3D HOME CAROUSEL (Swiper Coverflow) ===== */
+  const homeCarousel=document.querySelector('.home-carousel');
+  if(homeCarousel&&typeof Swiper!=='undefined'){
+    new Swiper('.home-carousel',{
+      effect:'coverflow',
+      grabCursor:true,
+      centeredSlides:true,
+      slidesPerView:'auto',
+      loop:true,
+      speed:800,
+      coverflowEffect:{
+        rotate:0,
+        stretch:60,
+        depth:200,
+        modifier:1,
+        slideShadows:false,
+      },
+      pagination:{
+        el:'.hc-pagination',
+        clickable:true,
+        dynamicBullets:true,
+        dynamicMainBullets:4,
+      },
+      autoplay:{
+        delay:4000,
+        disableOnInteraction:false,
+        pauseOnMouseEnter:true,
+      },
+      keyboard:{enabled:true},
+    });
+  }
+
+
   /* ===== LENIS SMOOTH SCROLL ===== */
   let lenis;
   if(typeof Lenis!=='undefined'){

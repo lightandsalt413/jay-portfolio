@@ -16,6 +16,7 @@
   <meta name="twitter:title" content="JAY — Creative Developer">
   <meta name="twitter:description" content="Creative Developer & Social Media Specialist crafting premium digital experiences.">
   <meta name="twitter:image" content="https://lightandsalt413.github.io/jay-portfolio/assets/images/og-share.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="css/style.css">
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web@2.0.3"></script>
@@ -85,73 +86,41 @@
       <h2 class="section-title rv d1">Featured Projects</h2>
       <div class="section-line rv d2"></div>
     </div>
-    <div class="float-screens">
-      <a href="project-deeplyrooted.html" class="float-screen rv" id="screen-1">
-        <div class="screen-frame">
-          <div class="screen-bezel">
-            <div class="screen-dots"><span></span><span></span><span></span></div>
-          </div>
-          <div class="screen-display">
-            <video src="assets/videos/deeplyrooted-demo.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video>
-          </div>
-          <div class="screen-glow"></div>
+    <!-- 3D Media Carousel -->
+    <div class="swiper home-carousel" style="width:100%;max-width:1100px;margin:0 auto;padding:2rem 0;overflow:visible">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <a href="project-deeplyrooted.html" class="hc-card">
+            <div class="hc-media"><video src="assets/videos/deeplyrooted-demo.mp4" autoplay muted loop playsinline></video></div>
+            <div class="hc-overlay"></div>
+            <div class="hc-info"><span class="hc-num">01</span><h3 class="hc-name">Deeply Rooted Hair Essentials</h3><p class="hc-type">E-Commerce Website</p></div>
+          </a>
         </div>
-        <div class="screen-info">
-          <span class="screen-num">01</span>
-          <h3 class="screen-name">Deeply Rooted Hair Essentials</h3>
-          <p class="screen-type">E-Commerce Website</p>
+        <div class="swiper-slide">
+          <a href="project-fzi.html" class="hc-card">
+            <div class="hc-media"><video src="assets/videos/fzi-demo.mp4" autoplay muted loop playsinline></video></div>
+            <div class="hc-overlay"></div>
+            <div class="hc-info"><span class="hc-num">02</span><h3 class="hc-name">FZI Construction</h3><p class="hc-type">Corporate Website</p></div>
+          </a>
         </div>
-      </a>
-      <a href="project-fzi.html" class="float-screen rv d1" id="screen-2">
-        <div class="screen-frame">
-          <div class="screen-bezel">
-            <div class="screen-dots"><span></span><span></span><span></span></div>
-          </div>
-          <div class="screen-display">
-            <video src="assets/videos/fzi-demo.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video>
-          </div>
-          <div class="screen-glow"></div>
+        <div class="swiper-slide">
+          <a href="project-rebel.html" class="hc-card">
+            <div class="hc-media"><video src="assets/videos/rebel-demo.mp4" autoplay muted loop playsinline></video></div>
+            <div class="hc-overlay"></div>
+            <div class="hc-info"><span class="hc-num">03</span><h3 class="hc-name">Rebel Family Motors</h3><p class="hc-type">Social Media & Content</p></div>
+          </a>
         </div>
-        <div class="screen-info">
-          <span class="screen-num">02</span>
-          <h3 class="screen-name">FZI Construction</h3>
-          <p class="screen-type">Corporate Website</p>
+        <div class="swiper-slide">
+          <a href="project-janerockstar.html" class="hc-card">
+            <div class="hc-media"><video src="assets/videos/janerockstar-demo.mp4" autoplay muted loop playsinline></video></div>
+            <div class="hc-overlay"></div>
+            <div class="hc-info"><span class="hc-num">04</span><h3 class="hc-name">Janerockstar Salon</h3><p class="hc-type">Social Media Management</p></div>
+          </a>
         </div>
-      </a>
-      <a href="project-rebel.html" class="float-screen rv d2" id="screen-3">
-        <div class="screen-frame">
-          <div class="screen-bezel">
-            <div class="screen-dots"><span></span><span></span><span></span></div>
-          </div>
-          <div class="screen-display">
-            <video src="assets/videos/rebel-demo.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video>
-          </div>
-          <div class="screen-glow"></div>
-        </div>
-        <div class="screen-info">
-          <span class="screen-num">03</span>
-          <h3 class="screen-name">Rebel Family Motors</h3>
-          <p class="screen-type">Social Media & Content</p>
-        </div>
-      </a>
-      <a href="project-janerockstar.html" class="float-screen rv d3" id="screen-4">
-        <div class="screen-frame">
-          <div class="screen-bezel">
-            <div class="screen-dots"><span></span><span></span><span></span></div>
-          </div>
-          <div class="screen-display">
-            <video src="assets/videos/janerockstar-demo.mp4" autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover"></video>
-          </div>
-          <div class="screen-glow"></div>
-        </div>
-        <div class="screen-info">
-          <span class="screen-num">04</span>
-          <h3 class="screen-name">Janerockstar Salon</h3>
-          <p class="screen-type">Social Media Management</p>
-        </div>
-      </a>
+      </div>
+      <div class="swiper-pagination hc-pagination"></div>
     </div>
-    <div style="text-align:center;margin-top:3rem">
+    <div style="text-align:center;margin-top:2rem">
       <a href="projects.html" class="btn-outline rv d3">View All Projects →</a>
     </div>
   </section>
@@ -298,6 +267,7 @@
   
   
   <!-- Advanced Libraries -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
