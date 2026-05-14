@@ -111,7 +111,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 /* ===== SECTION SYSTEM ===== */
 .section{padding:8rem 3rem;position:relative}
-.section--dark{background:var(--bg)}
+.section--dark{background:var(--bg);overflow:visible}
 .section--alt{background:var(--bg2)}
 .section--accent{background:linear-gradient(135deg,var(--bg2),#1a1a1e);position:relative}
 .section--accent::before{content:'';position:absolute;top:50%;left:50%;width:400px;height:400px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(196,147,85,.04) 0%,transparent 70%);pointer-events:none}
