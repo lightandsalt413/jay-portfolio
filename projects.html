@@ -131,101 +131,81 @@
       const container = document.getElementById('orbitContainer');
       const cards = [...container.querySelectorAll('.orbit-card')];
       const total = cards.length;
-      const radiusX = 380;  // horizontal stretch
-      const radiusY = 90;   // vertical stretch (creates depth)
+      const radiusX = 380;
+      const radiusY = 90;
       const containerW = container.offsetWidth;
       const containerH = container.offsetHeight;
       const centerX = containerW / 2;
       const centerY = containerH / 2;
+      const cardW = 400;
+      const cardH = 260;
+      const halfW = cardW / 2;
+      const halfH = cardH / 2;
+      const ctas = cards.map(c => c.querySelector('.orbit-card-cta'));
+
       let angle = 0;
-      const speed = 0.002; // slower = smoother (~30s per full rotation)
+      const speed = 0.002;
       let paused = false;
-      let raf;
 
       function render() {
-        cards.forEach((card, i) => {
+        for (let i = 0; i < total; i++) {
+          const card = cards[i];
           const a = angle + (i * (2 * Math.PI / total));
           const x = Math.sin(a) * radiusX;
-          const y = -Math.cos(a) * radiusY; // negative so front is bottom
-          
-          // Depth: cards at bottom (front) are bigger, top (back) smaller
-          const depthFactor = (y + radiusY) / (2 * radiusY); // 0=back, 1=front
-          const scale = 0.55 + depthFactor * 0.5; // 0.55 to 1.05
-          const zIndex = Math.round(depthFactor * 100);
-          const brightness = 0.25 + depthFactor * 0.75; // 0.25 to 1.0
-          const opacity = 0.35 + depthFactor * 0.65; // 0.35 to 1.0
-          
-          const cardW = card.offsetWidth;
-          const cardH = card.offsetHeight;
-          const posX = centerX + x - cardW / 2;
-          const posY = centerY + y - cardH / 2;
+          const y = -Math.cos(a) * radiusY;
+          const df = (y + radiusY) / (2 * radiusY);
+          const s = 0.55 + df * 0.5;
+          const b = (0.25 + df * 0.75).toFixed(2);
+          const o = (0.35 + df * 0.65).toFixed(2);
+          const px = centerX + x - halfW;
+          const py = centerY + y - halfH;
+          const isFront = df > 0.85;
 
-          card.style.left = posX + 'px';
-          card.style.top = posY + 'px';
-          card.style.transform = `scale(${scale})`;
-          card.style.zIndex = zIndex;
-          card.style.filter = `brightness(${brightness})`;
-          card.style.opacity = opacity;
-          
-          // Show CTA only on front-most card
-          const cta = card.querySelector('.orbit-card-cta');
-          if (depthFactor > 0.85) {
-            card.style.boxShadow = '0 20px 60px rgba(0,0,0,.5), 0 0 30px rgba(196,147,85,.08)';
-            card.style.borderColor = 'rgba(196,147,85,.15)';
-            card.style.pointerEvents = 'auto';
-            card.classList.add('orbit-front');
-            if(cta) cta.style.opacity = '1';
-          } else {
-            card.style.boxShadow = 'none';
-            card.style.borderColor = 'rgba(255,255,255,.06)';
-            card.style.pointerEvents = 'none';
-            if(cta) cta.style.opacity = '0';
-          }
-        });
-
+          card.style.transform = `translate3d(${px}px,${py}px,0) scale(${s})`;
+          card.style.zIndex = Math.round(df * 100);
+          card.style.filter = `brightness(${b})`;
+          card.style.opacity = o;
+          card.style.boxShadow = isFront ? '0 20px 60px rgba(0,0,0,.5),0 0 30px rgba(196,147,85,.08)' : 'none';
+          card.style.borderColor = isFront ? 'rgba(196,147,85,.15)' : 'rgba(255,255,255,.06)';
+          card.style.pointerEvents = isFront ? 'auto' : 'none';
+          if (isFront) { card.classList.add('orbit-front'); if(ctas[i]) ctas[i].style.opacity='1'; }
+          else { card.classList.remove('orbit-front'); if(ctas[i]) ctas[i].style.opacity='0'; }
+        }
         if (!paused) angle += speed;
-        raf = requestAnimationFrame(render);
+        requestAnimationFrame(render);
       }
 
-      // Pause on hover
       container.addEventListener('mouseenter', () => paused = true);
       container.addEventListener('mouseleave', () => paused = false);
 
-      // 3D Tilt on front card hover
+      // 3D Tilt
       container.addEventListener('mousemove', (e) => {
-        cards.forEach(card => {
-          if (!card.classList.contains('orbit-front')) return;
-          const rect = card.getBoundingClientRect();
-          const cx = e.clientX - rect.left - rect.width / 2;
-          const cy = e.clientY - rect.top - rect.height / 2;
-          const rotY = (cx / rect.width) * 12;
-          const rotX = -(cy / rect.height) * 8;
-          card.style.transform = `scale(1.05) perspective(600px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
-        });
-      });
-      container.addEventListener('mouseleave', () => {
-        cards.forEach(card => card.classList.remove('orbit-front'));
+        for (let i = 0; i < total; i++) {
+          if (!cards[i].classList.contains('orbit-front')) continue;
+          const r = cards[i].getBoundingClientRect();
+          const ry = ((e.clientX - r.left - r.width/2) / r.width) * 10;
+          const rx = -((e.clientY - r.top - r.height/2) / r.height) * 6;
+          cards[i].style.transform += ` perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+        }
       });
 
-      // Floating particles
-      function spawnParticle() {
+      // Particles (capped)
+      let pCount = 0;
+      setInterval(() => {
+        if (pCount > 10) return;
         const p = document.createElement('div');
         p.className = 'orbit-particle';
         const a = Math.random() * Math.PI * 2;
-        const rx = 280 + Math.random() * 100;
-        const ry = 60 + Math.random() * 40;
-        p.style.left = (centerX + Math.sin(a) * rx) + 'px';
-        p.style.top = (centerY - Math.cos(a) * ry) + 'px';
-        p.style.width = (2 + Math.random() * 3) + 'px';
-        p.style.height = p.style.width;
-        p.style.animationDuration = (4 + Math.random() * 4) + 's';
-        p.style.animationDelay = (Math.random() * 2) + 's';
+        p.style.left = (centerX + Math.sin(a) * (260 + Math.random()*120)) + 'px';
+        p.style.top = (centerY - Math.cos(a) * (50 + Math.random()*50)) + 'px';
+        const sz = (2 + Math.random()*2) + 'px';
+        p.style.width = p.style.height = sz;
+        p.style.animationDuration = (5+Math.random()*3)+'s';
         container.appendChild(p);
-        setTimeout(() => p.remove(), 8000);
-      }
-      setInterval(spawnParticle, 600);
+        pCount++;
+        setTimeout(() => { p.remove(); pCount--; }, 7000);
+      }, 900);
 
-      // Start
       render();
     })();
   </script>
