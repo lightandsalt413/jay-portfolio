@@ -9,46 +9,36 @@
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Projects — JAY"><meta name="twitter:description" content="Selected projects and case studies by Renejay Ynclino."><meta name="twitter:image" content="https://lightandsalt413.github.io/jay-portfolio/assets/images/og-share.png">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* ===== 3D ORBIT CAROUSEL ===== */
-    .orbit-wrapper{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;perspective:1200px;position:relative;padding:2rem 0}
-    .orbit-scene{width:340px;height:240px;position:relative;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.25,.8,.25,1)}
-    .orbit-card{position:absolute;width:340px;height:240px;border-radius:14px;overflow:hidden;backface-visibility:hidden;background:#0a0a0c;border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:opacity .6s ease,filter .6s ease;text-decoration:none;color:inherit;display:block}
-    .orbit-card video,.orbit-card img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
-    .orbit-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 40%,transparent 60%)}
-    .orbit-info{position:absolute;bottom:0;left:0;right:0;padding:1.4rem;z-index:1}
-    .orbit-num{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;display:block}
-    .orbit-name{font-family:var(--serif);font-size:clamp(.95rem,2vw,1.3rem);font-weight:300;color:var(--cream);margin-bottom:.2rem}
-    .orbit-type{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
-    .orbit-cta{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:.6rem;opacity:0;transform:translateY(6px);transition:all .4s ease}
-    .orbit-card.front .orbit-cta{opacity:1;transform:translateY(0)}
-    .orbit-card.front{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(196,147,85,.1);z-index:10}
-    .orbit-card:not(.front){filter:brightness(.4);pointer-events:none}
-    .orbit-card.front:hover{transform:scale(1.03) translateZ(0)!important;box-shadow:0 35px 90px rgba(0,0,0,.7),0 0 50px rgba(196,147,85,.15)}
+    /* ===== ELLIPTICAL ORBIT ===== */
+    .orbit-wrapper{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:65vh;position:relative;padding:3rem 0 2rem}
+    .orbit-container{position:relative;width:700px;height:360px}
 
-    /* Navigation dots */
-    .orbit-dots{display:flex;gap:10px;margin-top:2.5rem;z-index:5}
-    .orbit-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer;transition:all .3s;padding:0}
-    .orbit-dot.active{background:var(--gold);transform:scale(1.4)}
+    /* Orbit ring line */
+    .orbit-ring{position:absolute;top:50%;left:50%;width:620px;height:160px;border:1px solid rgba(196,147,85,.08);border-radius:50%;transform:translate(-50%,-50%) rotateX(75deg);pointer-events:none}
 
-    /* Nav arrows */
-    .orbit-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(255,255,255,.1);border-radius:50%;background:rgba(23,23,25,.6);backdrop-filter:blur(8px);color:var(--cream);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .3s}
-    .orbit-nav:hover{border-color:var(--gold);color:var(--gold);background:rgba(23,23,25,.9)}
-    .orbit-prev{left:-60px}
-    .orbit-next{right:-60px}
+    /* Cards */
+    .orbit-card{position:absolute;width:280px;height:180px;border-radius:12px;overflow:hidden;background:#0a0a0c;border:1px solid rgba(255,255,255,.06);text-decoration:none;color:inherit;display:block;transition:transform .1s linear,opacity .1s linear,filter .1s linear;will-change:transform,opacity}
+    .orbit-card video{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
+    .orbit-card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 40%,transparent 55%)}
+    .orbit-card-info{position:absolute;bottom:0;left:0;right:0;padding:1.2rem;z-index:1}
+    .orbit-card-num{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.2rem;display:block}
+    .orbit-card-name{font-family:var(--serif);font-size:clamp(.9rem,1.8vw,1.15rem);font-weight:300;color:var(--cream);margin-bottom:.15rem}
+    .orbit-card-type{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
+    .orbit-card-cta{display:block;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:.5rem;opacity:0;transition:opacity .3s}
 
-    /* Instruction text */
-    .orbit-hint{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:1.2rem;animation:hintPulse 2s ease-in-out infinite}
-    @keyframes hintPulse{0%,100%{opacity:.2}50%{opacity:.5}}
+    /* Hint */
+    .orbit-hint{font-size:.55rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.15);margin-top:1.5rem;text-align:center}
 
     /* Responsive */
     @media(max-width:768px){
-      .orbit-scene,.orbit-card{width:280px;height:200px}
-      .orbit-prev{left:-10px}
-      .orbit-next{right:-10px}
-      .orbit-nav{width:36px;height:36px;font-size:.9rem}
+      .orbit-container{width:360px;height:300px}
+      .orbit-ring{width:320px;height:100px}
+      .orbit-card{width:220px;height:145px}
     }
     @media(max-width:480px){
-      .orbit-scene,.orbit-card{width:260px;height:185px}
+      .orbit-container{width:300px;height:280px}
+      .orbit-ring{width:260px;height:80px}
+      .orbit-card{width:200px;height:130px}
     }
   </style>
 </head>
@@ -65,53 +55,54 @@
     </div>
 
     <div class="orbit-wrapper">
-      <div class="orbit-scene" id="orbitScene">
+      <div class="orbit-container" id="orbitContainer">
+        <div class="orbit-ring"></div>
+
         <a href="project-deeplyrooted.html" class="orbit-card" data-index="0">
           <video src="assets/videos/deeplyrooted-demo.mp4" autoplay muted loop playsinline></video>
-          <div class="orbit-overlay"></div>
-          <div class="orbit-info">
-            <span class="orbit-num">01</span>
-            <h3 class="orbit-name">Deeply Rooted Hair Essentials</h3>
-            <p class="orbit-type">E-Commerce Website</p>
-            <span class="orbit-cta">View Project →</span>
+          <div class="orbit-card-overlay"></div>
+          <div class="orbit-card-info">
+            <span class="orbit-card-num">01</span>
+            <h3 class="orbit-card-name">Deeply Rooted Hair Essentials</h3>
+            <p class="orbit-card-type">E-Commerce Website</p>
+            <span class="orbit-card-cta">View Project →</span>
           </div>
         </a>
+
         <a href="project-fzi.html" class="orbit-card" data-index="1">
           <video src="assets/videos/fzi-demo.mp4" autoplay muted loop playsinline></video>
-          <div class="orbit-overlay"></div>
-          <div class="orbit-info">
-            <span class="orbit-num">02</span>
-            <h3 class="orbit-name">FZI Construction</h3>
-            <p class="orbit-type">Corporate Website</p>
-            <span class="orbit-cta">View Project →</span>
+          <div class="orbit-card-overlay"></div>
+          <div class="orbit-card-info">
+            <span class="orbit-card-num">02</span>
+            <h3 class="orbit-card-name">FZI Construction</h3>
+            <p class="orbit-card-type">Corporate Website</p>
+            <span class="orbit-card-cta">View Project →</span>
           </div>
         </a>
+
         <a href="project-rebel.html" class="orbit-card" data-index="2">
           <video src="assets/videos/rebel-demo.mp4" autoplay muted loop playsinline></video>
-          <div class="orbit-overlay"></div>
-          <div class="orbit-info">
-            <span class="orbit-num">03</span>
-            <h3 class="orbit-name">Rebel Family Motors</h3>
-            <p class="orbit-type">Social Media & Content</p>
-            <span class="orbit-cta">View Project →</span>
+          <div class="orbit-card-overlay"></div>
+          <div class="orbit-card-info">
+            <span class="orbit-card-num">03</span>
+            <h3 class="orbit-card-name">Rebel Family Motors</h3>
+            <p class="orbit-card-type">Social Media & Content</p>
+            <span class="orbit-card-cta">View Project →</span>
           </div>
         </a>
+
         <a href="project-janerockstar.html" class="orbit-card" data-index="3">
           <video src="assets/videos/janerockstar-demo.mp4" autoplay muted loop playsinline></video>
-          <div class="orbit-overlay"></div>
-          <div class="orbit-info">
-            <span class="orbit-num">04</span>
-            <h3 class="orbit-name">Janerockstar Salon</h3>
-            <p class="orbit-type">Social Media Management</p>
-            <span class="orbit-cta">View Project →</span>
+          <div class="orbit-card-overlay"></div>
+          <div class="orbit-card-info">
+            <span class="orbit-card-num">04</span>
+            <h3 class="orbit-card-name">Janerockstar Salon</h3>
+            <p class="orbit-card-type">Social Media Management</p>
+            <span class="orbit-card-cta">View Project →</span>
           </div>
         </a>
-        <!-- Nav arrows -->
-        <button class="orbit-nav orbit-prev" id="orbitPrev">←</button>
-        <button class="orbit-nav orbit-next" id="orbitNext">→</button>
       </div>
-      <div class="orbit-dots" id="orbitDots"></div>
-      <p class="orbit-hint">Drag or use arrows to explore</p>
+      <p class="orbit-hint">✦ Auto-orbiting ✦</p>
     </div>
   </section>
 
@@ -125,117 +116,70 @@
   <script src="js/app.js"></script>
   <script>
     (function(){
-      const scene = document.getElementById('orbitScene');
-      const cards = [...scene.querySelectorAll('.orbit-card')];
-      const dotsWrap = document.getElementById('orbitDots');
+      const container = document.getElementById('orbitContainer');
+      const cards = [...container.querySelectorAll('.orbit-card')];
       const total = cards.length;
-      const angleStep = 360 / total;
-      const radius = 420; // distance from center
-      let current = 0;
-      let autoTimer;
-      let isDragging = false;
-      let startX = 0;
-      let dragDelta = 0;
+      const radiusX = 280;  // horizontal stretch
+      const radiusY = 70;   // vertical stretch (creates depth)
+      const containerW = container.offsetWidth;
+      const containerH = container.offsetHeight;
+      const centerX = containerW / 2;
+      const centerY = containerH / 2;
+      let angle = 0;
+      const speed = 0.004; // radians per frame (~18s per full rotation)
+      let paused = false;
+      let raf;
 
-      // Create dots
-      cards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'orbit-dot' + (i === 0 ? ' active' : '');
-        dot.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(dot);
-      });
-
-      function position(animated) {
+      function render() {
         cards.forEach((card, i) => {
-          const offset = ((i - current) % total + total) % total;
-          const angle = offset * angleStep;
-          const rad = (angle * Math.PI) / 180;
-          const x = Math.sin(rad) * radius;
-          const z = Math.cos(rad) * radius - radius;
-          const scale = 0.5 + 0.5 * ((z + radius) / (2 * radius));
-          const opacity = offset === 0 ? 1 : 0.4 + 0.3 * ((z + radius) / (2 * radius));
+          const a = angle + (i * (2 * Math.PI / total));
+          const x = Math.sin(a) * radiusX;
+          const y = -Math.cos(a) * radiusY; // negative so front is bottom
+          
+          // Depth: cards at bottom (front) are bigger, top (back) smaller
+          const depthFactor = (y + radiusY) / (2 * radiusY); // 0=back, 1=front
+          const scale = 0.55 + depthFactor * 0.5; // 0.55 to 1.05
+          const zIndex = Math.round(depthFactor * 100);
+          const brightness = 0.25 + depthFactor * 0.75; // 0.25 to 1.0
+          const opacity = 0.35 + depthFactor * 0.65; // 0.35 to 1.0
+          
+          const cardW = card.offsetWidth;
+          const cardH = card.offsetHeight;
+          const posX = centerX + x - cardW / 2;
+          const posY = centerY + y - cardH / 2;
 
-          card.style.transition = animated ? 'all .8s cubic-bezier(.25,.8,.25,1)' : 'none';
-          card.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
-          card.style.zIndex = Math.round((z + radius));
+          card.style.left = posX + 'px';
+          card.style.top = posY + 'px';
+          card.style.transform = `scale(${scale})`;
+          card.style.zIndex = zIndex;
+          card.style.filter = `brightness(${brightness})`;
           card.style.opacity = opacity;
-
-          if (offset === 0) {
-            card.classList.add('front');
-            card.style.filter = 'brightness(1)';
+          
+          // Show CTA only on front-most card
+          const cta = card.querySelector('.orbit-card-cta');
+          if (depthFactor > 0.85) {
+            card.style.boxShadow = '0 20px 60px rgba(0,0,0,.5), 0 0 30px rgba(196,147,85,.08)';
+            card.style.borderColor = 'rgba(196,147,85,.15)';
             card.style.pointerEvents = 'auto';
+            if(cta) cta.style.opacity = '1';
           } else {
-            card.classList.remove('front');
-            card.style.filter = `brightness(${0.25 + 0.2 * scale})`;
+            card.style.boxShadow = 'none';
+            card.style.borderColor = 'rgba(255,255,255,.06)';
             card.style.pointerEvents = 'none';
+            if(cta) cta.style.opacity = '0';
           }
         });
 
-        // Update dots
-        dotsWrap.querySelectorAll('.orbit-dot').forEach((d, i) => {
-          d.classList.toggle('active', i === current);
-        });
+        if (!paused) angle += speed;
+        raf = requestAnimationFrame(render);
       }
 
-      function goTo(index) {
-        current = ((index % total) + total) % total;
-        position(true);
-        resetAuto();
-      }
+      // Pause on hover
+      container.addEventListener('mouseenter', () => paused = true);
+      container.addEventListener('mouseleave', () => paused = false);
 
-      function next() { goTo(current + 1); }
-      function prev() { goTo(current - 1); }
-
-      // Arrow buttons
-      document.getElementById('orbitPrev').addEventListener('click', prev);
-      document.getElementById('orbitNext').addEventListener('click', next);
-
-      // Keyboard
-      document.addEventListener('keydown', e => {
-        if (e.key === 'ArrowLeft') prev();
-        if (e.key === 'ArrowRight') next();
-      });
-
-      // Drag/touch support
-      scene.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; dragDelta = 0; });
-      scene.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; dragDelta = 0; }, {passive:true});
-      
-      window.addEventListener('mousemove', e => {
-        if (!isDragging) return;
-        dragDelta = e.clientX - startX;
-      });
-      window.addEventListener('touchmove', e => {
-        if (!isDragging) return;
-        dragDelta = e.touches[0].clientX - startX;
-      }, {passive:true});
-      
-      window.addEventListener('mouseup', endDrag);
-      window.addEventListener('touchend', endDrag);
-
-      function endDrag() {
-        if (!isDragging) return;
-        isDragging = false;
-        if (Math.abs(dragDelta) > 50) {
-          dragDelta < 0 ? next() : prev();
-        }
-      }
-
-      // Prevent link click during drag
-      cards.forEach(card => {
-        card.addEventListener('click', e => {
-          if (!card.classList.contains('front')) e.preventDefault();
-        });
-      });
-
-      // Auto-rotate
-      function resetAuto() {
-        clearInterval(autoTimer);
-        autoTimer = setInterval(next, 3000);
-      }
-
-      // Init
-      position(false);
-      resetAuto();
+      // Start
+      render();
     })();
   </script>
 </body>
