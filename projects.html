@@ -8,25 +8,48 @@
   <meta property="og:type" content="website"><meta property="og:title" content="Projects — JAY"><meta property="og:description" content="Selected projects and case studies by Renejay Ynclino."><meta property="og:url" content="https://lightandsalt413.github.io/jay-portfolio/projects.html"><meta property="og:image" content="https://lightandsalt413.github.io/jay-portfolio/assets/images/og-share.png"><meta property="og:site_name" content="JAY Portfolio">
   <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Projects — JAY"><meta name="twitter:description" content="Selected projects and case studies by Renejay Ynclino."><meta name="twitter:image" content="https://lightandsalt413.github.io/jay-portfolio/assets/images/og-share.png">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <style>
-    .swiper{width:100%;max-width:1100px;margin:0 auto;padding:2rem 0 3rem;overflow:visible}
-    .swiper-wrapper{transition-timing-function:cubic-bezier(.22,.68,0,1)!important}
-    .swiper-slide{width:560px;backface-visibility:hidden;-webkit-backface-visibility:hidden;will-change:transform;transform:translate3d(0,0,0);contain:layout style}
-    .swiper-slide a{display:block;text-decoration:none;color:inherit}
-    .swiper-slide .card-inner{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:3/2;background:#0a0a0c;border:1px solid rgba(255,255,255,.06);will-change:transform;transform:translate3d(0,0,0);transition:box-shadow .4s ease,transform .4s ease}
-    .swiper-slide-active .card-inner{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(196,147,85,.08);transform:scale(1.02) translate3d(0,0,0)}
-    .swiper-slide:not(.swiper-slide-active) .card-inner{transform:scale(.92) translate3d(0,0,0);opacity:.5}
-    .card-img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0;transform:translate3d(0,0,0)}
-    .card-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 50%)}
-    .card-info{position:absolute;bottom:0;left:0;right:0;padding:1.8rem;z-index:1}
-    .card-num{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem}
-    .card-name{font-family:var(--serif);font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;color:var(--cream);margin-bottom:.25rem}
-    .card-type{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
-    .swiper-pagination{position:relative;margin-top:1.5rem}
-    .swiper-pagination-bullet{background:rgba(255,255,255,.2);opacity:1;width:8px;height:8px;transition:all .3s}
-    .swiper-pagination-bullet-active{background:var(--gold);transform:scale(1.4)}
-    @media(max-width:768px){.swiper-slide{width:85vw}}
+    /* ===== 3D ORBIT CAROUSEL ===== */
+    .orbit-wrapper{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;perspective:1200px;position:relative;padding:2rem 0}
+    .orbit-scene{width:340px;height:240px;position:relative;transform-style:preserve-3d;transition:transform 1s cubic-bezier(.25,.8,.25,1)}
+    .orbit-card{position:absolute;width:340px;height:240px;border-radius:14px;overflow:hidden;backface-visibility:hidden;background:#0a0a0c;border:1px solid rgba(255,255,255,.06);cursor:pointer;transition:opacity .6s ease,filter .6s ease;text-decoration:none;color:inherit;display:block}
+    .orbit-card video,.orbit-card img{width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0}
+    .orbit-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.1) 40%,transparent 60%)}
+    .orbit-info{position:absolute;bottom:0;left:0;right:0;padding:1.4rem;z-index:1}
+    .orbit-num{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;display:block}
+    .orbit-name{font-family:var(--serif);font-size:clamp(.95rem,2vw,1.3rem);font-weight:300;color:var(--cream);margin-bottom:.2rem}
+    .orbit-type{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
+    .orbit-cta{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:.6rem;opacity:0;transform:translateY(6px);transition:all .4s ease}
+    .orbit-card.front .orbit-cta{opacity:1;transform:translateY(0)}
+    .orbit-card.front{box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 40px rgba(196,147,85,.1);z-index:10}
+    .orbit-card:not(.front){filter:brightness(.4);pointer-events:none}
+    .orbit-card.front:hover{transform:scale(1.03) translateZ(0)!important;box-shadow:0 35px 90px rgba(0,0,0,.7),0 0 50px rgba(196,147,85,.15)}
+
+    /* Navigation dots */
+    .orbit-dots{display:flex;gap:10px;margin-top:2.5rem;z-index:5}
+    .orbit-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer;transition:all .3s;padding:0}
+    .orbit-dot.active{background:var(--gold);transform:scale(1.4)}
+
+    /* Nav arrows */
+    .orbit-nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border:1px solid rgba(255,255,255,.1);border-radius:50%;background:rgba(23,23,25,.6);backdrop-filter:blur(8px);color:var(--cream);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .3s}
+    .orbit-nav:hover{border-color:var(--gold);color:var(--gold);background:rgba(23,23,25,.9)}
+    .orbit-prev{left:-60px}
+    .orbit-next{right:-60px}
+
+    /* Instruction text */
+    .orbit-hint{font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:1.2rem;animation:hintPulse 2s ease-in-out infinite}
+    @keyframes hintPulse{0%,100%{opacity:.2}50%{opacity:.5}}
+
+    /* Responsive */
+    @media(max-width:768px){
+      .orbit-scene,.orbit-card{width:280px;height:200px}
+      .orbit-prev{left:-10px}
+      .orbit-next{right:-10px}
+      .orbit-nav{width:36px;height:36px;font-size:.9rem}
+    }
+    @media(max-width:480px){
+      .orbit-scene,.orbit-card{width:260px;height:185px}
+    }
   </style>
 </head>
 <body>
@@ -34,130 +57,61 @@
   <nav class="nav"><a href="index.html" class="nav-logo">JAY</a><div class="nav-links"><a href="index.html" class="nav-link">Home</a><a href="projects.html" class="nav-link active">Projects</a><a href="about.html" class="nav-link">About</a><a href="contact.html" class="nav-link nav-cta">Let's Talk</a></div><button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button></nav>
   <div class="mob-menu"><a href="index.html">Home</a><a href="projects.html">Projects</a><a href="about.html">About</a><a href="contact.html">Contact</a></div>
 
-  <section class="section section--dark" style="padding-top:10rem;overflow:hidden">
+  <section class="section section--dark" style="padding-top:10rem;overflow:visible">
     <div class="section-header">
       <p class="section-label rv">Portfolio</p>
       <h1 class="section-title rv d1">All Projects</h1>
       <div class="section-line rv d2"></div>
     </div>
 
-    <div class="swiper" id="projectsSwiper">
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide">
-          <a href="project-deeplyrooted.html">
-            <div class="card-inner">
-              <img src="assets/images/project-deeplyrooted.webp" alt="DeeplyRooted" class="card-img">
-              <div class="card-overlay"></div>
-              <div class="card-info">
-                <p class="card-num">01</p>
-                <h3 class="card-name">Deeply Rooted Hair Essentials</h3>
-                <p class="card-type">E-Commerce Website</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="swiper-slide">
-          <a href="project-fzi.html">
-            <div class="card-inner">
-              <img src="assets/images/project-fzi.webp" alt="FZI Construction" class="card-img">
-              <div class="card-overlay"></div>
-              <div class="card-info">
-                <p class="card-num">02</p>
-                <h3 class="card-name">FZI Construction</h3>
-                <p class="card-type">Corporate Website</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="swiper-slide">
-          <a href="project-rebel.html">
-            <div class="card-inner">
-              <img src="assets/images/project-rebel.webp" alt="Rebel Family Motors" class="card-img">
-              <div class="card-overlay"></div>
-              <div class="card-info">
-                <p class="card-num">03</p>
-                <h3 class="card-name">Rebel Family Motors</h3>
-                <p class="card-type">Social Media & Content</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="swiper-slide">
-          <a href="project-janerockstar.html">
-            <div class="card-inner">
-              <img src="assets/images/project-janerockstar.webp" alt="Janerockstar Salon" class="card-img">
-              <div class="card-overlay"></div>
-              <div class="card-info">
-                <p class="card-num">04</p>
-                <h3 class="card-name">Janerockstar Salon</h3>
-                <p class="card-type">Social Media Management</p>
-              </div>
-            </div>
-          </a>
-        </div>
-        <!-- Duplicate set for smooth infinite loop -->
-        <div class="swiper-slide">
-          <a href="project-deeplyrooted.html">
-            <div class="card-inner">
-              <img src="assets/images/project-deeplyrooted.webp" alt="DeeplyRooted" class="card-img">
-              <div class="card-overlay"></div>
-              <div class="card-info">
-                <p class="card-num">01</p>
-                <h3 class="card-name">Deeply Rooted Hair Essentials</h3>
-                <p class="card-type">E-Commerce Website</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="swiper-slide">
-          <a href="project-fzi.html">
-            <div class="card-inner">
-              <img src="assets/images/project-fzi.webp" alt="FZI Construction" class="card-img">
-              <div class="card-overlay"></div>
-              <div class="card-info">
-                <p class="card-num">02</p>
-                <h3 class="card-name">FZI Construction</h3>
-                <p class="card-type">Corporate Website</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="swiper-slide">
-          <a href="project-rebel.html">
-            <div class="card-inner">
-              <img src="assets/images/project-rebel.webp" alt="Rebel Family Motors" class="card-img">
-              <div class="card-overlay"></div>
-              <div class="card-info">
-                <p class="card-num">03</p>
-                <h3 class="card-name">Rebel Family Motors</h3>
-                <p class="card-type">Social Media & Content</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
-        <div class="swiper-slide">
-          <a href="project-janerockstar.html">
-            <div class="card-inner">
-              <img src="assets/images/project-janerockstar.webp" alt="Janerockstar Salon" class="card-img">
-              <div class="card-overlay"></div>
-              <div class="card-info">
-                <p class="card-num">04</p>
-                <h3 class="card-name">Janerockstar Salon</h3>
-                <p class="card-type">Social Media Management</p>
-              </div>
-            </div>
-          </a>
-        </div>
-
+    <div class="orbit-wrapper">
+      <div class="orbit-scene" id="orbitScene">
+        <a href="project-deeplyrooted.html" class="orbit-card" data-index="0">
+          <video src="assets/videos/deeplyrooted-demo.mp4" autoplay muted loop playsinline></video>
+          <div class="orbit-overlay"></div>
+          <div class="orbit-info">
+            <span class="orbit-num">01</span>
+            <h3 class="orbit-name">Deeply Rooted Hair Essentials</h3>
+            <p class="orbit-type">E-Commerce Website</p>
+            <span class="orbit-cta">View Project →</span>
+          </div>
+        </a>
+        <a href="project-fzi.html" class="orbit-card" data-index="1">
+          <video src="assets/videos/fzi-demo.mp4" autoplay muted loop playsinline></video>
+          <div class="orbit-overlay"></div>
+          <div class="orbit-info">
+            <span class="orbit-num">02</span>
+            <h3 class="orbit-name">FZI Construction</h3>
+            <p class="orbit-type">Corporate Website</p>
+            <span class="orbit-cta">View Project →</span>
+          </div>
+        </a>
+        <a href="project-rebel.html" class="orbit-card" data-index="2">
+          <video src="assets/videos/rebel-demo.mp4" autoplay muted loop playsinline></video>
+          <div class="orbit-overlay"></div>
+          <div class="orbit-info">
+            <span class="orbit-num">03</span>
+            <h3 class="orbit-name">Rebel Family Motors</h3>
+            <p class="orbit-type">Social Media & Content</p>
+            <span class="orbit-cta">View Project →</span>
+          </div>
+        </a>
+        <a href="project-janerockstar.html" class="orbit-card" data-index="3">
+          <video src="assets/videos/janerockstar-demo.mp4" autoplay muted loop playsinline></video>
+          <div class="orbit-overlay"></div>
+          <div class="orbit-info">
+            <span class="orbit-num">04</span>
+            <h3 class="orbit-name">Janerockstar Salon</h3>
+            <p class="orbit-type">Social Media Management</p>
+            <span class="orbit-cta">View Project →</span>
+          </div>
+        </a>
+        <!-- Nav arrows -->
+        <button class="orbit-nav orbit-prev" id="orbitPrev">←</button>
+        <button class="orbit-nav orbit-next" id="orbitNext">→</button>
       </div>
-      <div class="swiper-pagination"></div>
+      <div class="orbit-dots" id="orbitDots"></div>
+      <p class="orbit-hint">Drag or use arrows to explore</p>
     </div>
   </section>
 
@@ -166,50 +120,123 @@
   </section>
 
   <footer class="footer"><a href="mailto:renejayflores1990@gmail.com" class="footer-email">renejayflores1990@gmail.com</a></footer>
-    <!-- Smooth Scroll -->
+  <!-- Smooth Scroll -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>
   <script src="js/app.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script>
-    const swiper = new Swiper('#projectsSwiper', {
-      effect: 'coverflow',
-      centeredSlides: true,
-      slidesPerView: 'auto',
-      loop: true,
-      loopAdditionalSlides: 4,
-      speed: 450,
-      grabCursor: true,
-      touchRatio: 2,
-      shortSwipes: true,
-      longSwipesRatio: 0.15,
-      threshold: 5,
-      resistanceRatio: 0,
-      followFinger: true,
-      coverflowEffect: {
-        rotate: 0,
-        stretch: 60,
-        depth: 180,
-        modifier: 1,
-        slideShadows: false,
-      },
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true,
-        dynamicMainBullets: 4,
-      },
-      keyboard: { enabled: true },
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: true,
-        pauseOnMouseEnter: true,
-      },
-      on: {
-        init: function() {
-          this.el.style.opacity = '1';
+    (function(){
+      const scene = document.getElementById('orbitScene');
+      const cards = [...scene.querySelectorAll('.orbit-card')];
+      const dotsWrap = document.getElementById('orbitDots');
+      const total = cards.length;
+      const angleStep = 360 / total;
+      const radius = 420; // distance from center
+      let current = 0;
+      let autoTimer;
+      let isDragging = false;
+      let startX = 0;
+      let dragDelta = 0;
+
+      // Create dots
+      cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'orbit-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+
+      function position(animated) {
+        cards.forEach((card, i) => {
+          const offset = ((i - current) % total + total) % total;
+          const angle = offset * angleStep;
+          const rad = (angle * Math.PI) / 180;
+          const x = Math.sin(rad) * radius;
+          const z = Math.cos(rad) * radius - radius;
+          const scale = 0.5 + 0.5 * ((z + radius) / (2 * radius));
+          const opacity = offset === 0 ? 1 : 0.4 + 0.3 * ((z + radius) / (2 * radius));
+
+          card.style.transition = animated ? 'all .8s cubic-bezier(.25,.8,.25,1)' : 'none';
+          card.style.transform = `translateX(${x}px) translateZ(${z}px) scale(${scale})`;
+          card.style.zIndex = Math.round((z + radius));
+          card.style.opacity = opacity;
+
+          if (offset === 0) {
+            card.classList.add('front');
+            card.style.filter = 'brightness(1)';
+            card.style.pointerEvents = 'auto';
+          } else {
+            card.classList.remove('front');
+            card.style.filter = `brightness(${0.25 + 0.2 * scale})`;
+            card.style.pointerEvents = 'none';
+          }
+        });
+
+        // Update dots
+        dotsWrap.querySelectorAll('.orbit-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+        });
+      }
+
+      function goTo(index) {
+        current = ((index % total) + total) % total;
+        position(true);
+        resetAuto();
+      }
+
+      function next() { goTo(current + 1); }
+      function prev() { goTo(current - 1); }
+
+      // Arrow buttons
+      document.getElementById('orbitPrev').addEventListener('click', prev);
+      document.getElementById('orbitNext').addEventListener('click', next);
+
+      // Keyboard
+      document.addEventListener('keydown', e => {
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+      });
+
+      // Drag/touch support
+      scene.addEventListener('mousedown', e => { isDragging = true; startX = e.clientX; dragDelta = 0; });
+      scene.addEventListener('touchstart', e => { isDragging = true; startX = e.touches[0].clientX; dragDelta = 0; }, {passive:true});
+      
+      window.addEventListener('mousemove', e => {
+        if (!isDragging) return;
+        dragDelta = e.clientX - startX;
+      });
+      window.addEventListener('touchmove', e => {
+        if (!isDragging) return;
+        dragDelta = e.touches[0].clientX - startX;
+      }, {passive:true});
+      
+      window.addEventListener('mouseup', endDrag);
+      window.addEventListener('touchend', endDrag);
+
+      function endDrag() {
+        if (!isDragging) return;
+        isDragging = false;
+        if (Math.abs(dragDelta) > 50) {
+          dragDelta < 0 ? next() : prev();
         }
       }
-    });
+
+      // Prevent link click during drag
+      cards.forEach(card => {
+        card.addEventListener('click', e => {
+          if (!card.classList.contains('front')) e.preventDefault();
+        });
+      });
+
+      // Auto-rotate
+      function resetAuto() {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(next, 5000);
+      }
+
+      // Init
+      position(false);
+      resetAuto();
+    })();
   </script>
 </body>
 </html>
