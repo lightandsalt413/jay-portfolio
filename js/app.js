@@ -1,17 +1,34 @@
 document.addEventListener('DOMContentLoaded',()=>{
 
 
-  /* ===== PRELOADER ===== */
+  /* ===== PRELOADER (Countdown 0→100) ===== */
   const preloader=document.getElementById('preloader');
-  if(preloader){
-    window.addEventListener('load',()=>{
-      setTimeout(()=>{
-        preloader.classList.add('done');
-        // Trigger hero entrance after preloader
-        document.body.classList.add('loaded');
-        setTimeout(()=>preloader.remove(),800);
-      },1600);
-    });
+  const counterEl=document.getElementById('preloader-counter');
+  const barFill=document.getElementById('preloader-bar-fill');
+  if(preloader&&counterEl&&barFill){
+    let current=0;
+    const duration=2200; // total countdown duration in ms
+    const start=performance.now();
+    function easeOutQuart(t){return 1-Math.pow(1-t,4)}
+    function countUp(now){
+      const elapsed=now-start;
+      const progress=Math.min(elapsed/duration,1);
+      const eased=easeOutQuart(progress);
+      current=Math.floor(eased*100);
+      counterEl.textContent=current;
+      barFill.style.width=current+'%';
+      if(progress<1){
+        requestAnimationFrame(countUp);
+      }else{
+        // Hold at 100 briefly, then fade out
+        setTimeout(()=>{
+          preloader.classList.add('done');
+          document.body.classList.add('loaded');
+          setTimeout(()=>preloader.remove(),900);
+        },400);
+      }
+    }
+    requestAnimationFrame(countUp);
   }
 
 
@@ -85,8 +102,8 @@ document.addEventListener('DOMContentLoaded',()=>{
       });
       heroTitle.innerHTML=html;
 
-      // Animate after preloader
-      const introTL=gsap.timeline({delay:preloader?1.8:.3});
+      // Animate after preloader countdown
+      const introTL=gsap.timeline({delay:preloader?2.8:.3});
 
       if(heroLabel){
         introTL.fromTo(heroLabel,
