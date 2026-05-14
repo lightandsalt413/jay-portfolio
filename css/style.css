@@ -475,13 +475,14 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .hc-num{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;display:block}
 .hc-name{font-family:var(--serif);font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;color:var(--cream);margin-bottom:.25rem}
 .hc-type{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gray)}
-.hc-cta{display:inline-flex;align-items:center;gap:6px;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:.8rem;padding:.4rem .9rem;border:1px solid rgba(196,147,85,.3);border-radius:20px;opacity:0;transform:translateY(8px);transition:all .4s var(--ease);backdrop-filter:blur(4px);background:rgba(196,147,85,.06)}
+.hc-cta{display:inline-flex;align-items:center;gap:6px;font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:.8rem;padding:.5rem 1.1rem;border:1px solid rgba(196,147,85,.5);border-radius:20px;opacity:0;transform:translateY(8px);transition:all .4s var(--ease);backdrop-filter:blur(4px);background:rgba(196,147,85,.12);box-shadow:0 0 15px rgba(196,147,85,.1);animation:ctaPulse 2.5s ease-in-out infinite}
 .hc-cta .arrow{display:inline-block;transition:transform .3s ease}
 .swiper-slide-active .hc-cta{opacity:1;transform:translateY(0)}
 .swiper-slide-active .hc-card:hover .hc-cta{background:rgba(196,147,85,.15);border-color:var(--gold)}
 .swiper-slide-active .hc-card:hover .hc-cta .arrow{transform:translateX(4px)}
 .swiper-slide-active .hc-card{cursor:pointer}
 .swiper-slide-active .hc-card:hover{transform:translateY(-4px);box-shadow:0 35px 90px rgba(0,0,0,.7),0 0 50px rgba(196,147,85,.1)}
+@keyframes ctaPulse{0%,100%{box-shadow:0 0 15px rgba(196,147,85,.1)}50%{box-shadow:0 0 20px rgba(196,147,85,.25)}}
 .hc-pagination{position:relative;margin-top:1.5rem}
 .hc-pagination .swiper-pagination-bullet{background:rgba(255,255,255,.2);opacity:1;width:8px;height:8px;transition:all .3s}
 .hc-pagination .swiper-pagination-bullet-active{background:var(--gold);transform:scale(1.4)}
