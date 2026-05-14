@@ -349,4 +349,25 @@ document.addEventListener('DOMContentLoaded',()=>{
     });
   }
 
+
+  /* ===== FLOATING WHATSAPP BUTTON ===== */
+  const waBtn=document.createElement('a');
+  waBtn.href='https://wa.me/639661380614?text=Hi%20Jay!%20I%20found%20your%20portfolio%20and%20I%E2%80%99d%20like%20to%20discuss%20a%20project.';
+  waBtn.target='_blank';
+  waBtn.rel='noopener noreferrer';
+  waBtn.id='wa-float';
+  waBtn.setAttribute('aria-label','Chat on WhatsApp');
+  waBtn.innerHTML=`<svg viewBox="0 0 32 32" width="28" height="28" fill="#fff"><path d="M16.004 3.2C8.92 3.2 3.2 8.92 3.2 16c0 2.26.59 4.46 1.71 6.4L3.2 28.8l6.62-1.74A12.72 12.72 0 0016.004 28.8C23.08 28.8 28.8 23.08 28.8 16S23.08 3.2 16.004 3.2zm0 23.2a10.34 10.34 0 01-5.28-1.44l-.38-.22-3.93 1.03 1.05-3.84-.25-.39A10.34 10.34 0 015.6 16c0-5.74 4.66-10.4 10.4-10.4S26.4 10.26 26.4 16s-4.66 10.4-10.396 10.4zm5.7-7.78c-.31-.16-1.85-.91-2.14-1.02-.28-.1-.49-.16-.7.16-.2.31-.8 1.02-.98 1.23-.18.2-.36.23-.67.08-.31-.16-1.32-.49-2.52-1.56-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.48.14-.63.14-.14.31-.36.47-.55.16-.18.2-.31.31-.52.1-.2.05-.39-.03-.55-.08-.16-.7-1.68-.95-2.3-.25-.6-.51-.52-.7-.53h-.6c-.2 0-.53.08-.81.39-.28.31-1.07 1.05-1.07 2.55s1.1 2.96 1.25 3.16c.16.2 2.16 3.3 5.23 4.63.73.32 1.3.5 1.75.65.74.24 1.4.2 1.93.12.59-.09 1.85-.76 2.1-1.49.26-.73.26-1.36.18-1.49-.08-.14-.28-.22-.6-.38z"/></svg>`;
+  
+  // Inject styles
+  const waStyle=document.createElement('style');
+  waStyle.textContent=`
+    #wa-float{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(37,211,102,.4);z-index:9999;transition:all .3s ease;animation:waPulse 2s ease-in-out infinite}
+    #wa-float:hover{transform:scale(1.12);box-shadow:0 6px 30px rgba(37,211,102,.6)}
+    @keyframes waPulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.4)}50%{box-shadow:0 4px 20px rgba(37,211,102,.4),0 0 0 12px rgba(37,211,102,.1)}}
+    @media(max-width:768px){#wa-float{bottom:20px;right:20px;width:50px;height:50px}}
+  `;
+  document.head.appendChild(waStyle);
+  document.body.appendChild(waBtn);
+
 });
