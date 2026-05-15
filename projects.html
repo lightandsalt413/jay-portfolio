@@ -53,6 +53,24 @@
       .orbit-ring{width:300px;height:90px}
       .orbit-card{width:240px;height:160px}
     }
+
+    /* ===== PROJECT GRID ===== */
+    .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:2rem}
+    .proj-item{display:block;text-decoration:none;color:inherit;border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.02);transition:all .4s ease}
+    .proj-item:hover{border-color:rgba(196,147,85,.2);transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 20px rgba(196,147,85,.05)}
+    .proj-thumb{position:relative;aspect-ratio:16/9;overflow:hidden}
+    .proj-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .proj-item:hover .proj-thumb img{transform:scale(1.05)}
+    .proj-thumb-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.6) 0%,transparent 50%)}
+    .proj-meta{padding:1.4rem 1.6rem}
+    .proj-num{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.3rem}
+    .proj-name{font-family:var(--serif);font-size:clamp(1rem,2vw,1.3rem);font-weight:300;color:var(--cream);margin-bottom:.3rem}
+    .proj-type{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gray);margin-bottom:.8rem}
+    .proj-link{display:inline-flex;align-items:center;gap:6px;font-size:.6rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:.35rem .8rem;border:1px solid rgba(196,147,85,.3);border-radius:20px;background:rgba(196,147,85,.06);transition:all .3s}
+    .proj-link .arrow{display:inline-block;transition:transform .3s}
+    .proj-item:hover .proj-link{background:rgba(196,147,85,.15);border-color:var(--gold)}
+    .proj-item:hover .proj-link .arrow{transform:translateX(4px)}
+    @media(max-width:768px){.proj-grid{grid-template-columns:1fr;gap:1.5rem}}
   </style>
 </head>
 <body>
@@ -115,6 +133,65 @@
           </div>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- ALL PROJECTS GRID -->
+  <section class="section" style="overflow:visible">
+    <div class="section-header">
+      <p class="section-label rv">Browse</p>
+      <h2 class="section-title rv d1">Project Library</h2>
+      <div class="section-line rv d2"></div>
+    </div>
+    <div class="proj-grid">
+      <a href="project-deeplyrooted.html" class="proj-item rv">
+        <div class="proj-thumb">
+          <img src="assets/images/project-deeplyrooted.webp" alt="DeeplyRooted Hair Essentials" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-num">01</span>
+          <h3 class="proj-name">Deeply Rooted Hair Essentials</h3>
+          <p class="proj-type">E-Commerce Website — Shopify</p>
+          <span class="proj-link">View Project <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a href="project-fzi.html" class="proj-item rv d1">
+        <div class="proj-thumb">
+          <img src="assets/images/project-fzi.webp" alt="FZI Construction" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-num">02</span>
+          <h3 class="proj-name">FZI Construction</h3>
+          <p class="proj-type">Corporate Website — HTML/CSS/JS</p>
+          <span class="proj-link">View Project <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a href="project-rebel.html" class="proj-item rv d2">
+        <div class="proj-thumb">
+          <img src="assets/images/project-rebel.webp" alt="Rebel Family Motors" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-num">03</span>
+          <h3 class="proj-name">Rebel Family Motors</h3>
+          <p class="proj-type">Social Media & Content Strategy</p>
+          <span class="proj-link">View Project <span class="arrow">→</span></span>
+        </div>
+      </a>
+      <a href="project-janerockstar.html" class="proj-item rv d3">
+        <div class="proj-thumb">
+          <img src="assets/images/project-janerockstar.webp" alt="Janerockstar Salon" loading="lazy">
+          <div class="proj-thumb-overlay"></div>
+        </div>
+        <div class="proj-meta">
+          <span class="proj-num">04</span>
+          <h3 class="proj-name">Janerockstar Salon</h3>
+          <p class="proj-type">Social Media Management</p>
+          <span class="proj-link">View Project <span class="arrow">→</span></span>
+        </div>
+      </a>
     </div>
   </section>
 
