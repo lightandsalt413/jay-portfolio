@@ -462,7 +462,7 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 .float-screen{will-change:transform}
 
 /* ===== FEATURED PROJECTS — Split Screen ===== */
-.fp-showcase{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);min-height:340px;margin-top:1rem;animation:fpGlow 4s ease-in-out infinite;position:relative}
+.fp-showcase{display:grid;grid-template-columns:1.2fr 1fr;gap:0;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);min-height:340px;max-width:960px;margin:1rem auto 0;animation:fpGlow 4s ease-in-out infinite;position:relative}
 @keyframes fpGlow{0%,100%{box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 0 rgba(196,147,85,0)}50%{box-shadow:0 25px 70px rgba(0,0,0,.5),0 0 30px rgba(196,147,85,.06)}}
 .fp-media{position:relative;overflow:hidden}
 .fp-video-wrap{position:relative;width:100%;height:100%;min-height:340px}
