@@ -32,40 +32,42 @@ document.addEventListener('DOMContentLoaded',()=>{
   }
 
 
-  /* ===== 3D HOME CAROUSEL (Swiper Coverflow) ===== */
-  const homeCarousel=document.querySelector('.home-carousel');
-  if(homeCarousel&&typeof Swiper!=='undefined'){
-    new Swiper('.home-carousel',{
-      effect:'coverflow',
-      grabCursor:true,
-      centeredSlides:true,
-      slidesPerView:'auto',
-      loop:true,
-      loopedSlides:8,
-      speed:800,
-      threshold:5,
-      resistanceRatio:0,
-      followFinger:true,
-      coverflowEffect:{
-        rotate:0,
-        stretch:60,
-        depth:180,
-        modifier:1,
-        slideShadows:false,
-      },
-      pagination:{
-        el:'.hc-pagination',
-        clickable:true,
-        dynamicBullets:true,
-        dynamicMainBullets:4,
-      },
-      autoplay:{
-        delay:4000,
-        disableOnInteraction:true,
-        pauseOnMouseEnter:true,
-      },
-      keyboard:{enabled:true},
-    });
+  /* ===== SPLIT SCREEN FEATURED PROJECTS ===== */
+  const fpShowcase=document.querySelector('.fp-showcase');
+  if(fpShowcase){
+    const videos=[...fpShowcase.querySelectorAll('.fp-video')];
+    const slides=[...fpShowcase.querySelectorAll('.fp-slide')];
+    const dots=[...fpShowcase.querySelectorAll('.fp-dot')];
+    const progressFill=fpShowcase.querySelector('.fp-progress-fill');
+    const total=slides.length;
+    let current=0;
+    const duration=5000;
+    let startTime=Date.now();
+    let autoTimer;
+
+    function goTo(idx){
+      videos[current].classList.remove('active');
+      slides[current].classList.remove('active');
+      dots[current].classList.remove('active');
+      current=idx%total;
+      videos[current].classList.add('active');
+      slides[current].classList.add('active');
+      dots[current].classList.add('active');
+      startTime=Date.now();
+    }
+
+    function tick(){
+      const elapsed=Date.now()-startTime;
+      const pct=Math.min((elapsed/duration)*100,100);
+      if(progressFill) progressFill.style.width=pct+'%';
+      if(elapsed>=duration) goTo(current+1);
+      autoTimer=requestAnimationFrame(tick);
+    }
+    tick();
+
+    dots.forEach(d=>d.addEventListener('click',()=>{
+      goTo(parseInt(d.dataset.index));
+    }));
   }
 
 
