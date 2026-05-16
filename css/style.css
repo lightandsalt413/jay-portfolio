@@ -252,7 +252,9 @@ button{border:none;background:none;font-family:inherit;color:inherit}
 
 /* ===== SOCIAL MEDIA SECTION ===== */
 .sm-intro{text-align:center;max-width:650px;margin:0 auto 3rem;font-size:.9rem;color:var(--gray);line-height:1.8}
-.sm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1000px;margin:0 auto;padding:0 2rem}
+.sm-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem;max-width:1200px;margin:0 auto;padding:0 2rem}
+@media(max-width:1024px){.sm-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.sm-grid{grid-template-columns:repeat(2,1fr)}}
 .sm-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:2rem 1.5rem;transition:all .4s ease;position:relative;overflow:hidden}
 .sm-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transition:opacity .4s}
 .sm-card:hover{border-color:rgba(196,147,85,.15);transform:translateY(-4px);background:rgba(255,255,255,.05)}
